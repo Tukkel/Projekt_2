@@ -1,0 +1,91 @@
+@startuml BDD IPRS
+skinparam defaultTextAlignment center
+
+mainframe **BDD** Intelligent pattern recognition system
+
+object "<<Block>>\nIntelligent pattern recognition system" as IPRS {
+**ports**
+in userInput: force
+in adminCommand: force
+in afstand: int
+in bevægelse: int
+in IDinformation: int
+in 12V: AC
+out userInformation: light
+out adminInformation: light
+out aktuatorCommand: bool
+}
+
+object "<<Block>>\nCentral styringsenhed" as master {
+**ports**
+in 12V: AC
+in slaveInformation: X10
+out slaveCommand: X10
+in boardCommand: int
+out boardInformation: array
+out masterLog: array
+}
+
+object Informationspanel <<Block>> {
+**ports**
+in 12V: AC
+in boardInformation: array
+out boardCommand: int
+in userInput: force
+out userInformation: light
+}
+
+object Computer <<Block>> {
+**ports**
+in masterLog: array
+out adminInformation: light
+in adminCommand: force
+}
+' Måske mus/tastetur
+
+object "<<Block>>\nSensor slave" as Sensor_slave {
+**ports**
+in 12V: AC
+in slaveCommand: X10
+out slaveInformation: X10
+in sensorInformation: int
+}
+
+object "<<Block>>\nAktuator slave" as Aktuator_slave {
+**ports**
+in 12V: AC
+in slaveCommand: X10
+out aktuatorCommand: bool
+}
+
+object "<<Block>>\nDør sensor" as Dør_sensor {
+**ports**
+in 12V: AC
+in afstand: int
+out sensorInformation: int
+}
+
+object "<<Block>>\nRum sensor" as Rum_sensor {
+**ports**
+in 12V: AC
+in bevægelse: int 
+out sensorInformation: int
+}
+
+object "<<Block>>\nID sensor" as ID_sensor {
+**ports**
+in 12V: AC
+in IDinformation: int
+out sensorInformation: int
+}
+
+
+IPRS *-- master
+IPRS *-- Informationspanel
+IPRS *-- Computer
+IPRS *-- Sensor_slave
+IPRS *-- Aktuator_slave
+Sensor_slave *-- Dør_sensor
+Sensor_slave *-- Rum_sensor
+Sensor_slave *-- ID_sensor
+@enduml
