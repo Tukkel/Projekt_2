@@ -38,6 +38,7 @@ Class "**Aktuator Slave**" as AS{
 
 Class "**Sensor Slave**" as SS{
 - status
+- log
 }
 
 Class "**Dør Sensor**" as DS{
