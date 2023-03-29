@@ -1,91 +1,77 @@
-@startuml BDD IPRS
-skinparam defaultTextAlignment center
+@startuml
+' Default param deffinition
+skinparam style strictuml
+skinparam DefaultFontSize 16
+skinparam DefaultFontName times new roman
+skinparam ArrowFontSize 16
+skinparam ArrowThickness 2.2
+skinparam Linetype poly
+skinparam ranksep 100
+skinparam nodesep 200
+hide empty members
 
-mainframe **BDD** Intelligent pattern recognition system
-
-object "<<Block>>\nIntelligent pattern recognition system" as IPRS {
-**ports**
-in userInput: force
-in adminCommand: force
-in afstand: int
-in bevægelse: int
-in IDinformation: int
-in 12V: AC
-out userInformation: light
-out adminInformation: light
-out aktuatorCommand: bool
+' Class definition
+Class "**Bruger**" as BR{
+- navn
+- id
+- position
 }
 
-object "<<Block>>\nCentral styringsenhed" as master {
-**ports**
-in 12V: AC
-in slaveInformation: X10
-out slaveCommand: X10
-in boardCommand: int
-out boardInformation: array
-out masterLog: array
+Class "**Lyd**" as LD{
+- status
+    
 }
 
-object Informationspanel <<Block>> {
-**ports**
-in 12V: AC
-in boardInformation: array
-out boardCommand: int
-in userInput: force
-out userInformation: light
+Class "**Lys**" as LS{
+- status
 }
 
-object Computer <<Block>> {
-**ports**
-in masterLog: array
-out adminInformation: light
-in adminCommand: force
-}
-' Måske mus/tastetur
-
-object "<<Block>>\nSensor slave" as Sensor_slave {
-**ports**
-in 12V: AC
-in slaveCommand: X10
-out slaveInformation: X10
-in sensorInformation: int
-}
-
-object "<<Block>>\nAktuator slave" as Aktuator_slave {
-**ports**
-in 12V: AC
-in slaveCommand: X10
-out aktuatorCommand: bool
-}
-
-object "<<Block>>\nDør sensor" as Dør_sensor {
-**ports**
-in 12V: AC
-in afstand: int
-out sensorInformation: int
-}
-
-object "<<Block>>\nRum sensor" as Rum_sensor {
-**ports**
-in 12V: AC
-in bevægelse: int 
-out sensorInformation: int
-}
-
-object "<<Block>>\nID sensor" as ID_sensor {
-**ports**
-in 12V: AC
-in IDinformation: int
-out sensorInformation: int
+Class "**Varme**" as V{
+- status 
 }
 
 
-IPRS *-- master
-IPRS *-- Informationspanel
-IPRS *-- Computer
-IPRS *-- Sensor_slave
-IPRS *-- Aktuator_slave
-Sensor_slave *-- Dør_sensor
-Sensor_slave *-- Rum_sensor
-Sensor_slave *-- ID_sensor
+Class "**Aktuator Slave**" as AS{
+- status
+}
+
+
+Class "**Sensor Slave**" as SS{
+- status
+}
+
+Class "**Dør Sensor**" as DS{
+- detektering
+}
+
+Class "**Rum Sensor**" as RS{
+- detektering
+}
+
+Class "**Id Sensor**" as IS{
+- detektering
+}
+
+Class  "**Master**" as ME{
+- rumindhold
+- rumstatus
+- midlertidiglog
+}
+
+Class "**Computer**" as COM{
+- log
+}
+
+Class "**Informationspanel**" as INFO {
+- rumindhold
+}
+
+Class "**administrator**" as admin {
+- navn
+- id
+- username
+- password
+}
+
+' Conection definition
 @enduml
