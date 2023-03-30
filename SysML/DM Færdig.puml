@@ -1,4 +1,4 @@
-@startuml
+@startuml DomainModelFinish
 ' Default param deffinition
 skinparam style strictuml
 skinparam DefaultFontSize 16
