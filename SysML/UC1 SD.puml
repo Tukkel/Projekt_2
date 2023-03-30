@@ -1,78 +1,38 @@
-@startuml
-' Default param deffinition
+@startuml UC1 SD
 skinparam style strictuml
-skinparam DefaultFontSize 16
-skinparam DefaultFontName times new roman
-skinparam ArrowFontSize 16
-skinparam ArrowThickness 2.2
-skinparam Linetype poly
-skinparam ranksep 100
-skinparam nodesep 200
-hide empty members
 
-' Class definition
-Class "**Bruger**" as BR{
-- navn
-- id
-- position
-}
+mainframe **SD** UC1: Registreret rum skift
 
-Class "**Lyd**" as LD{
-- status
-    
-}
+actor       Bruger      as bruger
+participant "<<boundary>>\nDør sensor" as dør
+participant "<<boundary>>\nRum sensor" as rum
+participant "<<boundary>>\nID sensor" as ID
+participant "<<control>>\nSensor Slave" as slave
+participant "<<control>>\nMaster" as master
+participant "<<boundary>>\nInformationspanel" as panel
 
-Class "**Lys**" as LS{
-- status
-}
-
-Class "**Varme**" as V{
-- status 
-}
-
-
-Class "**Aktuator Slave**" as AS{
-- status
-}
-
-
-Class "**Sensor Slave**" as SS{
-- status
-- log
-}
-
-Class "**Dør Sensor**" as DS{
-- detektering
-}
-
-Class "**Rum Sensor**" as RS{
-- detektering
-}
-
-Class "**Id Sensor**" as IS{
-- detektering
-}
-
-Class  "**Master**" as ME{
-- rumindhold
-- rumstatus
-- midlertidiglog
-}
-
-Class "**Computer**" as COM{
-- log
-}
-
-Class "**Informationspanel**" as INFO {
-- rumindhold
-}
-
-Class "**administrator**" as admin {
-- navn
-- id
-- username
-- password
-}
-
-' Conection definition
+activate master
+activate panel
+alt Registrering
+bruger -> dør : Går gennem dør
+dør -> slave : Detektering sendes
+activate slave
+else
+deactivate slave
+bruger -> rum : Bevægelse i tomt rum
+rum -> slave : Detektering sendes
+activate slave
+else
+deactivate slave
+bruger -> ID : Regristrering i ikke forventet rum
+ID -> slave : Detektering sendes
+activate slave
+end
+slave -> slave : setNormalPowerUsage()
+master -> slave : checkStatus(slaveNr)
+slave --> master : sendActivity(log)
+slave -> slave : setLowPowerUsage()
+deactivate slave
+master -> master : updateLog(log)
+master -> panel : updateRoomstate(log)
 @enduml

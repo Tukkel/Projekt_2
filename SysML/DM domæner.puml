@@ -1,4 +1,4 @@
-@startuml DomainModelFirst
+@startuml DM IPRS
 ' Default param deffinition
 skinparam style strictuml
 skinparam DefaultFontSize 16
@@ -9,6 +9,8 @@ skinparam Linetype poly
 skinparam ranksep 100
 skinparam nodesep 200
 hide empty members
+
+mainframe **DM** IPRS
 
 ' Class definition
 Class "**Bruger**" as BR{

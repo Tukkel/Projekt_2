@@ -1,5 +1,6 @@
 @startuml BDD IPRS
 skinparam defaultTextAlignment center
+skinparam Linetype ortho
 
 mainframe **BDD** Intelligent pattern recognition system
 
@@ -7,37 +8,34 @@ object "<<Block>>\nIntelligent pattern recognition system" as IPRS {
 **ports**
 in userInput: force
 in adminCommand: force
-in afstand: int
-in bevægelse: int
-in IDinformation: int
-in 12V: AC
+in afstand: fysisk
+in bevægelse: fysisk
+in IDinformation: chip
 out userInformation: light
 out adminInformation: light
-out aktuatorCommand: bool
+out aktuatorCommand: digital
 }
 
 object "<<Block>>\nCentral styringsenhed" as master {
 **ports**
-in 12V: AC
 in slaveInformation: X10
 out slaveCommand: X10
-in boardCommand: int
-out boardInformation: array
-out masterLog: array
+in boardCommand: UART
+out boardInformation: UART
+out masterLog: UART
 }
 
 object Informationspanel <<Block>> {
 **ports**
-in 12V: AC
-in boardInformation: array
-out boardCommand: int
+in boardInformation: UART
+out boardCommand: UART
 in userInput: force
 out userInformation: light
 }
 
 object Computer <<Block>> {
 **ports**
-in masterLog: array
+in masterLog: UART
 out adminInformation: light
 in adminCommand: force
 }
@@ -45,47 +43,46 @@ in adminCommand: force
 
 object "<<Block>>\nSensor slave" as Sensor_slave {
 **ports**
-in 12V: AC
 in slaveCommand: X10
 out slaveInformation: X10
-in sensorInformation: int
+in sensorInformation: analog
+in sensorInformation: digital
+in sensorInformation: UART
 }
 
 object "<<Block>>\nAktuator slave" as Aktuator_slave {
 **ports**
-in 12V: AC
 in slaveCommand: X10
-out aktuatorCommand: bool
+out aktuatorCommand: digital
 }
 
 object "<<Block>>\nDør sensor" as Dør_sensor {
 **ports**
-in 12V: AC
-in afstand: int
-out sensorInformation: int
+in afstand: fysisk
+out sensorInformation: analog
 }
 
 object "<<Block>>\nRum sensor" as Rum_sensor {
 **ports**
-in 12V: AC
-in bevægelse: int 
-out sensorInformation: int
+in bevægelse: fysisk
+out sensorInformation: digital
 }
 
 object "<<Block>>\nID sensor" as ID_sensor {
 **ports**
-in 12V: AC
-in IDinformation: int
-out sensorInformation: int
+in IDinformation: chip
+out sensorInformation: UART
 }
 
 
 IPRS *-- master
 IPRS *-- Informationspanel
 IPRS *-- Computer
-IPRS *-- Sensor_slave
-IPRS *-- Aktuator_slave
-Sensor_slave *-- Dør_sensor
-Sensor_slave *-- Rum_sensor
-Sensor_slave *-- ID_sensor
+IPRS *-- "0..254" Aktuator_slave
+IPRS *-- "Dør 0..255" Sensor_slave
+IPRS *-- "Rum 0..255" Sensor_slave
+IPRS *-- "ID 0..255" Sensor_slave
+Sensor_slave  *-- "0..255" Dør_sensor 
+Sensor_slave *-- "0..255" Rum_sensor
+Sensor_slave *-- "0..255" ID_sensor
 @enduml

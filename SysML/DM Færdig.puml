@@ -1,4 +1,4 @@
-@startuml DomainModelFinish
+@startuml DM IPRS
 ' Default param deffinition
 skinparam style strictuml
 skinparam DefaultFontSize 16
@@ -7,8 +7,11 @@ skinparam ArrowFontSize 16
 skinparam ArrowThickness 2.2
 skinparam Linetype poly
 skinparam ranksep 100
-skinparam nodesep 200
+skinparam nodesep 100
 hide empty members
+
+
+mainframe **DM** IPRS
 
 ' Class definition
 Class "**Bruger**" as BR{
@@ -67,7 +70,7 @@ Class "**Informationspanel**" as INFO {
 - rumindhold
 }
 
-Class "**administrator**" as admin {
+Class "**administrator**" as ADMIN {
 - navn
 - id
 - username
@@ -75,4 +78,30 @@ Class "**administrator**" as admin {
 }
 
 ' Conection definition
+BR -- INFO : > Checker rumindhold
+
+BR -- IS : > Aktivere
+BR -- DS : > Aktivere
+BR -- RS : > Aktivere
+
+RS "1" -- "1" SS : > Detektering
+DS "1" -- "1" SS : > Detektering
+IS "1" -- "1" SS : > Detektering
+
+SS "1..*" -- "1" ME : > Aktivitet log
+SS "1..*" -- "1" ME : < Statuts check
+
+ME "1" -- "1" COM : > Log data
+ME "1" -- "1" COM : < system ændring
+ME "1" -- "1" INFO : > rumstatus
+ME "1" -- "1" INFO : < Rumstatus efterspørgelse
+
+ADMIN -- COM  : > adminstrer system
+
+ME "1" -- "1..*" AS : > Sætter status
+ME "1" -- "1..*" AS : < Status
+
+AS "1" -- "1" LS : > sætter status
+AS "1" -- "1" LD : > sætter status
+AS "1" -- "1" V : > sætter status
 @enduml

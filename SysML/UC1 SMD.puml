@@ -1,78 +1,16 @@
-@startuml
-' Default param deffinition
-skinparam style strictuml
-skinparam DefaultFontSize 16
-skinparam DefaultFontName times new roman
-skinparam ArrowFontSize 16
-skinparam ArrowThickness 2.2
-skinparam Linetype poly
-skinparam ranksep 100
-skinparam nodesep 200
-hide empty members
+@startuml UC1 SMD
 
-' Class definition
-Class "**Bruger**" as BR{
-- navn
-- id
-- position
-}
+mainframe **SMD** UC1: Registreret rum skift
 
-Class "**Lyd**" as LD{
-- status
-    
-}
+hide empty description
+state IDLE
+state DETEKTERET
 
-Class "**Lys**" as LS{
-- status
-}
+[*] --> IDLE
+IDLE --> DETEKTERET : Detektering sendes
+DETEKTERET --> IDLE : sendActivity(log)
 
-Class "**Varme**" as V{
-- status 
-}
+IDLE : entry/setLowPowerUsage()
 
-
-Class "**Aktuator Slave**" as AS{
-- status
-}
-
-
-Class "**Sensor Slave**" as SS{
-- status
-- log
-}
-
-Class "**Dør Sensor**" as DS{
-- detektering
-}
-
-Class "**Rum Sensor**" as RS{
-- detektering
-}
-
-Class "**Id Sensor**" as IS{
-- detektering
-}
-
-Class  "**Master**" as ME{
-- rumindhold
-- rumstatus
-- midlertidiglog
-}
-
-Class "**Computer**" as COM{
-- log
-}
-
-Class "**Informationspanel**" as INFO {
-- rumindhold
-}
-
-Class "**administrator**" as admin {
-- navn
-- id
-- username
-- password
-}
-
-' Conection definition
+DETEKTERET : entry/setNormalPowerUsage()
 @enduml
