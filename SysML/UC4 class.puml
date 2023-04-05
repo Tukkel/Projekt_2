@@ -1,8 +1,7 @@
-@startuml UC1 class
+@startuml UC4 class
 ' Default param deffinition
 skinparam style strictuml
 skinparam DefaultFontSize 16
-skinparam DefaultFontName times new roman
 skinparam ArrowFontSize 16
 skinparam ArrowThickness 2.2
 skinparam Linetype poly
@@ -11,47 +10,37 @@ skinparam nodesep 100
 hide empty members
 
 
-mainframe **Class** UC1: Registrer rumskifte
+mainframe **Class** UC4: Administrator login
 
 ' Class definition
-Class "**<<boundary>>**\n**Dør sensor**" as DS{
 
-}
-
-Class "**<<boundary>>**\n**Rum sensor**" as RS{
-
-}
-
-Class "**<<boundary>>**\n**ID sensor**" as IDS{
-
+Class "**<<boundary>>**\n**PC interface**" as UI{
+- username
+- password
+- input
 }
 
 
-Class "**<<domain>>**\n**Sensor slave**" as SS{
-+ setNormalPowerUsage()
-+ setLowPowerUsage()
-+ sendActivity(slaveNr)
-- activity
-}
-
-Class "**<<boundary>>**\n**Informationspanel**" as IP{
-+ updateRoomstate(log)
-- rooms
-}
-
-Class "**<<controller>>**\n**UC1: Registrer rumskifte**" as RR{
-+ updateLog(activity)
+Class "**<<domain>>**\n**Master**" as master{
++ sendLog()
++ updateSystem(newSystem)
 - log
-- activity
+- system
 }
 
-
+Class "**<<controller>>**\n**UC4: Administrator login**" as PC{
++ updatePCLog(log)
++ validate(username, password)
++ printLog()
++ showOptions()
++ changeSystem(newSystem)
+- log
+- system
+- validLogin
+}
 
 ' Conection definition
-SS <-- DS
-SS <-- RS
-SS <-- IDS
+PC <--> UI
+PC <--> master
 
-RR <--> SS
-RR --> IP
 @enduml

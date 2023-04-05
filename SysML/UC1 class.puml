@@ -1,38 +1,57 @@
-@startuml UC1 SD
+@startuml UC1 class
+' Default param deffinition
 skinparam style strictuml
+skinparam DefaultFontSize 16
+skinparam DefaultFontName times new roman
+skinparam ArrowFontSize 16
+skinparam ArrowThickness 2.2
+skinparam Linetype poly
+skinparam ranksep 100
+skinparam nodesep 100
+hide empty members
 
-mainframe **SD** UC1: Registreret rumskift
 
-actor       Bruger      as bruger
-participant "<<boundary>>\nDør sensor" as dør
-participant "<<boundary>>\nRum sensor" as rum
-participant "<<boundary>>\nID sensor" as ID
-participant "<<domain>>\nSlave" as slave
-participant "<<control>>\nUC1 Registreret rum skift" as master
-participant "<<boundary>>\nInformationspanel" as panel
+mainframe **Class** UC1: Registrer rumskifte
 
-activate master
-activate panel
-alt Registrering
-bruger ->> dør : Går gennem dør
-dør ->> slave : Detektering sendes
-activate slave
-else
-deactivate slave
-bruger ->> rum : Bevægelse i tomt rum
-rum ->> slave : Detektering sendes
-activate slave
-else
-deactivate slave
-bruger ->> ID : Registrering i ikke forventet rum
-ID ->> slave : Detektering sendes
-activate slave
-end
-slave -> slave : setNormalPowerUsage()
-master -> slave : sendActivity(slaveNr)
-slave -->> master : Acitivity
-slave -> slave : setLowPowerUsage()
-deactivate slave
-master -> master : updateLog(Activity)
-master ->> panel : updateRoomstate(Log)
+' Class definition
+Class "**<<boundary>>**\n**Dør sensor**" as DS{
+
+}
+
+Class "**<<boundary>>**\n**Rum sensor**" as RS{
+
+}
+
+Class "**<<boundary>>**\n**ID sensor**" as IDS{
+
+}
+
+
+Class "**<<domain>>**\n**Sensor slave**" as SS{
++ setNormalPowerUsage()
++ setLowPowerUsage()
++ sendActivity(slaveNr)
+- activity
+}
+
+Class "**<<boundary>>**\n**Informationspanel**" as IP{
++ updateRoomstate(log)
+- rooms
+}
+
+Class "**<<controller>>**\n**UC1: Registrer rumskifte**" as RR{
++ updateLog(activity)
+- log
+- activity
+}
+
+
+
+' Conection definition
+SS <-- DS
+SS <-- RS
+SS <-- IDS
+
+RR <--> SS
+RR --> IP
 @enduml

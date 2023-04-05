@@ -1,38 +1,46 @@
-@startuml UC1 SD
+@startuml UC4 SD
 skinparam style strictuml
 
-mainframe **SD** UC1: Registreret rumskift
+mainframe **SD** UC4: Administrator login
 
-actor       Bruger      as bruger
-participant "<<boundary>>\nDør sensor" as dør
-participant "<<boundary>>\nRum sensor" as rum
-participant "<<boundary>>\nID sensor" as ID
-participant "<<domain>>\nSlave" as slave
-participant "<<control>>\nUC1 Registreret rum skift" as master
-participant "<<boundary>>\nInformationspanel" as panel
+actor       Administrator      as admin
+participant "<<boundary>>\nPC Interface" as UI
+participant "<<control>>\nUC4: Administrator login" as PC
+participant "<<domain>>\nMaster" as master
 
 activate master
-activate panel
-alt Registrering
-bruger ->> dør : Går gennem dør
-dør ->> slave : Detektering sendes
-activate slave
-else
-deactivate slave
-bruger ->> rum : Bevægelse i tomt rum
-rum ->> slave : Detektering sendes
-activate slave
-else
-deactivate slave
-bruger ->> ID : Registrering i ikke forventet rum
-ID ->> slave : Detektering sendes
-activate slave
+admin ->> UI : Trykker start
+activate UI
+admin <<- UI : Vis log ind UI
+admin ->> UI : Indtaster loginoplysninger
+UI -> PC : validate(username, password)
+activate PC
+PC -> master : sendLog()
+PC <<-- master : updatePCLog(log)
+UI <<-- PC : OK
+loop Så længe der ikke er logget ud
+admin <<- UI : Vis mulige handlinger
+alt Print data
+admin ->> UI : Vælger print data
+UI -> PC : printLog()
+UI <<-- PC : Log text
+admin <<- UI : Vis log
+else Rediger system
+admin ->> UI : Vælger rediger system
+UI -> PC : showOptions()
+UI <<-- PC : Muligheder
+admin <<- UI : Vis muligheder
+admin ->> UI : Redigerer systemet
+UI -> PC : changeSystem(newSystem)
+PC -> master : updateSystem(newSystem)
+PC <<-- master : OK
+UI <<-- PC : OK
+admin <<- UI : Vis at redigering blev fuldført
+else Log ud
+admin ->> UI : Vælger log ud
+admin <<- UI : Vis at der logges ud
+deactivate PC
+deactivate UI
 end
-slave -> slave : setNormalPowerUsage()
-master -> slave : sendActivity(slaveNr)
-slave -->> master : Acitivity
-slave -> slave : setLowPowerUsage()
-deactivate slave
-master -> master : updateLog(Activity)
-master ->> panel : updateRoomstate(Log)
+end
 @enduml
