@@ -24,7 +24,7 @@ rum -> slave : Detektering sendes
 activate slave
 else
 deactivate slave
-bruger -> ID : Regristrering i ikke forventet rum
+bruger -> ID : Registrering i ikke forventet rum
 ID -> slave : Detektering sendes
 activate slave
 end
