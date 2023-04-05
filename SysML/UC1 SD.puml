@@ -1,7 +1,7 @@
 @startuml UC1 SD
 skinparam style strictuml
 
-mainframe **SD** UC1: Registreret rum skift
+mainframe **SD** UC1: Registreret rumskift
 
 actor       Bruger      as bruger
 participant "<<boundary>>\nDør sensor" as dør
