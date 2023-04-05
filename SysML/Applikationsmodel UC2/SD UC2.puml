@@ -1,0 +1,20 @@
+@startuml SD UC2
+skinparam style strictuml
+
+mainframe **SD** UC2
+
+participant "<<boundary>>\nLys" as L
+participant "<<Controller>>\nAdministrer lys" as AL
+participant "<<domain>>UC5" as UC5
+participant "<<boundary>>Masteren" as M
+
+M -> AL : opdatretLog(logStatus)
+activate AL
+AL -> UC5 : erInitieret()
+activate UC5
+UC5 -> AL : systemetInitieret(true)
+deactivate UC5
+AL -> L : sætStatus(logStatus)
+deactivate AL
+
+@enduml

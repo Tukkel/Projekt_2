@@ -1,0 +1,37 @@
+@startuml CD
+skinparam style strictuml
+hide empty members
+
+
+mainframe **CD** UC2
+
+class "<<Controller>>\nAdministrer lys" as AL {
+    <&minus> logStatus
+    <&minus> sysStatus
+    <&plus> systemetInitieret(sysStatus)
+    <&plus> opdatretLog(logStatus)
+}
+
+class "<<boundary>>\nLys" as L {
+    <&minus> erTændt : bool
+    <&plus> sætStatus(logStatus)
+}
+
+
+
+class "<<domain>>UC5" as UC5{
+    <&minus> erInitieret : bool
+    <&plus> erInitieret()
+}
+
+class "<<domain>>Masteren" as M{
+    <&minus> log : Log
+
+}
+
+M "1" --> "1..*" AL
+AL  -->  L
+UC5 <--> AL
+
+
+@enduml
