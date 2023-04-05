@@ -1,0 +1,34 @@
+@startuml UC4 SMD
+
+mainframe **SMD** UC4: Administrator login
+
+hide empty description
+state "Log ind" as login
+state "Validering" as val
+state "Muligheder" as mul
+state "Print data" as data
+state "Rediger system" as rediger
+
+[*] --> login : Trykker start/PC starter
+login --> val : validate(username, password)
+val --> mul : OK
+
+mul --> data : Vælger rediger system
+data --> mul : Vis log
+
+mul --> rediger : Vælger rediger system
+rediger --> mul : Vis at redigering blev fuldført
+
+mul --> [*] : Vælger log ud
+
+login : entry/Vis log ind UI
+
+val : entry/updatePCLog(log)
+
+mul : entry/Vis mulige handlinger
+
+data : entry/printLog()
+
+rediger : entry/showOptions
+rediger : do/changeSystem(newSystem)
+@enduml
