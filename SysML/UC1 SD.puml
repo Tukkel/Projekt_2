@@ -3,7 +3,7 @@ skinparam style strictuml
 
 mainframe **SD** UC1: Registreret rumskift
 
-actor       Bruger      as bruger
+actor Bruger as bruger
 participant "<<boundary>>\nDør sensor" as dør
 participant "<<boundary>>\nRum sensor" as rum
 participant "<<boundary>>\nID sensor" as ID
