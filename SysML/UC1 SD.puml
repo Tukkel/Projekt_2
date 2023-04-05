@@ -7,8 +7,8 @@ actor       Bruger      as bruger
 participant "<<boundary>>\nDør sensor" as dør
 participant "<<boundary>>\nRum sensor" as rum
 participant "<<boundary>>\nID sensor" as ID
-participant "<<control>>\nSensor Slave" as slave
-participant "<<control>>\nMaster" as master
+participant "<<control>>\nUC1 Registreret rum skift" as slave
+participant "<<domain>>\nMaster" as master
 participant "<<boundary>>\nInformationspanel" as panel
 
 activate master
