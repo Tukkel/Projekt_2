@@ -2,7 +2,6 @@
 skinparam style strictuml
 hide empty members
 
-
 mainframe **Navneordsanalyse** UC2
 
 class "<<Controller>>\nAdministrer lys" {

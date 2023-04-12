@@ -2,7 +2,6 @@
 skinparam style strictuml
 hide empty members
 
-
 mainframe **CD** UC2
 
 class "<<Controller>>\nAdministrer lys" as AL {
@@ -17,8 +16,6 @@ class "<<boundary>>\nLys" as L {
     <&plus> sætStatus(logStatus)
 }
 
-
-
 class "<<domain>>UC5" as UC5{
     <&minus> erInitieret : bool
     <&plus> erInitieret()
@@ -32,6 +29,5 @@ class "<<domain>>Masteren" as M{
 M "1" --> "1..*" AL
 AL  -->  L
 UC5 <--> AL
-
 
 @enduml

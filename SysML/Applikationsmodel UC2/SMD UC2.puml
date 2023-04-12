@@ -4,7 +4,6 @@ mainframe **SMD** UC2
 
 hide empty description
 
-
 [*] --> whileInitiatet : InitierLysSystem()
 
 state whileInitiatet {
