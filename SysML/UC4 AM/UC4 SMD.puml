@@ -8,6 +8,7 @@ state "Validering" as val
 state "Muligheder" as mul
 state "Print data" as data
 state "Rediger system" as rediger
+state "Initialisering" as init
 
 [*] --> login : Trykker start/PC starter
 login --> val : validate(username, password)
@@ -19,6 +20,9 @@ data --> mul : Vis log
 mul --> rediger : Vælger rediger system
 rediger --> mul : Vis at redigering blev fuldført
 
+mul --> init : Vælger initialisering
+init --> mul : Vis validation
+
 mul --> [*] : Vælger log ud
 
 login : entry/Vis log ind UI
@@ -28,6 +32,8 @@ val : entry/updatePCLog(log)
 mul : entry/Vis mulige handlinger
 
 data : entry/printLog()
+
+init : entry/initialise()
 
 rediger : entry/showOptions
 rediger : do/changeSystem(newSystem)

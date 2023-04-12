@@ -1,0 +1,35 @@
+@startuml UC5
+mainframe **SMD** UC5: Initialisering
+
+hide empty description
+state "Master initialise" as master
+state "Slave initialise" as slave
+state "Sensor initialise" as sensor
+state "Informationspanel initialise" as panel
+state "Fejl" as fejl
+
+[*] --> master : Der vælges initialise
+master --> slave : Master done
+slave --> fejl
+fejl --> slave
+
+slave --> sensor : Slave done
+sensor --> fejl
+fejl --> sensor
+
+sensor --> panel : Sensor done
+panel --> fejl
+fejl --> panel
+
+panel --> [*] : Panel done
+
+master : entry/masterInitialise()
+
+slave : entry/slaveInitialise()
+
+sensor : entry/sensorInitialise()
+
+panel : entry/panelInitialise()
+
+fejl : entry/makeFailureEntry()
+@enduml

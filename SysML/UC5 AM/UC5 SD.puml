@@ -1,0 +1,38 @@
+@startuml UC5 SD
+skinparam style strictuml
+
+mainframe **SD** UC5: Initialisering
+
+actor       Administrator      as admin
+participant "<<boundary>>\nComputer" as PC
+participant "<<control>>\nUC5: Initialisering" as master
+participant "<<domain>>\nSlave" as slave
+participant "<<boundary>>\nSensor" as sensor
+participant "<<domain>>\nInformationspanel" as panel
+
+activate master
+activate PC
+activate sensor
+activate panel
+admin ->> PC : Start initiering
+PC ->> master : masterInitialise()
+master -> slave : slaveInitialise()
+activate slave
+master <<-- slave : Validation
+deactivate slave
+master -> slave : sensorInitialise()
+activate slave
+slave <<- sensor : information
+slave -> slave : validateInformation()
+master <<-- slave : Validation
+deactivate slave
+master -> panel : panelInitialise()
+master <<-- panel : Validation
+alt Validation
+PC <<- master : Valid
+admin <<- PC : Vis succesfuld validering
+else Undtagelse
+PC <<- master : Invalid
+admin <<- PC : Vis initialiseringsfejl
+end
+@enduml

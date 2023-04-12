@@ -36,6 +36,13 @@ PC -> master : updateSystem(newSystem)
 PC <<-- master : OK
 UI <<-- PC : OK
 admin <<- UI : Vis at redigering blev fuldført
+else Initialisering
+admin ->> UI : Vælger initialisering
+UI -> PC : initialise()
+PC -> master : masterInitialise()
+PC <<-- master : Validation
+UI <<-- PC : Validation text
+admin <<- UI : Vis validation
 else Log ud
 admin ->> UI : Vælger log ud
 admin <<- UI : Vis at der logges ud
