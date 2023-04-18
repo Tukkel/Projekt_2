@@ -1,6 +1,5 @@
 @startuml BDD IPRS
 skinparam defaultTextAlignment center
-skinparam Linetype ortho
 
 mainframe **BDD** Intelligent pattern recognition system
 
@@ -80,10 +79,8 @@ IPRS *-- master
 IPRS *-- Informationspanel
 IPRS *-- Computer
 IPRS *-- "0..254" Aktuator_slave
-IPRS *-- "Dør 0..255" Sensor_slave
-IPRS *-- "Rum 0..255" Sensor_slave
-IPRS *-- "ID 0..255" Sensor_slave
-Sensor_slave  *-- "0..255" Dør_sensor 
-Sensor_slave *-- "0..255" Rum_sensor
-Sensor_slave *-- "0..255" ID_sensor
+IPRS *-- "0..255" Sensor_slave
+Sensor_slave  *-- "0..1" Dør_sensor 
+Sensor_slave *-- "0..1" Rum_sensor
+Sensor_slave *-- "0..1" ID_sensor
 @enduml
