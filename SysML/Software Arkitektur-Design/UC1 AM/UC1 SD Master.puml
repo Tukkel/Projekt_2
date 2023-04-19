@@ -1,0 +1,20 @@
+@startuml UC1 SD Master
+skinparam style strictuml
+
+mainframe **SD** UC1: Registreret rumskift (Master)
+
+participant "<<boundary>>\nX10 Network" as X10Net
+participant "<<domain>>\nX10Communication" as X10
+participant "<<control>>\nUC1 Registreret rum skift" as master
+participant "<<boundary>>\nInformationspanel" as panel
+
+activate master
+activate panel
+X10Net ->> master : Activity
+X10 <<- master : sendAck()
+activate X10
+X10Net <<- X10 : Ack
+deactivate X10
+master -> master : updateLog(Activity)
+master ->> panel : updateRoomstate(Log)
+@enduml

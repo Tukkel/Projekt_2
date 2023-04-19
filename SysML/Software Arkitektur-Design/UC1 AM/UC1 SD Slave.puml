@@ -1,18 +1,16 @@
-@startuml UC1 SD Master
+@startuml UC1 SD Slave
 skinparam style strictuml
 
-mainframe **SD** UC1: Registreret rumskift (Master)
+mainframe **SD** UC1: Registreret rumskift (Slave)
 
 actor Bruger as bruger
 participant "<<boundary>>\nDør sensor" as dør
 participant "<<boundary>>\nRum sensor" as rum
 participant "<<boundary>>\nID sensor" as ID
-participant "<<domain>>\nSlave" as slave
-participant "<<control>>\nUC1 Registreret rum skift" as master
-participant "<<boundary>>\nInformationspanel" as panel
+participant "<<control>>\nUC1: Registreret rumskift (Slave)" as slave
+participant "<<domain>>\nX10Communication" as X10
+participant "<<boundary>>\nX10 Network" as X10Net
 
-activate master
-activate panel
 alt Registrering
 bruger ->> dør : Går gennem dør
 dør ->> slave : Detektering sendes
@@ -29,10 +27,12 @@ ID ->> slave : Detektering sendes
 activate slave
 end
 slave -> slave : setNormalPowerUsage()
-master -> slave : sendActivity(slaveNr)
-slave -->> master : Acitivity
+slave -> X10 : sendActivity(slaveNr, activity)
+activate X10
+X10 -> X10Net : Activity
+X10 <<-- X10Net : No conflict
+slave <<-- X10 : Done
+deactivate X10
 slave -> slave : setLowPowerUsage()
 deactivate slave
-master -> master : updateLog(Activity)
-master ->> panel : updateRoomstate(Log)
 @enduml
