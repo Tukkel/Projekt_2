@@ -85,7 +85,7 @@ out sensorInformation: UART
 object Cpp <<Software>> {
 }
 
-Cpp --> master : "<<allocate>>" 
+master <-- Cpp  : "<<allocate>>" 
 IPRS *-- master
 IPRS *-- Informationspanel
 IPRS *-- Computer
