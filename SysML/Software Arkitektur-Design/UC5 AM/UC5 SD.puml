@@ -14,7 +14,7 @@ activate master
 activate PC
 activate sensor
 activate panel
-admin ->> PC : Start initiering
+admin ->> PC : Start initialisation
 PC ->> master : masterInitialise()
 master -> slave : slaveInitialise()
 activate slave
@@ -23,16 +23,15 @@ deactivate slave
 master -> slave : sensorInitialise()
 activate slave
 slave <<- sensor : information
-slave -> slave : validateInformation()
 master <<-- slave : Validation
 deactivate slave
 master -> panel : panelInitialise()
 master <<-- panel : Validation
 alt Validation
 PC <<- master : Valid
-admin <<- PC : Vis succesfuld validering
-else Undtagelse
+admin <<- PC : Show succesful validation
+else Exception
 PC <<- master : Invalid
-admin <<- PC : Vis initialiseringsfejl
+admin <<- PC : Show initialisation errors
 end
 @enduml
