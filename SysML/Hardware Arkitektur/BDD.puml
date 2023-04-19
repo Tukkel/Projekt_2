@@ -1,86 +1,97 @@
 @startuml BDD IPRS
 skinparam defaultTextAlignment center
 
-mainframe **BDD** Intelligent pattern recognition system
+mainframe **BDD** IPRS
 
 
-object "<<Block>>\nIntelligent pattern recognition system" as IPRS {
-**ports**
-in userInput: force
-in adminCommand: force
-in afstand: fysisk
-in bevægelse: fysisk
-in IDinformation: chip
-out userInformation: light
-out adminInformation: light
-out aktuatorCommand: digital
+object IPRS <<Block>>  {
+**Ports**
+in userInput: Force
+in adminCommand: Force
+in afstand: Fysisk
+in bevægelse: Fysisk
+in IDinformation: Chip
+out userInformation: Light
+out adminInformation: Light
+out aktuatorCommand: Digital
 }
 
-object "<<Block>>\nCentral styringsenhed" as master {
-**ports**
+object "<<Block>>\nCentral Styringsenhed" as master {
+**Ports**
 in slaveInformation: X10
-out slaveCommand: X10
 in boardCommand: UART
+\n
+out slaveCommand: X10
 out boardInformation: UART
 out masterLog: UART
 }
 
 object Informationspanel <<Block>> {
-**ports**
+**Ports**
 in boardInformation: UART
+in userInput: Force
+\n
 out boardCommand: UART
-in userInput: force
-out userInformation: light
+out userInformation: Light
 }
 
 object Computer <<Block>> {
-**ports**
+**Ports**
 in masterLog: UART
-out adminInformation: light
-in adminCommand: force
+in adminCommand: Force
+\n
+out adminInformation: Light
 }
 ' Måske mus/tastetur
 
-object "<<Block>>\nSensor slave" as Sensor_slave {
-**ports**
+object Sensorslave <<Block>> {
+**Ports**
 in slaveCommand: X10
-out slaveInformation: X10
-in sensorInformation: analog
-in sensorInformation: digital
+in sensorInformation: Analog
+in sensorInformation: Digital
 in sensorInformation: UART
+\n
+out slaveInformation: X10
 }
 
-object "<<Block>>\nAktuator slave" as Aktuator_slave {
-**ports**
+object Aktuatorslave <<Block>> {
+**Ports**
 in slaveCommand: X10
-out aktuatorCommand: digital
+\n
+out aktuatorCommand: Digital
 }
 
-object "<<Block>>\nDør sensor" as Dør_sensor {
-**ports**
-in afstand: fysisk
-out sensorInformation: analog
+object Dørsensor <<Block>>  {
+**Ports**
+in afstand: Fysisk
+\n
+out sensorInformation: Analog
 }
 
-object "<<Block>>\nRum sensor" as Rum_sensor {
-**ports**
-in bevægelse: fysisk
-out sensorInformation: digital
+object Rumsensor <<Block>>  {
+**Ports**
+in bevægelse: Fysisk
+\n
+out sensorInformation: Digital
 }
 
-object "<<Block>>\nID sensor" as ID_sensor {
-**ports**
-in IDinformation: chip
+object IDsensor <<Block>> {
+**Ports**
+in IDinformation: Chip
+\n
 out sensorInformation: UART
 }
 
+object Cpp <<Software>> {
+}
 
+Cpp --> master : "<<allocate>>" 
 IPRS *-- master
 IPRS *-- Informationspanel
 IPRS *-- Computer
-IPRS *-- "0..254" Aktuator_slave
-IPRS *-- "0..255" Sensor_slave
-Sensor_slave  *-- "0..1" Dør_sensor 
-Sensor_slave *-- "0..1" Rum_sensor
-Sensor_slave *-- "0..1" ID_sensor
+IPRS *-- "0..254" Aktuatorslave
+IPRS *-- "0..255" Sensorslave
+Sensorslave  *-- "0..1" Dørsensor 
+Sensorslave *-- "0..1" Rumsensor
+Sensorslave *-- "0..1" IDsensor
 @enduml

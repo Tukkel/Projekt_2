@@ -1,0 +1,17 @@
+@startuml CD
+skinparam style strictuml
+hide empty members
+
+mainframe **CD** UC3
+
+class "<<Boundary>>\nInformationPanel" as IP {
+    <&plus> showRoom(roomNr)
+}
+
+class "<<Control>>\nMaster" as MA {
+    <&plus> updateRoomstate(Log)
+}
+
+
+IP "1" <-- "1" MA
+@enduml
