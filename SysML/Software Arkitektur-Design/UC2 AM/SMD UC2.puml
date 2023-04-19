@@ -4,22 +4,22 @@ mainframe **SMD** UC2
 
 hide empty description
 
-[*] --> whileInitiatet : InitierLysSystem()
-
-state whileInitiatet {
+[*] --> IDLE : initieret
 
 state IDLE : entry/setLowPowerUsage()
+state IDLE : exit/setNormalPowerUsage()  
+
 state SLUKKET : entry/lightOn()
 state TÆNDT  : entry/lightOff()
 
-whileInitiatet --> IDLE :lysInitieret
+
 IDLE --> TÆNDT : opdatretLog(tændt)
 TÆNDT --> IDLE : lysTændt
 
 IDLE --> SLUKKET : opdatretLog(slukket)
 SLUKKET --> IDLE : lysSlukket
 
-}
+
 
 
 @enduml
