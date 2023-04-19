@@ -1,38 +1,52 @@
-@startuml UC1 SD Slave
+@startuml System SD
 skinparam style strictuml
 
-mainframe **SD** UC1: Registreret rumskift (Slave)
+mainframe **SD** IPRS
 
 actor Bruger as bruger
-participant "<<boundary>>\nDør sensor" as dør
-participant "<<boundary>>\nRum sensor" as rum
-participant "<<boundary>>\nID sensor" as ID
-participant "<<control>>\nUC1: Registreret rumskift (Slave)" as slave
-participant "<<domain>>\nX10Communication" as X10
-participant "<<boundary>>\nX10 Network" as X10Net
+participant "Dørsensor" as dør
+participant "Rumsensor" as rum
+participant "IDsensor" as ID
+participant "Sensorslave" as SS
+participant "Aktuatorslave" as AkS
+participant "X10 netværk" as X10
+participant "Master" as master
+participant "Informationspanel" as panel
 
+activate master
+activate panel
 alt Registrering
 bruger ->> dør : Går gennem dør
-dør ->> slave : Detektering sendes
-activate slave
+dør ->> SS : Detektering sendes
+activate SS
 else
-deactivate slave
+deactivate SS
 bruger ->> rum : Bevægelse i tomt rum
-rum ->> slave : Detektering sendes
-activate slave
+rum ->> SS : Detektering sendes
+activate SS
 else
-deactivate slave
+deactivate SS
 bruger ->> ID : Registrering i ikke forventet rum
-ID ->> slave : Detektering sendes
-activate slave
+ID ->> SS : Detektering sendes
+activate SS
 end
-slave -> slave : setNormalPowerUsage()
-slave -> X10 : sendActivity(slaveNr, activity)
-activate X10
-X10 -> X10Net : Activity
-X10 <<-- X10Net : No conflict
-slave <<-- X10 : Done
-deactivate X10
-slave -> slave : setLowPowerUsage()
-deactivate slave
+SS -> SS : Sæt normalt energiforbrug
+SS -> X10 : Send aktivitet
+X10 -> master : Modtager aktivitet
+X10 <<-- master : Send ACK
+SS <<-- X10 : Modtager ACK
+SS -> SS : Sæt lav energiforbrug
+deactivate SS
+master -> master : Opdater log
+master ->> X10 : Send aktuatorslave status
+X10 ->> AkS : Modtager ny status
+activate AkS
+AkS -> AkS : Ændre status på modulærenhed
+deactivate AkS
+master ->> panel : Send ny rumstatus
+panel ->> bruger : Vis rumstatus
+bruger -> panel : Aktiver ruminformation
+panel -> master : Anmod om ruminformation
+master -->> panel : Send ruminformation
+bruger <<-- panel : Vis ruminformation
 @enduml
