@@ -7,7 +7,7 @@ skinparam ArrowFontSize 16
 skinparam ArrowThickness 2.2
 skinparam Linetype poly
 skinparam ranksep 100
-skinparam nodesep 100
+skinparam nodesep 10
 hide empty members
 
 
@@ -80,14 +80,6 @@ Class "**administrator**" as ADMIN {
 ' Conection definition
 BR -- INFO : > Checker rumindhold
 
-BR -- IS : > Aktiver
-BR -- DS : > Aktiver
-BR -- RS : > Aktiver
-
-RS "1" -- "1" SS : > Sender Detektering
-DS "1" -- "1" SS : > Sender Detektering
-IS "1" -- "1" SS : > Sender Detektering
-
 SS "1..*" -- "1" ME : > Aktivitet log
 SS "1..*" -- "1" ME : < Statuts check
 
@@ -95,6 +87,14 @@ ME "1" -- "1" COM : > Sender Log data
 ME "1" -- "1" COM : < Opdater med Systemændring
 ME "1" -- "1" INFO : > Sender Rumstatus
 ME "1" -- "1" INFO : < Efterspørger Rumindhold
+
+RS "1" -- "1" SS : > Sender Detektering
+DS "1" -- "1" SS : > Sender Detektering
+IS "1" -- "1" SS : > Sender Detektering
+
+BR -- IS : > Aktiver
+BR -- DS : > Aktiver
+BR -- RS : > Aktiver
 
 ADMIN -- COM  : > Adminstrer System
 COM -- ADMIN : > Læser Log
