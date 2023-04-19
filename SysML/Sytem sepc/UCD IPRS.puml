@@ -1,0 +1,29 @@
+@startuml Use Case Diagram for IPRS
+left to right direction
+mainframe **UCD** IPRS
+actor Bruger as br
+actor Administrator as ad
+actor Lys as ls
+actor Lyd as ld
+actor Varme as va
+
+rectangle IPRS {
+   usecase "UC1: Registrer rum skift" as UC1
+   usecase "UC3: Bruger informationspanel" as UC3
+   usecase "UC4: Administrator login" as UC4
+   usecase "UC5: Initialisering" as UC5
+   usecase "UC2: Administrer lys" as UC2
+   usecase "UC6: Administrer varme" as UC6
+   usecase "UC7: Administrer lyd" as UC7  
+}
+
+br -- UC3
+br -- UC1
+
+ad -- UC4
+ad -- UC5
+
+UC2 -- ls
+UC7 -- ld
+UC6 -- va
+@enduml

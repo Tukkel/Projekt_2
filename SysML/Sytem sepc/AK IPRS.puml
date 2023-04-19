@@ -1,0 +1,20 @@
+@startuml Aktør Kontekstdiagram
+
+left to right direction
+mainframe **AK** IPRS
+actor Bruger as br
+actor Adminstrator as ad
+actor Lys as ls
+actor Lyd as ld
+actor Varme as va
+
+rectangle IPRS {
+
+}
+
+br -- IPRS
+ad -- IPRS
+IPRS -- ls
+IPRS -- ld
+IPRS -- va
+@enduml

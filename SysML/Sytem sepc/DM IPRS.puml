@@ -7,101 +7,105 @@ skinparam ArrowFontSize 16
 skinparam ArrowThickness 2.2
 skinparam Linetype poly
 skinparam ranksep 100
-skinparam nodesep 100
+skinparam nodesep 10
 hide empty members
 
 
 mainframe **DM** IPRS
 
 ' Class definition
-Class "**Bruger**" as BR{
-- navn
-- id
-- position
+
+
+Class "**SensorSlave**" as SS{
+- Status
+- Log
 }
 
-Class "**Lyd**" as LD{
-- status
-    
+Class "**DørSensor**" as DS{
+- Detektering
 }
 
-Class "**Lys**" as LS{
-- status
+Class "**RumSensor**" as RS{
+- Detektering
+}
+
+Class "**IdSensor**" as IS{
+- Detektering
+}
+
+Class "**AktuatorSlave**" as AS{
+- Status
 }
 
 Class "**Varme**" as V{
-- status 
+- Tændt/Slukket
+- Temperatur
 }
 
-
-Class "**Aktuator Slave**" as AS{
-- status
+Class "**Lyd**" as LD{
+- Tændt/Slukket
+- Volumen
 }
 
-
-Class "**Sensor Slave**" as SS{
-- status
-- log
+Class "**Lys**" as LS{
+- Tændt/Slukket
+- Intensitet
 }
 
-Class "**Dør Sensor**" as DS{
-- detektering
+Class "**Bruger**" as BR{
+- Navn
+- Id
+- Position
 }
 
-Class "**Rum Sensor**" as RS{
-- detektering
-}
-
-Class "**Id Sensor**" as IS{
-- detektering
-}
 
 Class  "**Master**" as ME{
-- rumindhold
-- rumstatus
-- midlertidiglog
+- Rumindhold
+- Rumstatus
+- Midlertidig Log
 }
 
 Class "**Computer**" as COM{
-- log
+- Log
 }
 
 Class "**Informationspanel**" as INFO {
-- rumindhold
+- Rumindhold
 }
 
-Class "**administrator**" as ADMIN {
-- navn
-- id
-- username
-- password
+Class "**Administrator**" as ADMIN {
+- Navn
+- Id
+- Username
+- Password
 }
 
 ' Conection definition
 BR -- INFO : > Checker rumindhold
 
-BR -- IS : > Aktivere
-BR -- DS : > Aktivere
-BR -- RS : > Aktivere
-
-RS "1" -- "1" SS : > Detektering
-DS "1" -- "1" SS : > Detektering
-IS "1" -- "1" SS : > Detektering
-
 SS "1..*" -- "1" ME : > Aktivitet log
 SS "1..*" -- "1" ME : < Statuts check
 
-ME "1" -- "1" COM : > Log data
-ME "1" -- "1" COM : < system ændring
-ME "1" -- "1" INFO : > rumstatus
-ME "1" -- "1" INFO : < Rumstatus efterspørgelse
+ME "1" -- "1" COM : > Sender Log data
+ME "1" -- "1" COM : < Opdater med Systemændring
+ME "1" -- "1" INFO : > Sender Rumstatus
+ME "1" -- "1" INFO : < Efterspørger Rumindhold
 
-ADMIN -- COM  : > adminstrer system
+RS "1" -- "1" SS : > Sender Detektering
+DS "1" -- "1" SS : > Sender Detektering
+IS "1" -- "1" SS : > Sender Detektering
 
-ME "1" -- "1..*" AS : > Sætter status
-ME "1" -- "1..*" AS : < Status
+BR -- IS : > Aktiver
+BR -- DS : > Aktiver
+BR -- RS : > Aktiver
 
-AS "1" -- "1" LS : > sætter status
-AS "1" -- "1" LD : > sætter status
-AS "1" -- "1" V : > sætter status
+ADMIN -- COM  : > Adminstrer System
+COM -- ADMIN : > Læser Log
+
+ME "1" -- "1..*" AS : > Sætter Status
+ME "1" -- "1..*" AS : < Sender Status
+
+AS "1" -- "1" LS : > Ændrer Intensitet 
+AS "1" -- "1" LD : > Ændrer Volumen
+AS "1" -- "1" V : > Ændrer Temperatur
 @enduml
