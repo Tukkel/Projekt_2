@@ -24,6 +24,7 @@ Class "**<<boundary>>**\n**PC interface**" as UI{
 Class "**<<domain>>**\n**Master**" as master{
 + sendLog()
 + updateSystem(newSystem)
++ materInitialise()
 - log
 - system
 }
@@ -34,6 +35,7 @@ Class "**<<controller>>**\n**UC4: Administrator login**" as PC{
 + printLog()
 + showOptions()
 + changeSystem(newSystem)
++ initialise()
 - log
 - system
 - validLogin
