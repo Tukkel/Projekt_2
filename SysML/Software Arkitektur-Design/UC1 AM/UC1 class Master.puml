@@ -1,4 +1,4 @@
-@startuml UC1 class
+@startuml UC1 class Master
 ' Default param deffinition
 skinparam style strictuml
 skinparam DefaultFontSize 16
@@ -11,47 +11,25 @@ skinparam nodesep 100
 hide empty members
 
 
-mainframe **Class** UC1: Registrer rumskifte
+mainframe **Class** UC1: Registrer rumskifte (Master)
 
 ' Class definition
-Class "**<<boundary>>**\n**Dør sensor**" as DS{
-
-}
-
-Class "**<<boundary>>**\n**Rum sensor**" as RS{
-
-}
-
-Class "**<<boundary>>**\n**ID sensor**" as IDS{
-
-}
-
-
-Class "**<<domain>>**\n**Sensor slave**" as SS{
-+ setNormalPowerUsage()
-+ setLowPowerUsage()
-+ sendActivity(slaveNr)
-- activity
-}
-
 Class "**<<boundary>>**\n**Informationspanel**" as IP{
 + updateRoomstate(log)
 - rooms
 }
 
-Class "**<<controller>>**\n**UC1: Registrer rumskifte**" as RR{
+Class "**<<controller>>**\n**UC1: Registrer rumskifte (Master)**" as RR{
 + updateLog(activity)
 - log
 - activity
 }
 
-
+Class "**<<domain>>**\n**X10Communication**" as X10{
++ sendAck()
+}
 
 ' Conection definition
-SS <-- DS
-SS <-- RS
-SS <-- IDS
-
-RR <--> SS
+RR --> X10
 RR --> IP
 @enduml
