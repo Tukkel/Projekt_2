@@ -14,29 +14,6 @@ hide empty members
 mainframe **DM** IPRS
 
 ' Class definition
-Class "**Bruger**" as BR{
-- Navn
-- Id
-- Position
-}
-
-Class "**Lyd**" as LD{
-- Status
-    
-}
-
-Class "**Lys**" as LS{
-- Status
-}
-
-Class "**Varme**" as V{
-- Status 
-}
-
-
-Class "**AktuatorSlave**" as AS{
-- Status
-}
 
 
 Class "**SensorSlave**" as SS{
@@ -56,6 +33,32 @@ Class "**IdSensor**" as IS{
 - Detektering
 }
 
+Class "**AktuatorSlave**" as AS{
+- Status
+}
+
+Class "**Varme**" as V{
+- Tændt/Slukket
+- Temperatur
+}
+
+Class "**Lyd**" as LD{
+- Tændt/Slukket
+- Volumen
+}
+
+Class "**Lys**" as LS{
+- Tændt/Slukket
+- Intensitet
+}
+
+Class "**Bruger**" as BR{
+- Navn
+- Id
+- Position
+}
+
+
 Class  "**Master**" as ME{
 - Rumindhold
 - Rumstatus
@@ -70,7 +73,7 @@ Class "**Informationspanel**" as INFO {
 - Rumindhold
 }
 
-Class "**administrator**" as ADMIN {
+Class "**Administrator**" as ADMIN {
 - Navn
 - Id
 - Username
@@ -102,7 +105,7 @@ COM -- ADMIN : > Læser Log
 ME "1" -- "1..*" AS : > Sætter Status
 ME "1" -- "1..*" AS : < Sender Status
 
-AS "1" -- "1" LS : > Sætter Status
-AS "1" -- "1" LD : > Sætter Status
-AS "1" -- "1" V : > Sætter Status
+AS "1" -- "1" LS : > Ændrer Intensitet 
+AS "1" -- "1" LD : > Ændrer Volumen
+AS "1" -- "1" V : > Ændrer Temperatur
 @enduml
