@@ -28,7 +28,11 @@ activate slave
 end
 slave -> slave : setNormalPowerUsage()
 slave -> X10 : sendActivity(slaveNr, activity)
+activate X10
+X10 -> X10Net : Activity
+X10 <<-- X10Net : No conflict
 slave <<-- X10 : Done
+deactivate X10
 slave -> slave : setLowPowerUsage()
 deactivate slave
 @enduml
