@@ -15,93 +15,94 @@ mainframe **DM** IPRS
 
 ' Class definition
 Class "**Bruger**" as BR{
-- navn
-- id
-- position
+- Navn
+- Id
+- Position
 }
 
 Class "**Lyd**" as LD{
-- status
+- Status
     
 }
 
 Class "**Lys**" as LS{
-- status
+- Status
 }
 
 Class "**Varme**" as V{
-- status 
+- Status 
 }
 
 
-Class "**Aktuator Slave**" as AS{
-- status
+Class "**AktuatorSlave**" as AS{
+- Status
 }
 
 
-Class "**Sensor Slave**" as SS{
-- status
-- log
+Class "**SensorSlave**" as SS{
+- Status
+- Log
 }
 
-Class "**Dør Sensor**" as DS{
-- detektering
+Class "**DørSensor**" as DS{
+- Detektering
 }
 
-Class "**Rum Sensor**" as RS{
-- detektering
+Class "**RumSensor**" as RS{
+- Detektering
 }
 
-Class "**Id Sensor**" as IS{
-- detektering
+Class "**IdSensor**" as IS{
+- Detektering
 }
 
 Class  "**Master**" as ME{
-- rumindhold
-- rumstatus
-- midlertidiglog
+- Rumindhold
+- Rumstatus
+- Midlertidig Log
 }
 
 Class "**Computer**" as COM{
-- log
+- Log
 }
 
 Class "**Informationspanel**" as INFO {
-- rumindhold
+- Rumindhold
 }
 
 Class "**administrator**" as ADMIN {
-- navn
-- id
-- username
-- password
+- Navn
+- Id
+- Username
+- Password
 }
 
 ' Conection definition
 BR -- INFO : > Checker rumindhold
 
-BR -- IS : > Aktivere
-BR -- DS : > Aktivere
-BR -- RS : > Aktivere
+BR -- IS : > Aktiver
+BR -- DS : > Aktiver
+BR -- RS : > Aktiver
 
-RS "1" -- "1" SS : > Detektering
-DS "1" -- "1" SS : > Detektering
-IS "1" -- "1" SS : > Detektering
+RS "1" -- "1" SS : > Sender Detektering
+DS "1" -- "1" SS : > Sender Detektering
+IS "1" -- "1" SS : > Sender Detektering
 
 SS "1..*" -- "1" ME : > Aktivitet log
 SS "1..*" -- "1" ME : < Statuts check
 
-ME "1" -- "1" COM : > Log data
-ME "1" -- "1" COM : < system ændring
-ME "1" -- "1" INFO : > rumstatus
-ME "1" -- "1" INFO : < Rumstatus efterspørgelse
+ME "1" -- "1" COM : > Sender Log data
+ME "1" -- "1" COM : < Opdater med Systemændring
+ME "1" -- "1" INFO : > Sender Rumstatus
+ME "1" -- "1" INFO : < Efterspørger Rumindhold
 
-ADMIN -- COM  : > adminstrer system
+ADMIN -- COM  : > Adminstrer System
+COM -- ADMIN : > Læser Log
 
-ME "1" -- "1..*" AS : > Sætter status
-ME "1" -- "1..*" AS : < Status
+ME "1" -- "1..*" AS : > Sætter Status
+ME "1" -- "1..*" AS : < Sender Status
 
-AS "1" -- "1" LS : > sætter status
-AS "1" -- "1" LD : > sætter status
-AS "1" -- "1" V : > sætter status
+AS "1" -- "1" LS : > Sætter Status
+AS "1" -- "1" LD : > Sætter Status
+AS "1" -- "1" V : > Sætter Status
 @enduml
