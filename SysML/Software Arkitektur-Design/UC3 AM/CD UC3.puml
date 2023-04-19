@@ -4,11 +4,11 @@ hide empty members
 
 mainframe **CD** UC3
 
-class "<<Boundary>>\nInformationPanel" as IP {
+class "<<boundary>>\nInformationPanel" as IP {
     <&plus> showRoom(roomNr)
 }
 
-class "<<Control>>\nMaster" as MA {
+class "<<control>>\nMaster" as MA {
     <&plus> updateRoomstate(Log)
 }
 
