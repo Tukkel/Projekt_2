@@ -33,7 +33,7 @@ RedigerSystem:
     ☐ Finde ud af hvordan Master og Slaver gemmer deres systemdata
     ☐ ? Højst sandsynlig skal vi sende et objekt som hedder nytSystem
     ☐ Lave en wizard setup med det nyeSystem 
-        - kompossition
+        - komposition
     ☐ Lave en funktion som kun rediger det man ønsker at rediger  
         - setfunktioner
 
