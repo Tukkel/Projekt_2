@@ -1,0 +1,44 @@
+// Crtl+Enter for new task, Alt+D for complete, Alt+C for cancel
+
+Genrelt:
+    ☐ Undersøge mulighederne for at lave en GUI
+    ☐ Tilføje edit log som mulighed.
+    ☐ Tilføje hvilken type UI det skal være som en kravspec
+    ☐ Hvor mange Klasser vi laver
+
+Funktioner:
+    ☐ Lave en startside
+    ☐ Lave en login funktion
+    ☐ Lave en printlog Funktion
+    ☐ Lave en editLog funktion
+    ☐ Lave en rediger system funktion
+    ☐ Lave en kalibrer funktion
+    ☐ Lave en logud funktion
+
+GUI/TUI:
+    ☐ Finde ud af om vi laver en GUI eller en TUI
+    ☐ Finde ud af hvilke libaries der skal bruges og hvordan
+
+Login:
+    ☐ Lav validering af brugernavn og password
+        Kun admin kan logge ind
+
+PrintLog:
+    ☐ Print loggen i pæn format
+
+EditLog:
+    ☐ Finde ud af hvordan det intuativt er let at redigere loggen
+
+RedigerSystem:
+    ☐ Finde ud af hvordan Master og Slaver gemmer deres systemdata
+    ☐ ? Højst sandsynlig skal vi sende et objekt som hedder nytSystem
+    ☐ Lave en wizard setup med det nyeSystem 
+        - komposition
+    ☐ Lave en funktion som kun rediger det man ønsker at rediger  
+        - setfunktioner
+
+Kalibrer:
+    ☐ Finde ud af hvordan fanden vi gør det
+Logud:
+    ☐ Sender brugeren til login startside
+
