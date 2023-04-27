@@ -41,8 +41,8 @@ int main()
 	
 	Init_ADC();
 	Init_Timer3();
-	InitUART(9600, 8);
-	SendChar('\r');
+	UART UART(9600, 8);
+	UART.SendChar('\r');
 	while(1)
 	{
 		ADMUX &= ~(1);
@@ -50,16 +50,16 @@ int main()
 		while (ADCSRA & 0b01000000)
 		{}
 		ADC_Potentiometer = ADCW;
-		SendString("ADC0 = ");
-		SendInteger(ADC_Potentiometer);
+		UART.SendString("ADC0 = ");
+		UART.SendInteger(ADC_Potentiometer);
 		ADMUX |= 1;
 		ADCSRA |= 0b01000000;
 		while (ADCSRA & 0b01000000)
 		{}
 		ADC_PWM = ADCW;
-		SendString(" | ADC1 = ");
-		SendInteger(ADC_PWM);
-		SendChar('\n');
+		UART.SendString(" | ADC1 = ");
+		UART.SendInteger(ADC_PWM);
+		UART.SendChar('\n');
 		dif = ADC_Potentiometer-ADC_PWM;
 		if (dif > 0)
 		{

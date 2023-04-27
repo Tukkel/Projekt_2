@@ -1,12 +1,3 @@
-/************************************************
-* "uart.c":                                     *
-* Implementation file for Mega2560 UART driver. *
-* Using UART 0.                                 *
-* Henning Hargaard, 5/4 2019                    *
-*************************************************/
-#include <avr/io.h>
-#include <stdlib.h>
-#include <math.h>
 #include "uart.h"
 
 // Target CPU frequency
@@ -24,7 +15,7 @@ UART 0 initialization:
     Baud rate = 9600.
     Data bits = 8.
 *************************************************************************/
-void InitUART(unsigned long BaudRate, unsigned char DataBit)
+UART::UART(unsigned long BaudRate, unsigned char DataBit)
 {
 	if (BaudRate < 300)
 	{
@@ -67,7 +58,7 @@ void InitUART(unsigned long BaudRate, unsigned char DataBit)
   Returns 0 (FALSE), if the UART has NOT received a new character.
   Returns value <> 0 (TRUE), if the UART HAS received a new character.
 *************************************************************************/
-unsigned char CharReady()
+unsigned char UART::CharReady()
 {
 	if ((UCSR0A & 0b10000000) != 0)
 	{
@@ -83,7 +74,7 @@ unsigned char CharReady()
 Awaits new character received.
 Then this character is returned.
 *************************************************************************/
-char ReadChar()
+char UART::ReadChar()
 {
 	while (CharReady() == 0)
 	{
@@ -98,7 +89,7 @@ Then send the character.
 Parameter :
 	Tegn : Character for sending. 
 *************************************************************************/
-void SendChar(char Tegn)
+void UART::SendChar(char Tegn)
 {
 	while ((UCSR0A & 0b00100000) == 0)
 	{
@@ -112,7 +103,7 @@ Sends 0 terminated string.
 Parameter:
    Streng: Pointer to the string. 
 *************************************************************************/
-void SendString(char* Streng)
+void UART::SendString(char* Streng)
 {
 	unsigned int i = 0;
 	while (Streng[i] != '\0')
@@ -129,7 +120,7 @@ Makes use of the C standard library <stdlib.h>.
 Parameter:
     Tal: The integer to be converted and sent. 
 *************************************************************************/
-void SendInteger(int Tal)
+void UART::SendInteger(int Tal)
 {
 	char int_string[7];
 	itoa(Tal, int_string, 10);
