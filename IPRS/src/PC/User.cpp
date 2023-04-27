@@ -11,6 +11,7 @@ User::User()
 
 bool User::login(std::string username, std::string password)
 {
+    // Check if the username and password is correct
     if (username == username_ && password == password_)
     {
         isLoggedIn_ = true;
