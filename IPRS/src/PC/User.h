@@ -1,4 +1,5 @@
 #include <string>
+#include "dbHandler.h"
 
 class User
 {
@@ -6,6 +7,7 @@ private:
     // Variables
     std::string password_;
     bool isLoggedIn_;
+    dbHandler db;
 
 public:
     User(std::string password = "admin");

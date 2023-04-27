@@ -6,7 +6,12 @@
 
 User::User(std::string password)
 {
-    password_ = password;
+    dbHandler db("../UserDB/");
+    if (db.findData("db.txt") == "")
+    {
+        db.saveData("db.txt", password);
+    }
+    password_ = db.findData("db.txt");
     isLoggedIn_ = false;
 }
 

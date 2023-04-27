@@ -10,7 +10,7 @@ private:
     std::string xorCipher(std::string data, char key);
 
 public:
-    dbHandler(std::string dbHost);
+    dbHandler(std::string dbHost = "../UserDB/");
 
     // Decrypts the data from the file and returns it
     std::string findData(std::string fileAdress); // Uses try catch syntax
