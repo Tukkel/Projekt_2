@@ -4,17 +4,14 @@ class User
 {
 private:
     // Variables
-    std::string username_ = "admin"; // Username is always admin
     std::string password_;
     bool isLoggedIn_;
 
 public:
-    User();
-    ~User();
+    User(std::string password = "admin");
 
-    // Function to login to the system, checks if the username and password are correct
-    // Return if the login is true og not
-    bool login(std::string username, std::string password);
+    // Function to login to the system, checks if the username and password are correct, Return if the login is true og not
+    bool login(std::string password);
 
     // Function to logout of the system
     void logout();

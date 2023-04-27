@@ -4,19 +4,16 @@
 int main()
 {
 
-    User admin;
+    User admin("admin");
 
     while (!admin.isLoggedIn())
     {
-        std::string username;
         std::string password;
 
-        std::cout << "Username: ";
-        std::cin >> username;
         std::cout << "Password: ";
         std::cin >> password;
 
-        if (admin.login(username, password))
+        if (admin.login(password))
         {
             std::cout << "Login successful" << std::endl;
         }
