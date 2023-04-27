@@ -2,13 +2,15 @@
 
 Genrelt:
     ☐ Undersøge mulighederne for at lave en GUI
-    ☐ Tilføje edit log som mulighed.
+    ☐ Tilføje edit log som mulighed i UC og SWdesign
     ☐ Tilføje hvilken type UI det skal være som en kravspec
     ☐ Hvor mange Klasser vi laver
+    ☐ Skal vi kryptere data?
 
 Funktioner:
     ☐ Lave en startside
-    ☐ Lave en login funktion
+    ✔ Lave en login funktion @done (4/27/2023, 8:48:56 AM)
+        Der er lavet et udkast
     ☐ Lave en printlog Funktion
     ☐ Lave en editLog funktion
     ☐ Lave en rediger system funktion
@@ -22,6 +24,8 @@ GUI/TUI:
 Login:
     ☐ Lav validering af brugernavn og password
         Kun admin kan logge ind
+    ☐ Evt kryptere selve paswordet
+    ☐ Finde ud af i UI at skjule password delen
 
 PrintLog:
     ☐ Print loggen i pæn format
