@@ -1,18 +1,24 @@
 #include "User.h"
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <functional>
 
-User::User()
+User::User(std::string password)
 {
-    username_ = "admin";
-    password_ = "admin";
+    dbHandler db("../UserDB/");
+    if (db.findData("db.txt") == "")
+    {
+        db.saveData("db.txt", password);
+    }
+    password_ = db.findData("db.txt");
     isLoggedIn_ = false;
 }
 
-bool User::login(std::string username, std::string password)
+bool User::login(std::string password)
 {
     // Check if the username and password is correct
-    if (username == username_ && password == password_)
+    if (password == password_)
     {
         isLoggedIn_ = true;
         return true;
