@@ -1,16 +1,20 @@
-// Crtl+Enter for new task, Alt+D for complete, Alt+C for cancel
+// Crtl+Enter for new task, Alt+D for complete, Alt+C for cancel//
 
-Genrelt:
+Generelt:
     ☐ Undersøge mulighederne for at lave en GUI
     ☐ Tilføje edit log som mulighed i UC og SWdesign
+        - Må vi gerne
     ☐ Tilføje hvilken type UI det skal være som en kravspec
+        - Nævn det i processen at det er lavet forkert i forhold til udviklingsfasen
     ☐ Hvor mange Klasser vi laver
-    ☐ Skal vi kryptere data?
+    ☐ Skal vi kryptere data?  
+        - Husk at skrive det i process rapport at det er lavet forkert i forhold til udviklingsfasens
 
 Funktioner:
     ☐ Lave en startside
     ✔ Lave en login funktion @done (4/27/2023, 8:48:56 AM)
         Der er lavet et udkast
+    ☐ Lave en krypter funktion/klasse
     ☐ Lave en printlog Funktion
     ☐ Lave en editLog funktion
     ☐ Lave en rediger system funktion
@@ -20,6 +24,9 @@ Funktioner:
 GUI/TUI:
     ☐ Finde ud af om vi laver en GUI eller en TUI
     ☐ Finde ud af hvilke libaries der skal bruges og hvordan
+
+Kryptering:
+    ☐ 
 
 Login:
     ☐ Lav validering af brugernavn og password
