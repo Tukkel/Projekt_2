@@ -8,6 +8,8 @@ int main()
     User admin;
     while (true)
     {
+        std::cout << "Welcome to the IPRS system" << std::endl;
+
         while (!admin.isLoggedIn())
         {
             std::string password;
@@ -18,6 +20,7 @@ int main()
             if (admin.login(password))
             {
                 std::cout << "Login successful" << std::endl;
+                // Do stuff
             }
             else
             {
