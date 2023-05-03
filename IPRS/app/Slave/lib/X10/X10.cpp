@@ -1,9 +1,9 @@
 #pragma once
 #include <string>
-#include "TX10.h"
+#include "X10.h"
 #include <vector>
 
-TX10::TX10(std::string rx_pin, std::string tx_pin, std::string clock, bool *address, char unit)
+X10::X10(std::string rx_pin, std::string tx_pin, std::string clock, int *address, char unit)
 {
     rx_pin_ = rx_pin;
     tx_pin_ = tx_pin;
@@ -12,11 +12,11 @@ TX10::TX10(std::string rx_pin, std::string tx_pin, std::string clock, bool *addr
     unit_ = unit;
 }
 
-TX10::~TX10()
+X10::~X10()
 {
 }
 
-bool TX10::readBit()
+bool X10::readBit()
 {
     while (true) // While reading
     {
@@ -34,14 +34,15 @@ bool TX10::readBit()
     return false;
 }
 
-std::vector<int> TX10::readData()
+bool* X10::readData()
 {
-    std::vector<int> data;
+    bool* data[100];
     int i = 0;
+    
     while (true)
     { // While reading
 
-        data.push_back(readBit()); // Reads the bit
+        data[i] = readBit(); // Reads the bit
 
         if (i > 2) // If the data contains stop bits then break
             if (data[i] == true && data[i - 1] == false && data[i - 2] == false)
@@ -51,21 +52,19 @@ std::vector<int> TX10::readData()
         i++;
     }
 
-    while (true){
     // Sends ack to the sender
-        if (clock_ == "high")
-        {
-            writeBit(true);
-            return data;
-        }
+    if (clock_ == "high")
+    {
+        writeBit(true);
+        return data;
     }
 }
 
-void TX10::writeBit(bool bit)
+void X10::writeBit(bool bit)
 {
     while (true)
     {
-        if (clock_ == "high")
+        if (clock_ == "")
         { // If tx10 signal is high
             if (bit)
             { // If bit is high
@@ -81,7 +80,7 @@ void TX10::writeBit(bool bit)
     }
 }
 
-void TX10::writeData(bool *data, bool *address)
+void X10::writeData(std::vector<bool> data, bool *address)
 {
     // Creates the data size to send
     int writeData[(sizeof(data)) + 4 + 4 + 16];
@@ -107,13 +106,13 @@ void TX10::writeData(bool *data, bool *address)
             {
                 writeData[i] = data[i - 20];
             }
-            else if (i < 23 + sizeof(data))
+            else if (i < 21 + sizeof(data))
             {
-                writeData[i] = 0;
+                writeData[i] = 1;
             }
             else
             {
-                writeData[i] = 1;
+                writeData[i] = 0;
             }
         }
     }
