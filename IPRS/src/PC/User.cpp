@@ -30,6 +30,7 @@ bool User::login(std::string password)
 }
 void User::logout()
 {
+    isLoggedIn_ = false;
 }
 
 bool User::isLoggedIn()

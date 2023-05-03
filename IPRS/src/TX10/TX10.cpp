@@ -3,7 +3,7 @@
 #include "TX10.h"
 #include <vector>
 
-TX10::TX10(std::string rx_pin, std::string tx_pin, std::string clock, int *address, char unit)
+TX10::TX10(std::string rx_pin, std::string tx_pin, std::string clock, bool *address, char unit)
 {
     rx_pin_ = rx_pin;
     tx_pin_ = tx_pin;
@@ -44,18 +44,20 @@ std::vector<int> TX10::readData()
         data.push_back(readBit()); // Reads the bit
 
         if (i > 2) // If the data contains stop bits then break
-            if (data[i] == false && data[i - 1] == false && data[i - 2] == false)
+            if (data[i] == true && data[i - 1] == false && data[i - 2] == false)
             {
                 break;
             }
         i++;
     }
 
+    while (true){
     // Sends ack to the sender
-    if (clock_ == "high")
-    {
-        writeBit(true);
-        return data;
+        if (clock_ == "high")
+        {
+            writeBit(true);
+            return data;
+        }
     }
 }
 
@@ -63,7 +65,7 @@ void TX10::writeBit(bool bit)
 {
     while (true)
     {
-        if (clock_ == "")
+        if (clock_ == "high")
         { // If tx10 signal is high
             if (bit)
             { // If bit is high
@@ -79,7 +81,7 @@ void TX10::writeBit(bool bit)
     }
 }
 
-void TX10::writeData(int *data, int *address)
+void TX10::writeData(bool *data, bool *address)
 {
     // Creates the data size to send
     int writeData[(sizeof(data)) + 4 + 4 + 16];
@@ -105,13 +107,13 @@ void TX10::writeData(int *data, int *address)
             {
                 writeData[i] = data[i - 20];
             }
-            else if (i < 21 + sizeof(data))
+            else if (i < 23 + sizeof(data))
             {
-                writeData[i] = 1;
+                writeData[i] = 0;
             }
             else
             {
-                writeData[i] = 0;
+                writeData[i] = 1;
             }
         }
     }

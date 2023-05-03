@@ -17,7 +17,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY UART IS -- UART_RX
     GENERIC (
-        g_CLKS_PER_BIT : INTEGER := 115 -- Needs to be set correctly
+        g_CLKS_PER_BIT : INTEGER := 434 -- Needs to be set correctly
     );
     PORT (
         i_Clk : IN STD_LOGIC;
@@ -26,10 +26,10 @@ ENTITY UART IS -- UART_RX
         o_RX_Byte : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
 END UART; -- UART_RX
+
 ARCHITECTURE rtl OF UART IS -- UART_RX
 
-    TYPE t_SM_Main IS (s_Idle, s_RX_Start_Bit, s_RX_Data_Bits,
-        s_RX_Stop_Bit, s_Cleanup);
+    TYPE t_SM_Main IS (s_Idle, s_RX_Start_Bit, s_RX_Data_Bits, s_RX_Stop_Bit, s_Cleanup);
     SIGNAL r_SM_Main : t_SM_Main := s_Idle;
 
     SIGNAL r_RX_Data_R : STD_LOGIC := '0';
@@ -41,7 +41,7 @@ ARCHITECTURE rtl OF UART IS -- UART_RX
     SIGNAL r_RX_DV : STD_LOGIC := '0';
 
 BEGIN
-
+    
     -- Purpose: Double-register the incoming data.
     -- This allows it to be used in the UART RX Clock Domain.
     -- (It removes problems caused by metastabiliy)
