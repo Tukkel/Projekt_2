@@ -1,22 +1,23 @@
 #pragma once
-#include <string>
-#include <vector>
+
+#include <avr/io.h>
+#include <stdlib.h>
+#define F_CPU 16000000
+#include <util/delay.h>
 
 class X10
 {
-private:
-    std::string rx_pin_;
-    std::string tx_pin_;
-    std::string clock_;
-    int *address_;
-    char unit_;
-
-    bool readBit();
-    void writeBit(bool bit);
-
-public:
-    X10(std::string rx_pin, std::string tx_pin, std::string clock, int *address, char unit);
-    ~X10();
-    bool* readData();
-    void writeData(bool *data, bool *address);
+    public:
+        X10(volatile uint8_t clock_pin, volatile uint8_t X10_read, volatile uint8_t X10_write, bool* address, char unit = 's');
+        bool readBit() const;
+        bool* readData();
+        void writeBit(bool bit);
+        void writeData(bool* data, bool* address = 0);
+        
+    private:
+        volatile uint8_t clock_pin_;
+        volatile uint8_t X10_read_;
+        volatile uint8_t X10_write_;
+        bool* address_;
+        char unit_;
 };
