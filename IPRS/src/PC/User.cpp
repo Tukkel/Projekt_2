@@ -15,19 +15,28 @@ User::User(std::string password)
     isLoggedIn_ = false;
 }
 
-bool User::login(std::string password)
+void User::login()
 {
-    // Check if the username and password is correct
-    if (password == password_)
+
+    while (!isLoggedIn())
     {
-        isLoggedIn_ = true;
-        return true;
-    }
-    else
-    {
-        return false;
+        std::string password;
+        std::cout << "Login to the system" << std::endl;
+        std::cout << "Password: ";
+        std::cin >> password;
+
+        if (password == password_)
+        {
+            std::cout << "Login successful" << std::endl;
+            isLoggedIn_ = true;
+        }
+        else
+        {
+            std::cout << "Login failed try again" << std::endl;
+        }
     }
 }
+
 void User::logout()
 {
     isLoggedIn_ = false;
