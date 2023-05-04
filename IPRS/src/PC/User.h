@@ -13,7 +13,7 @@ public:
     User(std::string password = "admin");
 
     // Function to login to the system, checks if the username and password are correct, Return if the login is true og not
-    bool login(std::string password);
+    void login();
 
     // Function to logout of the system
     void logout();
