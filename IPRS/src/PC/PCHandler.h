@@ -10,6 +10,9 @@ public:
 
     void showMenu() const;
     void printData() const;
+    void clearScreen() const;
+    void changeSystem() const;
+    void changeSlaves() const;
 
 private:
 };
