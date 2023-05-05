@@ -8,7 +8,7 @@ class PCHandler
 public:
     PCHandler();
 
-    void LoginPC();
+    void showMenu();
 
 private:
 };
