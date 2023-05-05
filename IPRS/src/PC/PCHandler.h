@@ -8,7 +8,8 @@ class PCHandler
 public:
     PCHandler();
 
-    void showMenu();
+    void showMenu() const;
+    void printData() const;
 
 private:
 };
