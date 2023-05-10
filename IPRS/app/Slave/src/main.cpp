@@ -2,6 +2,7 @@
 #include <avr/io.h>
 #include "X10.h"
 #include <stdlib.h>
+#include "sensorSlave.h"
 
 
 
@@ -65,12 +66,15 @@ int main(void){
 /*
 #############################################################################################################
 
-=========== Test af X10 kommunikation writeData ===========
+=========== Test af aflæsning af data fra sensor ===========
 
 #############################################################################################################
 */
 
 int main(void){
 
-    DDRA = 0;
+    SensorSlave slave;
+    slave.Init_ADC();
+    unsigned int x = slave.getSensorInformation();
+
 }
