@@ -47,7 +47,12 @@ bool User::isLoggedIn()
     return isLoggedIn_;
 }
 
-void User::changePassword(std::string newPassword)
+void User::changePassword()
 {
+    std::string newPassword;
+    std::cout << "Enter new password: ";
+    std::cin >> newPassword;
     password_ = newPassword;
+    dbHandler db("../UserDB/");
+    db.saveData("db.txt", newPassword);
 }

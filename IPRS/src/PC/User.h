@@ -22,5 +22,5 @@ public:
     bool isLoggedIn();
 
     // Function to change the password of the user, username
-    void changePassword(std::string newPassword);
+    void changePassword();
 };
