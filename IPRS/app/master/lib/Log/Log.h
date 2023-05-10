@@ -15,4 +15,5 @@ class Log
         double** roomHistory_;
         char** roomNames_;
         char** peopleNames_;
+        uint32_t* addresses_[256] = {0};
 };
