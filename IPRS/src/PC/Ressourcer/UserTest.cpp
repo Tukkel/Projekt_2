@@ -34,6 +34,7 @@ void UserTest::login()
 
 void UserTest::logout()
 {
+    isLoggedIn_ = false;
 }
 
 bool UserTest::isLoggedIn()
