@@ -34,16 +34,27 @@ Log::Log(uint8_t numberRooms, uint8_t numberPeople, double** roomHistory)
 
     for(size_t i = 0; i<cols; ++i)
     {
-        if(i < historyCols)
+        for(size_t j = 0; j<rows; ++j)
         {
-            for(size_t j = 0; j<rows; ++j)
-            {
-                if(j < historyCols)
-                {  
-                    roomHistory_[i][j] = roomHistory[i][j];
-                }
-            }
+            roomHistory_[i][j] = roomHistory[i][j];
         }
-        
     }
+
+    for(size_t i = 0; i<numberRooms; ++i)
+    {
+        roomNames_[i][0] = 'N';
+        roomNames_[i][1] = 'a';
+        roomNames_[i][2] = 'N';
+        roomNames_[i][4] = '\0';
+    }
+
+    for(size_t i = 0; i<numberPeople; ++i)
+    {
+        peopleNames_[i][0] = 'N';
+        peopleNames_[i][1] = 'a';
+        peopleNames_[i][2] = 'N';
+        peopleNames_[i][4] = '\0';
+    }
+
+
 }

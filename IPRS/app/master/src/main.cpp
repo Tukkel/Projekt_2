@@ -14,11 +14,14 @@ int main()
 	bool address[8] = {false};
 	X10 X10(1, 2, 4, address, 'm');
 
+
 	while(1)
 	{
-		for(size_t i=0; i<10; ++i)
+		bool* data = X10.readData();
+
+		for(size_t i=0; i<100; ++i)
 		{
-			UART.SendInteger(X10.readHalfBit());
+			UART.SendInteger(data[i]);
 		}
 		UART.SendChar('\n');
 	}
