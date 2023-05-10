@@ -112,6 +112,7 @@ void X10::readData()
                 else        //Else convert result to an array with correct size and return it
                 {
                     writeBit(1);
+                    return;
                 }
             }
         }
@@ -302,10 +303,10 @@ uint8_t X10::readAddress() const
 
 int X10::readValue() const
 {
-    int value = 0;
+    size_t value = 0;
     for(size_t i = 10; i<50; ++i)
     {
-        if(data_[i*2] == false && data_[i*2+1] == false)
+        if((data_[i*2] == false) && (data_[i*2+1] == false))
         {
             break;
         }
@@ -319,4 +320,5 @@ int X10::readValue() const
             value << 1;
         }
     }
+    return value;
 }

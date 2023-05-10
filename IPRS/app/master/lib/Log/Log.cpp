@@ -55,6 +55,4 @@ Log::Log(uint8_t numberRooms, uint8_t numberPeople, double** roomHistory)
         peopleNames_[i][2] = 'N';
         peopleNames_[i][4] = '\0';
     }
-
-
 }
