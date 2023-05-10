@@ -15,7 +15,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY UART IS -- UART_RX
+ENTITY UART_RX IS -- UART_RX
     GENERIC (
         g_CLKS_PER_BIT : INTEGER := 434 -- Needs to be set correctly
     );
@@ -25,9 +25,9 @@ ENTITY UART IS -- UART_RX
         o_RX_DV : OUT STD_LOGIC;
         o_RX_Byte : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
-END UART; -- UART_RX
+END UART_RX; -- UART_RX
 
-ARCHITECTURE rtl OF UART IS -- UART_RX
+ARCHITECTURE rtl OF UART_RX IS -- UART_RX
 
     TYPE t_SM_Main IS (s_Idle, s_RX_Start_Bit, s_RX_Data_Bits, s_RX_Stop_Bit, s_Cleanup);
     SIGNAL r_SM_Main : t_SM_Main := s_Idle;
@@ -68,8 +68,9 @@ BEGIN
                         r_SM_Main <= s_RX_Start_Bit;
                     ELSE
                         r_SM_Main <= s_Idle;
-                    END IF; -- Check middle of start bit to make sure it's still low
-
+                    END IF; 
+						  
+					 -- Check middle of start bit to make sure it's still low
                 WHEN s_RX_Start_Bit =>
                     IF r_Clk_Count = (g_CLKS_PER_BIT - 1)/2 THEN
                         IF r_RX_Data = '0' THEN
@@ -116,6 +117,7 @@ BEGIN
 
                     -- Stay here 1 clock 
                 WHEN s_Cleanup =>
+-- could be here to create latched output o_RX_Byte <= r_RX_Byte;
                     r_SM_Main <= s_Idle;
                     r_RX_DV <= '0';
 
@@ -127,6 +129,6 @@ BEGIN
     END PROCESS p_UART_RX;
 
     o_RX_DV <= r_RX_DV;
-    o_RX_Byte <= r_RX_Byte;
+	 o_RX_Byte <= r_RX_Byte;
 
 END rtl;
