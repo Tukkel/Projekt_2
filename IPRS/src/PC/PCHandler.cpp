@@ -1,5 +1,6 @@
 #include "PCHandler.h"
 #include <iostream>
+#include <memory.h>
 
 PCHandler::PCHandler()
 {
@@ -85,8 +86,8 @@ void PCHandler::printData()
         switch (choice)
         {
         case 1:
-            std::cout << "How many slaves?" << std::endl;
-            changeSlaves();
+            std::cout << "You chose to print Newest Data." << std::endl;
+            // Code to print data
             break;
 
         case 2:
@@ -153,7 +154,8 @@ void PCHandler::changeSystem() const
         switch (choice)
         {
         case 1:
-            std::cout << "You chose to print Newest Data." << std::endl;
+            std::cout << "How many slaves?" << std::endl;
+            changeSlaves();
             // Code to print data
             break;
         case 2:
@@ -180,4 +182,15 @@ void PCHandler::changeSystem() const
 void PCHandler::clearScreen() const
 {
     system("cls"); // Code to clear the screen
+}
+
+void printLog()
+{
+    /*
+
+    string Log = UART.getLockFromArduino();
+    Log.Format("Log: %s", Log);
+    cout << Log << endl;
+
+    */
 }
