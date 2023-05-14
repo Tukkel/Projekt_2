@@ -1,0 +1,53 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'clk'
+Slack : -7.341
+TNS   : -386.160
+
+Type  : Slow Model Setup 'UART_RX:uart|r_RX_DV'
+Slack : -3.930
+TNS   : -4.770
+
+Type  : Slow Model Hold 'clk'
+Slack : -2.530
+TNS   : -4.692
+
+Type  : Slow Model Hold 'UART_RX:uart|r_RX_DV'
+Slack : 0.087
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'clk'
+Slack : -1.380
+TNS   : -78.380
+
+Type  : Slow Model Minimum Pulse Width 'UART_RX:uart|r_RX_DV'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'clk'
+Slack : -2.900
+TNS   : -137.393
+
+Type  : Fast Model Setup 'UART_RX:uart|r_RX_DV'
+Slack : -1.857
+TNS   : -1.857
+
+Type  : Fast Model Hold 'clk'
+Slack : -1.574
+TNS   : -3.171
+
+Type  : Fast Model Hold 'UART_RX:uart|r_RX_DV'
+Slack : 0.418
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'clk'
+Slack : -1.380
+TNS   : -78.380
+
+Type  : Fast Model Minimum Pulse Width 'UART_RX:uart|r_RX_DV'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------

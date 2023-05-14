@@ -2,9 +2,9 @@
 #include <iostream>
 #include <memory.h>
 
-PCHandler::PCHandler()
+PCHandler::PCHandler(std::string password)
 {
-    User admin("admin");
+    User admin(password);
 }
 
 /*
@@ -181,7 +181,7 @@ void PCHandler::changeSystem() const
 
 void PCHandler::clearScreen() const
 {
-    system("cls"); // Code to clear the screen
+    system("clear"); // Code to clear the screen
 }
 
 void printLog()
