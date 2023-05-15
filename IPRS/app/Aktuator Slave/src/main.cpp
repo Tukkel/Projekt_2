@@ -1,18 +1,17 @@
-#include <Arduino.h>
-
-// put function declarations here:
-int myFunction(int, int);
-
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+// includes
+#include <avr/io.h>
+#include <stdlib.h>
+#include "./Aktuator Slave/slaveAktuator.h"
+#define F_CPU 16000000
+// main
+int main(void){
+    // slave adresse sættes
+    uint8_t adress[8] = {0};
+    adress[0] = 1; 
+    adress[1] = 1;
+    
+    slaveAktuator slave1(1, adress); // slaveAktuator oprettes
+    while(1){ // uendelig loop som opdaterer loggen og dermed lyset
+        slave1.opdaterLog(); 
+    }
 }
