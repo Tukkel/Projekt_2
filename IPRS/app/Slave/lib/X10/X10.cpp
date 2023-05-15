@@ -1,5 +1,15 @@
 #include "X10.h"
 
+X10::X10()
+{
+
+}
+
+X10::~X10()
+{
+
+}
+
 X10::X10(volatile uint8_t clock_pin, volatile uint8_t X10_read, volatile uint8_t X10_write, bool* address, char unit = 's')
 {
     clock_pin_ = clock_pin;
