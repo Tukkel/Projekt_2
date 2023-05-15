@@ -6,9 +6,9 @@
 int main()
 {
 
-    PCHandler PC;
+    PCHandler PC("admin");
+    PC.clearScreen();
     std::cout << "Welcome to the IPRS system" << std::endl;
-
     PC.showMenu();
 
     return 0;

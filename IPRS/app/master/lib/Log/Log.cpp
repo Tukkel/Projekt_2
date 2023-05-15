@@ -4,11 +4,12 @@ Log::Log(uint8_t numberRooms, uint8_t numberPeople, double** roomHistory)
 {
     numberRooms_ = numberRooms;
     numberPeople_ = numberPeople;
-    rooms_[numberRooms_][numberPeople_] = {0};
+    rooms_[numberRooms_][numberPeople_] = {false};
     roomChances_[numberRooms_][numberPeople_] = {0};
     roomHistory_[numberRooms_][numberPeople_] = {0};
-    roomNames_[numberRooms_][20];
-    peopleNames_[numberPeople_][20];
+    roomConnections_[numberRooms_][numberPeople_] = {false};
+    roomNames_[numberRooms_][17];
+    peopleNames_[numberPeople_][17];
 
     size_t historyCols = sizeof(roomHistory[0]);
     size_t historyRows = sizeof(roomHistory)/historyCols;
@@ -59,45 +60,52 @@ Log::Log(uint8_t numberRooms, uint8_t numberPeople, double** roomHistory)
     }
 }
 
-void Log::setRoomName(int roomNumber, char* roomName)
+void Log::setRoomConnection(uint8_t roomNumber, bool* connections)
 {
-    if(sizeof(roomName)>20)
+    
+}
+
+void Log::setRoomName(uint8_t roomNumber, char* roomName)
+{
+    if(strlen(roomName)>16)
     {
-        for(size_t i = 0; i<19; ++i)
+        for(size_t i = 0; i<16; ++i)
         {
             roomNames_[roomNumber][i] = roomName[i];
         }
-        roomNames_[roomNumber][19] = '\0';
+        roomNames_[roomNumber][16] = '\0';
     }
     else
     {
-        for(size_t i = 0; i<sizeof(roomName); ++i)
+        for(size_t i = 0; i<strlen(roomName); ++i)
         {
             roomNames_[roomNumber][i] = roomName[i];
         }
+        roomNames_[roomNumber][strlen(roomName)] = '\0';
     }
 }
 
-void Log::setPersonName(int personNumber, char* personName)
+void Log::setPersonName(size_t personNumber, char* personName)
 {
-    if(sizeof(personName)>20)
+    if(strlen(personName)>16)
     {
-        for(size_t i = 0; i<19; ++i)
+        for(size_t i = 0; i<16; ++i)
         {
             peopleNames_[personNumber][i] = personName[i];
         }
-        peopleNames_[personNumber][19] = '\0';
+        peopleNames_[personNumber][16] = '\0';
     }
     else
     {
-        for(size_t i = 0; i<sizeof(personName); ++i)
+        for(size_t i = 0; i<strlen(personName); ++i)
         {
             peopleNames_[personNumber][i] = personName[i];
         }
+        peopleNames_[personNumber][strlen(personName)] = '\0';
     }
 }
 
-void Log::setAddress(size_t address, uint32_t addressType)
+void Log::setAddress(uint8_t address, uint32_t addressType)
 {
     if(address < 256)
     {
@@ -105,7 +113,7 @@ void Log::setAddress(size_t address, uint32_t addressType)
     }
 }
 
-void Log::logActivity(size_t roomNumber)
+void Log::logActivity(uint8_t roomNumber)
 {
     double sum = 0;
     for(size_t i=0; i<numberPeople_; ++i)
@@ -151,7 +159,7 @@ void Log::logActivity(size_t roomNumber)
     }
 }
 
-void Log::logMovement(size_t roomNumber1, size_t roomNumber2)
+void Log::logMovement(uint8_t roomNumber1, uint8_t roomNumber2)
 {
 
 }

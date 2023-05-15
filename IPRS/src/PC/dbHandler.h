@@ -1,3 +1,6 @@
+// #pragma once
+#ifndef DBHANDLER_H
+#define DBHANDLER_H
 #include <string>
 
 class dbHandler
@@ -18,3 +21,5 @@ public:
     // Encrypts the data and saves it to the file
     void saveData(std::string fileAdress, std::string data); // Uses try catch syntax
 };
+
+#endif
