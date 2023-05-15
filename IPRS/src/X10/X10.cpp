@@ -53,7 +53,7 @@ bool X10::readHalfBit() const
     }
 }
 
-bool* X10::readData()
+void X10::readData()
 {
     size_t i;
     size_t pair;
@@ -112,7 +112,7 @@ bool* X10::readData()
                 else        //Else convert result to an array with correct size and return it
                 {
                     writeBit(1);
-                    return data_;
+                    return;
                 }
             }
         }
@@ -286,4 +286,39 @@ void X10::writeData(bool* data, bool* address = 0) const
     }
 
     return;
+}
+
+uint8_t X10::getAddress() const
+{
+    uint8_t address = 0;
+    for(size_t i = 2; i<10; ++i)
+    {
+        if(data_[i*2])
+        {
+            address += pow(2, 9-i);
+        }
+    }
+    return address;
+}
+
+int X10::getValue() const
+{
+    size_t value = 0;
+    for(size_t i = 10; i<50; ++i)
+    {
+        if((data_[i*2] == false) && (data_[i*2+1] == false))
+        {
+            break;
+        }
+        else if(data_[i*2])
+        {
+            value << 1;
+            ++value;
+        }
+        else
+        {
+            value << 1;
+        }
+    }
+    return value;
 }
