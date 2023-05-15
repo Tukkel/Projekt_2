@@ -3,9 +3,6 @@
 #include "X10.h"
 #include <stdlib.h>
 
-
-
-
 /*
 #############################################################################################################
 
@@ -18,7 +15,7 @@ int main (void)
 
     bool address[8] = {false,false,false,false,false,false,false,true};
     X10 x10(1,2,4, address , 's');
-    DDRB = 0x00;
+    DDRB = 0xFF;
     while (1){
         bool* data = new bool[100];
         data = x10.readData();
@@ -50,13 +47,13 @@ int main (void)
 
 int main(void){
 
-    bool address[8] = {false,false,false,false,false,false,false,false};
-    X10 x10(1,2,4, address , 'm');
+    bool address[8] = {false,false,false,false,false,false,false,true};
+    X10 x10(1<<0, 1<<1, 1<<2, address , 'm');
 
     while (1)
     {
         bool data[10] = {false};
-        data[0] = true;
+        data[2] = true;
         x10.writeData(data);
     }
 }

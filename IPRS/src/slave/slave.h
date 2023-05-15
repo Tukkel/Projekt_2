@@ -4,14 +4,11 @@ class Slave
 {
 private:
     bool data_[100];
-    int address_[8];
-    int powerUsage_;
+    bool address_[8];
     X10 x10_;
 
 public:
-    Slave();
-    ~Slave();
+    Slave(bool * address);
     void setNormalPowerUsage(); 
     void setLowPowerUsage();
-
 };
