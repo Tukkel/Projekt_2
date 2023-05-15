@@ -7,7 +7,7 @@ protected:
     uint8_t address_[8];
     X10 x10_;
 public:
-    Slave(uint8_t * address);
+    Slave(uint8_t * address, uint8_t addressSize = 8);
     void setNormalPowerUsage(); 
     void setLowPowerUsage();
 };
