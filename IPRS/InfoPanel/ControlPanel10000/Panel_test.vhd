@@ -21,11 +21,11 @@ END panel_test;
 
 ARCHITECTURE behavior OF panel_test IS
 
-BEGIN
+BEGIN    
 
   --instantiate the lcd controller
  pan : entity Panel PORT MAP(clk => CLOCK_50, reset => KEY(0), RX_serialIN => GPIO_0(0), rooms => SW, shift => KEY(1), home => KEY(2),
-	RX_busy => LEDR(0), 	rw => lcd_rw, rs => lcd_rs, e => lcd_en, lcd_data => lcd_data, lcdon => lcd_on);
+	RX_busy => LEDR(0), 	rw => lcd_rw, rs => lcd_rs, e => lcd_en, lcd_data => lcd_data, lcdon => lcd_on, TX_serialout => GPIO_1(0));
 
 
 END behavior;
