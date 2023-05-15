@@ -1,4 +1,6 @@
+#pragma once
 #include "../X10/X10.h"
+
 
 class Slave
 {

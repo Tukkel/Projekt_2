@@ -1,3 +1,7 @@
+// #pragma once
+#ifndef USER_H
+#define USER_H
+
 #include <string>
 #include "dbHandler.h"
 
@@ -22,5 +26,7 @@ public:
     bool isLoggedIn();
 
     // Function to change the password of the user, username
-    void changePassword(std::string newPassword);
+    void changePassword();
 };
+
+#endif

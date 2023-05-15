@@ -1,20 +1,23 @@
 #ifndef PCHANDLER_H
 #define PCHANDLER_H
 
-#pragma once
+// #pragma once
+#include "User.h"
 
 class PCHandler
 {
 public:
-    PCHandler();
+    PCHandler(std::string password = "admin");
+    // PCHandler(User* user_);
 
-    void showMenu() const;
-    void printData() const;
+    void showMenu();
+    void printData();
     void clearScreen() const;
     void changeSystem() const;
     void changeSlaves() const;
 
 private:
+    User user;
 };
 
 #endif

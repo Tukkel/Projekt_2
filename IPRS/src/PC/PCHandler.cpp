@@ -1,16 +1,27 @@
 #include "PCHandler.h"
 #include <iostream>
+#include <memory.h>
 
-PCHandler::PCHandler()
+PCHandler::PCHandler(std::string password)
 {
+    User admin(password);
 }
 
-void PCHandler::showMenu() const
+/*
+PCHandler::PCHandler(User *user_)
+{
+    user = user_;
+}
+*/
+
+void PCHandler::showMenu()
 {
     int choice = 0;
-    bool isLoggedIn = true;
+    // bool isLoggedIn = true;
 
-    while (isLoggedIn)
+    user.login();
+
+    while (user.isLoggedIn())
     {
         clearScreen();
         std::cout << "Welcome to your program!" << std::endl;
@@ -18,7 +29,8 @@ void PCHandler::showMenu() const
         std::cout << "1. Print Data" << std::endl;
         std::cout << "2. Make change to system" << std::endl;
         std::cout << "3. Calibrate system" << std::endl;
-        std::cout << "4. Log out" << std::endl;
+        std::cout << "4. Change Password" << std::endl;
+        std::cout << "5. Log out" << std::endl;
 
         std::cin >> choice;
 
@@ -37,8 +49,12 @@ void PCHandler::showMenu() const
             // Code to calibrate the system
             break;
         case 4:
+            std::cout << "You chose to change the password." << std::endl;
+            user.changePassword();
+            break;
+        case 5:
             std::cout << "You chose to log out." << std::endl;
-            isLoggedIn = false;
+            user.logout();
             break;
         default:
             std::cout << "Invalid choice. Please choose again." << std::endl;
@@ -49,7 +65,7 @@ void PCHandler::showMenu() const
     }
 }
 
-void PCHandler::printData() const
+void PCHandler::printData()
 {
     std::cout << "Printing data..." << std::endl;
 
@@ -97,7 +113,7 @@ void PCHandler::printData() const
 
 void PCHandler::changeSystem() const
 {
-    std::cout << "Changeing System..." << std::endl;
+    std::cout << "Printing data..." << std::endl;
 
     int choice = 0;
     bool goBack = false;
@@ -110,8 +126,7 @@ void PCHandler::changeSystem() const
         std::cout << "1. Change Number of slaves" << std::endl;
         std::cout << "2. Print Oldest Log" << std::endl;
         std::cout << "3. Print Nothing" << std::endl;
-        std::cout << "4. Make a new system" << std::endl;
-        std::cout << "5. Go Back" << std::endl;
+        std::cout << "4. Go Back" << std::endl;
 
         std::cin >> choice;
 
@@ -120,6 +135,7 @@ void PCHandler::changeSystem() const
         case 1:
             std::cout << "How many slaves?" << std::endl;
             changeSlaves();
+            // Code to print data
             break;
         case 2:
             std::cout << "You chose to Print Oldest Log" << std::endl;
@@ -129,11 +145,7 @@ void PCHandler::changeSystem() const
             std::cout << "You chose to Print Nothing." << std::endl;
             // Code to calibrate the system
             break;
-        case 4: // Make a new system
-            std::cout << "You chose to make a new system." << std::endl;
-            // Code to make a new system
-            break;
-        case 5:
+        case 4:
             std::cout << "You chose to Go Back." << std::endl;
             goBack = true;
             break;
@@ -148,7 +160,10 @@ void PCHandler::changeSystem() const
 
 void PCHandler::clearScreen() const
 {
-    system("cls"); // Code to clear the screen
+    system("clear");                         // Code to clear the screen
+    std::cout << "IPRS SYSTEM" << std::endl; // "IPRS SYSTEM
+    std::cout << std::endl
+              << std::endl;
 }
 
 void PCHandler::changeSlaves() const
@@ -170,4 +185,15 @@ void PCHandler::changeSlaves() const
             std::cout << "Invalid choice. Please choose again." << std::endl;
         }
     }
+}
+
+void printLog()
+{
+    /*
+
+    string Log = UART.getLockFromArduino();
+    Log.Format("Log: %s", Log);
+    cout << Log << endl;
+
+    */
 }
