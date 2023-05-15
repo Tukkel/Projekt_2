@@ -1,5 +1,9 @@
 TimeQuest Timing Analyzer report for Panel
+<<<<<<< HEAD
 Wed May 10 12:52:24 2023
+=======
+Wed May 10 12:28:38 2023
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -93,7 +97,11 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
+<<<<<<< HEAD
 ; Number detected on machine ; 8      ;
+=======
+; Number detected on machine ; 16     ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
@@ -113,8 +121,13 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +------------+-----------------+----------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name           ; Note ;
 +------------+-----------------+----------------------+------+
+<<<<<<< HEAD
 ; 122.58 MHz ; 122.58 MHz      ; clk                  ;      ;
 ; 532.2 MHz  ; 532.2 MHz       ; UART_RX:uart|r_RX_DV ;      ;
+=======
+; 119.89 MHz ; 119.89 MHz      ; clk                  ;      ;
+; 514.93 MHz ; 514.93 MHz      ; UART_RX:uart|r_RX_DV ;      ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +------------+-----------------+----------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -124,8 +137,13 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------------------+--------+---------------+
 ; Clock                ; Slack  ; End Point TNS ;
 +----------------------+--------+---------------+
+<<<<<<< HEAD
 ; clk                  ; -7.158 ; -370.798      ;
 ; UART_RX:uart|r_RX_DV ; -4.506 ; -6.745        ;
+=======
+; clk                  ; -7.341 ; -386.160      ;
+; UART_RX:uart|r_RX_DV ; -3.930 ; -4.770        ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +----------------------+--------+---------------+
 
 
@@ -134,8 +152,13 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------------------+--------+---------------+
 ; Clock                ; Slack  ; End Point TNS ;
 +----------------------+--------+---------------+
+<<<<<<< HEAD
 ; clk                  ; -2.538 ; -5.452        ;
 ; UART_RX:uart|r_RX_DV ; 0.190  ; 0.000         ;
+=======
+; clk                  ; -2.530 ; -4.692        ;
+; UART_RX:uart|r_RX_DV ; 0.087  ; 0.000         ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +----------------------+--------+---------------+
 
 
@@ -166,6 +189,7 @@ No paths to report.
 +--------+---------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node                       ; To Node                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+---------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+<<<<<<< HEAD
 ; -7.158 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|lcd_data[0]   ; clk          ; clk         ; 1.000        ; 0.006      ; 8.200      ;
 ; -7.158 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|lcd_data[2]   ; clk          ; clk         ; 1.000        ; 0.006      ; 8.200      ;
 ; -7.064 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[0]   ; clk          ; clk         ; 1.000        ; 0.013      ; 8.113      ;
@@ -266,6 +290,108 @@ No paths to report.
 ; -6.777 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[16] ; clk          ; clk         ; 1.000        ; -0.005     ; 7.808      ;
 ; -6.776 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[17] ; clk          ; clk         ; 1.000        ; -0.005     ; 7.807      ;
 ; -6.775 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[20] ; clk          ; clk         ; 1.000        ; -0.005     ; 7.806      ;
+=======
+; -7.341 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; 0.000      ; 8.377      ;
+; -7.341 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; 0.000      ; 8.377      ;
+; -7.280 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; 0.000      ; 8.316      ;
+; -7.280 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; 0.000      ; 8.316      ;
+; -7.229 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|e             ; clk          ; clk         ; 1.000        ; -0.010     ; 8.255      ;
+; -7.206 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; 0.000      ; 8.242      ;
+; -7.206 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; 0.000      ; 8.242      ;
+; -7.205 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.241      ;
+; -7.204 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.240      ;
+; -7.173 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[2]   ; clk          ; clk         ; 1.000        ; -0.011     ; 8.198      ;
+; -7.168 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|e             ; clk          ; clk         ; 1.000        ; -0.010     ; 8.194      ;
+; -7.144 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.180      ;
+; -7.143 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.179      ;
+; -7.138 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; 0.000      ; 8.174      ;
+; -7.138 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; 0.000      ; 8.174      ;
+; -7.112 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|lcd_data[2]   ; clk          ; clk         ; 1.000        ; -0.011     ; 8.137      ;
+; -7.098 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[21] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.130      ;
+; -7.095 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[27] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.127      ;
+; -7.095 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[28] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.127      ;
+; -7.094 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|e             ; clk          ; clk         ; 1.000        ; -0.010     ; 8.120      ;
+; -7.084 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.120      ;
+; -7.082 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.118      ;
+; -7.081 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.117      ;
+; -7.081 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.117      ;
+; -7.080 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[2]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.116      ;
+; -7.079 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.115      ;
+; -7.078 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.114      ;
+; -7.076 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.112      ;
+; -7.074 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[3]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.110      ;
+; -7.072 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.108      ;
+; -7.071 ; lcd_controller:lcd|clk_count[4] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; 0.000      ; 8.107      ;
+; -7.071 ; lcd_controller:lcd|clk_count[4] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; 0.000      ; 8.107      ;
+; -7.070 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.106      ;
+; -7.070 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.106      ;
+; -7.069 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.105      ;
+; -7.067 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[1]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.103      ;
+; -7.065 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[4]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.101      ;
+; -7.063 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.099      ;
+; -7.059 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[0]   ; clk          ; clk         ; 1.000        ; -0.011     ; 8.084      ;
+; -7.059 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[1]   ; clk          ; clk         ; 1.000        ; -0.011     ; 8.084      ;
+; -7.059 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[3]   ; clk          ; clk         ; 1.000        ; -0.011     ; 8.084      ;
+; -7.038 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|lcd_data[2]   ; clk          ; clk         ; 1.000        ; -0.011     ; 8.063      ;
+; -7.037 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[21] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.069      ;
+; -7.036 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[26] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.068      ;
+; -7.035 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[24] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.067      ;
+; -7.034 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[16] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.066      ;
+; -7.034 ; lcd_controller:lcd|clk_count[5] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; 0.000      ; 8.070      ;
+; -7.034 ; lcd_controller:lcd|clk_count[5] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; 0.000      ; 8.070      ;
+; -7.034 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[27] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.066      ;
+; -7.034 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[28] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.066      ;
+; -7.033 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[23] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.065      ;
+; -7.031 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[20] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.063      ;
+; -7.028 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[18] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.060      ;
+; -7.026 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[17] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.058      ;
+; -7.026 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|e             ; clk          ; clk         ; 1.000        ; -0.010     ; 8.052      ;
+; -7.023 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[19] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.055      ;
+; -7.023 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.059      ;
+; -7.022 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[22] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.054      ;
+; -7.021 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[25] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.053      ;
+; -7.021 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.057      ;
+; -7.020 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.056      ;
+; -7.020 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.056      ;
+; -7.019 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[2]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.055      ;
+; -7.018 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.054      ;
+; -7.017 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.053      ;
+; -7.015 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.051      ;
+; -7.013 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[3]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.049      ;
+; -7.011 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.047      ;
+; -7.009 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.045      ;
+; -7.006 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[1]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.042      ;
+; -7.004 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[4]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.040      ;
+; -7.002 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|clk_count[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.038      ;
+; -7.002 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.038      ;
+; -7.001 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|clk_count[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.037      ;
+; -6.998 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|lcd_data[0]   ; clk          ; clk         ; 1.000        ; -0.011     ; 8.023      ;
+; -6.998 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|lcd_data[1]   ; clk          ; clk         ; 1.000        ; -0.011     ; 8.023      ;
+; -6.998 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|lcd_data[3]   ; clk          ; clk         ; 1.000        ; -0.011     ; 8.023      ;
+; -6.995 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|state.ready   ; clk          ; clk         ; 1.000        ; -0.004     ; 8.027      ;
+; -6.975 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[26] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.007      ;
+; -6.974 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[24] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.006      ;
+; -6.973 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[16] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.005      ;
+; -6.972 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[23] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.004      ;
+; -6.970 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|lcd_data[2]   ; clk          ; clk         ; 1.000        ; -0.011     ; 7.995      ;
+; -6.970 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[20] ; clk          ; clk         ; 1.000        ; -0.004     ; 8.002      ;
+; -6.967 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[18] ; clk          ; clk         ; 1.000        ; -0.004     ; 7.999      ;
+; -6.965 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[17] ; clk          ; clk         ; 1.000        ; -0.004     ; 7.997      ;
+; -6.963 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[21] ; clk          ; clk         ; 1.000        ; -0.004     ; 7.995      ;
+; -6.962 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[19] ; clk          ; clk         ; 1.000        ; -0.004     ; 7.994      ;
+; -6.961 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[22] ; clk          ; clk         ; 1.000        ; -0.004     ; 7.993      ;
+; -6.960 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[27] ; clk          ; clk         ; 1.000        ; -0.004     ; 7.992      ;
+; -6.960 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[28] ; clk          ; clk         ; 1.000        ; -0.004     ; 7.992      ;
+; -6.960 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[25] ; clk          ; clk         ; 1.000        ; -0.004     ; 7.992      ;
+; -6.959 ; lcd_controller:lcd|clk_count[4] ; lcd_controller:lcd|e             ; clk          ; clk         ; 1.000        ; -0.010     ; 7.985      ;
+; -6.949 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.985      ;
+; -6.947 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.983      ;
+; -6.946 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.982      ;
+; -6.946 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.982      ;
+; -6.945 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[2]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.981      ;
+; -6.944 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.980      ;
+; -6.943 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.979      ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +--------+---------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -274,6 +400,7 @@ No paths to report.
 +--------+---------------------------+------------+----------------------+----------------------+--------------+------------+------------+
 ; Slack  ; From Node                 ; To Node    ; Launch Clock         ; Latch Clock          ; Relationship ; Clock Skew ; Data Delay ;
 +--------+---------------------------+------------+----------------------+----------------------+--------------+------------+------------+
+<<<<<<< HEAD
 ; -4.506 ; lcd_controller:lcd|busy   ; lcd_enable ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; -2.779     ; 1.263      ;
 ; -0.879 ; lcd_enable                ; lcd_enable ; UART_RX:uart|r_RX_DV ; UART_RX:uart|r_RX_DV ; 1.000        ; 0.000      ; 0.915      ;
 ; -0.439 ; UART_RX:uart|r_RX_Byte[1] ; lcd_bus[1] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 1.019      ; 0.709      ;
@@ -284,6 +411,18 @@ No paths to report.
 ; -0.253 ; UART_RX:uart|r_RX_Byte[0] ; lcd_bus[0] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.913      ; 0.713      ;
 ; -0.248 ; UART_RX:uart|r_RX_Byte[2] ; lcd_bus[2] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.901      ; 0.710      ;
 ; -0.235 ; UART_RX:uart|r_RX_Byte[4] ; lcd_bus[4] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.927      ; 0.713      ;
+=======
+; -3.930 ; lcd_controller:lcd|busy   ; lcd_enable ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; -1.920     ; 1.517      ;
+; -0.942 ; lcd_enable                ; lcd_enable ; UART_RX:uart|r_RX_DV ; UART_RX:uart|r_RX_DV ; 1.000        ; 0.000      ; 0.949      ;
+; -0.278 ; UART_RX:uart|r_RX_Byte[2] ; lcd_bus[2] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 1.091      ; 0.895      ;
+; -0.217 ; UART_RX:uart|r_RX_Byte[3] ; lcd_bus[3] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 1.093      ; 0.858      ;
+; -0.084 ; UART_RX:uart|r_RX_Byte[0] ; lcd_bus[0] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 1.108      ; 0.710      ;
+; -0.080 ; UART_RX:uart|r_RX_Byte[1] ; lcd_bus[1] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 1.107      ; 0.708      ;
+; -0.063 ; UART_RX:uart|r_RX_Byte[7] ; lcd_bus[7] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 1.127      ; 0.714      ;
+; -0.040 ; UART_RX:uart|r_RX_Byte[4] ; lcd_bus[4] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 1.124      ; 0.714      ;
+; -0.039 ; UART_RX:uart|r_RX_Byte[5] ; lcd_bus[5] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 1.126      ; 0.715      ;
+; -0.039 ; UART_RX:uart|r_RX_Byte[6] ; lcd_bus[6] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 1.124      ; 0.714      ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +--------+---------------------------+------------+----------------------+----------------------+--------------+------------+------------+
 
 
@@ -292,6 +431,7 @@ No paths to report.
 +--------+---------------------------------------+---------------------------------------+----------------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node                             ; To Node                               ; Launch Clock         ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+---------------------------------------+---------------------------------------+----------------------+-------------+--------------+------------+------------+
+<<<<<<< HEAD
 ; -2.538 ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV ; clk         ; 0.000        ; 2.679      ; 0.657      ;
 ; -2.160 ; UART_RX:uart|r_RX_DV                  ; present_state                         ; UART_RX:uart|r_RX_DV ; clk         ; 0.000        ; 3.733      ; 2.089      ;
 ; -2.038 ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 2.679      ; 0.657      ;
@@ -307,11 +447,21 @@ No paths to report.
 ; 0.391  ; lcd_controller:lcd|state.power_up     ; lcd_controller:lcd|state.power_up     ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391  ; UART_RX:uart|r_SM_Main.s_Idle         ; UART_RX:uart|r_SM_Main.s_Idle         ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391  ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+=======
+; -2.530 ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV ; clk         ; 0.000        ; 2.671      ; 0.657      ;
+; -2.162 ; UART_RX:uart|r_RX_DV                  ; present_state                         ; UART_RX:uart|r_RX_DV ; clk         ; 0.000        ; 3.510      ; 1.864      ;
+; -2.030 ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 2.671      ; 0.657      ;
+; -1.662 ; UART_RX:uart|r_RX_DV                  ; present_state                         ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 3.510      ; 1.864      ;
+; 0.236  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[5]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.833      ; 0.835      ;
+; 0.237  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[4]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.833      ; 0.836      ;
+; 0.391  ; lcd_controller:lcd|state.power_up     ; lcd_controller:lcd|state.power_up     ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 ; 0.391  ; UART_RX:uart|r_SM_Main.s_RX_Data_Bits ; UART_RX:uart|r_SM_Main.s_RX_Data_Bits ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391  ; UART_RX:uart|r_Bit_Index[0]           ; UART_RX:uart|r_Bit_Index[0]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391  ; UART_RX:uart|r_Bit_Index[1]           ; UART_RX:uart|r_Bit_Index[1]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391  ; UART_RX:uart|r_Bit_Index[2]           ; UART_RX:uart|r_Bit_Index[2]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391  ; UART_RX:uart|r_SM_Main.s_RX_Stop_Bit  ; UART_RX:uart|r_SM_Main.s_RX_Stop_Bit  ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+<<<<<<< HEAD
 ; 0.391  ; UART_RX:uart|r_RX_Byte[6]             ; UART_RX:uart|r_RX_Byte[6]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391  ; UART_RX:uart|r_RX_Byte[3]             ; UART_RX:uart|r_RX_Byte[3]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391  ; UART_RX:uart|r_RX_Byte[4]             ; UART_RX:uart|r_RX_Byte[4]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
@@ -392,6 +542,96 @@ No paths to report.
 ; 1.359  ; UART_RX:uart|r_Clk_Count[0]           ; UART_RX:uart|r_Clk_Count[1]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.625      ;
 ; 1.360  ; UART_RX:uart|r_Bit_Index[0]           ; UART_RX:uart|r_RX_Byte[6]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.626      ;
 ; 1.361  ; UART_RX:uart|r_Bit_Index[0]           ; UART_RX:uart|r_RX_Byte[4]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.627      ;
+=======
+; 0.391  ; UART_RX:uart|r_SM_Main.s_Idle         ; UART_RX:uart|r_SM_Main.s_Idle         ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391  ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391  ; UART_RX:uart|r_RX_Byte[0]             ; UART_RX:uart|r_RX_Byte[0]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391  ; UART_RX:uart|r_RX_Byte[1]             ; UART_RX:uart|r_RX_Byte[1]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391  ; UART_RX:uart|r_RX_Byte[2]             ; UART_RX:uart|r_RX_Byte[2]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391  ; UART_RX:uart|r_RX_Byte[7]             ; UART_RX:uart|r_RX_Byte[7]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391  ; UART_RX:uart|r_RX_Byte[5]             ; UART_RX:uart|r_RX_Byte[5]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391  ; UART_RX:uart|r_RX_Byte[3]             ; UART_RX:uart|r_RX_Byte[3]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391  ; UART_RX:uart|r_RX_Byte[6]             ; UART_RX:uart|r_RX_Byte[6]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391  ; UART_RX:uart|r_RX_Byte[4]             ; UART_RX:uart|r_RX_Byte[4]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391  ; lcd_controller:lcd|state.send         ; lcd_controller:lcd|state.send         ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391  ; lcd_controller:lcd|lcdon              ; lcd_controller:lcd|lcdon              ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391  ; present_state                         ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.534  ; UART_RX:uart|r_SM_Main.s_Cleanup      ; UART_RX:uart|r_SM_Main.s_Idle         ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.800      ;
+; 0.543  ; UART_RX:uart|r_SM_Main.s_Idle         ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.809      ;
+; 0.600  ; lcd_enable                            ; lcd_controller:lcd|rs                 ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.833      ; 1.199      ;
+; 0.671  ; UART_RX:uart|r_RX_Data_R              ; UART_RX:uart|r_RX_Data                ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.937      ;
+; 0.671  ; UART_RX:uart|r_SM_Main.s_RX_Stop_Bit  ; UART_RX:uart|r_SM_Main.s_Cleanup      ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.937      ;
+; 0.799  ; UART_RX:uart|r_RX_Byte[7]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.838      ; 1.903      ;
+; 0.809  ; UART_RX:uart|r_Clk_Count[4]           ; UART_RX:uart|r_Clk_Count[4]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.075      ;
+; 0.814  ; UART_RX:uart|r_Clk_Count[6]           ; UART_RX:uart|r_Clk_Count[6]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.080      ;
+; 0.815  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_SM_Main.s_Idle         ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.081      ;
+; 0.816  ; UART_RX:uart|r_SM_Main.s_Idle         ; UART_RX:uart|r_Bit_Index[0]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.082      ;
+; 0.817  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.083      ;
+; 0.829  ; UART_RX:uart|r_RX_Byte[5]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.838      ; 1.933      ;
+; 0.841  ; UART_RX:uart|r_Clk_Count[0]           ; UART_RX:uart|r_Clk_Count[0]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.107      ;
+; 0.842  ; UART_RX:uart|r_Clk_Count[1]           ; UART_RX:uart|r_Clk_Count[1]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.108      ;
+; 0.851  ; UART_RX:uart|r_Clk_Count[3]           ; UART_RX:uart|r_Clk_Count[3]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.117      ;
+; 0.852  ; UART_RX:uart|r_Clk_Count[5]           ; UART_RX:uart|r_Clk_Count[5]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.118      ;
+; 0.853  ; UART_RX:uart|r_Clk_Count[7]           ; UART_RX:uart|r_Clk_Count[7]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.119      ;
+; 0.873  ; lcd_controller:lcd|state.power_up     ; lcd_controller:lcd|lcdon              ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.139      ;
+; 0.875  ; lcd_controller:lcd|state.power_up     ; lcd_controller:lcd|rs                 ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.141      ;
+; 0.965  ; lcd_enable                            ; lcd_controller:lcd|state.send         ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.833      ; 1.564      ;
+; 0.965  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[0]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.822      ; 1.553      ;
+; 0.975  ; lcd_controller:lcd|state.initialize   ; lcd_controller:lcd|busy               ; clk                  ; clk         ; 0.000        ; 1.097      ; 2.338      ;
+; 0.978  ; UART_RX:uart|r_Clk_Count[2]           ; UART_RX:uart|r_Clk_Count[2]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.244      ;
+; 0.982  ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; UART_RX:uart|r_RX_DV                  ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.248      ;
+; 0.994  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[6]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.823      ; 1.583      ;
+; 1.002  ; UART_RX:uart|r_RX_Byte[1]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.845      ; 2.113      ;
+; 1.010  ; UART_RX:uart|r_SM_Main.s_RX_Data_Bits ; UART_RX:uart|r_Bit_Index[0]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.276      ;
+; 1.011  ; UART_RX:uart|r_SM_Main.s_RX_Data_Bits ; UART_RX:uart|r_SM_Main.s_RX_Stop_Bit  ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.277      ;
+; 1.037  ; UART_RX:uart|r_RX_Byte[6]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.838      ; 2.141      ;
+; 1.072  ; UART_RX:uart|r_RX_Byte[4]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.838      ; 2.176      ;
+; 1.081  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[3]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.822      ; 1.669      ;
+; 1.088  ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; UART_RX:uart|r_SM_Main.s_RX_Data_Bits ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.354      ;
+; 1.098  ; lcd_enable                            ; lcd_controller:lcd|busy               ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 1.920      ; 2.784      ;
+; 1.115  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[7]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.823      ; 1.704      ;
+; 1.124  ; UART_RX:uart|r_RX_Byte[0]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.845      ; 2.235      ;
+; 1.150  ; lcd_controller:lcd|state.initialize   ; lcd_controller:lcd|clk_count[31]      ; clk                  ; clk         ; 0.000        ; 0.006      ; 1.422      ;
+; 1.170  ; UART_RX:uart|r_Bit_Index[1]           ; UART_RX:uart|r_RX_Byte[1]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.436      ;
+; 1.174  ; UART_RX:uart|r_Bit_Index[1]           ; UART_RX:uart|r_RX_Byte[0]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.440      ;
+; 1.175  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_SM_Main.s_RX_Data_Bits ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.441      ;
+; 1.190  ; UART_RX:uart|r_Bit_Index[1]           ; UART_RX:uart|r_RX_Byte[3]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.456      ;
+; 1.192  ; UART_RX:uart|r_Clk_Count[4]           ; UART_RX:uart|r_Clk_Count[5]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.458      ;
+; 1.192  ; lcd_controller:lcd|rs                 ; lcd_controller:lcd|rs                 ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.458      ;
+; 1.197  ; UART_RX:uart|r_Clk_Count[6]           ; UART_RX:uart|r_Clk_Count[7]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.463      ;
+; 1.202  ; UART_RX:uart|r_Bit_Index[1]           ; UART_RX:uart|r_RX_Byte[2]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.468      ;
+; 1.212  ; lcd_controller:lcd|e                  ; lcd_controller:lcd|e                  ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.478      ;
+; 1.222  ; UART_RX:uart|r_Clk_Count[8]           ; UART_RX:uart|r_Clk_Count[8]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.488      ;
+; 1.227  ; UART_RX:uart|r_Clk_Count[0]           ; UART_RX:uart|r_Clk_Count[1]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.493      ;
+; 1.228  ; UART_RX:uart|r_Clk_Count[1]           ; UART_RX:uart|r_Clk_Count[2]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.494      ;
+; 1.237  ; UART_RX:uart|r_Clk_Count[3]           ; UART_RX:uart|r_Clk_Count[4]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.503      ;
+; 1.238  ; UART_RX:uart|r_Clk_Count[5]           ; UART_RX:uart|r_Clk_Count[6]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.504      ;
+; 1.239  ; UART_RX:uart|r_Clk_Count[7]           ; UART_RX:uart|r_Clk_Count[8]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.505      ;
+; 1.252  ; UART_RX:uart|r_SM_Main.s_RX_Stop_Bit  ; UART_RX:uart|r_RX_DV                  ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.518      ;
+; 1.263  ; UART_RX:uart|r_Clk_Count[4]           ; UART_RX:uart|r_Clk_Count[6]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.529      ;
+; 1.265  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[7]             ; clk                  ; clk         ; 0.000        ; 0.001      ; 1.532      ;
+; 1.265  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[6]             ; clk                  ; clk         ; 0.000        ; 0.001      ; 1.532      ;
+; 1.265  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[4]             ; clk                  ; clk         ; 0.000        ; 0.001      ; 1.532      ;
+; 1.266  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[5]             ; clk                  ; clk         ; 0.000        ; 0.001      ; 1.533      ;
+; 1.267  ; UART_RX:uart|r_RX_Byte[2]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.845      ; 2.378      ;
+; 1.268  ; UART_RX:uart|r_Clk_Count[6]           ; UART_RX:uart|r_Clk_Count[8]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.534      ;
+; 1.272  ; UART_RX:uart|r_Bit_Index[2]           ; UART_RX:uart|r_RX_Byte[1]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.538      ;
+; 1.277  ; UART_RX:uart|r_Bit_Index[2]           ; UART_RX:uart|r_RX_Byte[0]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.543      ;
+; 1.280  ; UART_RX:uart|r_Bit_Index[2]           ; UART_RX:uart|r_RX_Byte[3]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.546      ;
+; 1.295  ; UART_RX:uart|r_Bit_Index[2]           ; UART_RX:uart|r_RX_Byte[2]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.561      ;
+; 1.298  ; UART_RX:uart|r_Clk_Count[0]           ; UART_RX:uart|r_Clk_Count[2]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.564      ;
+; 1.307  ; lcd_controller:lcd|clk_count[31]      ; lcd_controller:lcd|clk_count[31]      ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.573      ;
+; 1.308  ; UART_RX:uart|r_Clk_Count[3]           ; UART_RX:uart|r_Clk_Count[5]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.574      ;
+; 1.309  ; UART_RX:uart|r_Clk_Count[5]           ; UART_RX:uart|r_Clk_Count[7]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.575      ;
+; 1.319  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[1]             ; clk                  ; clk         ; 0.000        ; -0.006     ; 1.579      ;
+; 1.319  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[2]             ; clk                  ; clk         ; 0.000        ; -0.006     ; 1.579      ;
+; 1.320  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[0]             ; clk                  ; clk         ; 0.000        ; -0.006     ; 1.580      ;
+; 1.320  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[3]             ; clk                  ; clk         ; 0.000        ; -0.006     ; 1.580      ;
+; 1.328  ; lcd_controller:lcd|state.ready        ; lcd_controller:lcd|lcd_data[4]        ; clk                  ; clk         ; 0.000        ; 0.004      ; 1.598      ;
+; 1.330  ; lcd_controller:lcd|state.ready        ; lcd_controller:lcd|lcd_data[5]        ; clk                  ; clk         ; 0.000        ; 0.004      ; 1.600      ;
+; 1.334  ; UART_RX:uart|r_Clk_Count[4]           ; UART_RX:uart|r_Clk_Count[7]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 1.600      ;
+; 1.347  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[2]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.822      ; 1.935      ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +--------+---------------------------------------+---------------------------------------+----------------------+-------------+--------------+------------+------------+
 
 
@@ -400,6 +640,7 @@ No paths to report.
 +-------+---------------------------+------------+----------------------+----------------------+--------------+------------+------------+
 ; Slack ; From Node                 ; To Node    ; Launch Clock         ; Latch Clock          ; Relationship ; Clock Skew ; Data Delay ;
 +-------+---------------------------+------------+----------------------+----------------------+--------------+------------+------------+
+<<<<<<< HEAD
 ; 0.190 ; UART_RX:uart|r_RX_Byte[1] ; lcd_bus[1] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 1.019      ; 0.709      ;
 ; 0.282 ; UART_RX:uart|r_RX_Byte[5] ; lcd_bus[5] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.930      ; 0.712      ;
 ; 0.286 ; UART_RX:uart|r_RX_Byte[4] ; lcd_bus[4] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.927      ; 0.713      ;
@@ -410,6 +651,18 @@ No paths to report.
 ; 0.309 ; UART_RX:uart|r_RX_Byte[2] ; lcd_bus[2] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.901      ; 0.710      ;
 ; 0.915 ; lcd_enable                ; lcd_enable ; UART_RX:uart|r_RX_DV ; UART_RX:uart|r_RX_DV ; 0.000        ; 0.000      ; 0.915      ;
 ; 4.542 ; lcd_controller:lcd|busy   ; lcd_enable ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; -2.779     ; 1.263      ;
+=======
+; 0.087 ; UART_RX:uart|r_RX_Byte[7] ; lcd_bus[7] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 1.127      ; 0.714      ;
+; 0.089 ; UART_RX:uart|r_RX_Byte[5] ; lcd_bus[5] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 1.126      ; 0.715      ;
+; 0.090 ; UART_RX:uart|r_RX_Byte[4] ; lcd_bus[4] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 1.124      ; 0.714      ;
+; 0.090 ; UART_RX:uart|r_RX_Byte[6] ; lcd_bus[6] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 1.124      ; 0.714      ;
+; 0.101 ; UART_RX:uart|r_RX_Byte[1] ; lcd_bus[1] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 1.107      ; 0.708      ;
+; 0.102 ; UART_RX:uart|r_RX_Byte[0] ; lcd_bus[0] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 1.108      ; 0.710      ;
+; 0.265 ; UART_RX:uart|r_RX_Byte[3] ; lcd_bus[3] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 1.093      ; 0.858      ;
+; 0.304 ; UART_RX:uart|r_RX_Byte[2] ; lcd_bus[2] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 1.091      ; 0.895      ;
+; 0.949 ; lcd_enable                ; lcd_enable ; UART_RX:uart|r_RX_DV ; UART_RX:uart|r_RX_DV ; 0.000        ; 0.000      ; 0.949      ;
+; 3.937 ; lcd_controller:lcd|busy   ; lcd_enable ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; -1.920     ; 1.517      ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +-------+---------------------------+------------+----------------------+----------------------+--------------+------------+------------+
 
 
@@ -532,8 +785,13 @@ No paths to report.
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]|datac             ;
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~0|combout         ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~0|combout         ;
+<<<<<<< HEAD
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~0|datad           ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~0|datad           ;
+=======
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~0|dataa           ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~0|dataa           ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~1clkctrl|inclk[0] ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~1clkctrl|inclk[0] ;
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~1clkctrl|outclk   ;
@@ -544,8 +802,13 @@ No paths to report.
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~1|datad           ;
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Fall       ; lcd_bus[1]                   ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Fall       ; lcd_bus[1]                   ;
+<<<<<<< HEAD
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[1]|datab             ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[1]|datab             ;
+=======
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[1]|datac             ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[1]|datac             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Fall       ; lcd_bus[2]                   ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Fall       ; lcd_bus[2]                   ;
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[2]|datac             ;
@@ -572,8 +835,13 @@ No paths to report.
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[7]|datac             ;
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Fall       ; lcd_enable                   ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Fall       ; lcd_enable                   ;
+<<<<<<< HEAD
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_enable|datac             ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_enable|datac             ;
+=======
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_enable|datab             ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_enable|datab             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; uart|r_RX_DV|regout          ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; uart|r_RX_DV|regout          ;
 +-------+--------------+----------------+------------------+----------------------+------------+------------------------------+
@@ -584,8 +852,13 @@ No paths to report.
 +-------------+------------+-------+-------+------------+-----------------+
 ; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-------------+------------+-------+-------+------------+-----------------+
+<<<<<<< HEAD
 ; RX_serialIN ; clk        ; 3.268 ; 3.268 ; Rise       ; clk             ;
 ; reset       ; clk        ; 3.882 ; 3.882 ; Rise       ; clk             ;
+=======
+; RX_serialIN ; clk        ; 3.479 ; 3.479 ; Rise       ; clk             ;
+; reset       ; clk        ; 4.416 ; 4.416 ; Rise       ; clk             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +-------------+------------+-------+-------+------------+-----------------+
 
 
@@ -594,8 +867,13 @@ No paths to report.
 +-------------+------------+--------+--------+------------+-----------------+
 ; Data Port   ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +-------------+------------+--------+--------+------------+-----------------+
+<<<<<<< HEAD
 ; RX_serialIN ; clk        ; -3.038 ; -3.038 ; Rise       ; clk             ;
 ; reset       ; clk        ; -3.253 ; -3.253 ; Rise       ; clk             ;
+=======
+; RX_serialIN ; clk        ; -3.249 ; -3.249 ; Rise       ; clk             ;
+; reset       ; clk        ; -3.463 ; -3.463 ; Rise       ; clk             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +-------------+------------+--------+--------+------------+-----------------+
 
 
@@ -604,6 +882,7 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
+<<<<<<< HEAD
 ; e            ; clk        ; 6.653 ; 6.653 ; Rise       ; clk             ;
 ; lcd_data[*]  ; clk        ; 8.774 ; 8.774 ; Rise       ; clk             ;
 ;  lcd_data[0] ; clk        ; 7.852 ; 7.852 ; Rise       ; clk             ;
@@ -616,6 +895,20 @@ No paths to report.
 ;  lcd_data[7] ; clk        ; 8.774 ; 8.774 ; Rise       ; clk             ;
 ; lcdon        ; clk        ; 6.437 ; 6.437 ; Rise       ; clk             ;
 ; rs           ; clk        ; 6.445 ; 6.445 ; Rise       ; clk             ;
+=======
+; e            ; clk        ; 6.639 ; 6.639 ; Rise       ; clk             ;
+; lcd_data[*]  ; clk        ; 6.917 ; 6.917 ; Rise       ; clk             ;
+;  lcd_data[0] ; clk        ; 6.657 ; 6.657 ; Rise       ; clk             ;
+;  lcd_data[1] ; clk        ; 6.656 ; 6.656 ; Rise       ; clk             ;
+;  lcd_data[2] ; clk        ; 6.889 ; 6.889 ; Rise       ; clk             ;
+;  lcd_data[3] ; clk        ; 6.917 ; 6.917 ; Rise       ; clk             ;
+;  lcd_data[4] ; clk        ; 6.426 ; 6.426 ; Rise       ; clk             ;
+;  lcd_data[5] ; clk        ; 6.630 ; 6.630 ; Rise       ; clk             ;
+;  lcd_data[6] ; clk        ; 6.652 ; 6.652 ; Rise       ; clk             ;
+;  lcd_data[7] ; clk        ; 6.882 ; 6.882 ; Rise       ; clk             ;
+; lcdon        ; clk        ; 6.435 ; 6.435 ; Rise       ; clk             ;
+; rs           ; clk        ; 6.446 ; 6.446 ; Rise       ; clk             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +--------------+------------+-------+-------+------------+-----------------+
 
 
@@ -624,6 +917,7 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
+<<<<<<< HEAD
 ; e            ; clk        ; 6.653 ; 6.653 ; Rise       ; clk             ;
 ; lcd_data[*]  ; clk        ; 7.846 ; 7.846 ; Rise       ; clk             ;
 ;  lcd_data[0] ; clk        ; 7.852 ; 7.852 ; Rise       ; clk             ;
@@ -636,6 +930,20 @@ No paths to report.
 ;  lcd_data[7] ; clk        ; 8.774 ; 8.774 ; Rise       ; clk             ;
 ; lcdon        ; clk        ; 6.437 ; 6.437 ; Rise       ; clk             ;
 ; rs           ; clk        ; 6.445 ; 6.445 ; Rise       ; clk             ;
+=======
+; e            ; clk        ; 6.639 ; 6.639 ; Rise       ; clk             ;
+; lcd_data[*]  ; clk        ; 6.426 ; 6.426 ; Rise       ; clk             ;
+;  lcd_data[0] ; clk        ; 6.657 ; 6.657 ; Rise       ; clk             ;
+;  lcd_data[1] ; clk        ; 6.656 ; 6.656 ; Rise       ; clk             ;
+;  lcd_data[2] ; clk        ; 6.889 ; 6.889 ; Rise       ; clk             ;
+;  lcd_data[3] ; clk        ; 6.917 ; 6.917 ; Rise       ; clk             ;
+;  lcd_data[4] ; clk        ; 6.426 ; 6.426 ; Rise       ; clk             ;
+;  lcd_data[5] ; clk        ; 6.630 ; 6.630 ; Rise       ; clk             ;
+;  lcd_data[6] ; clk        ; 6.652 ; 6.652 ; Rise       ; clk             ;
+;  lcd_data[7] ; clk        ; 6.882 ; 6.882 ; Rise       ; clk             ;
+; lcdon        ; clk        ; 6.435 ; 6.435 ; Rise       ; clk             ;
+; rs           ; clk        ; 6.446 ; 6.446 ; Rise       ; clk             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +--------------+------------+-------+-------+------------+-----------------+
 
 
@@ -644,8 +952,13 @@ No paths to report.
 +----------------------+--------+---------------+
 ; Clock                ; Slack  ; End Point TNS ;
 +----------------------+--------+---------------+
+<<<<<<< HEAD
 ; clk                  ; -2.810 ; -129.513      ;
 ; UART_RX:uart|r_RX_DV ; -2.140 ; -2.189        ;
+=======
+; clk                  ; -2.900 ; -137.393      ;
+; UART_RX:uart|r_RX_DV ; -1.857 ; -1.857        ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +----------------------+--------+---------------+
 
 
@@ -654,8 +967,13 @@ No paths to report.
 +----------------------+--------+---------------+
 ; Clock                ; Slack  ; End Point TNS ;
 +----------------------+--------+---------------+
+<<<<<<< HEAD
 ; clk                  ; -1.582 ; -4.779        ;
 ; UART_RX:uart|r_RX_DV ; 0.392  ; 0.000         ;
+=======
+; clk                  ; -1.574 ; -3.171        ;
+; UART_RX:uart|r_RX_DV ; 0.418  ; 0.000         ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +----------------------+--------+---------------+
 
 
@@ -686,6 +1004,7 @@ No paths to report.
 +--------+---------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node                       ; To Node                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+---------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+<<<<<<< HEAD
 ; -2.810 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|lcd_data[0]   ; clk          ; clk         ; 1.000        ; 0.006      ; 3.848      ;
 ; -2.810 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|lcd_data[2]   ; clk          ; clk         ; 1.000        ; 0.006      ; 3.848      ;
 ; -2.778 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[0]   ; clk          ; clk         ; 1.000        ; 0.012      ; 3.822      ;
@@ -786,6 +1105,108 @@ No paths to report.
 ; -2.567 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[4]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.599      ;
 ; -2.567 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.599      ;
 ; -2.567 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.599      ;
+=======
+; -2.900 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.930      ;
+; -2.900 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.930      ;
+; -2.870 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.900      ;
+; -2.870 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.900      ;
+; -2.833 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.863      ;
+; -2.833 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.863      ;
+; -2.800 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.830      ;
+; -2.800 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.830      ;
+; -2.777 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[10] ; clk          ; clk         ; 1.000        ; -0.001     ; 3.808      ;
+; -2.776 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[9]  ; clk          ; clk         ; 1.000        ; -0.001     ; 3.807      ;
+; -2.774 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[0]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.794      ;
+; -2.774 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[1]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.794      ;
+; -2.774 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[2]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.794      ;
+; -2.774 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[3]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.794      ;
+; -2.768 ; lcd_controller:lcd|clk_count[4] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.798      ;
+; -2.768 ; lcd_controller:lcd|clk_count[4] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.798      ;
+; -2.756 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|e             ; clk          ; clk         ; 1.000        ; -0.009     ; 3.779      ;
+; -2.747 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[10] ; clk          ; clk         ; 1.000        ; -0.001     ; 3.778      ;
+; -2.746 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[9]  ; clk          ; clk         ; 1.000        ; -0.001     ; 3.777      ;
+; -2.744 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.776      ;
+; -2.744 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.776      ;
+; -2.744 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.776      ;
+; -2.744 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|lcd_data[0]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.764      ;
+; -2.744 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|lcd_data[1]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.764      ;
+; -2.744 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|lcd_data[2]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.764      ;
+; -2.744 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|lcd_data[3]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.764      ;
+; -2.743 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[2]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.775      ;
+; -2.743 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.775      ;
+; -2.743 ; lcd_controller:lcd|clk_count[5] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.773      ;
+; -2.743 ; lcd_controller:lcd|clk_count[5] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.773      ;
+; -2.742 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.774      ;
+; -2.741 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.773      ;
+; -2.739 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.771      ;
+; -2.737 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[3]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.769      ;
+; -2.736 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.768      ;
+; -2.734 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.766      ;
+; -2.731 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[1]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.763      ;
+; -2.729 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[4]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.761      ;
+; -2.727 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.759      ;
+; -2.726 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|e             ; clk          ; clk         ; 1.000        ; -0.009     ; 3.749      ;
+; -2.719 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[21] ; clk          ; clk         ; 1.000        ; -0.005     ; 3.746      ;
+; -2.717 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[27] ; clk          ; clk         ; 1.000        ; -0.005     ; 3.744      ;
+; -2.715 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[28] ; clk          ; clk         ; 1.000        ; -0.005     ; 3.742      ;
+; -2.714 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.746      ;
+; -2.714 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.746      ;
+; -2.714 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.746      ;
+; -2.713 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[2]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.745      ;
+; -2.713 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.745      ;
+; -2.712 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[24] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.740      ;
+; -2.712 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[26] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.740      ;
+; -2.712 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.744      ;
+; -2.711 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[16] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.739      ;
+; -2.711 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[23] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.739      ;
+; -2.711 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.743      ;
+; -2.710 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[10] ; clk          ; clk         ; 1.000        ; -0.001     ; 3.741      ;
+; -2.709 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[9]  ; clk          ; clk         ; 1.000        ; -0.001     ; 3.740      ;
+; -2.709 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.741      ;
+; -2.708 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[20] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.736      ;
+; -2.707 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[18] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.735      ;
+; -2.707 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|lcd_data[0]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.727      ;
+; -2.707 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|lcd_data[1]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.727      ;
+; -2.707 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|lcd_data[2]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.727      ;
+; -2.707 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|lcd_data[3]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.727      ;
+; -2.707 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[3]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.739      ;
+; -2.706 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.738      ;
+; -2.705 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[17] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.733      ;
+; -2.704 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.736      ;
+; -2.703 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[19] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.731      ;
+; -2.701 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[22] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.729      ;
+; -2.701 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[1]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.733      ;
+; -2.700 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|clk_count[25] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.728      ;
+; -2.699 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[4]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.731      ;
+; -2.697 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.729      ;
+; -2.692 ; lcd_controller:lcd|clk_count[6] ; lcd_controller:lcd|lcd_data[4]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.722      ;
+; -2.692 ; lcd_controller:lcd|clk_count[6] ; lcd_controller:lcd|lcd_data[5]   ; clk          ; clk         ; 1.000        ; -0.002     ; 3.722      ;
+; -2.691 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[6]   ; clk          ; clk         ; 1.000        ; -0.011     ; 3.712      ;
+; -2.691 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|lcd_data[7]   ; clk          ; clk         ; 1.000        ; -0.011     ; 3.712      ;
+; -2.689 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|e             ; clk          ; clk         ; 1.000        ; -0.009     ; 3.712      ;
+; -2.689 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[21] ; clk          ; clk         ; 1.000        ; -0.005     ; 3.716      ;
+; -2.687 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[27] ; clk          ; clk         ; 1.000        ; -0.005     ; 3.714      ;
+; -2.685 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[28] ; clk          ; clk         ; 1.000        ; -0.005     ; 3.712      ;
+; -2.683 ; lcd_controller:lcd|clk_count[0] ; lcd_controller:lcd|state.ready   ; clk          ; clk         ; 1.000        ; -0.005     ; 3.710      ;
+; -2.682 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[24] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.710      ;
+; -2.682 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[26] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.710      ;
+; -2.681 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[16] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.709      ;
+; -2.681 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[23] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.709      ;
+; -2.678 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[20] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.706      ;
+; -2.677 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|clk_count[10] ; clk          ; clk         ; 1.000        ; -0.001     ; 3.708      ;
+; -2.677 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.709      ;
+; -2.677 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.709      ;
+; -2.677 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.709      ;
+; -2.677 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[18] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.705      ;
+; -2.676 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|clk_count[9]  ; clk          ; clk         ; 1.000        ; -0.001     ; 3.707      ;
+; -2.676 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[2]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.708      ;
+; -2.676 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.708      ;
+; -2.675 ; lcd_controller:lcd|clk_count[2] ; lcd_controller:lcd|clk_count[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.707      ;
+; -2.675 ; lcd_controller:lcd|clk_count[1] ; lcd_controller:lcd|clk_count[17] ; clk          ; clk         ; 1.000        ; -0.004     ; 3.703      ;
+; -2.674 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|lcd_data[0]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.694      ;
+; -2.674 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|lcd_data[1]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.694      ;
+; -2.674 ; lcd_controller:lcd|clk_count[3] ; lcd_controller:lcd|lcd_data[2]   ; clk          ; clk         ; 1.000        ; -0.012     ; 3.694      ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +--------+---------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -794,6 +1215,7 @@ No paths to report.
 +--------+---------------------------+------------+----------------------+----------------------+--------------+------------+------------+
 ; Slack  ; From Node                 ; To Node    ; Launch Clock         ; Latch Clock          ; Relationship ; Clock Skew ; Data Delay ;
 +--------+---------------------------+------------+----------------------+----------------------+--------------+------------+------------+
+<<<<<<< HEAD
 ; -2.140 ; lcd_controller:lcd|busy   ; lcd_enable ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; -1.621     ; 0.617      ;
 ; -0.049 ; UART_RX:uart|r_RX_Byte[1] ; lcd_bus[1] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.347      ; 0.351      ;
 ; 0.030  ; UART_RX:uart|r_RX_Byte[7] ; lcd_bus[7] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.287      ; 0.357      ;
@@ -804,6 +1226,18 @@ No paths to report.
 ; 0.042  ; UART_RX:uart|r_RX_Byte[5] ; lcd_bus[5] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.295      ; 0.353      ;
 ; 0.047  ; UART_RX:uart|r_RX_Byte[4] ; lcd_bus[4] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.293      ; 0.354      ;
 ; 0.206  ; lcd_enable                ; lcd_enable ; UART_RX:uart|r_RX_DV ; UART_RX:uart|r_RX_DV ; 1.000        ; 0.000      ; 0.392      ;
+=======
+; -1.857 ; lcd_controller:lcd|busy   ; lcd_enable ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; -1.219     ; 0.722      ;
+; 0.024  ; UART_RX:uart|r_RX_Byte[2] ; lcd_bus[2] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.357      ; 0.433      ;
+; 0.038  ; UART_RX:uart|r_RX_Byte[3] ; lcd_bus[3] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.359      ; 0.426      ;
+; 0.114  ; UART_RX:uart|r_RX_Byte[0] ; lcd_bus[0] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.368      ; 0.352      ;
+; 0.117  ; UART_RX:uart|r_RX_Byte[1] ; lcd_bus[1] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.367      ; 0.350      ;
+; 0.125  ; UART_RX:uart|r_RX_Byte[7] ; lcd_bus[7] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.379      ; 0.355      ;
+; 0.131  ; UART_RX:uart|r_RX_Byte[4] ; lcd_bus[4] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.378      ; 0.355      ;
+; 0.132  ; UART_RX:uart|r_RX_Byte[6] ; lcd_bus[6] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.378      ; 0.355      ;
+; 0.133  ; UART_RX:uart|r_RX_Byte[5] ; lcd_bus[5] ; clk                  ; UART_RX:uart|r_RX_DV ; 0.500        ; 0.379      ; 0.355      ;
+; 0.166  ; lcd_enable                ; lcd_enable ; UART_RX:uart|r_RX_DV ; UART_RX:uart|r_RX_DV ; 1.000        ; 0.000      ; 0.418      ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +--------+---------------------------+------------+----------------------+----------------------+--------------+------------+------------+
 
 
@@ -812,6 +1246,7 @@ No paths to report.
 +--------+---------------------------------------+---------------------------------------+----------------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node                             ; To Node                               ; Launch Clock         ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+---------------------------------------+---------------------------------------+----------------------+-------------+--------------+------------+------------+
+<<<<<<< HEAD
 ; -1.582 ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV ; clk         ; 0.000        ; 1.656      ; 0.367      ;
 ; -1.366 ; UART_RX:uart|r_RX_DV                  ; present_state                         ; UART_RX:uart|r_RX_DV ; clk         ; 0.000        ; 2.022      ; 0.949      ;
 ; -1.082 ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 1.656      ; 0.367      ;
@@ -831,11 +1266,22 @@ No paths to report.
 ; 0.215  ; lcd_controller:lcd|state.power_up     ; lcd_controller:lcd|state.power_up     ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215  ; UART_RX:uart|r_SM_Main.s_Idle         ; UART_RX:uart|r_SM_Main.s_Idle         ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215  ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+=======
+; -1.574 ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV ; clk         ; 0.000        ; 1.648      ; 0.367      ;
+; -1.364 ; UART_RX:uart|r_RX_DV                  ; present_state                         ; UART_RX:uart|r_RX_DV ; clk         ; 0.000        ; 1.923      ; 0.852      ;
+; -1.074 ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV                  ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 1.648      ; 0.367      ;
+; -0.864 ; UART_RX:uart|r_RX_DV                  ; present_state                         ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 1.923      ; 0.852      ;
+; -0.118 ; lcd_enable                            ; lcd_controller:lcd|lcd_data[5]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.828      ; 0.362      ;
+; -0.115 ; lcd_enable                            ; lcd_controller:lcd|lcd_data[4]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.828      ; 0.365      ;
+; 0.052  ; lcd_enable                            ; lcd_controller:lcd|rs                 ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.828      ; 0.532      ;
+; 0.215  ; lcd_controller:lcd|state.power_up     ; lcd_controller:lcd|state.power_up     ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 ; 0.215  ; UART_RX:uart|r_SM_Main.s_RX_Data_Bits ; UART_RX:uart|r_SM_Main.s_RX_Data_Bits ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215  ; UART_RX:uart|r_Bit_Index[0]           ; UART_RX:uart|r_Bit_Index[0]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215  ; UART_RX:uart|r_Bit_Index[1]           ; UART_RX:uart|r_Bit_Index[1]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215  ; UART_RX:uart|r_Bit_Index[2]           ; UART_RX:uart|r_Bit_Index[2]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215  ; UART_RX:uart|r_SM_Main.s_RX_Stop_Bit  ; UART_RX:uart|r_SM_Main.s_RX_Stop_Bit  ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+<<<<<<< HEAD
 ; 0.215  ; UART_RX:uart|r_RX_Byte[6]             ; UART_RX:uart|r_RX_Byte[6]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215  ; UART_RX:uart|r_RX_Byte[3]             ; UART_RX:uart|r_RX_Byte[3]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215  ; UART_RX:uart|r_RX_Byte[4]             ; UART_RX:uart|r_RX_Byte[4]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
@@ -912,6 +1358,95 @@ No paths to report.
 ; 0.595  ; UART_RX:uart|r_Clk_Count[5]           ; UART_RX:uart|r_Clk_Count[8]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.747      ;
 ; 0.604  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; clk                  ; clk         ; 0.000        ; -0.001     ; 0.755      ;
 ; 0.605  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_SM_Main.s_Idle         ; clk                  ; clk         ; 0.000        ; -0.001     ; 0.756      ;
+=======
+; 0.215  ; UART_RX:uart|r_SM_Main.s_Idle         ; UART_RX:uart|r_SM_Main.s_Idle         ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; UART_RX:uart|r_RX_Byte[0]             ; UART_RX:uart|r_RX_Byte[0]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; UART_RX:uart|r_RX_Byte[1]             ; UART_RX:uart|r_RX_Byte[1]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; UART_RX:uart|r_RX_Byte[2]             ; UART_RX:uart|r_RX_Byte[2]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; UART_RX:uart|r_RX_Byte[7]             ; UART_RX:uart|r_RX_Byte[7]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; UART_RX:uart|r_RX_Byte[5]             ; UART_RX:uart|r_RX_Byte[5]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; UART_RX:uart|r_RX_Byte[3]             ; UART_RX:uart|r_RX_Byte[3]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; UART_RX:uart|r_RX_Byte[6]             ; UART_RX:uart|r_RX_Byte[6]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; UART_RX:uart|r_RX_Byte[4]             ; UART_RX:uart|r_RX_Byte[4]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; lcd_controller:lcd|state.send         ; lcd_controller:lcd|state.send         ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; lcd_controller:lcd|lcdon              ; lcd_controller:lcd|lcdon              ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; present_state                         ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.217  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[0]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.818      ; 0.687      ;
+; 0.224  ; lcd_enable                            ; lcd_controller:lcd|state.send         ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.828      ; 0.704      ;
+; 0.247  ; UART_RX:uart|r_SM_Main.s_Cleanup      ; UART_RX:uart|r_SM_Main.s_Idle         ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.399      ;
+; 0.248  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[6]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.819      ; 0.719      ;
+; 0.251  ; UART_RX:uart|r_SM_Main.s_Idle         ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.403      ;
+; 0.254  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[3]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.818      ; 0.724      ;
+; 0.301  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[7]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.819      ; 0.772      ;
+; 0.326  ; UART_RX:uart|r_SM_Main.s_RX_Stop_Bit  ; UART_RX:uart|r_SM_Main.s_Cleanup      ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.478      ;
+; 0.335  ; UART_RX:uart|r_RX_Data_R              ; UART_RX:uart|r_RX_Data                ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.487      ;
+; 0.361  ; lcd_enable                            ; lcd_controller:lcd|busy               ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 1.219      ; 1.232      ;
+; 0.362  ; UART_RX:uart|r_Clk_Count[4]           ; UART_RX:uart|r_Clk_Count[4]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.514      ;
+; 0.363  ; UART_RX:uart|r_Clk_Count[6]           ; UART_RX:uart|r_Clk_Count[6]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.515      ;
+; 0.371  ; UART_RX:uart|r_SM_Main.s_Idle         ; UART_RX:uart|r_Bit_Index[0]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.523      ;
+; 0.372  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.524      ;
+; 0.376  ; UART_RX:uart|r_Clk_Count[1]           ; UART_RX:uart|r_Clk_Count[1]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.528      ;
+; 0.376  ; UART_RX:uart|r_Clk_Count[0]           ; UART_RX:uart|r_Clk_Count[0]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.528      ;
+; 0.376  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_SM_Main.s_Idle         ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.528      ;
+; 0.379  ; UART_RX:uart|r_Clk_Count[3]           ; UART_RX:uart|r_Clk_Count[3]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.531      ;
+; 0.379  ; UART_RX:uart|r_Clk_Count[5]           ; UART_RX:uart|r_Clk_Count[5]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.531      ;
+; 0.380  ; UART_RX:uart|r_Clk_Count[7]           ; UART_RX:uart|r_Clk_Count[7]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.532      ;
+; 0.394  ; lcd_controller:lcd|state.power_up     ; lcd_controller:lcd|lcdon              ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.546      ;
+; 0.395  ; lcd_controller:lcd|state.power_up     ; lcd_controller:lcd|rs                 ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.547      ;
+; 0.396  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[2]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.818      ; 0.866      ;
+; 0.437  ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; UART_RX:uart|r_RX_DV                  ; clk                  ; clk         ; 0.000        ; 0.001      ; 0.590      ;
+; 0.440  ; UART_RX:uart|r_Clk_Count[2]           ; UART_RX:uart|r_Clk_Count[2]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.592      ;
+; 0.457  ; UART_RX:uart|r_SM_Main.s_RX_Data_Bits ; UART_RX:uart|r_Bit_Index[0]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.609      ;
+; 0.464  ; UART_RX:uart|r_SM_Main.s_RX_Data_Bits ; UART_RX:uart|r_SM_Main.s_RX_Stop_Bit  ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.616      ;
+; 0.470  ; UART_RX:uart|r_RX_Byte[5]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.274      ; 0.896      ;
+; 0.470  ; UART_RX:uart|r_RX_Byte[7]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.274      ; 0.896      ;
+; 0.478  ; lcd_enable                            ; lcd_controller:lcd|lcd_data[1]        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.818      ; 0.948      ;
+; 0.500  ; UART_RX:uart|r_Clk_Count[4]           ; UART_RX:uart|r_Clk_Count[5]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.652      ;
+; 0.501  ; UART_RX:uart|r_Clk_Count[6]           ; UART_RX:uart|r_Clk_Count[7]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.653      ;
+; 0.506  ; UART_RX:uart|r_SM_Main.s_RX_Start_Bit ; UART_RX:uart|r_SM_Main.s_RX_Data_Bits ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.658      ;
+; 0.514  ; lcd_controller:lcd|state.initialize   ; lcd_controller:lcd|clk_count[31]      ; clk                  ; clk         ; 0.000        ; 0.006      ; 0.672      ;
+; 0.516  ; UART_RX:uart|r_Clk_Count[0]           ; UART_RX:uart|r_Clk_Count[1]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.668      ;
+; 0.516  ; UART_RX:uart|r_Clk_Count[1]           ; UART_RX:uart|r_Clk_Count[2]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.668      ;
+; 0.519  ; UART_RX:uart|r_Clk_Count[3]           ; UART_RX:uart|r_Clk_Count[4]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.671      ;
+; 0.519  ; UART_RX:uart|r_Clk_Count[5]           ; UART_RX:uart|r_Clk_Count[6]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.671      ;
+; 0.520  ; UART_RX:uart|r_Clk_Count[7]           ; UART_RX:uart|r_Clk_Count[8]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.672      ;
+; 0.525  ; lcd_controller:lcd|rs                 ; lcd_controller:lcd|rs                 ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.677      ;
+; 0.530  ; UART_RX:uart|r_RX_Byte[1]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.281      ; 0.963      ;
+; 0.535  ; UART_RX:uart|r_Clk_Count[4]           ; UART_RX:uart|r_Clk_Count[6]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.687      ;
+; 0.536  ; UART_RX:uart|r_Clk_Count[6]           ; UART_RX:uart|r_Clk_Count[8]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.688      ;
+; 0.538  ; UART_RX:uart|r_Bit_Index[1]           ; UART_RX:uart|r_RX_Byte[0]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.690      ;
+; 0.539  ; lcd_controller:lcd|e                  ; lcd_controller:lcd|e                  ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.691      ;
+; 0.539  ; UART_RX:uart|r_Bit_Index[1]           ; UART_RX:uart|r_RX_Byte[1]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.691      ;
+; 0.540  ; lcd_controller:lcd|state.initialize   ; lcd_controller:lcd|busy               ; clk                  ; clk         ; 0.000        ; 0.400      ; 1.092      ;
+; 0.540  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_SM_Main.s_RX_Data_Bits ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.692      ;
+; 0.542  ; UART_RX:uart|r_Bit_Index[1]           ; UART_RX:uart|r_RX_Byte[3]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.694      ;
+; 0.542  ; UART_RX:uart|r_RX_Byte[6]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.274      ; 0.968      ;
+; 0.550  ; UART_RX:uart|r_Clk_Count[8]           ; UART_RX:uart|r_Clk_Count[8]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.702      ;
+; 0.551  ; UART_RX:uart|r_Clk_Count[0]           ; UART_RX:uart|r_Clk_Count[2]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.703      ;
+; 0.552  ; UART_RX:uart|r_Bit_Index[1]           ; UART_RX:uart|r_RX_Byte[2]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.704      ;
+; 0.554  ; UART_RX:uart|r_Clk_Count[3]           ; UART_RX:uart|r_Clk_Count[5]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.706      ;
+; 0.554  ; UART_RX:uart|r_Clk_Count[5]           ; UART_RX:uart|r_Clk_Count[7]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.706      ;
+; 0.555  ; UART_RX:uart|r_RX_Byte[4]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.274      ; 0.981      ;
+; 0.562  ; UART_RX:uart|r_Bit_Index[2]           ; UART_RX:uart|r_RX_Byte[1]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.714      ;
+; 0.567  ; UART_RX:uart|r_Bit_Index[2]           ; UART_RX:uart|r_RX_Byte[0]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.719      ;
+; 0.568  ; UART_RX:uart|r_Bit_Index[2]           ; UART_RX:uart|r_RX_Byte[3]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.720      ;
+; 0.570  ; UART_RX:uart|r_Clk_Count[4]           ; UART_RX:uart|r_Clk_Count[7]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.722      ;
+; 0.572  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[4]             ; clk                  ; clk         ; 0.000        ; 0.002      ; 0.726      ;
+; 0.572  ; UART_RX:uart|r_SM_Main.s_RX_Stop_Bit  ; UART_RX:uart|r_RX_DV                  ; clk                  ; clk         ; 0.000        ; 0.001      ; 0.725      ;
+; 0.575  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[7]             ; clk                  ; clk         ; 0.000        ; 0.002      ; 0.729      ;
+; 0.575  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[6]             ; clk                  ; clk         ; 0.000        ; 0.002      ; 0.729      ;
+; 0.576  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[5]             ; clk                  ; clk         ; 0.000        ; 0.002      ; 0.730      ;
+; 0.577  ; lcd_enable                            ; lcd_controller:lcd|state.ready        ; UART_RX:uart|r_RX_DV ; clk         ; -0.500       ; 0.825      ; 1.054      ;
+; 0.578  ; UART_RX:uart|r_Bit_Index[2]           ; UART_RX:uart|r_RX_Byte[2]             ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.730      ;
+; 0.587  ; UART_RX:uart|r_RX_Byte[0]             ; present_state                         ; clk                  ; clk         ; 0.000        ; 0.281      ; 1.020      ;
+; 0.589  ; UART_RX:uart|r_Clk_Count[3]           ; UART_RX:uart|r_Clk_Count[6]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.741      ;
+; 0.589  ; UART_RX:uart|r_Clk_Count[5]           ; UART_RX:uart|r_Clk_Count[8]           ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.741      ;
+; 0.591  ; lcd_controller:lcd|clk_count[31]      ; lcd_controller:lcd|clk_count[31]      ; clk                  ; clk         ; 0.000        ; 0.000      ; 0.743      ;
+; 0.597  ; UART_RX:uart|r_Clk_Count[6]           ; UART_RX:uart|r_Bit_Index[0]           ; clk                  ; clk         ; 0.000        ; -0.001     ; 0.748      ;
+; 0.601  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[1]             ; clk                  ; clk         ; 0.000        ; -0.005     ; 0.748      ;
+; 0.601  ; UART_RX:uart|r_RX_Data                ; UART_RX:uart|r_RX_Byte[2]             ; clk                  ; clk         ; 0.000        ; -0.005     ; 0.748      ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +--------+---------------------------------------+---------------------------------------+----------------------+-------------+--------------+------------+------------+
 
 
@@ -920,6 +1455,7 @@ No paths to report.
 +-------+---------------------------+------------+----------------------+----------------------+--------------+------------+------------+
 ; Slack ; From Node                 ; To Node    ; Launch Clock         ; Latch Clock          ; Relationship ; Clock Skew ; Data Delay ;
 +-------+---------------------------+------------+----------------------+----------------------+--------------+------------+------------+
+<<<<<<< HEAD
 ; 0.392 ; lcd_enable                ; lcd_enable ; UART_RX:uart|r_RX_DV ; UART_RX:uart|r_RX_DV ; 0.000        ; 0.000      ; 0.392      ;
 ; 0.504 ; UART_RX:uart|r_RX_Byte[1] ; lcd_bus[1] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.347      ; 0.351      ;
 ; 0.558 ; UART_RX:uart|r_RX_Byte[5] ; lcd_bus[5] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.295      ; 0.353      ;
@@ -930,6 +1466,18 @@ No paths to report.
 ; 0.574 ; UART_RX:uart|r_RX_Byte[3] ; lcd_bus[3] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.283      ; 0.357      ;
 ; 0.577 ; UART_RX:uart|r_RX_Byte[2] ; lcd_bus[2] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.276      ; 0.353      ;
 ; 2.738 ; lcd_controller:lcd|busy   ; lcd_enable ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; -1.621     ; 0.617      ;
+=======
+; 0.418 ; lcd_enable                ; lcd_enable ; UART_RX:uart|r_RX_DV ; UART_RX:uart|r_RX_DV ; 0.000        ; 0.000      ; 0.418      ;
+; 0.476 ; UART_RX:uart|r_RX_Byte[5] ; lcd_bus[5] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.379      ; 0.355      ;
+; 0.476 ; UART_RX:uart|r_RX_Byte[7] ; lcd_bus[7] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.379      ; 0.355      ;
+; 0.477 ; UART_RX:uart|r_RX_Byte[4] ; lcd_bus[4] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.378      ; 0.355      ;
+; 0.477 ; UART_RX:uart|r_RX_Byte[6] ; lcd_bus[6] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.378      ; 0.355      ;
+; 0.483 ; UART_RX:uart|r_RX_Byte[1] ; lcd_bus[1] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.367      ; 0.350      ;
+; 0.484 ; UART_RX:uart|r_RX_Byte[0] ; lcd_bus[0] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.368      ; 0.352      ;
+; 0.567 ; UART_RX:uart|r_RX_Byte[3] ; lcd_bus[3] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.359      ; 0.426      ;
+; 0.576 ; UART_RX:uart|r_RX_Byte[2] ; lcd_bus[2] ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; 0.357      ; 0.433      ;
+; 2.441 ; lcd_controller:lcd|busy   ; lcd_enable ; clk                  ; UART_RX:uart|r_RX_DV ; -0.500       ; -1.219     ; 0.722      ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +-------+---------------------------+------------+----------------------+----------------------+--------------+------------+------------+
 
 
@@ -1052,8 +1600,13 @@ No paths to report.
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]|datac             ;
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~0|combout         ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~0|combout         ;
+<<<<<<< HEAD
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~0|datad           ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~0|datad           ;
+=======
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~0|dataa           ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~0|dataa           ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~1clkctrl|inclk[0] ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~1clkctrl|inclk[0] ;
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~1clkctrl|outclk   ;
@@ -1064,8 +1617,13 @@ No paths to report.
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[0]~1|datad           ;
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Fall       ; lcd_bus[1]                   ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Fall       ; lcd_bus[1]                   ;
+<<<<<<< HEAD
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[1]|datab             ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[1]|datab             ;
+=======
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[1]|datac             ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[1]|datac             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Fall       ; lcd_bus[2]                   ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Fall       ; lcd_bus[2]                   ;
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[2]|datac             ;
@@ -1092,8 +1650,13 @@ No paths to report.
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_bus[7]|datac             ;
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Fall       ; lcd_enable                   ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Fall       ; lcd_enable                   ;
+<<<<<<< HEAD
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_enable|datac             ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_enable|datac             ;
+=======
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_enable|datab             ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; lcd_enable|datab             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 ; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; UART_RX:uart|r_RX_DV ; Rise       ; uart|r_RX_DV|regout          ;
 ; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; UART_RX:uart|r_RX_DV ; Rise       ; uart|r_RX_DV|regout          ;
 +-------+--------------+----------------+------------------+----------------------+------------+------------------------------+
@@ -1104,8 +1667,13 @@ No paths to report.
 +-------------+------------+-------+-------+------------+-----------------+
 ; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-------------+------------+-------+-------+------------+-----------------+
+<<<<<<< HEAD
 ; RX_serialIN ; clk        ; 1.791 ; 1.791 ; Rise       ; clk             ;
 ; reset       ; clk        ; 2.029 ; 2.029 ; Rise       ; clk             ;
+=======
+; RX_serialIN ; clk        ; 1.871 ; 1.871 ; Rise       ; clk             ;
+; reset       ; clk        ; 2.287 ; 2.287 ; Rise       ; clk             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +-------------+------------+-------+-------+------------+-----------------+
 
 
@@ -1114,8 +1682,13 @@ No paths to report.
 +-------------+------------+--------+--------+------------+-----------------+
 ; Data Port   ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +-------------+------------+--------+--------+------------+-----------------+
+<<<<<<< HEAD
 ; RX_serialIN ; clk        ; -1.671 ; -1.671 ; Rise       ; clk             ;
 ; reset       ; clk        ; -1.740 ; -1.740 ; Rise       ; clk             ;
+=======
+; RX_serialIN ; clk        ; -1.751 ; -1.751 ; Rise       ; clk             ;
+; reset       ; clk        ; -1.837 ; -1.837 ; Rise       ; clk             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +-------------+------------+--------+--------+------------+-----------------+
 
 
@@ -1124,6 +1697,7 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
+<<<<<<< HEAD
 ; e            ; clk        ; 3.774 ; 3.774 ; Rise       ; clk             ;
 ; lcd_data[*]  ; clk        ; 4.805 ; 4.805 ; Rise       ; clk             ;
 ;  lcd_data[0] ; clk        ; 4.367 ; 4.367 ; Rise       ; clk             ;
@@ -1135,6 +1709,19 @@ No paths to report.
 ;  lcd_data[6] ; clk        ; 4.369 ; 4.369 ; Rise       ; clk             ;
 ;  lcd_data[7] ; clk        ; 4.745 ; 4.745 ; Rise       ; clk             ;
 ; lcdon        ; clk        ; 3.696 ; 3.696 ; Rise       ; clk             ;
+=======
+; e            ; clk        ; 3.757 ; 3.757 ; Rise       ; clk             ;
+; lcd_data[*]  ; clk        ; 3.910 ; 3.910 ; Rise       ; clk             ;
+;  lcd_data[0] ; clk        ; 3.780 ; 3.780 ; Rise       ; clk             ;
+;  lcd_data[1] ; clk        ; 3.774 ; 3.774 ; Rise       ; clk             ;
+;  lcd_data[2] ; clk        ; 3.889 ; 3.889 ; Rise       ; clk             ;
+;  lcd_data[3] ; clk        ; 3.910 ; 3.910 ; Rise       ; clk             ;
+;  lcd_data[4] ; clk        ; 3.674 ; 3.674 ; Rise       ; clk             ;
+;  lcd_data[5] ; clk        ; 3.762 ; 3.762 ; Rise       ; clk             ;
+;  lcd_data[6] ; clk        ; 3.772 ; 3.772 ; Rise       ; clk             ;
+;  lcd_data[7] ; clk        ; 3.873 ; 3.873 ; Rise       ; clk             ;
+; lcdon        ; clk        ; 3.693 ; 3.693 ; Rise       ; clk             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 ; rs           ; clk        ; 3.696 ; 3.696 ; Rise       ; clk             ;
 +--------------+------------+-------+-------+------------+-----------------+
 
@@ -1144,6 +1731,7 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
+<<<<<<< HEAD
 ; e            ; clk        ; 3.774 ; 3.774 ; Rise       ; clk             ;
 ; lcd_data[*]  ; clk        ; 4.367 ; 4.367 ; Rise       ; clk             ;
 ;  lcd_data[0] ; clk        ; 4.367 ; 4.367 ; Rise       ; clk             ;
@@ -1155,6 +1743,19 @@ No paths to report.
 ;  lcd_data[6] ; clk        ; 4.369 ; 4.369 ; Rise       ; clk             ;
 ;  lcd_data[7] ; clk        ; 4.745 ; 4.745 ; Rise       ; clk             ;
 ; lcdon        ; clk        ; 3.696 ; 3.696 ; Rise       ; clk             ;
+=======
+; e            ; clk        ; 3.757 ; 3.757 ; Rise       ; clk             ;
+; lcd_data[*]  ; clk        ; 3.674 ; 3.674 ; Rise       ; clk             ;
+;  lcd_data[0] ; clk        ; 3.780 ; 3.780 ; Rise       ; clk             ;
+;  lcd_data[1] ; clk        ; 3.774 ; 3.774 ; Rise       ; clk             ;
+;  lcd_data[2] ; clk        ; 3.889 ; 3.889 ; Rise       ; clk             ;
+;  lcd_data[3] ; clk        ; 3.910 ; 3.910 ; Rise       ; clk             ;
+;  lcd_data[4] ; clk        ; 3.674 ; 3.674 ; Rise       ; clk             ;
+;  lcd_data[5] ; clk        ; 3.762 ; 3.762 ; Rise       ; clk             ;
+;  lcd_data[6] ; clk        ; 3.772 ; 3.772 ; Rise       ; clk             ;
+;  lcd_data[7] ; clk        ; 3.873 ; 3.873 ; Rise       ; clk             ;
+; lcdon        ; clk        ; 3.693 ; 3.693 ; Rise       ; clk             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 ; rs           ; clk        ; 3.696 ; 3.696 ; Rise       ; clk             ;
 +--------------+------------+-------+-------+------------+-----------------+
 
@@ -1164,12 +1765,21 @@ No paths to report.
 +-----------------------+----------+--------+----------+---------+---------------------+
 ; Clock                 ; Setup    ; Hold   ; Recovery ; Removal ; Minimum Pulse Width ;
 +-----------------------+----------+--------+----------+---------+---------------------+
+<<<<<<< HEAD
 ; Worst-case Slack      ; -7.158   ; -2.538 ; N/A      ; N/A     ; -1.380              ;
 ;  UART_RX:uart|r_RX_DV ; -4.506   ; 0.190  ; N/A      ; N/A     ; 0.500               ;
 ;  clk                  ; -7.158   ; -2.538 ; N/A      ; N/A     ; -1.380              ;
 ; Design-wide TNS       ; -377.543 ; -5.452 ; 0.0      ; 0.0     ; -78.38              ;
 ;  UART_RX:uart|r_RX_DV ; -6.745   ; 0.000  ; N/A      ; N/A     ; 0.000               ;
 ;  clk                  ; -370.798 ; -5.452 ; N/A      ; N/A     ; -78.380             ;
+=======
+; Worst-case Slack      ; -7.341   ; -2.530 ; N/A      ; N/A     ; -1.380              ;
+;  UART_RX:uart|r_RX_DV ; -3.930   ; 0.087  ; N/A      ; N/A     ; 0.500               ;
+;  clk                  ; -7.341   ; -2.530 ; N/A      ; N/A     ; -1.380              ;
+; Design-wide TNS       ; -390.93  ; -4.692 ; 0.0      ; 0.0     ; -78.38              ;
+;  UART_RX:uart|r_RX_DV ; -4.770   ; 0.000  ; N/A      ; N/A     ; 0.000               ;
+;  clk                  ; -386.160 ; -4.692 ; N/A      ; N/A     ; -78.380             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +-----------------------+----------+--------+----------+---------+---------------------+
 
 
@@ -1178,8 +1788,13 @@ No paths to report.
 +-------------+------------+-------+-------+------------+-----------------+
 ; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-------------+------------+-------+-------+------------+-----------------+
+<<<<<<< HEAD
 ; RX_serialIN ; clk        ; 3.268 ; 3.268 ; Rise       ; clk             ;
 ; reset       ; clk        ; 3.882 ; 3.882 ; Rise       ; clk             ;
+=======
+; RX_serialIN ; clk        ; 3.479 ; 3.479 ; Rise       ; clk             ;
+; reset       ; clk        ; 4.416 ; 4.416 ; Rise       ; clk             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +-------------+------------+-------+-------+------------+-----------------+
 
 
@@ -1188,8 +1803,13 @@ No paths to report.
 +-------------+------------+--------+--------+------------+-----------------+
 ; Data Port   ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +-------------+------------+--------+--------+------------+-----------------+
+<<<<<<< HEAD
 ; RX_serialIN ; clk        ; -1.671 ; -1.671 ; Rise       ; clk             ;
 ; reset       ; clk        ; -1.740 ; -1.740 ; Rise       ; clk             ;
+=======
+; RX_serialIN ; clk        ; -1.751 ; -1.751 ; Rise       ; clk             ;
+; reset       ; clk        ; -1.837 ; -1.837 ; Rise       ; clk             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +-------------+------------+--------+--------+------------+-----------------+
 
 
@@ -1198,6 +1818,7 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
+<<<<<<< HEAD
 ; e            ; clk        ; 6.653 ; 6.653 ; Rise       ; clk             ;
 ; lcd_data[*]  ; clk        ; 8.774 ; 8.774 ; Rise       ; clk             ;
 ;  lcd_data[0] ; clk        ; 7.852 ; 7.852 ; Rise       ; clk             ;
@@ -1210,6 +1831,20 @@ No paths to report.
 ;  lcd_data[7] ; clk        ; 8.774 ; 8.774 ; Rise       ; clk             ;
 ; lcdon        ; clk        ; 6.437 ; 6.437 ; Rise       ; clk             ;
 ; rs           ; clk        ; 6.445 ; 6.445 ; Rise       ; clk             ;
+=======
+; e            ; clk        ; 6.639 ; 6.639 ; Rise       ; clk             ;
+; lcd_data[*]  ; clk        ; 6.917 ; 6.917 ; Rise       ; clk             ;
+;  lcd_data[0] ; clk        ; 6.657 ; 6.657 ; Rise       ; clk             ;
+;  lcd_data[1] ; clk        ; 6.656 ; 6.656 ; Rise       ; clk             ;
+;  lcd_data[2] ; clk        ; 6.889 ; 6.889 ; Rise       ; clk             ;
+;  lcd_data[3] ; clk        ; 6.917 ; 6.917 ; Rise       ; clk             ;
+;  lcd_data[4] ; clk        ; 6.426 ; 6.426 ; Rise       ; clk             ;
+;  lcd_data[5] ; clk        ; 6.630 ; 6.630 ; Rise       ; clk             ;
+;  lcd_data[6] ; clk        ; 6.652 ; 6.652 ; Rise       ; clk             ;
+;  lcd_data[7] ; clk        ; 6.882 ; 6.882 ; Rise       ; clk             ;
+; lcdon        ; clk        ; 6.435 ; 6.435 ; Rise       ; clk             ;
+; rs           ; clk        ; 6.446 ; 6.446 ; Rise       ; clk             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 +--------------+------------+-------+-------+------------+-----------------+
 
 
@@ -1218,6 +1853,7 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
+<<<<<<< HEAD
 ; e            ; clk        ; 3.774 ; 3.774 ; Rise       ; clk             ;
 ; lcd_data[*]  ; clk        ; 4.367 ; 4.367 ; Rise       ; clk             ;
 ;  lcd_data[0] ; clk        ; 4.367 ; 4.367 ; Rise       ; clk             ;
@@ -1229,6 +1865,19 @@ No paths to report.
 ;  lcd_data[6] ; clk        ; 4.369 ; 4.369 ; Rise       ; clk             ;
 ;  lcd_data[7] ; clk        ; 4.745 ; 4.745 ; Rise       ; clk             ;
 ; lcdon        ; clk        ; 3.696 ; 3.696 ; Rise       ; clk             ;
+=======
+; e            ; clk        ; 3.757 ; 3.757 ; Rise       ; clk             ;
+; lcd_data[*]  ; clk        ; 3.674 ; 3.674 ; Rise       ; clk             ;
+;  lcd_data[0] ; clk        ; 3.780 ; 3.780 ; Rise       ; clk             ;
+;  lcd_data[1] ; clk        ; 3.774 ; 3.774 ; Rise       ; clk             ;
+;  lcd_data[2] ; clk        ; 3.889 ; 3.889 ; Rise       ; clk             ;
+;  lcd_data[3] ; clk        ; 3.910 ; 3.910 ; Rise       ; clk             ;
+;  lcd_data[4] ; clk        ; 3.674 ; 3.674 ; Rise       ; clk             ;
+;  lcd_data[5] ; clk        ; 3.762 ; 3.762 ; Rise       ; clk             ;
+;  lcd_data[6] ; clk        ; 3.772 ; 3.772 ; Rise       ; clk             ;
+;  lcd_data[7] ; clk        ; 3.873 ; 3.873 ; Rise       ; clk             ;
+; lcdon        ; clk        ; 3.693 ; 3.693 ; Rise       ; clk             ;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 ; rs           ; clk        ; 3.696 ; 3.696 ; Rise       ; clk             ;
 +--------------+------------+-------+-------+------------+-----------------+
 
@@ -1291,11 +1940,17 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+<<<<<<< HEAD
     Info: Processing started: Wed May 10 12:52:23 2023
 Info: Command: quartus_sta ControlPanel10000 -c Panel
 Info: qsta_default_script.tcl version: #1
 Warning (292000): FLEXlm software error: Future license file format or misspelling in license file.  The file was issued for a later version of FLEXnet Licensing than this  program understands. Feature:       quartus License text:  ONE_TS_OK SIGN="1663 4B7E 24C2 0965 72A2 AD41 3EA4 999C 1CCF 4002 7004 4171 F4EF 834F A45F 0BD3 FE8C 4E78 AAEB 54D8 6544 D576 C23F FBE4 9E21 9E48 B404 3494 5104 00F9" License path:  C:\Program Files\StruSoft\FEM-Design 21 Educational\license.lic FLEXnet Licensing error:-90,313 For further information, refer to the FLEXnet Licensing End User Guide, available at "www.macrovision.com".
 Warning (292000): FLEXlm software error: Future license file format or misspelling in license file.  The file was issued for a later version of FLEXnet Licensing than this  program understands. Feature:       quartus_talkback License text:  ONE_TS_OK SIGN="1663 4B7E 24C2 0965 72A2 AD41 3EA4 999C 1CCF 4002 7004 4171 F4EF 834F A45F 0BD3 FE8C 4E78 AAEB 54D8 6544 D576 C23F FBE4 9E21 9E48 B404 3494 5104 00F9" License path:  C:\Program Files\StruSoft\FEM-Design 21 Educational\license.lic FLEXnet Licensing error:-90,313 For further information, refer to the FLEXnet Licensing End User Guide, available at "www.macrovision.com".
+=======
+    Info: Processing started: Wed May 10 12:28:35 2023
+Info: Command: quartus_sta ControlPanel10000 -c Panel
+Info: qsta_default_script.tcl version: #1
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
@@ -1308,6 +1963,7 @@ Info (332105): Deriving Clocks
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow Model
 Critical Warning (332148): Timing requirements not met
+<<<<<<< HEAD
 Info (332146): Worst-case setup slack is -7.158
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
@@ -1318,6 +1974,18 @@ Info (332146): Worst-case hold slack is -2.538
     Info (332119): ========= ============= =====================
     Info (332119):    -2.538        -5.452 clk 
     Info (332119):     0.190         0.000 UART_RX:uart|r_RX_DV 
+=======
+Info (332146): Worst-case setup slack is -7.341
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -7.341      -386.160 clk 
+    Info (332119):    -3.930        -4.770 UART_RX:uart|r_RX_DV 
+Info (332146): Worst-case hold slack is -2.530
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -2.530        -4.692 clk 
+    Info (332119):     0.087         0.000 UART_RX:uart|r_RX_DV 
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -1.380
@@ -1328,6 +1996,7 @@ Info (332146): Worst-case minimum pulse width slack is -1.380
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info: Analyzing Fast Model
 Critical Warning (332148): Timing requirements not met
+<<<<<<< HEAD
 Info (332146): Worst-case setup slack is -2.810
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
@@ -1338,6 +2007,18 @@ Info (332146): Worst-case hold slack is -1.582
     Info (332119): ========= ============= =====================
     Info (332119):    -1.582        -4.779 clk 
     Info (332119):     0.392         0.000 UART_RX:uart|r_RX_DV 
+=======
+Info (332146): Worst-case setup slack is -2.900
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -2.900      -137.393 clk 
+    Info (332119):    -1.857        -1.857 UART_RX:uart|r_RX_DV 
+Info (332146): Worst-case hold slack is -1.574
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.574        -3.171 clk 
+    Info (332119):     0.418         0.000 UART_RX:uart|r_RX_DV 
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -1.380
@@ -1348,10 +2029,17 @@ Info (332146): Worst-case minimum pulse width slack is -1.380
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
+<<<<<<< HEAD
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 21 warnings
     Info: Peak virtual memory: 4540 megabytes
     Info: Processing ended: Wed May 10 12:52:24 2023
     Info: Elapsed time: 00:00:01
+=======
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4543 megabytes
+    Info: Processing ended: Wed May 10 12:28:38 2023
+    Info: Elapsed time: 00:00:03
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
     Info: Total CPU time (on all processors): 00:00:01
 
 

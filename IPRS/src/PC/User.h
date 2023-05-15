@@ -1,3 +1,7 @@
+// #pragma once
+#ifndef USER_H
+#define USER_H
+
 #include <string>
 #include "dbHandler.h"
 
@@ -24,3 +28,5 @@ public:
     // Function to change the password of the user, username
     void changePassword();
 };
+
+#endif

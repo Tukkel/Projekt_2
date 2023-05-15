@@ -22,8 +22,9 @@ ENTITY UART_RX IS -- UART_RX
     PORT (
         i_Clk : IN STD_LOGIC;
         i_RX_Serial : IN STD_LOGIC;
+		  
         o_RX_DV : OUT STD_LOGIC;
-        o_RX_Byte : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+        o_RX_Byte : OUT	 STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
 END UART_RX; -- UART_RX
 

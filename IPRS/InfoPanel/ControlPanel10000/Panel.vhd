@@ -31,13 +31,14 @@ architecture Panel_impl of Panel is
     signal   RX_ComeGetMe     : STD_LOGIC;                     --Active high, come and get the byte plz
     signal   RX_data    : STD_logic_vector(7 DOWNTO 0);  --data from uart
 
-  constant startbyte : STD_LOGIC_VECTOR(7 DOWNTO 0) := "01111110"; --start byte for uart ascii ~
-  constant stopbyte : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00100001"; --stop byte for uart ascii !
+  constant startbyte : STD_LOGIC_VECTOR := "01111110"; --start byte for uart ascii ~
+  constant stopbyte : STD_LOGIC_VECTOR := "00100001"; --stop byte for uart ascii !
 begin
 
   uart : entity UART_RX port map(i_clk => clk, i_RX_Serial => RX_serialIN, o_RX_DV => RX_ComeGetMe, o_RX_Byte => RX_data);
 
   lcd : entity lcd_controller PORT MAP(clk => clk, reset_n => reset, lcd_enable => lcd_enable, lcd_bus => lcd_bus, busy => lcd_busy, rw => rw, rs => rs, e => e, lcd_data => lcd_data, lcdon => lcdon);
+
 
 	state_reg : PROCESS (clk, reset)
 	BEGIN
@@ -48,12 +49,17 @@ begin
 		END IF;
 	END PROCESS;
   
+<<<<<<< HEAD
   outputs: process (present_state, RX_ComeGetMe)
+=======
+  outputs: process (clk, present_state, RX_ComeGetMe)
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
   begin
     case present_state is
     -- one case branch required for each state
     when receive_state =>
       RX_busy <= '1';
+<<<<<<< HEAD
       if RX_ComeGetMe = '1' then
         IF(lcd_busy = '0' AND lcd_enable = '0') THEN
           lcd_enable <= '1';
@@ -64,10 +70,29 @@ begin
       end if;
   
    
+=======
+		 if rising_edge(clk) then
+			if RX_ComeGetMe = '1' then
+				IF(lcd_busy = '0' AND lcd_enable = '0') THEN
+				  lcd_enable <= '1';
+				  lcd_bus <= "10" & RX_data;
+				ELSE
+				  lcd_enable <= '0';
+				END IF;
+			elsE
+				lcd_enable <= '0';
+			end if;
+		 end if;
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
   
+    when USER_state =>
+      RX_busy <= '0';
+      lcd_enable <= '0';
+
     -- default branch
     when others =>
-    -- assignments to outputs
+		RX_busy <= '0';
+		lcd_enable <= '0';
   
     end case;
   end process;
@@ -93,6 +118,8 @@ begin
         IF RX_data = stopbyte THEN
           next_state <= USER_state;
         END IF;
+		else
+			next_state <= receive_state;
       END IF;
 
 
@@ -101,6 +128,8 @@ begin
         IF RX_data = startbyte THEN
           next_state <= receive_state;
         END IF;
+		else
+			next_state <= USER_state;
       end if;
 
       -- default branch
@@ -109,6 +138,5 @@ begin
   
     end case;
   end process;
-
-
+  
 end Panel_impl;

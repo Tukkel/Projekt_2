@@ -2,6 +2,7 @@
 #include <avr/io.h>
 #include "X10.h"
 #include <stdlib.h>
+#include "sensorSlave.h"
 
 
 
@@ -46,7 +47,7 @@ int main (void)
 =========== Test af X10 kommunikation writeData ===========
 
 #############################################################################################################
-*/
+
 
 int main(void){
 
@@ -59,4 +60,21 @@ int main(void){
         data[0] = true;
         x10.writeData(data);
     }
+}
+*/
+
+/*
+#############################################################################################################
+
+=========== Test af aflæsning af data fra sensor ===========
+
+#############################################################################################################
+*/
+
+int main(void){
+
+    SensorSlave slave;
+    slave.Init_ADC();
+    unsigned int x = slave.getSensorInformation();
+
 }

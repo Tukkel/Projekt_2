@@ -1,9 +1,10 @@
 #include "PCHandler.h"
 #include <iostream>
+#include <memory.h>
 
-PCHandler::PCHandler()
+PCHandler::PCHandler(std::string password)
 {
-    User admin("admin");
+    User admin(password);
 }
 
 /*
@@ -85,8 +86,8 @@ void PCHandler::printData()
         switch (choice)
         {
         case 1:
-            std::cout << "How many slaves?" << std::endl;
-            changeSlaves();
+            std::cout << "You chose to print Newest Data." << std::endl;
+            // Code to print data
             break;
 
         case 2:
@@ -107,27 +108,6 @@ void PCHandler::printData()
         }
 
         std::cout << std::endl;
-    }
-}
-
-void PCHandler::changeSlaves() const
-{
-    bool validChoice = false;
-
-    while (!validChoice)
-    {
-        int Slavechoice;
-        std::cin >> Slavechoice;
-        if (Slavechoice > 0)
-        {
-            std::cout << "You chose to change the number of slaves to " << Slavechoice << std::endl;
-            validChoice = true;
-            break;
-        }
-        else
-        {
-            std::cout << "Invalid choice. Please choose again." << std::endl;
-        }
     }
 }
 
@@ -153,7 +133,8 @@ void PCHandler::changeSystem() const
         switch (choice)
         {
         case 1:
-            std::cout << "You chose to print Newest Data." << std::endl;
+            std::cout << "How many slaves?" << std::endl;
+            changeSlaves();
             // Code to print data
             break;
         case 2:
@@ -179,5 +160,40 @@ void PCHandler::changeSystem() const
 
 void PCHandler::clearScreen() const
 {
-    system("cls"); // Code to clear the screen
+    system("clear");                         // Code to clear the screen
+    std::cout << "IPRS SYSTEM" << std::endl; // "IPRS SYSTEM
+    std::cout << std::endl
+              << std::endl;
+}
+
+void PCHandler::changeSlaves() const
+{
+    bool validChoice = false;
+
+    while (!validChoice)
+    {
+        int Slavechoice;
+        std::cin >> Slavechoice;
+        if (Slavechoice > 0)
+        {
+            std::cout << "You chose to change the number of slaves to " << Slavechoice << std::endl;
+            validChoice = true;
+            break;
+        }
+        else
+        {
+            std::cout << "Invalid choice. Please choose again." << std::endl;
+        }
+    }
+}
+
+void printLog()
+{
+    /*
+
+    string Log = UART.getLockFromArduino();
+    Log.Format("Log: %s", Log);
+    cout << Log << endl;
+
+    */
 }

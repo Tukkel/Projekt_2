@@ -11,7 +11,11 @@ rooms[0] => ~NO_FANOUT~
 rooms[1] => ~NO_FANOUT~
 rooms[2] => ~NO_FANOUT~
 rooms[3] => ~NO_FANOUT~
+<<<<<<< HEAD
 RX_busy <= <VCC>
+=======
+RX_busy <= present_state.DB_MAX_OUTPUT_PORT_TYPE
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 rw <= lcd_controller:lcd.rw
 rs <= lcd_controller:lcd.rs
 e <= lcd_controller:lcd.e
