@@ -2,84 +2,44 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow Model Setup 'clk'
-<<<<<<< HEAD
-Slack : -7.158
-TNS   : -370.798
+Type  : Slow Model Setup 'CLOCK_50'
+Slack : -7.665
+TNS   : -423.323
 
-Type  : Slow Model Setup 'UART_RX:uart|r_RX_DV'
-Slack : -4.506
-TNS   : -6.745
-
-Type  : Slow Model Hold 'clk'
-Slack : -2.538
-TNS   : -5.452
-
-Type  : Slow Model Hold 'UART_RX:uart|r_RX_DV'
-Slack : 0.190
-=======
-Slack : -7.341
-TNS   : -386.160
-
-Type  : Slow Model Setup 'UART_RX:uart|r_RX_DV'
-Slack : -3.930
-TNS   : -4.770
-
-Type  : Slow Model Hold 'clk'
-Slack : -2.530
-TNS   : -4.692
-
-Type  : Slow Model Hold 'UART_RX:uart|r_RX_DV'
-Slack : 0.087
->>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
+Type  : Slow Model Hold 'CLOCK_50'
+Slack : 0.391
 TNS   : 0.000
 
-Type  : Slow Model Minimum Pulse Width 'clk'
+Type  : Slow Model Recovery 'CLOCK_50'
+Slack : -0.260
+TNS   : -0.260
+
+Type  : Slow Model Removal 'CLOCK_50'
+Slack : 1.030
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'CLOCK_50'
 Slack : -1.380
-TNS   : -78.380
+TNS   : -87.380
 
-Type  : Slow Model Minimum Pulse Width 'UART_RX:uart|r_RX_DV'
-Slack : 0.500
+Type  : Fast Model Setup 'CLOCK_50'
+Slack : -3.056
+TNS   : -150.054
+
+Type  : Fast Model Hold 'CLOCK_50'
+Slack : 0.215
 TNS   : 0.000
 
-Type  : Fast Model Setup 'clk'
-<<<<<<< HEAD
-Slack : -2.810
-TNS   : -129.513
-
-Type  : Fast Model Setup 'UART_RX:uart|r_RX_DV'
-Slack : -2.140
-TNS   : -2.189
-
-Type  : Fast Model Hold 'clk'
-Slack : -1.582
-TNS   : -4.779
-
-Type  : Fast Model Hold 'UART_RX:uart|r_RX_DV'
-Slack : 0.392
-=======
-Slack : -2.900
-TNS   : -137.393
-
-Type  : Fast Model Setup 'UART_RX:uart|r_RX_DV'
-Slack : -1.857
-TNS   : -1.857
-
-Type  : Fast Model Hold 'clk'
-Slack : -1.574
-TNS   : -3.171
-
-Type  : Fast Model Hold 'UART_RX:uart|r_RX_DV'
-Slack : 0.418
->>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
+Type  : Fast Model Recovery 'CLOCK_50'
+Slack : 0.300
 TNS   : 0.000
 
-Type  : Fast Model Minimum Pulse Width 'clk'
+Type  : Fast Model Removal 'CLOCK_50'
+Slack : 0.580
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'CLOCK_50'
 Slack : -1.380
-TNS   : -78.380
-
-Type  : Fast Model Minimum Pulse Width 'UART_RX:uart|r_RX_DV'
-Slack : 0.500
-TNS   : 0.000
+TNS   : -87.380
 
 ------------------------------------------------------------

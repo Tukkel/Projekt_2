@@ -1,16 +1,12 @@
-<<<<<<< HEAD
-Analysis & Synthesis Status : Successful - Wed May 10 12:52:13 2023
-=======
-Analysis & Synthesis Status : Successful - Wed May 10 13:19:45 2023
->>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
+Analysis & Synthesis Status : Successful - Mon May 15 10:55:37 2023
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
 Revision Name : Panel
-Top-level Entity Name : Panel
+Top-level Entity Name : Panel_tester
 Family : Cyclone II
-Total logic elements : 266
-    Total combinational functions : 264
-    Dedicated logic registers : 77
-Total registers : 77
+Total logic elements : 263
+    Total combinational functions : 253
+    Dedicated logic registers : 86
+Total registers : 86
 Total pins : 22
 Total virtual pins : 0
 Total memory bits : 0

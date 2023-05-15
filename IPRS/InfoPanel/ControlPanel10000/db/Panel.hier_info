@@ -1,5 +1,41 @@
-|Panel
+|Panel_tester
+CLOCK_50 => panel:p1.clk
+KEY[0] => panel:p1.reset
+KEY[1] => panel:p1.shift
+KEY[2] => panel:p1.home
+GPIO_0[0] => panel:p1.RX_serialIN
+SW[0] => panel:p1.rooms[0]
+SW[1] => panel:p1.rooms[1]
+SW[2] => panel:p1.rooms[2]
+SW[3] => panel:p1.rooms[3]
+LEDG[0] <= panel:p1.RX_busy
+LCD_RW <= panel:p1.rw
+LCD_RS <= panel:p1.rs
+LCD_EN <= panel:p1.e
+LCD_ON <= panel:p1.lcdon
+LCD_DATA[0] <= panel:p1.lcd_data[0]
+LCD_DATA[1] <= panel:p1.lcd_data[1]
+LCD_DATA[2] <= panel:p1.lcd_data[2]
+LCD_DATA[3] <= panel:p1.lcd_data[3]
+LCD_DATA[4] <= panel:p1.lcd_data[4]
+LCD_DATA[5] <= panel:p1.lcd_data[5]
+LCD_DATA[6] <= panel:p1.lcd_data[6]
+LCD_DATA[7] <= panel:p1.lcd_data[7]
+
+
+|Panel_tester|Panel:p1
 clk => uart_rx:uart.i_Clk
+clk => lcd_bus[0].CLK
+clk => lcd_bus[1].CLK
+clk => lcd_bus[2].CLK
+clk => lcd_bus[3].CLK
+clk => lcd_bus[4].CLK
+clk => lcd_bus[5].CLK
+clk => lcd_bus[6].CLK
+clk => lcd_bus[7].CLK
+clk => lcd_bus[8].CLK
+clk => lcd_bus[9].CLK
+clk => lcd_enable.CLK
 clk => present_state.CLK
 clk => lcd_controller:lcd.clk
 reset => lcd_controller:lcd.reset_n
@@ -11,11 +47,7 @@ rooms[0] => ~NO_FANOUT~
 rooms[1] => ~NO_FANOUT~
 rooms[2] => ~NO_FANOUT~
 rooms[3] => ~NO_FANOUT~
-<<<<<<< HEAD
-RX_busy <= <VCC>
-=======
 RX_busy <= present_state.DB_MAX_OUTPUT_PORT_TYPE
->>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 rw <= lcd_controller:lcd.rw
 rs <= lcd_controller:lcd.rs
 e <= lcd_controller:lcd.e
@@ -30,7 +62,7 @@ lcd_data[6] <= lcd_controller:lcd.lcd_data[6]
 lcd_data[7] <= lcd_controller:lcd.lcd_data[7]
 
 
-|Panel|UART_RX:uart
+|Panel_tester|Panel:p1|UART_RX:uart
 i_Clk => r_RX_Byte[0].CLK
 i_Clk => r_RX_Byte[1].CLK
 i_Clk => r_RX_Byte[2].CLK
@@ -67,7 +99,7 @@ o_RX_Byte[6] <= r_RX_Byte[6].DB_MAX_OUTPUT_PORT_TYPE
 o_RX_Byte[7] <= r_RX_Byte[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Panel|lcd_controller:lcd
+|Panel_tester|Panel:p1|lcd_controller:lcd
 clk => e~reg0.CLK
 clk => lcd_data[0]~reg0.CLK
 clk => lcd_data[1]~reg0.CLK

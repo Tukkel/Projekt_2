@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 DONE
-=======
-FIT
->>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
