@@ -1,6 +1,6 @@
 #include "X10.h"
 
-X10::X10(volatile uint8_t clock_pin, volatile uint8_t X10_read, volatile uint8_t X10_write, bool* address, char unit = 's')
+X10::X10(volatile uint8_t clock_pin, volatile uint8_t X10_read, volatile uint8_t X10_write, uint8_t* address, size_t addressSize, char unit)
 {
     clock_pin_ = clock_pin;
     X10_read_ = X10_read;
@@ -17,11 +17,11 @@ X10::X10(volatile uint8_t clock_pin, volatile uint8_t X10_read, volatile uint8_t
     else                            //If not master then make a slave
     {
         unit_ = 's';
-        if (sizeof(address) < 8)
+        if (addressSize < 8)
         {
-            for(size_t i=8-sizeof(address);i<8;i++)
+            for(size_t i=8-addressSize;i<8;i++)
             {
-                address_[i] = address[i+sizeof(address)-8];
+                address_[i] = address[i+addressSize-8];
             }
         }
         else
@@ -191,19 +191,19 @@ void X10::writeBit(uint8_t bit) const
     }
 }
 
-void X10::writeData(bool* data, bool* address = 0) const
+void X10::writeData(uint8_t* data, size_t dataSize, uint8_t* address, size_t addressSize) const
 {
     bool read[6] = {false};
-    bool send[8+sizeof(data)+1] = {false};
+    uint8_t send[8+dataSize+1] = {0};
     size_t pair = 0;
 
     if (unit_ == 'm')       //If it is master sending the inputted address is used but needs to be checked for correct size
     {
-        if(sizeof(address) < 8)
+        if(addressSize < 8)
         {
-            for(size_t i = 8-sizeof(address); i<8; i++)
+            for(size_t i = 8-addressSize; i<8; i++)
             {
-                send[i] = address[i+sizeof(address)-8];
+                send[i] = address[i+addressSize-8];
             }
         }
         else
@@ -222,12 +222,12 @@ void X10::writeData(bool* data, bool* address = 0) const
         }
     }
 
-    for(size_t i = 8; i<(8+sizeof(data)); i++)  //The data is inserted into the array to send
+    for(size_t i = 8; i<8+dataSize; i++)  //The data is inserted into the array to send
     {
         send[i] = data[i-8];
     }
 
-    for(size_t i = 0; i<8+sizeof(data); i++)    //Pairity bit is set to 1 of there is an uneven number of 1's
+    for(size_t i = 0; i<8+dataSize; i++)    //Pairity bit is set to 1 of there is an uneven number of 1's
     {
         if(send[i])
         {
@@ -236,7 +236,7 @@ void X10::writeData(bool* data, bool* address = 0) const
     }
     if(pair%2)
     {
-        send[8+sizeof(data)] = true;
+        send[8+dataSize] = 1;
     }
 
     size_t i = 0;
@@ -278,7 +278,7 @@ void X10::writeData(bool* data, bool* address = 0) const
 
         if(readHalfBit())       //Check for ack. If no ack is recived try again
         {
-            if(readHalfBit() == false)
+            if(readHalfBit() == 0)
             {
                 break;
             }
@@ -288,7 +288,7 @@ void X10::writeData(bool* data, bool* address = 0) const
     return;
 }
 
-uint8_t X10::readAddress() const
+uint8_t X10::getAddress() const
 {
     uint8_t address = 0;
     for(size_t i = 2; i<10; ++i)
@@ -301,7 +301,7 @@ uint8_t X10::readAddress() const
     return address;
 }
 
-int X10::readValue() const
+int X10::getValue() const
 {
     size_t value = 0;
     for(size_t i = 10; i<50; ++i)
@@ -320,5 +320,6 @@ int X10::readValue() const
             value << 1;
         }
     }
+    value >> 1;
     return value;
 }

@@ -11,18 +11,13 @@
 int main()
 {
 	UART UART(9600, 8);
-	bool address[8] = {false};
+	uint8_t address[8] = {1, 0, 0, 0, 0, 0, 1, 1};
 	X10 X10(1, 2, 4, address, 'm');
-	bool data[4] = {1, 0, 0, 1};
+	uint8_t data[1] = {1};
 	DDRB = 0xFF;
 
 	while(1)
 	{
-		X10.readData();
-		PORTB = X10.readAddress();
-		UART.SendInteger(X10.readAddress());
-		UART.SendChar(' ');
-		UART.SendInteger(X10.readValue());
-		UART.SendChar('\n');
+		X10.writeData(data, sizeof(data)/sizeof(data[0]), address, sizeof(address)/sizeof(address[0]));
 	}
 }

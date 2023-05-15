@@ -1,45 +1,21 @@
 #include "Log.h"
 
-Log::Log(uint8_t numberRooms, uint8_t numberPeople, double** roomHistory)
+Log::Log(uint8_t numberRooms, size_t numberPeople)
 {
     numberRooms_ = numberRooms;
     numberPeople_ = numberPeople;
     rooms_[numberRooms_][numberPeople_] = {false};
     roomChances_[numberRooms_][numberPeople_] = {0};
-    roomHistory_[numberRooms_][numberPeople_] = {0};
-    roomConnections_[numberRooms_][numberPeople_] = {false};
+    peopleHistory_[numberRooms_][numberPeople_] = {0};
+    roomConnections_[numberRooms_][numberRooms_] = {false};
     roomNames_[numberRooms_][17];
     peopleNames_[numberPeople_][17];
 
-    size_t historyCols = sizeof(roomHistory[0]);
-    size_t historyRows = sizeof(roomHistory)/historyCols;
-
-    size_t cols;
-    size_t rows;
-    
-    if(numberRooms_ < historyCols)
+    for(size_t i = 0; i<numberRooms_; ++i)
     {
-        cols = numberRooms_;
-    }
-    else
-    {
-        cols = historyCols;
-    }
-    
-    if(numberPeople_ < historyRows)
-    {
-        rows = numberPeople_;
-    }
-    else
-    {
-        rows = historyRows;
-    }
-
-    for(size_t i = 0; i<cols; ++i)
-    {
-        for(size_t j = 0; j<rows; ++j)
+        for(size_t j = 0; j<numberRooms_; ++j)
         {
-            roomHistory_[i][j] = roomHistory[i][j];
+            peopleHistory_[i][j] = 1/(double)numberRooms_;
         }
     }
 
@@ -62,7 +38,38 @@ Log::Log(uint8_t numberRooms, uint8_t numberPeople, double** roomHistory)
 
 void Log::setRoomConnection(uint8_t roomNumber, bool* connections)
 {
-    
+    if(sizeof(connections) < numberRooms_)
+    {
+        for(size_t i = 0; i<sizeof(connections) ; ++i)
+        {
+            roomConnections_[roomNumber][i] = connections[i];
+        }
+    }
+    else
+    {
+        for(size_t i = 0; i<numberRooms_ ; ++i)
+        {
+            roomConnections_[roomNumber][i] = connections[i];
+        }
+    }
+}
+
+void Log::setPersonHistory(size_t personNumber, double* personHistory)
+{
+    if(sizeof(personHistory) < numberRooms_)
+    {
+        for(size_t i = 0; i<sizeof(personHistory); ++i)
+        {
+            peopleHistory_[i][personNumber] = personHistory[i];
+        }
+    }
+    else
+    {
+        for(size_t i = 0; i<numberRooms_ ; ++i)
+        {
+            peopleHistory_[i][personNumber] = personHistory[i];
+        }
+    }
 }
 
 void Log::setRoomName(uint8_t roomNumber, char* roomName)
