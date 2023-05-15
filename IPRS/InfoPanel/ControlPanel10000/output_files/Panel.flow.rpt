@@ -1,5 +1,5 @@
 Flow report for Panel
-Wed May 10 13:06:13 2023
+Wed May 10 13:19:45 2023
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,18 +40,18 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Wed May 10 13:06:13 2023           ;
+; Flow Status                        ; Successful - Wed May 10 13:19:45 2023           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Panel                                           ;
-; Top-level Entity Name              ; lcd_controller                                  ;
+; Top-level Entity Name              ; Panel                                           ;
 ; Family                             ; Cyclone II                                      ;
 ; Device                             ; EP2C35F672C6                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 201                                             ;
-;     Total combinational functions  ; 201                                             ;
-;     Dedicated logic registers      ; 49                                              ;
-; Total registers                    ; 49                                              ;
-; Total pins                         ; 26                                              ;
+; Total logic elements               ; 266                                             ;
+;     Total combinational functions  ; 264                                             ;
+;     Dedicated logic registers      ; 77                                              ;
+; Total registers                    ; 77                                              ;
+; Total pins                         ; 22                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -64,26 +64,25 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/10/2023 13:06:09 ;
+; Start date & time ; 05/10/2023 13:19:40 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Panel               ;
 +-------------------+---------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                    ;
-+-------------------------------------+---------------------------------+---------------+----------------+------------+
-; Assignment Name                     ; Value                           ; Default Value ; Entity Name    ; Section Id ;
-+-------------------------------------+---------------------------------+---------------+----------------+------------+
-; COMPILER_SIGNATURE_ID               ; 128472102255854.168371676912400 ; --            ; --             ; --         ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                              ; --            ; --             ; --         ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                               ; --            ; --             ; --         ;
-; PARTITION_COLOR                     ; 16764057                        ; --            ; lcd_controller ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING           ; --            ; lcd_controller ; Top        ;
-; PARTITION_NETLIST_TYPE              ; SOURCE                          ; --            ; lcd_controller ; Top        ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                    ; --            ; --             ; --         ;
-; TOP_LEVEL_ENTITY                    ; lcd_controller                  ; Panel         ; --             ; --         ;
-+-------------------------------------+---------------------------------+---------------+----------------+------------+
++------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                 ;
++-------------------------------------+---------------------------------+---------------+-------------+------------+
+; Assignment Name                     ; Value                           ; Default Value ; Entity Name ; Section Id ;
++-------------------------------------+---------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID               ; 128472102255854.168371758018940 ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                              ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                               ; --            ; --          ; --         ;
+; PARTITION_COLOR                     ; 16764057                        ; --            ; --          ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING           ; --            ; --          ; Top        ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                          ; --            ; --          ; Top        ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                    ; --            ; --          ; --         ;
++-------------------------------------+---------------------------------+---------------+-------------+------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+

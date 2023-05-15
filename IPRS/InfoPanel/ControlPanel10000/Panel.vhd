@@ -23,7 +23,7 @@ END Panel;
 
 architecture Panel_impl of Panel is
 	type state is (USER_state, receive_state); --Send_state
-	signal present_state, next_state : state := USER_state;
+	signal present_state, next_state : state;
 
     signal   lcd_enable : STD_LOGIC;                     --latches data into lcd controller
     SIGNAL   lcd_bus    : STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -39,6 +39,7 @@ begin
 
   lcd : entity lcd_controller PORT MAP(clk => clk, reset_n => reset, lcd_enable => lcd_enable, lcd_bus => lcd_bus, busy => lcd_busy, rw => rw, rs => rs, e => e, lcd_data => lcd_data, lcdon => lcdon);
 
+
 	state_reg : PROCESS (clk, reset)
 	BEGIN
 		IF reset = '0' THEN
@@ -48,27 +49,33 @@ begin
 		END IF;
 	END PROCESS;
   
-  outputs: process (present_state, RX_ComeGetMe)
+  outputs: process (clk, present_state, RX_ComeGetMe)
   begin
     case present_state is
     -- one case branch required for each state
     when receive_state =>
       RX_busy <= '1';
-      if RX_ComeGetMe = '1' then
-        IF(lcd_busy = '0' AND lcd_enable = '0') THEN
-          lcd_enable <= '1';
-          lcd_bus <= "10" & RX_data;
-        ELSE
-          lcd_enable <= '0';
-        END IF;
-      end if;
+		 if rising_edge(clk) then
+			if RX_ComeGetMe = '1' then
+				IF(lcd_busy = '0' AND lcd_enable = '0') THEN
+				  lcd_enable <= '1';
+				  lcd_bus <= "10" & RX_data;
+				ELSE
+				  lcd_enable <= '0';
+				END IF;
+			elsE
+				lcd_enable <= '0';
+			end if;
+		 end if;
   
     when USER_state =>
       RX_busy <= '0';
+      lcd_enable <= '0';
 
     -- default branch
     when others =>
 		RX_busy <= '0';
+		lcd_enable <= '0';
   
     end case;
   end process;
@@ -94,6 +101,8 @@ begin
         IF RX_data = stopbyte THEN
           next_state <= USER_state;
         END IF;
+		else
+			next_state <= receive_state;
       END IF;
 
 
@@ -102,6 +111,8 @@ begin
         IF RX_data = startbyte THEN
           next_state <= receive_state;
         END IF;
+		else
+			next_state <= USER_state;
       end if;
 
       -- default branch
@@ -110,6 +121,5 @@ begin
   
     end case;
   end process;
-
-
+  
 end Panel_impl;
