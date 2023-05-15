@@ -50,7 +50,7 @@ END lcd_controller;
 
 ARCHITECTURE controller OF lcd_controller IS
   TYPE CONTROL IS(power_up, initialize, ready, send);
-  SIGNAL  state  : CONTROL;
+  SIGNAL  state  : CONTROL := power_up;
 BEGIN
   PROCESS(clk)
     VARIABLE clk_count : INTEGER := 0; --event counter for timing

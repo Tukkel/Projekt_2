@@ -13,7 +13,7 @@ ENTITY Panel IS
     home        : in std_logic;                        --resets cursor to home, button
     rooms       : in std_logic_vector(3 downto 0);     --room number, switches
 
-    
+    TX_serialout : out std_LOGIC;							--Transmitter output
     RX_busy    : OUT  STD_LOGIC;                     --active high, uart busy, goes to LED
     rw, rs, e, lcdon  : OUT  STD_LOGIC;                     --read/write, setup/data, enable and on for lcd
     lcd_data   : OUT  STD_LOGIC_VECTOR(7 DOWNTO 0)
@@ -22,22 +22,38 @@ ENTITY Panel IS
 END Panel;
 
 architecture Panel_impl of Panel is
-	type state is (USER_state, receive_state); --Send_state
-	signal present_state, next_state : state := USER_state;
+	type state is (USER_state, receive_state, send_state); --Send_state
+	signal present_state, next_state : state;
 
+	 -- lcd signals
     signal   lcd_enable : STD_LOGIC;                     --latches data into lcd controller
     SIGNAL   lcd_bus    : STD_LOGIC_VECTOR(9 DOWNTO 0);
     SIGNAL   lcd_busy   : STD_LOGIC;
-    signal   RX_ComeGetMe     : STD_LOGIC;                     --Active high, come and get the byte plz
-    signal   RX_data    : STD_logic_vector(7 DOWNTO 0);  --data from uart
+	 
+	 --rx signals
+    signal   RX_ComeGetMe     : STD_LOGIC;               --Active high, come and get the byte plz
+    signal   RX_data    : STD_logic_vector(7 DOWNTO 0);  --data from uart RX
+	 
+	 --tx signals
+	 signal   TX_data    : STD_logic_vector(7 DOWNTO 0);  --data to uart TX
+	 signal 	 TX_send    : STD_LOGIC;							--send the byte
+	 signal   TX_active  : std_LOGIC;							--sending 
+	 signal   TX_done    : std_LOGIC;							--done sending
+	 
+	 signal previous_vector : std_logic_vector(3 downto 0);
+	 signal change_detected : std_LOGIC;
+	 	 
 
   constant startbyte : STD_LOGIC_VECTOR := "01111110"; --start byte for uart ascii ~
   constant stopbyte : STD_LOGIC_VECTOR := "00100001"; --stop byte for uart ascii !
 begin
 
-  uart : entity UART_RX port map(i_clk => clk, i_RX_Serial => RX_serialIN, o_RX_DV => RX_ComeGetMe, o_RX_Byte => RX_data);
+  uartRX : entity UART_RX port map(i_clk => clk, i_RX_Serial => RX_serialIN, o_RX_DV => RX_ComeGetMe, o_RX_Byte => RX_data);
 
+  uartTX : entity UART_TX port map(i_clk => clk, i_TX_DV => TX_send, i_TX_Byte => TX_data, o_TX_Active => TX_active, o_TX_Serial => TX_serialout, o_TX_Done => TX_done);
+  
   lcd : entity lcd_controller PORT MAP(clk => clk, reset_n => reset, lcd_enable => lcd_enable, lcd_bus => lcd_bus, busy => lcd_busy, rw => rw, rs => rs, e => e, lcd_data => lcd_data, lcdon => lcdon);
+
 
 	state_reg : PROCESS (clk, reset)
 	BEGIN
@@ -48,29 +64,49 @@ begin
 		END IF;
 	END PROCESS;
   
-  outputs: process (present_state, RX_ComeGetMe)
+  outputs: process (clk, present_state, RX_ComeGetMe, TX_active)
   begin
+   if rising_edge(clk) then
     case present_state is
     -- one case branch required for each state
     when receive_state =>
       RX_busy <= '1';
-      if RX_ComeGetMe = '1' then
-        IF(lcd_busy = '0' AND lcd_enable = '0') THEN
-          lcd_enable <= '1';
-          lcd_bus <= "10" & RX_data;
-        ELSE
-          lcd_enable <= '0';
-        END IF;
-      end if;
+			if RX_ComeGetMe = '1' then
+				IF(lcd_busy = '0' AND lcd_enable = '0') THEN
+				  lcd_enable <= '1';
+				  	if RX_data = startbyte then
+						lcd_bus <= "0000000001"; -- Clear display
+					else 
+						lcd_bus <= "10" & RX_data; -- Else print the byte
+					end if;
+				ELSE
+				  lcd_enable <= '0';
+				END IF;
+			elsE
+				lcd_enable <= '0';
+			end if;
   
     when USER_state =>
+	   TX_data <= "0000" & rooms;
       RX_busy <= '0';
+      lcd_enable <= '0';
 
+	
+	 when send_state =>
+		TX_data <= "0000" & rooms;
+			if TX_active = '0' then
+				TX_send <= '1';
+			else
+				TX_send <= '0';
+			end if;
+	
     -- default branch
     when others =>
 		RX_busy <= '0';
+		lcd_enable <= '0';
   
     end case;
+	end if;
   end process;
   
   nxt_state: process (present_state, RX_ComeGetMe)
@@ -89,27 +125,62 @@ begin
         --end if;
   
       --...
-      when receive_state =>
+     when receive_state =>
       if RX_ComeGetMe = '1' then
         IF RX_data = stopbyte THEN
           next_state <= USER_state;
         END IF;
+		else
+			next_state <= receive_state;
       END IF;
 
 
-      when USER_state =>
+     when USER_state =>
       if RX_ComeGetMe = '1' then
         IF RX_data = startbyte THEN
           next_state <= receive_state;
         END IF;
+		
+		elsif change_detected = '1' then
+			next_state <= send_state;
+			
+		else
+			next_state <= USER_state;
       end if;
 
+		
+		when send_state =>
+      if RX_ComeGetMe = '1' then
+        IF RX_data = startbyte THEN
+          next_state <= receive_state;
+        END IF;
+		
+		elsif TX_done = '1' then
+			next_state <= USER_state;
+		
+		else
+        next_state <= send_state;
+       end if;
+		  
+		  
       -- default branch
       when others =>
         null;
   
     end case;
   end process;
+  
 
+   room_change : process(clk) -- ChatGPT
+    begin
+        if rising_edge(clk) then
+            if rooms /= previous_vector then
+                change_detected <= '1';
+            else
+                change_detected <= '0';
+            end if;
+            previous_vector <= rooms;
+        end if;
+    end process;
 
 end Panel_impl;

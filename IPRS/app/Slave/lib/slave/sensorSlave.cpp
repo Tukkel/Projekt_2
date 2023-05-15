@@ -1,5 +1,14 @@
 #include "sensorSlave.h"
 
+SensorSlave::SensorSlave()
+{
+
+}
+SensorSlave::~SensorSlave()
+{
+
+}
+
 //  HUGGET FRA MSYS LAB-ØVELSE 13 LØSNINGSFORSLAG
 void SensorSlave::Init_ADC()
 {
