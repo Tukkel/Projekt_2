@@ -49,28 +49,12 @@ begin
 		END IF;
 	END PROCESS;
   
-<<<<<<< HEAD
-  outputs: process (present_state, RX_ComeGetMe)
-=======
   outputs: process (clk, present_state, RX_ComeGetMe)
->>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
   begin
     case present_state is
     -- one case branch required for each state
     when receive_state =>
       RX_busy <= '1';
-<<<<<<< HEAD
-      if RX_ComeGetMe = '1' then
-        IF(lcd_busy = '0' AND lcd_enable = '0') THEN
-          lcd_enable <= '1';
-          lcd_bus <= "10" & RX_data;
-        ELSE
-          lcd_enable <= '0';
-        END IF;
-      end if;
-  
-   
-=======
 		 if rising_edge(clk) then
 			if RX_ComeGetMe = '1' then
 				IF(lcd_busy = '0' AND lcd_enable = '0') THEN
@@ -83,7 +67,6 @@ begin
 				lcd_enable <= '0';
 			end if;
 		 end if;
->>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
   
     when USER_state =>
       RX_busy <= '0';
