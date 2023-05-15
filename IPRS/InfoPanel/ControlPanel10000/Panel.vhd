@@ -13,6 +13,7 @@ ENTITY Panel IS
     home        : in std_logic;                        --resets cursor to home, button
     rooms       : in std_logic_vector(3 downto 0);     --room number, switches
 
+	 shiftspike  : out std_LOGIC;
     TX_serialout : out std_LOGIC;							--Transmitter output
     RX_busy    : OUT  STD_LOGIC;                     --active high, uart busy, goes to LED
     rw, rs, e, lcdon  : OUT  STD_LOGIC;                     --read/write, setup/data, enable and on for lcd
@@ -44,6 +45,9 @@ architecture Panel_impl of Panel is
 	 signal change_detected : std_LOGIC;
 	 	 
 
+	 signal doShift      : std_LOGIC;
+	 
+	 
   constant startbyte : STD_LOGIC_VECTOR := "01111110"; --start byte for uart ascii ~
   constant stopbyte : STD_LOGIC_VECTOR := "00100001"; --stop byte for uart ascii !
 begin
@@ -90,6 +94,14 @@ begin
 	   TX_data <= "0000" & rooms;
       RX_busy <= '0';
       lcd_enable <= '0';
+		if doShift = '1' and shift = '0' then -- shift screen to the left
+			lcd_enable <= '1';
+			lcd_bus <= "0000011000";
+		elsif home = '0' then					  -- return home
+			lcd_enable <= '1';
+			lcd_bus <= "0000000010";
+		end if;
+			
 
 	
 	 when send_state =>
@@ -182,5 +194,29 @@ begin
             previous_vector <= rooms;
         end if;
     end process;
+	 
+	 
+	 
+	 
+	shiftProcess : process(clk)
+		variable counter : integer range 0 to 25000001 := 0;
+	begin
+	if rising_edge(clk) then
+		if shift = '1' then
+			doShift <= '0';
+		elsif shift = '0' then
+			counter := counter + 1;
+			if counter = 12500000 then
+				doShift <= '1';
+				counter := 0;
+			else
+				doShift <= '0';
+			end if;
+		end if;
+	 end if;
+	end process;
+	
+	
+	SHIftspike <= doshift;
 
 end Panel_impl;

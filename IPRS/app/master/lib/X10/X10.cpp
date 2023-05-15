@@ -303,23 +303,6 @@ uint8_t X10::getAddress() const
 
 int X10::getValue() const
 {
-    size_t value = 0;
-    for(size_t i = 10; i<50; ++i)
-    {
-        if((data_[i*2] == false) && (data_[i*2+1] == false))
-        {
-            break;
-        }
-        else if(data_[i*2])
-        {
-            value << 1;
-            ++value;
-        }
-        else
-        {
-            value << 1;
-        }
-    }
-    value >> 1;
-    return value;
+
+    return 0;
 }
