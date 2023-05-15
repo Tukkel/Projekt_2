@@ -1,11 +1,19 @@
+<<<<<<< HEAD
+Fitter Status : Successful - Wed May 10 12:52:20 2023
+=======
 Fitter Status : Successful - Wed May 10 12:28:28 2023
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
 Revision Name : Panel
 Top-level Entity Name : Panel
 Family : Cyclone II
 Device : EP2C35F672C6
 Timing Models : Final
+<<<<<<< HEAD
+Total logic elements : 265 / 33,216 ( < 1 % )
+=======
 Total logic elements : 266 / 33,216 ( < 1 % )
+>>>>>>> bf3acce41f2fc33fa6f425499950e92ee5b29b1e
     Total combinational functions : 264 / 33,216 ( < 1 % )
     Dedicated logic registers : 77 / 33,216 ( < 1 % )
 Total registers : 77
