@@ -3,8 +3,8 @@
 #include "X10.h"
 #include <stdlib.h>
 #include "sensorSlave.h"
-
-
+#include "uart.h"
+#include <string.h>
 
 
 /*
@@ -71,10 +71,18 @@ int main(void){
 #############################################################################################################
 */
 
-int main(void){
 
+int main(void){
     SensorSlave slave;
     slave.Init_ADC();
-    unsigned int x = slave.getSensorInformation();
-
+    InitUART(9600, 8);
+    char c[] = "\n\r";
+    uint16_t x;
+    while(1)
+    {
+    x = slave.getSensorInformation();
+    SendInteger(x);
+    SendString(c);
+    _delay_ms(1000);
+    }
 }

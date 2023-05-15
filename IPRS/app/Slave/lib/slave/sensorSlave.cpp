@@ -1,6 +1,5 @@
 #include "sensorSlave.h"
 
-//  HUGGET FRA MSYS LAB-ØVELSE 13 LØSNINGSFORSLAG
 SensorSlave::SensorSlave()
 {
 
@@ -10,6 +9,7 @@ SensorSlave::~SensorSlave()
 
 }
 
+//  HUGGET FRA MSYS LAB-ØVELSE 13 LØSNINGSFORSLAG
 void SensorSlave::Init_ADC()
 {
   // PF pins are inputs (ADC7-ADC0 inputs)
