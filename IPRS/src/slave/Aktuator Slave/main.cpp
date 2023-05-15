@@ -10,5 +10,4 @@ int main(void){
     while(1){
         slaveAktuator.opdaterLog();
     }
-
 }
