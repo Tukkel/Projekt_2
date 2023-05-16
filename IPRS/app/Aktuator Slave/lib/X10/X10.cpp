@@ -293,16 +293,31 @@ uint8_t X10::getAddress() const
     uint8_t address = 0;
     for(size_t i = 2; i<10; ++i)
     {
-        if(data_[i*2])
-        {
-            address += pow(2, 9-i);
-        }
+
+            address += data_[2*i]<<i-2;
+
     }
     return address;
 }
 
 int X10::getValue() const
 {
+    size_t value = 0;
+    size_t count = 0;
+    for(size_t i = 10; i<50; ++i)
+    {
+        if((data_[i*2] == false) && (data_[i*2+1] == false))
+        {
+            break;
+        }
+        count++;
+    }
+    count--;
+    for(size_t i = 10; i<(10 +count); ++i)
+    {
 
-    return 0;
+            //value += data_[(10 +count)*2 - 2*i]<<i-10;
+        value += data_[2*i]<<count+9-i;
+    }
+    return value;
 }

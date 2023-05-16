@@ -1,6 +1,6 @@
 #include "slave.h"
 
-Slave::Slave(uint8_t * address) : x10_(0x01, 0x02, 0x04, address, 's')
+Slave::Slave(uint8_t * address, uint8_t addressSize) : x10_(0x01, 0x02, 0x04, address, addressSize, 's')
 {
 
     for(size_t i=0; i < 8;i++)
