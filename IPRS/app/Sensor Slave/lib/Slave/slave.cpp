@@ -1,9 +1,12 @@
-#include slave.h
+#include "slave.h"
 
-Slave::Slave(bool * address)
+Slave::Slave(uint8_t * address, uint8_t addressSize) : x10_(0x01, 0x02, 0x04, address, addressSize, 's')
 {
-    address_ = address;
-    x10_ = X10(0x01, 0x02, 0x03, address_, 's');
+
+    for(size_t i=0; i < 8;i++)
+    {
+        address_[i] = address[i];
+    }
     data_[100] = {false};
 }
 
