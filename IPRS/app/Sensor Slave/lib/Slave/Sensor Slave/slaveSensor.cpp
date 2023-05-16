@@ -7,15 +7,15 @@ SlaveSensor::SlaveSensor(int inPin, bool * address, sensorType sType) : Slave(ad
 
     if(sType_ == roomSensor)
     {
-        threshold_ = 1; //insert value here after test
+        threshold = 1; //insert value here after test
     }
     else if(sType_ == doorSensor)
     {
-        threshold_ = 500;
+        threshold = 500;
     }
 }
 
-SlaveSensor::sendActivty(){
+SlaveSensor::sendActivity(){
     setNormalPowerUsage();
     updateActivity();
     x10_.sendData(activity_);
@@ -45,22 +45,13 @@ unsigned int SlaveSensor::getSensorValue() const
   return ADCW; // Return result
 }
 
-void slaveSensor::updateActivity()
+void SlaveSensor::updateActivity()
 {
     activity_ = getSensorValue() > threshold_? true : false;
 }
 
-bool slaveSensor::getActivity() const
+
+bool SlaveSensor::getActivity() const
 {
     return activity_;
-}
-
-void setNormalPowerUsage()
-{
-
-}
-
-void setLowPowerUsage()
-{
-
 }
