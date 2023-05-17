@@ -299,7 +299,7 @@ uint8_t X10::getAddress() const
     uint8_t address = 0;
     for(size_t i = 2; i<10; ++i)
     {
-        address += data_[2*i]<<i-2;
+        address += data_[2*i]<< (i-2);
     }
     return address;
 }
@@ -319,7 +319,7 @@ int X10::getValue() const
     --count;
     for(size_t i = 10; i<(10+count); ++i)
     {
-        value += data_[2*i]<<count+9-i;
+        value += data_[2*i] << (count+9-i);
     }
     return value;
 }

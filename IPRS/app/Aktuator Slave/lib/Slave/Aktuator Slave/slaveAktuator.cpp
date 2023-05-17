@@ -3,11 +3,7 @@
 #include <math.h>
 slaveAktuator::slaveAktuator(int outPin, uint8_t* addressArray, uint8_t logLysStatus): Slave(addressArray)
 {
-    slaveNr_ = 0;
-    for(size_t i=0; i < 8;i++)
-    {
-        slaveNr_ += addressArray[7-i]<<i;
-    }
+
     logLysStatus_ = logLysStatus;
     outPin_ = outPin;
 }

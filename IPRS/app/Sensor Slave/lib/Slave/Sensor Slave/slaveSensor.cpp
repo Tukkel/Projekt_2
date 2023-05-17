@@ -44,26 +44,29 @@ unsigned int SlaveSensor::getSensorValue() const
 
 void SlaveSensor::updateActivity()
 {
-    if (sType_ != idSensor){
-        uint16_t value = getSensorValue();
-        uint16_t range = 0;
-        if (sType_ == doorSensor)
-        {
-            range = 30;
+    if (!activity_){
+        if (sType_ != idSensor){
+            uint16_t value = getSensorValue();
+            uint16_t range = 0;
+            if (sType_ == doorSensor)
+            {
+                range = 30;
 
-        }
-        else if (sType_ == roomSensor)
-        {
-            range = 15;
-        }
+            }
+            else if (sType_ == roomSensor)
+            {
+                range = 15;
+            }
 
-        if (value + range > threshold_ && value - range < threshold_){
-            activity_ = false;
-        }
-        else{
-            activity_ = true;
+            if (value + range > threshold_ && value - range < threshold_){
+                activity_ = false;
+            }
+            else{
+                activity_ = true;
+            }
         }
     }
+
 }
 
 
@@ -76,7 +79,6 @@ void SlaveSensor::updateIds(){
     DDRA = 0x00;
     int input = 255 - PINA;
     int temp = 0;
-
     for (int i = 0; i < sizeof(ids_)/sizeof(ids_[0]); i++)
     {
         temp = 1<<i;
@@ -105,4 +107,18 @@ uint8_t SlaveSensor::getIds() const{
     }
     
     return ids;
+}
+
+bool SlaveSensor::dataRequested() const{
+    while (1){
+        x10_.readData();
+        if (x10_.getAddress() == slaveNr_){
+            if (x10_.getValue() == 0x01){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
 }
