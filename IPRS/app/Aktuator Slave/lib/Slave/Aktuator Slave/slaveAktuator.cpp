@@ -13,9 +13,10 @@ void slaveAktuator::opdaterLog()
     setNormalPowerUsage();
     DDRB |= (1<<outPin_) ;
     x10_.readData();
+    PORTB = 8;
     uint8_t address = x10_.getAddress();
     
-    if (address == slaveNr_)
+    if (address != slaveNr_)
     {
         setLowPowerUsage();
         return;
@@ -26,11 +27,13 @@ void slaveAktuator::opdaterLog()
     
     if (logLysStatus_)
     {
-        PORTB |= (1<<outPin_);
+        //PORTB |= (1<<outPin_);
+        PORTB = logLysStatus_;
     }
     else
     {
-        PORTB &= ~(1<<outPin_);
+        //PORTB &= ~(1<<outPin_);
+        PORTB = logLysStatus_;
     }
     setLowPowerUsage();
 }
