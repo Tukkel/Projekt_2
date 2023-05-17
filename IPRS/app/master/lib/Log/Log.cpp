@@ -8,9 +8,10 @@ Log::Log(uint8_t numberRooms, size_t numberPeople) : numberRooms_(numberRooms), 
     roomConnections_[numberRooms_][numberRooms_] = {false};
     roomNames_[numberRooms_][17];
     peopleNames_[numberPeople_][17];
-    //log_ = new double[10][10][10];
-    logTime_ = new size_t[10];
-    nextEntry_ = 1;
+    nextEntry_ = 0;
+
+    logTime_ = (size_t*)malloc(10*sizeof(size_t));
+    log_ = (double *)malloc(numberRooms_*numberPeople_*10*sizeof(double));
 
     for(size_t i = 0; i<numberRooms_; ++i)
     {
@@ -163,11 +164,26 @@ void Log::logActivity(uint8_t roomNumber)
     }
     else if(sum < 0.05)
     {
-        
+        double adjacentSum = 0;
+        for(size_t i = 0; i<numberRooms_; ++i)
+        {
+            if(roomConnections_[roomNumber][i])
+            {
+                for(size_t j = 0; j<numberPeople_; ++j)
+                {
+                    adjacentSum += roomChances_[i][j];
+                }
+            }
+        }
     }
 }
 
 void Log::logMovement(uint8_t roomNumber1, uint8_t roomNumber2)
 {
 
+}
+
+size_t Log::offset(size_t logNumber, size_t roomNumber, size_t personNumber)
+{
+    return (logNumber*numberRooms_*numberPeople_) + (personNumber*numberRooms_) + roomNumber;
 }

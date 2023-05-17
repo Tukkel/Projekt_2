@@ -8,7 +8,7 @@ X10::X10(volatile uint8_t clock_pin, volatile uint8_t X10_read, volatile uint8_t
 
     DDRL &= ~clock_pin_;    //Set pin asignments
     DDRL &= ~X10_read_;
-    DDRL |= X10_write_;
+    DDRL &= ~X10_write_;
 
     if (unit == 'm' || unit == 'M') //If master make address empty
     {
@@ -265,31 +265,29 @@ bool X10::writeData(uint8_t* data, size_t dataSize, uint8_t* address, size_t add
         ++i;
     }
     
-    while(true)
-    {       //First send start bit
-        //DDRL |= X10_write_;
-        writeBit(3);
-        writeBit(1);
+    //First send start bit
+    DDRL |= X10_write_;
+    writeBit(3);
+    writeBit(1);
 
-        for(size_t j = 0; j < sizeof(send); j++)    //Address and data with pairity bit is send here
+    for(size_t j = 0; j < sizeof(send); j++)    //Address and data with pairity bit is send here
+    {
+        writeBit(send[j]);
+    }
+
+    writeBit(2);
+    writeBit(0);
+    DDRL &= ~X10_write_;
+
+    if(readHalfBit())       //Check for ack. If no ack is recived try again
+    {
+        if(readHalfBit() == 0)
         {
-            writeBit(send[j]);
+            return true;
         }
-
-        writeBit(2);
-        writeBit(0);
-        //DDRL &= ~X10_write_;
-
-        if(readHalfBit())       //Check for ack. If no ack is recived try again
+        else
         {
-            if(readHalfBit() == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }
