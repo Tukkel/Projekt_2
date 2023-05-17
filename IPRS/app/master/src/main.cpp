@@ -11,38 +11,43 @@
 int main()
 {
 	UART uart(9600, 8);
-	uint8_t address1[8] = {0, 0, 0, 0, 0, 0, 0, 1};
-	uint8_t address2[8] = {0, 0, 0, 0, 0, 0, 1, 0};
-	X10 x10(1, 2, 4, address1,  'm');
+	uint8_t hvad[8] = {0, 0, 0, 0, 0, 0, 0, 1};
+	uint8_t addresstwo[8] = {0, 0, 0, 0, 0, 0, 1, 0};
+	X10 x10(1, 2, 4, hvad, sizeof(hvad)/sizeof(hvad[0]), 'm');
 	uint8_t data[1] = {1};
 	uint8_t dataRead = 0;
 	DDRB = 0xFF;
 	bool recived = false;
 	while(true)
 	{
-		while(recived == false)
-		{
-			recived = x10.writeData(data, sizeof(data)/sizeof(data[0]), address2, sizeof(address2)/sizeof(address2[0]));
-		}
 		while(dataRead == 0)
 		{
-			
+			while(recived == false)
+			{
+				recived = x10.writeData(data, sizeof(data)/sizeof(data[0]), addresstwo, sizeof(addresstwo)/sizeof(addresstwo[0]));
+				PORTB = 1;
+			}
 			recived = false;
 			x10.readData();
 			dataRead = x10.getValue();
+			PORTB = dataRead+1;
 		}
 		while(recived == false)
 		{
-			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address1, sizeof(address1)/sizeof(address1[0]));
+			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), hvad, sizeof(addresstwo)/sizeof(addresstwo[0]));
+			PORTB = 4;
 		}
 		recived = false;
 		dataRead = 0;
-		_delay_ms(5000);
+		PORTB = 8;
+		_delay_ms(3000);
 		while(recived == false)
 		{
-			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address1, sizeof(address1)/sizeof(address1[0]));
+			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), hvad, sizeof(addresstwo)/sizeof(addresstwo[0]));
+			PORTB = 16;
 		}
 		recived = false;
+		_delay_ms(2000);
 	}
 	
 }
