@@ -14,7 +14,7 @@ ENTITY Panel IS
     rooms       : in std_logic_vector(3 downto 0);     --room number, switches
 	 
 	 
-	  roomsInUse   : out std_LOGIC_VECTOR(7 downto 0);    -- LED for rooms
+	 roomsInUse   : out std_LOGIC_VECTOR(7 downto 0);    -- LED for rooms
     TX_serialout : out std_LOGIC;							--Transmitter output
     RX_busy    : OUT  STD_LOGIC;                     --active high, uart busy, goes to LED
     rw, rs, e, lcdon  : OUT  STD_LOGIC;                     --read/write, setup/data, enable and on for lcd
@@ -88,14 +88,17 @@ begin
 			if RX_ComeGetMe = '1' then
 			   if RX_data = ledstart and mapleds = '0' then
 					mapleds <= '1';
-				elsIF RX_data = ledstop and mapleds = '1' then
-					mapleds <= '0';
+				--elsIF RX_data = ledstop and mapleds = '1' then
+				--	mapleds <= '0';
 				elsif mapleds = '1' then
 					roomsInUse <= RX_data;
+					mapleds <= '0';
 				elsIF(lcd_busy = '0' AND lcd_enable = '0') THEN
 				  lcd_enable <= '1';
 				  	if RX_data = startbyte then
 						lcd_bus <= "0000000001"; -- Clear display
+					elsif RX_data = stopbyte then
+						lcd_enable <= '0';
 					else 
 						lcd_bus <= "10" & RX_data; -- Else print the byte
 					end if;
