@@ -11,13 +11,14 @@
 int main()
 {
 	UART uart(9600, 8);
-	uint8_t address[8] = {0, 0, 0, 0, 1, 0, 1, 1};
+	uint8_t address[8] = {0, 0, 0, 0, 0, 0, 0, 1};
 	X10 x10(1, 2, 4, address,  'm');
-	uint8_t data[6] = {0,0,0,0, 0, 0};
+	uint8_t data[6] = {0,0,0,0, 0, 1};
 	DDRB = 0xFF;
+	bool recived;
 
 	while(1)
 	{
-		x10.writeData(data, sizeof(data)/sizeof(data[0]), address, sizeof(address)/sizeof(address[0]));
+		recived = x10.writeData(data, sizeof(data)/sizeof(data[0]), address, sizeof(address)/sizeof(address[0]));
 	}
 }
