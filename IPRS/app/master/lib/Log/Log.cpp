@@ -1,15 +1,16 @@
 #include "Log.h"
 
-Log::Log(uint8_t numberRooms, size_t numberPeople)
+Log::Log(uint8_t numberRooms, size_t numberPeople) : numberRooms_(numberRooms), numberPeople_(numberPeople)
 {
-    numberRooms_ = numberRooms;
-    numberPeople_ = numberPeople;
     rooms_[numberRooms_][numberPeople_] = {false};
     roomChances_[numberRooms_][numberPeople_] = {0};
     peopleHistory_[numberRooms_][numberPeople_] = {0};
     roomConnections_[numberRooms_][numberRooms_] = {false};
     roomNames_[numberRooms_][17];
     peopleNames_[numberPeople_][17];
+    //log_ = new double[10][10][10];
+    logTime_ = new size_t[10];
+    nextEntry_ = 1;
 
     for(size_t i = 0; i<numberRooms_; ++i)
     {

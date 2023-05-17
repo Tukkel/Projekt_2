@@ -10,7 +10,7 @@ class X10
     public:
         X10(volatile uint8_t clock_pin, volatile uint8_t X10_read, volatile uint8_t X10_write, uint8_t* address, size_t addressSize = 0, char unit = 's');
         void readData();
-        void writeData(uint8_t* data, size_t dataSize, uint8_t* address = 0, size_t addressSize = 0) const;
+        bool writeData(uint8_t* data, size_t dataSize, uint8_t* address = 0, size_t addressSize = 0) const;
         uint8_t getAddress() const;
         int getValue() const;
     private:
