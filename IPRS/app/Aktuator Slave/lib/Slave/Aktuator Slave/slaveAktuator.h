@@ -15,7 +15,6 @@ class slaveAktuator : public Slave
 private:
     uint8_t logLysStatus_;
     int outPin_;
-    uint8_t slaveNr_;
 public:
     slaveAktuator(int outPin, uint8_t * address, uint8_t logLysStatus = false);
     void opdaterLog();

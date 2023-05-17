@@ -39,11 +39,11 @@ bool X10::readHalfBit() const
     bool bit = false;
     while (true) // While reading
     {
-        if (PINA & clock_pin_)
+        if (PINL & clock_pin_)
         {
-            while (PINA & clock_pin_)   //While clock pin is high set bit true if true is send on X10
+            while (PINL & clock_pin_)   //While clock pin is high set bit true if true is send on X10
             {
-                if (PINA & X10_read_)
+                if (PINL & X10_read_)
                 {
                     bit = true;
                 }
@@ -102,7 +102,7 @@ void X10::readData()
 
         while(true) //Check for pairity
         {
-            if (PINA & clock_pin_)
+            if (PINL & clock_pin_)
             {
                 DDRL |= X10_write_;
                 if(pair%2)  // If not even try to read again and don't send ack
@@ -126,19 +126,19 @@ void X10::writeBit(uint8_t bit) const
 {
     while (true)
     {
-        if (PINA & clock_pin_)      //Wait for pulse on clock_pin
+        if (PINL & clock_pin_)      //Wait for pulse on clock_pin
         {
             if (bit == 1)            //If sending a 1 write 10 half bits
             {
                 PORTL |= X10_write_;
-                while(PINA & clock_pin_)
+                while(PINL & clock_pin_)
                 {
                 }
                 PORTL &= ~X10_write_;
-                while((PINA & clock_pin_) == 0)
+                while((PINL & clock_pin_) == 0)
                 {
                 }
-                while(PINA & clock_pin_)
+                while(PINL & clock_pin_)
                 {
                 }
                 return;
@@ -146,13 +146,13 @@ void X10::writeBit(uint8_t bit) const
             else if (bit == 2)            //If sending a 2 write 00 half bits
             {
                 PORTL &= ~X10_write_;
-                while(PINA & clock_pin_)
+                while(PINL & clock_pin_)
                 {
                 }
-                while((PINA & clock_pin_) == 0)
+                while((PINL & clock_pin_) == 0)
                 {
                 }
-                while(PINA & clock_pin_)
+                while(PINL & clock_pin_)
                 {
                 }
                 return;
@@ -160,15 +160,15 @@ void X10::writeBit(uint8_t bit) const
             else if (bit == 3)            //If sending a 3 write 11 half bits
             {
                 PORTL |= X10_write_;
-                while(PINA & clock_pin_)
+                while(PINL & clock_pin_)
                 {
                 }
                 PORTL &= ~X10_write_;
-                while((PINA & clock_pin_) == 0)
+                while((PINL & clock_pin_) == 0)
                 {
                 }
                 PORTL |= X10_write_;
-                while(PINA & clock_pin_)
+                while(PINL & clock_pin_)
                 {
                 }
                 PORTL &= ~X10_write_;
@@ -177,14 +177,14 @@ void X10::writeBit(uint8_t bit) const
             else                //Else send a 0 with 01 half bits
             {
                 PORTL &= ~X10_write_;
-                while(PINA & clock_pin_)
+                while(PINL & clock_pin_)
                 {
                 }
-                while((PINA & clock_pin_) == 0)
+                while((PINL & clock_pin_) == 0)
                 {
                 }
                 PORTL |= X10_write_;
-                while(PINA & clock_pin_)
+                while(PINL & clock_pin_)
                 {
                 }
                 PORTL &= ~X10_write_;

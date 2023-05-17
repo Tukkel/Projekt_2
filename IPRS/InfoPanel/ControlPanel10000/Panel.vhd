@@ -12,8 +12,9 @@ ENTITY Panel IS
     shift       : IN   STD_LOGIC;                     --shifts display, button
     home        : in std_logic;                        --resets cursor to home, button
     rooms       : in std_logic_vector(3 downto 0);     --room number, switches
-
-	 shiftspike  : out std_LOGIC;
+	 
+	 
+	  roomsInUse   : out std_LOGIC_VECTOR(7 downto 0);    -- LED for rooms
     TX_serialout : out std_LOGIC;							--Transmitter output
     RX_busy    : OUT  STD_LOGIC;                     --active high, uart busy, goes to LED
     rw, rs, e, lcdon  : OUT  STD_LOGIC;                     --read/write, setup/data, enable and on for lcd
@@ -41,15 +42,18 @@ architecture Panel_impl of Panel is
 	 signal   TX_active  : std_LOGIC;							--sending 
 	 signal   TX_done    : std_LOGIC;							--done sending
 	 
+	 --shifting logic
 	 signal previous_vector : std_logic_vector(3 downto 0);
 	 signal change_detected : std_LOGIC;
-	 	 
-
-	 signal doShift      : std_LOGIC;
+	 signal doShift         : std_LOGIC;
+	 
+	 signal mapleds : std_LOGIC;
 	 
 	 
   constant startbyte : STD_LOGIC_VECTOR := "01111110"; --start byte for uart ascii ~
   constant stopbyte : STD_LOGIC_VECTOR := "00100001"; --stop byte for uart ascii !
+  constant ledstart : std_LOGIC_VECTOR := "00101111"; --LEDbyte start ascii /
+  constant ledstop : std_LOGIC_VECTOR := "01011100"; --LEDbyte start ascii \
 begin
 
   uartRX : entity UART_RX port map(i_clk => clk, i_RX_Serial => RX_serialIN, o_RX_DV => RX_ComeGetMe, o_RX_Byte => RX_data);
@@ -68,15 +72,27 @@ begin
 		END IF;
 	END PROCESS;
   
-  outputs: process (clk, present_state, RX_ComeGetMe, TX_active)
+  
+  outputs: process (clk, present_state, RX_ComeGetMe, TX_active, reset)
   begin
-   if rising_edge(clk) then
+	if reset = '0' then
+		roomsInUse <= "00000000";
+   elsif rising_edge(clk) then
     case present_state is
     -- one case branch required for each state
     when receive_state =>
+	 
+	 -- ~~ /(ledbyte)\(data)!
+	 
       RX_busy <= '1';
 			if RX_ComeGetMe = '1' then
-				IF(lcd_busy = '0' AND lcd_enable = '0') THEN
+			   if RX_data = ledstart and mapleds = '0' then
+					mapleds <= '1';
+				elsIF RX_data = ledstop and mapleds = '1' then
+					mapleds <= '0';
+				elsif mapleds = '1' then
+					roomsInUse <= RX_data;
+				elsIF(lcd_busy = '0' AND lcd_enable = '0') THEN
 				  lcd_enable <= '1';
 				  	if RX_data = startbyte then
 						lcd_bus <= "0000000001"; -- Clear display
@@ -216,7 +232,5 @@ begin
 	 end if;
 	end process;
 	
-	
-	SHIftspike <= doshift;
 
 end Panel_impl;

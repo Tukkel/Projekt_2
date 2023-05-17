@@ -2,7 +2,6 @@
 
 #include <avr/io.h>
 #include <stdlib.h>
-#define F_CPU 16000000
 #include <util/delay.h>
 
 class X10
