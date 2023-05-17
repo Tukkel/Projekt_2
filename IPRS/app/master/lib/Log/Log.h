@@ -15,6 +15,7 @@ class Log
         void setAddress(uint8_t address, uint32_t addressType);
         void logActivity(uint8_t roomNumber);
         void logMovement(uint8_t roomNumber1, uint8_t roomNumber2);
+        double*** Log_;
     private:
         bool** rooms_;
         double** roomChances_;
