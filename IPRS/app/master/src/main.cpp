@@ -1,53 +1,151 @@
-/********************************************
-* MSYS, LAB 13. Part 3                      *
-* ADC using multiplexing and regulating.    *
-*                                           *
-* Henning Hargaard 11/4 2019                *
-*********************************************/
 #include <avr/io.h>
 #include "X10.h"
-#include "uart.h"
+#include "UARTPC.h"
+#include "UARTDE.h"
+#include "Log.h"
+
+#include "Interrupts.h"
+extern Interrupts I;
+
+#include "Functions.cpp"
 
 int main()
 {
-	UART uart(9600, 8);
-	uint8_t hvad[8] = {0, 0, 0, 0, 0, 0, 0, 1};
+	UARTPC uartPc(9600, 8);
+	UARTDE uartDe(9600, 8);
+	uint8_t address[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 	uint8_t addresstwo[8] = {0, 0, 0, 0, 0, 0, 1, 0};
-	X10 x10(1, 2, 4, hvad, sizeof(hvad)/sizeof(hvad[0]), 'm');
-	uint8_t data[1] = {1};
+	X10 x10(1, 2, 4, address, sizeof(address)/sizeof(address[0]), 'm');
+	uint8_t on[1] = {1};
+	uint8_t off[1] = {0};
 	uint8_t dataRead = 0;
 	DDRB = 0xFF;
 	bool recived = false;
+
+	uint8_t rooms;
+	size_t users;
+
 	while(true)
 	{
-		while(dataRead == 0)
+		PORTB = I.stringReady();
+		if(I.stringReady())
 		{
-			while(recived == false)
+			size_t i = 0;
+			while(I.string[i] != '\0')
 			{
-				recived = x10.writeData(data, sizeof(data)/sizeof(data[0]), addresstwo, sizeof(addresstwo)/sizeof(addresstwo[0]));
-				PORTB = 1;
+				if(I.string[i] == ',')
+				{
+					if(I.string[i-1] == 'E')
+					{
+						rooms = getRooms(I.string);
+						users = getUsers(I.string);
+						PORTB = users;
+						I.stringRead();
+						break;
+						break;
+					}
+					else
+					{
+						I.stringRead();
+						break;
+					}
+				}
+				++i;
 			}
-			recived = false;
+		}
+	}
+
+	Log log(rooms, users);
+
+	while(true)
+	{
+		/*
+		recived = x10.writeData(on, sizeof(on)/sizeof(on[0]), addresstwo, sizeof(addresstwo)/sizeof(addresstwo[0]));
+		if(recived)
+		{
 			x10.readData();
 			dataRead = x10.getValue();
 			PORTB = dataRead+1;
-		}
-		while(recived == false)
-		{
-			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), hvad, sizeof(addresstwo)/sizeof(addresstwo[0]));
-			PORTB = 4;
+			address[7] = 1;
+			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address, sizeof(address)/sizeof(address[0]));
 		}
 		recived = false;
 		dataRead = 0;
-		PORTB = 8;
-		_delay_ms(3000);
-		while(recived == false)
-		{
-			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), hvad, sizeof(addresstwo)/sizeof(addresstwo[0]));
-			PORTB = 16;
-		}
+		_delay_ms(1000);
+		recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address, sizeof(address)/sizeof(address[0]));
 		recived = false;
-		_delay_ms(2000);
+		_delay_ms(1000);
+		*/
+		log.logID(1, 0);
+		log.logID(0, 1);
+
+		//PORTB = I.stringReady();
+		if(I.stringReady())
+		{
+			size_t i = 0;
+			while(I.string[i] != '\0')
+			{
+				if(I.string[i] == ',')
+				{
+					if(I.string[i-1] == 'A')
+					{
+						uint16_t intToSend = 0;
+						for(size_t k = 0; k<users; ++k)
+						{
+							for(size_t l = 0; l<rooms; ++l)
+							{
+								intToSend = log.log_[log.offset(log.nextEntry_-1,l,k)]/0.001;
+								uartPc.SendInteger(intToSend);
+								uartPc.SendChar(' ');
+							}
+							uartPc.SendChar('\n');
+						}
+						I.stringRead();
+						/*
+						for(size_t j = 0; j<log.nextEntry_; ++j)
+						{
+							for(size_t k = 0; k<users; ++k)
+							{
+								for(size_t l = 0; l<rooms; ++l)
+								{
+									intToSend = log.log_[log.offset(j,l,k)]/0.001;
+									uartPc.SendInteger(intToSend);
+									uartPc.SendChar(' ');
+								}
+								uartPc.SendChar('\n');
+							}
+							uartPc.SendChar('\n');
+						}
+						*/
+					}
+					else if(I.string[i-1] == 'B')
+					{
+						uint8_t address = getAddress(I.string);
+						uint32_t addressType = getAddressType(I.string);
+						log.setAddress(address, addressType);
+						PORTB = address;
+						I.stringRead();
+					}
+					else if(I.string[i-1] == 'C')
+					{
+						bool connections[rooms] = {false};
+						bool* boolPtr = &connections[0];
+						uint8_t room = getRoom(I.string);
+						getConnections(I.string, boolPtr);
+						log.setRoomConnection(room, connections);
+						PORTB = room;
+						I.stringRead();
+					}
+					else if(I.string[i-1] == 'D')
+					{
+						char string[] = "Callibrated\n";
+						uartPc.SendString(string);
+						I.stringRead();
+					}
+				}
+				++i;
+			}
+		}
 	}
 	
 }

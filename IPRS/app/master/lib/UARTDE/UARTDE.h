@@ -4,10 +4,10 @@
 #include <stdlib.h>
 #include <math.h>
 
-class UART
+class UARTDE
 {
     public:
-        UART(unsigned long BaudRate, unsigned char DataBit);
+        UARTDE(unsigned long BaudRate, unsigned char DataBit);
         unsigned char CharReady();
         char ReadChar();
         void SendChar(char Tegn);

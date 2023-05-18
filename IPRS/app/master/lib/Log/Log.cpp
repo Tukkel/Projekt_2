@@ -6,9 +6,10 @@ Log::Log(uint8_t numberRooms, size_t numberPeople) : numberRooms_(numberRooms), 
     roomChances_[numberRooms_][numberPeople_] = {0};
     peopleHistory_[numberRooms_][numberPeople_] = {0};
     roomConnections_[numberRooms_][numberRooms_] = {false};
-    roomNames_[numberRooms_][17];
-    peopleNames_[numberPeople_][17];
+    roomNames_[numberRooms_][15];
+    peopleNames_[numberPeople_][16];
     nextEntry_ = 0;
+    timeMin_ = 0;
 
     logTime_ = (size_t*)malloc(10*sizeof(size_t));
     log_ = (double *)malloc(numberRooms_*numberPeople_*10*sizeof(double));
@@ -162,7 +163,7 @@ void Log::logActivity(uint8_t roomNumber)
             }
         }
     }
-    else if(sum < 0.05)
+    else if(sum < 1)
     {
         double adjacentSum = 0;
         for(size_t i = 0; i<numberRooms_; ++i)
@@ -175,15 +176,70 @@ void Log::logActivity(uint8_t roomNumber)
                 }
             }
         }
+        for(size_t i = 0; i<numberRooms_; ++i)
+        {
+            if(roomConnections_[roomNumber][i])
+            {
+                for(size_t j = 0; j<numberPeople_; ++j)
+                {
+                    roomChances_[i][j] -= (roomChances_[i][j]/adjacentSum)*sum;
+                    roomChances_[roomNumber][j] += (roomChances_[i][j]/adjacentSum)*sum;
+                }
+            }
+        }
     }
 }
 
 void Log::logMovement(uint8_t roomNumber1, uint8_t roomNumber2)
 {
+    double room1Sum = 0;
+    for(size_t i = 0; i<numberPeople_; ++i)
+    {
+        room1Sum += roomChances_[roomNumber1][i];
+    }
+    for(size_t i = 0; i<numberPeople_; ++i)
+    {
+        roomChances_[roomNumber1][i] -= roomChances_[roomNumber1][i]/room1Sum;
+        roomChances_[roomNumber2][i] += roomChances_[roomNumber1][i]/room1Sum;
+    }
+}
 
+void Log::logID(uint8_t roomNumber, size_t personNumber)
+{
+    for(size_t i = 0; i<numberRooms_; ++i)
+    {
+        roomChances_[i][personNumber] = 0;
+    }
+    roomChances_[roomNumber][personNumber] = 1;
+}
+
+void Log::setTime(size_t timeMin)
+{
+    timeMin_ = timeMin;
 }
 
 size_t Log::offset(size_t logNumber, size_t roomNumber, size_t personNumber)
 {
     return (logNumber*numberRooms_*numberPeople_) + (personNumber*numberRooms_) + roomNumber;
+}
+
+void Log::setLog()
+{
+    if(nextEntry_%10 == 0 && nextEntry_ != 0)
+    {
+        log_ = (double*)realloc(log_, numberRooms_*numberPeople_*(nextEntry_+10)*sizeof(double));
+        logTime_ = (size_t*)realloc(logTime_, (nextEntry_+10)*sizeof(size_t));
+    }
+
+    for(size_t i=0; i<numberRooms_; ++i)
+    {
+        for(size_t j=0; j<numberPeople_; ++j)
+        {
+            log_[offset(nextEntry_, i, j)] = roomChances_[i][j];
+        }
+    }
+
+    logTime_[nextEntry_] = timeMin_;
+
+    ++nextEntry_;
 }

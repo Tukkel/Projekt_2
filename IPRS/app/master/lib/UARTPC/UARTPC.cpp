@@ -1,4 +1,4 @@
-#include "uart.h"
+#include "UARTPC.h"
 
 // Target CPU frequency
 #define XTAL 16000000
@@ -15,7 +15,7 @@ UART 0 initialization:
     Baud rate = 9600.
     Data bits = 8.
 *************************************************************************/
-UART::UART(unsigned long BaudRate, unsigned char DataBit)
+UARTPC::UARTPC(unsigned long BaudRate, unsigned char DataBit)
 {
 	if (BaudRate < 300)
 	{
@@ -29,27 +29,27 @@ UART::UART(unsigned long BaudRate, unsigned char DataBit)
 	UBRR0 = (int)round(UBR);
 	if (DataBit == 5)
 	{
-		UCSR0B = 0b00011000;
+		UCSR0B = 0b10011000;
 		UCSR0C = 0b00000000;
 	} 
 	else if (DataBit == 6)
 	{
-		UCSR0B = 0b00011000;
+		UCSR0B = 0b10011000;
 		UCSR0C = 0b00000010;
 	}
 	else if (DataBit == 7)
 	{
-		UCSR0B = 0b00011000;
+		UCSR0B = 0b10011000;
 		UCSR0C = 0b00000100;
 	}
 	else if (DataBit == 9)
 	{
-		UCSR0B = 0b00011100;
+		UCSR0B = 0b10011100;
 		UCSR0C = 0b00000110;
 	}
 	else
 	{
-		UCSR0B = 0b00011000;
+		UCSR0B = 0b10011000;
 		UCSR0C = 0b00000110;
 	}
 }
@@ -58,7 +58,7 @@ UART::UART(unsigned long BaudRate, unsigned char DataBit)
   Returns 0 (FALSE), if the UART has NOT received a new character.
   Returns value <> 0 (TRUE), if the UART HAS received a new character.
 *************************************************************************/
-unsigned char UART::CharReady()
+unsigned char UARTPC::CharReady()
 {
 	if ((UCSR0A & 0b10000000) != 0)
 	{
@@ -74,7 +74,7 @@ unsigned char UART::CharReady()
 Awaits new character received.
 Then this character is returned.
 *************************************************************************/
-char UART::ReadChar()
+char UARTPC::ReadChar()
 {
 	while (CharReady() == 0)
 	{
@@ -89,7 +89,7 @@ Then send the character.
 Parameter :
 	Tegn : Character for sending. 
 *************************************************************************/
-void UART::SendChar(char Tegn)
+void UARTPC::SendChar(char Tegn)
 {
 	while ((UCSR0A & 0b00100000) == 0)
 	{
@@ -103,7 +103,7 @@ Sends 0 terminated string.
 Parameter:
    Streng: Pointer to the string. 
 *************************************************************************/
-void UART::SendString(char* Streng)
+void UARTPC::SendString(char* Streng)
 {
 	unsigned int i = 0;
 	while (Streng[i] != '\0')
@@ -120,7 +120,7 @@ Makes use of the C standard library <stdlib.h>.
 Parameter:
     Tal: The integer to be converted and sent. 
 *************************************************************************/
-void UART::SendInteger(int Tal)
+void UARTPC::SendInteger(int Tal)
 {
 	char int_string[7];
 	itoa(Tal, int_string, 10);
