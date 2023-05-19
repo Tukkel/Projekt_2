@@ -112,13 +112,14 @@ uint8_t SlaveSensor::getIds() const{
 bool SlaveSensor::dataRequested() const{
     while (1){
         x10_.readData();
-        if (x10_.getAddress() == slaveNr_){
+        
+        //if (x10_.getAddress() == slaveNr_){
             if (x10_.getValue() == 0x01){
                 return true;
             }
             else{
                 return false;
             }
-        }
+        //}
     }
 }

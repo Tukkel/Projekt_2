@@ -57,10 +57,12 @@ void X10::readData()
 {
     size_t i;
     size_t pair;
+    bool ack;
     while(true)
     {
         i = 0;
         pair = 0;
+        ack = true;
         while (true)    //Find start bit
         {
             data_[0] = data_[1];
@@ -100,22 +102,52 @@ void X10::readData()
             ++i;
         }
 
-        while(true) //Check for pairity
+        if(unit_ == 'm')
         {
-            if (PINL & clock_pin_)
+            //PORTB = 8;
+            if(pair%2)
             {
-                DDRL |= X10_write_;
-                if(pair%2)  // If not even try to read again and don't send ack
+                ack = false;
+            }
+            else
+            {
+                ack = true;
+            }
+        }
+        else
+        {
+            for(size_t i = 2; i<10; ++i)
+            {
+                //PORTB |= data_[i*2]<<(9-i);
+                if(address_[i-2] != data_[2*i])
                 {
-                    writeBit(0);
-                    DDRL &= ~X10_write_;
-                    break;
+                    ack = false;
                 }
-                else        //Else convert result to an array with correct size and return it
+            }
+            if(pair%2)
+            {
+                ack = false;
+            }
+        }
+        if(unit_ == 'm' || ack)
+        {
+            while(true) //Check for pairity
+            {
+                if (PINL & clock_pin_)
                 {
-                    writeBit(1);
-                    DDRL &= ~X10_write_;
-                    return;
+                    DDRL |= X10_write_;
+                    if(ack)  // if sending ack
+                    {
+                        writeBit(1);
+                        DDRL &= ~X10_write_;
+                        return;
+                    }
+                    else        //Else don't send ack
+                    {
+                        writeBit(0);
+                        DDRL &= ~X10_write_;
+                        break;
+                    }
                 }
             }
         }
@@ -265,33 +297,29 @@ bool X10::writeData(uint8_t* data, size_t dataSize, uint8_t* address, size_t add
         ++i;
     }
     
-    while(true)
-    {       //First send start bit
-        DDRL |= X10_write_;
-        writeBit(3);
-        writeBit(1);
+    //First send start bit
+    DDRL |= X10_write_;
+    writeBit(3);
+    writeBit(1);
 
-        for(size_t j = 0; j < sizeof(send); j++)    //Address and data with pairity bit is send here
+    for(size_t j = 0; j < sizeof(send); j++)    //Address and data with pairity bit is send here
+    {
+        writeBit(send[j]);
+    }
+
+    writeBit(2);
+    writeBit(0);
+    DDRL &= ~X10_write_;
+
+    if(readHalfBit())       //Check for ack. If no ack is recived try again
+    {
+        if(readHalfBit() == 0)
         {
-            writeBit(send[j]);
-        }
-
-        writeBit(2);
-        writeBit(0);
-        DDRL &= ~X10_write_;
-
-        if(readHalfBit())       //Check for ack. If no ack is recived try again
-        {
-            if(readHalfBit() == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return true;
         }
     }
+
+    return false;
 }
 
 uint8_t X10::getAddress() const
@@ -299,7 +327,7 @@ uint8_t X10::getAddress() const
     uint8_t address = 0;
     for(size_t i = 2; i<10; ++i)
     {
-        address += data_[2*i]<<i-2;
+        address += data_[2*i]<<(i-2);
     }
     return address;
 }
@@ -319,7 +347,7 @@ int X10::getValue() const
     --count;
     for(size_t i = 10; i<(10+count); ++i)
     {
-        value += data_[2*i]<<count+9-i;
+        value += data_[2*i]<<(count+9-i);
     }
     return value;
 }

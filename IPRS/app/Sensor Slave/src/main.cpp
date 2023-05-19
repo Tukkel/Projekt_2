@@ -2,6 +2,7 @@
 #include <avr/io.h>
 
 int main(void){
+    DDRB = 0xFF;
     uint8_t address[8] = {false};
     address[6] = true;
     SlaveSensor s(1, address, doorSensor);
@@ -12,6 +13,7 @@ int main(void){
         while(s.getActivity()){
             while(!s.dataRequested()){
             }
+            PORTB = 8;
             s.sendActivity();
         }
     }
