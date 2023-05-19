@@ -2,6 +2,7 @@
 
 Log::Log(uint8_t numberRooms, size_t numberPeople) : numberRooms_(numberRooms), numberPeople_(numberPeople)
 {
+    _delay_ms(10);
     rooms_[numberRooms_][numberPeople_] = {false};
     roomChances_[numberRooms_][numberPeople_] = {0};
     peopleHistory_[numberRooms_][numberPeople_] = {0};
