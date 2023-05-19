@@ -6,7 +6,6 @@
 // main
 int main(void){
     // slave adresse sættes
-    DDRB = 0xFF;
     uint8_t adress[8] = {0};
     adress[7] = 1; // slave nr 1
 
