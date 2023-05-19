@@ -2,7 +2,6 @@
 
 #include <avr/io.h>
 #include <stdlib.h>
-#define F_CPU 16000000
 #include <util/delay.h>
 
 class X10
@@ -12,7 +11,7 @@ class X10
         void readData();
         bool writeData(uint8_t* data, size_t dataSize, uint8_t* address = 0, size_t addressSize = 0) const;
         uint8_t getAddress() const;
-        int getValue() const;
+        uint16_t getValue() const;
     private:
         bool readHalfBit() const;
         void writeBit(uint8_t bit) const;
