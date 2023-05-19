@@ -79,7 +79,7 @@ void SlaveSensor::updateIds(){
     DDRA = 0x00;
     int input = 255 - PINA;
     int temp = 0;
-    for (int i = 0; i < sizeof(ids_)/sizeof(ids_[0]); i++)
+    for (uint8_t i = 0; i < sizeof(ids_)/sizeof(ids_[0]); i++)
     {
         temp = 1<<i;
         if (temp == input){
@@ -109,17 +109,16 @@ uint8_t SlaveSensor::getIds() const{
     return ids;
 }
 
-bool SlaveSensor::dataRequested() const{
+bool SlaveSensor::dataRequested(){
     while (1){
         x10_.readData();
-        
-        //if (x10_.getAddress() == slaveNr_){
+        if (x10_.getAddress() == slaveNr_){
             if (x10_.getValue() == 0x01){
                 return true;
             }
             else{
                 return false;
             }
-        //}
+        }
     }
 }

@@ -43,5 +43,5 @@ public:
     void updateActivity();
     void calibrate();
     unsigned int getSensorValue() const;
-    bool dataRequested() const;
+    bool dataRequested();
 };
