@@ -28,6 +28,27 @@ ISR(USART0_RX_vect)
     I.setNextChar(I.getNextChar()+1);
 }
 
+ISR(USART1_RX_vect)
+{
+    char uart = UDR1;
+    if(uart == 0)
+    {
+        I.setRoomToSend(0);
+        I.setRoomReady(true);
+    }
+    else
+    {
+        for(size_t i = 0; i<8; ++i)
+        {
+            if(uart & 1<<i)
+            {
+                I.setRoomToSend(i+1);
+                I.setRoomReady(true);
+            }
+        }
+    }
+}
+
 Interrupts::Interrupts()
 {
     timeMin_ = 0;
@@ -41,7 +62,10 @@ Interrupts::Interrupts()
 
     nextChar_ = 0;
     termChar_ = 0;
+    roomToSend_ = 0;
     stringReady_ = false;
+    roomReady_ = false;
+    string[255] = '\0';
 }
 
 void Interrupts::setTime(size_t timeMin)
@@ -79,6 +103,16 @@ void Interrupts::setStringReady(bool ready)
     stringReady_ = ready;
 }
 
+void Interrupts::setRoomToSend(uint8_t room)
+{
+    roomToSend_ = room;
+}
+
+void Interrupts::setRoomReady(bool ready)
+{
+    roomReady_ = ready;
+}
+
 uint8_t Interrupts::getNextChar()
 {
     return nextChar_;
@@ -89,9 +123,19 @@ uint8_t Interrupts::getTermChar()
     return termChar_;
 }
 
+uint8_t Interrupts::getRoomToSend()
+{
+    return roomToSend_;
+}
+
 bool Interrupts::stringReady()
 {
     return stringReady_;
+}
+
+bool Interrupts::roomReady()
+{
+    return roomReady_;
 }
 
 void Interrupts::stringRead()
@@ -102,6 +146,12 @@ void Interrupts::stringRead()
     {
         string[i-termChar_] = string[i];
     }
+    for(size_t i = 255-termChar_; i<255; ++i)
+    {
+        string[i] = ' ';
+    }
+
+    string[255] = '\0';
     
     stringReady_ = false;
 

@@ -9,7 +9,7 @@ UART 0 initialization:
     Baud rate = 9600.
     Data bits = 8.
     RX and TX enabled.
-    No interrupts enabled.
+    Interrupts enabled.
     Number of Stop Bits = 1.
     No Parity.
     Baud rate = 9600.

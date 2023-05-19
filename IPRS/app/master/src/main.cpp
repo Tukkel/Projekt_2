@@ -4,6 +4,9 @@
 #include "UARTDE.h"
 #include "Log.h"
 
+#define F_CPU 16000000
+#include <util/delay.h>
+
 #include "Interrupts.h"
 extern Interrupts I;
 
@@ -20,12 +23,16 @@ int main()
 	uint8_t off[1] = {0};
 	uint8_t dataRead = 0;
 	DDRB = 0xFF;
-	bool recived = false;
+	bool recived = true;
 
 	uint8_t rooms;
 	size_t users;
 
-	while(true)
+	uartDe.SendString("~/");
+	uartDe.SendChar(0b00000000);
+	uartDe.SendChar('!');
+
+	while(recived)
 	{
 		PORTB = I.stringReady();
 		if(I.stringReady())
@@ -39,23 +46,35 @@ int main()
 					{
 						rooms = getRooms(I.string);
 						users = getUsers(I.string);
-						PORTB = users;
 						I.stringRead();
-						break;
+						recived = false;
 						break;
 					}
 					else
 					{
-						I.stringRead();
 						break;
 					}
 				}
 				++i;
 			}
+			I.stringRead();
 		}
 	}
 
+	PORTB = rooms;
+	_delay_ms(1000);
+
+	PORTB = users;
+	_delay_ms(1000);
+
+	uartDe.SendString("~/");
+	uartDe.SendChar(0b10011001);
+	uartDe.SendChar('!');
+
 	Log log(rooms, users);
+	
+	log.logID(1, 0);
+	log.logID(0, 1);
 
 	while(true)
 	{
@@ -76,10 +95,67 @@ int main()
 		recived = false;
 		_delay_ms(1000);
 		*/
-		log.logID(1, 0);
-		log.logID(0, 1);
+		
 
-		//PORTB = I.stringReady();
+		PORTB = 4;
+		_delay_ms(1000);
+
+		PORTB = I.roomReady();
+		_delay_ms(1000);
+
+		if(I.roomReady())
+		{
+			PORTB = 2;
+			if(I.getRoomToSend() == 0)
+			{
+				uartDe.SendString("~~ !");
+			}
+			else
+			{
+				size_t i = 0;
+				size_t people = 0;
+				uint8_t room = I.getRoomToSend();
+				uartDe.SendString("~~ ");
+				PORTB = 4;
+				while(log.roomNames_[room][i] != '\0')
+				{
+					uartDe.SendChar(log.roomNames_[room][i]);
+					++i;
+				}
+				PORTB = 8;
+				uartDe.SendChar(' ');
+				
+				for(size_t j = 0; j<log.numberPeople_; ++j)
+				{
+					if(log.rooms_[room][j])
+					{
+						++people;
+					}
+				}
+				
+				uartDe.SendInteger(people);
+				uartDe.SendChar(' ');
+				i = 0;
+				PORTB = 16;	
+				for(size_t j = 0; j<log.numberPeople_; ++j)
+				{
+					if(log.rooms_[room][j])
+					{
+						while(log.peopleNames_[j][i] != '\0')
+						{
+							PORTB = log.peopleNames_[j][i];
+							uartDe.SendChar(log.peopleNames_[j][i]);
+							++i;
+						}
+					}
+				}
+				PORTB = 64;
+				uartDe.SendChar('!');
+			}
+			I.setRoomReady(false);
+		}
+
+		PORTB = I.stringReady();
 		if(I.stringReady())
 		{
 			size_t i = 0;
@@ -100,7 +176,6 @@ int main()
 							}
 							uartPc.SendChar('\n');
 						}
-						I.stringRead();
 						/*
 						for(size_t j = 0; j<log.nextEntry_; ++j)
 						{
@@ -124,7 +199,6 @@ int main()
 						uint32_t addressType = getAddressType(I.string);
 						log.setAddress(address, addressType);
 						PORTB = address;
-						I.stringRead();
 					}
 					else if(I.string[i-1] == 'C')
 					{
@@ -134,17 +208,16 @@ int main()
 						getConnections(I.string, boolPtr);
 						log.setRoomConnection(room, connections);
 						PORTB = room;
-						I.stringRead();
 					}
 					else if(I.string[i-1] == 'D')
 					{
 						char string[] = "Callibrated\n";
 						uartPc.SendString(string);
-						I.stringRead();
 					}
 				}
 				++i;
 			}
+			I.stringRead();
 		}
 	}
 	

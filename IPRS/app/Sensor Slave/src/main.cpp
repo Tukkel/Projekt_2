@@ -7,14 +7,14 @@ int main(void){
     address[6] = true;
     SlaveSensor s(1, address, doorSensor);
     s.calibrate();
+
     while (1)
     {
         s.updateActivity();
         while(s.getActivity()){
-            while(!s.dataRequested()){
+            if (s.dataRequested()){
+                s.sendActivity();
             }
-            PORTB = 8;
-            s.sendActivity();
         }
     }
 }
