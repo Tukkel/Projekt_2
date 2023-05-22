@@ -8,7 +8,7 @@ slaveAktuator::slaveAktuator(int outPin, uint8_t* addressArray, uint8_t logLysSt
     outPin_ = outPin;
 }
 
-void slaveAktuator::opdaterLog()
+void slaveAktuator::opdateretLog()
 {
     setNormalPowerUsage();
     DDRB |= (1<<outPin_) ;
