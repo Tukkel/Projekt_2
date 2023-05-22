@@ -17,7 +17,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY UART_RX IS -- UART_RX
     GENERIC (
-        g_CLKS_PER_BIT : INTEGER := 5208 -- Needs to be set correctly
+        g_CLKS_PER_BIT : INTEGER := 434 -- Needs to be set correctly
     );
     PORT (
         i_Clk : IN STD_LOGIC;

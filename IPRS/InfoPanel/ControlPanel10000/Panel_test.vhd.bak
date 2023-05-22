@@ -8,7 +8,7 @@ ENTITY panel_test IS
       CLOCK_50       : IN  STD_LOGIC;  --system clock
 		KEY				: IN std_LOGIC_VECTOR(3 downto 0);
 		GPIO_0         : IN std_LOGIC_VECTOR(1 downto 0);
-		SW					: IN std_LOGIC_VECTOR(4 downto 1);
+		SW					: IN std_LOGIC_VECTOR(3 downto 0);
 		
 		LEDG				: out std_LOGIC_VECTOR(0 downto 0);
 		LEDR				: out std_logic_vector(8 downto 1);

@@ -11,7 +11,7 @@ ENTITY Panel IS
     RX_serialIN : IN   STD_LOGIC;                    --data to UART from Arduino, GPIO
     shift       : IN   STD_LOGIC;                     --shifts display, button
     home        : in std_logic;                        --resets cursor to home, button
-    rooms       : in std_logic_vector(4 downto 1);     --room number, switches
+    rooms       : in std_logic_vector(3 downto 0);     --room number, switches
 	 
 	 
 	 roomsInUse   : out std_LOGIC_VECTOR(7 downto 0);    -- LED for rooms

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Panel
-Mon May 15 10:55:37 2023
+Fri May 19 08:56:45 2023
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -13,17 +13,20 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |Panel_tester|Panel:p1|lcd_controller:lcd|state
-  9. State Machine - |Panel_tester|Panel:p1|UART_RX:uart|r_SM_Main
- 10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Inverted Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Parameter Settings for User Entity Instance: Panel:p1|UART_RX:uart
- 16. Parameter Settings for User Entity Instance: Panel:p1|lcd_controller:lcd
- 17. Elapsed Time Per Partition
- 18. Analysis & Synthesis Messages
+  8. State Machine - |panel_test|Panel:pan|present_state
+  9. State Machine - |panel_test|Panel:pan|lcd_controller:lcd|state
+ 10. State Machine - |panel_test|Panel:pan|UART_TX:uartTX|r_SM_Main
+ 11. State Machine - |panel_test|Panel:pan|UART_RX:uartRX|r_SM_Main
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Parameter Settings for User Entity Instance: Panel:pan|UART_RX:uartRX
+ 18. Parameter Settings for User Entity Instance: Panel:pan|UART_TX:uartTX
+ 19. Parameter Settings for User Entity Instance: Panel:pan|lcd_controller:lcd
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
 
 
 
@@ -49,16 +52,16 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon May 15 10:55:37 2023           ;
+; Analysis & Synthesis Status        ; Successful - Fri May 19 08:56:45 2023           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Panel                                           ;
-; Top-level Entity Name              ; Panel_tester                                    ;
+; Top-level Entity Name              ; panel_test                                      ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 263                                             ;
-;     Total combinational functions  ; 253                                             ;
-;     Dedicated logic registers      ; 86                                              ;
-; Total registers                    ; 86                                              ;
-; Total pins                         ; 22                                              ;
+; Total logic elements               ; 406                                             ;
+;     Total combinational functions  ; 384                                             ;
+;     Dedicated logic registers      ; 167                                             ;
+; Total registers                    ; 167                                             ;
+; Total pins                         ; 34                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -72,7 +75,7 @@ applicable agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP2C35F672C6       ;                    ;
-; Top-level entity name                                                      ; Panel_tester       ; Panel              ;
+; Top-level entity name                                                      ; Panel_test         ; Panel              ;
 ; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -167,10 +170,11 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                            ; Library ;
 +----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------------+---------+
+; Panel_test.vhd                   ; yes             ; User VHDL File  ; C:/Users/amali/OneDrive/Dokumenter/GitHub/Projekt_2/IPRS/InfoPanel/ControlPanel10000/Panel_test.vhd     ;         ;
+; UART_TX.vhd                      ; yes             ; User VHDL File  ; C:/Users/amali/OneDrive/Dokumenter/GitHub/Projekt_2/IPRS/InfoPanel/ControlPanel10000/UART_TX.vhd        ;         ;
 ; UART_RX.vhd                      ; yes             ; User VHDL File  ; C:/Users/amali/OneDrive/Dokumenter/GitHub/Projekt_2/IPRS/InfoPanel/ControlPanel10000/UART_RX.vhd        ;         ;
 ; lcd_controller.vhd               ; yes             ; User VHDL File  ; C:/Users/amali/OneDrive/Dokumenter/GitHub/Projekt_2/IPRS/InfoPanel/ControlPanel10000/lcd_controller.vhd ;         ;
 ; Panel.vhd                        ; yes             ; User VHDL File  ; C:/Users/amali/OneDrive/Dokumenter/GitHub/Projekt_2/IPRS/InfoPanel/ControlPanel10000/Panel.vhd          ;         ;
-; Panel_tester.vhd                 ; yes             ; User VHDL File  ; C:/Users/amali/OneDrive/Dokumenter/GitHub/Projekt_2/IPRS/InfoPanel/ControlPanel10000/Panel_tester.vhd   ;         ;
 +----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------------+---------+
 
 
@@ -179,47 +183,60 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+----------+
 ; Resource                                    ; Usage    ;
 +---------------------------------------------+----------+
-; Estimated Total logic elements              ; 263      ;
+; Estimated Total logic elements              ; 406      ;
 ;                                             ;          ;
-; Total combinational functions               ; 253      ;
+; Total combinational functions               ; 384      ;
 ; Logic element usage by number of LUT inputs ;          ;
-;     -- 4 input functions                    ; 126      ;
-;     -- 3 input functions                    ; 40       ;
-;     -- <=2 input functions                  ; 87       ;
+;     -- 4 input functions                    ; 212      ;
+;     -- 3 input functions                    ; 48       ;
+;     -- <=2 input functions                  ; 124      ;
 ;                                             ;          ;
 ; Logic elements by mode                      ;          ;
-;     -- normal mode                          ; 214      ;
-;     -- arithmetic mode                      ; 39       ;
+;     -- normal mode                          ; 305      ;
+;     -- arithmetic mode                      ; 79       ;
 ;                                             ;          ;
-; Total registers                             ; 86       ;
-;     -- Dedicated logic registers            ; 86       ;
+; Total registers                             ; 167      ;
+;     -- Dedicated logic registers            ; 167      ;
 ;     -- I/O registers                        ; 0        ;
 ;                                             ;          ;
-; I/O pins                                    ; 22       ;
+; I/O pins                                    ; 34       ;
 ; Embedded Multiplier 9-bit elements          ; 0        ;
 ; Maximum fan-out node                        ; CLOCK_50 ;
-; Maximum fan-out                             ; 86       ;
-; Total fan-out                               ; 1016     ;
-; Average fan-out                             ; 2.81     ;
+; Maximum fan-out                             ; 167      ;
+; Total fan-out                               ; 1718     ;
+; Average fan-out                             ; 2.94     ;
 +---------------------------------------------+----------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                               ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                       ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
-; |Panel_tester              ; 253 (0)           ; 86 (0)       ; 0           ; 0            ; 0       ; 0         ; 22   ; 0            ; |Panel_tester                             ; work         ;
-;    |Panel:p1|              ; 253 (6)           ; 86 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Panel_tester|Panel:p1                    ; work         ;
-;       |UART_RX:uart|       ; 49 (49)           ; 28 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Panel_tester|Panel:p1|UART_RX:uart       ; work         ;
-;       |lcd_controller:lcd| ; 198 (198)         ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Panel_tester|Panel:p1|lcd_controller:lcd ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                              ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                      ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
+; |panel_test                ; 384 (0)           ; 167 (0)      ; 0           ; 0            ; 0       ; 0         ; 34   ; 0            ; |panel_test                              ; work         ;
+;    |Panel:pan|             ; 384 (86)          ; 167 (59)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |panel_test|Panel:pan                    ; work         ;
+;       |UART_RX:uartRX|     ; 58 (58)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |panel_test|Panel:pan|UART_RX:uartRX     ; work         ;
+;       |UART_TX:uartTX|     ; 41 (41)           ; 28 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |panel_test|Panel:pan|UART_TX:uartTX     ; work         ;
+;       |lcd_controller:lcd| ; 199 (199)         ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |panel_test|Panel:pan|lcd_controller:lcd ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------+
+; State Machine - |panel_test|Panel:pan|present_state                                                             ;
++-----------------------------+--------------------------+-----------------------------+--------------------------+
+; Name                        ; present_state.send_state ; present_state.receive_state ; present_state.USER_state ;
++-----------------------------+--------------------------+-----------------------------+--------------------------+
+; present_state.USER_state    ; 0                        ; 0                           ; 0                        ;
+; present_state.receive_state ; 0                        ; 1                           ; 1                        ;
+; present_state.send_state    ; 1                        ; 0                           ; 1                        ;
++-----------------------------+--------------------------+-----------------------------+--------------------------+
+
+
+Encoding Type:  One-Hot
 +---------------------------------------------------------------------------------+
-; State Machine - |Panel_tester|Panel:p1|lcd_controller:lcd|state                 ;
+; State Machine - |panel_test|Panel:pan|lcd_controller:lcd|state                  ;
 +------------------+------------+-------------+------------------+----------------+
 ; Name             ; state.send ; state.ready ; state.initialize ; state.power_up ;
 +------------------+------------+-------------+------------------+----------------+
@@ -232,7 +249,21 @@ Encoding Type:  One-Hot
 
 Encoding Type:  One-Hot
 +---------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |Panel_tester|Panel:p1|UART_RX:uart|r_SM_Main                                                                                     ;
+; State Machine - |panel_test|Panel:pan|UART_TX:uartTX|r_SM_Main                                                                                    ;
++--------------------------+---------------------+-------------------------+--------------------------+--------------------------+------------------+
+; Name                     ; r_SM_Main.s_Cleanup ; r_SM_Main.s_TX_Stop_Bit ; r_SM_Main.s_TX_Data_Bits ; r_SM_Main.s_TX_Start_Bit ; r_SM_Main.s_Idle ;
++--------------------------+---------------------+-------------------------+--------------------------+--------------------------+------------------+
+; r_SM_Main.s_Idle         ; 0                   ; 0                       ; 0                        ; 0                        ; 0                ;
+; r_SM_Main.s_TX_Start_Bit ; 0                   ; 0                       ; 0                        ; 1                        ; 1                ;
+; r_SM_Main.s_TX_Data_Bits ; 0                   ; 0                       ; 1                        ; 0                        ; 1                ;
+; r_SM_Main.s_TX_Stop_Bit  ; 0                   ; 1                       ; 0                        ; 0                        ; 1                ;
+; r_SM_Main.s_Cleanup      ; 1                   ; 0                       ; 0                        ; 0                        ; 1                ;
++--------------------------+---------------------+-------------------------+--------------------------+--------------------------+------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |panel_test|Panel:pan|UART_RX:uartRX|r_SM_Main                                                                                    ;
 +--------------------------+---------------------+-------------------------+--------------------------+--------------------------+------------------+
 ; Name                     ; r_SM_Main.s_Cleanup ; r_SM_Main.s_RX_Stop_Bit ; r_SM_Main.s_RX_Data_Bits ; r_SM_Main.s_RX_Start_Bit ; r_SM_Main.s_Idle ;
 +--------------------------+---------------------+-------------------------+--------------------------+--------------------------+------------------+
@@ -244,26 +275,35 @@ Encoding Type:  One-Hot
 +--------------------------+---------------------+-------------------------+--------------------------+--------------------------+------------------+
 
 
-+--------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                             ;
-+---------------------------------------+----------------------------------------+
-; Register name                         ; Reason for Removal                     ;
-+---------------------------------------+----------------------------------------+
-; Panel:p1|lcd_bus[9]                   ; Stuck at VCC due to stuck port data_in ;
-; Panel:p1|lcd_bus[8]                   ; Stuck at GND due to stuck port data_in ;
-; Panel:p1|lcd_controller:lcd|rw        ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 3 ;                                        ;
-+---------------------------------------+----------------------------------------+
++-----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                ;
++------------------------------------------+----------------------------------------+
+; Register name                            ; Reason for Removal                     ;
++------------------------------------------+----------------------------------------+
+; Panel:pan|TX_data[4..7]                  ; Stuck at GND due to stuck port data_in ;
+; Panel:pan|UART_TX:uartTX|r_TX_Data[4..7] ; Stuck at GND due to stuck port data_in ;
+; Panel:pan|lcd_bus[8]                     ; Stuck at GND due to stuck port data_in ;
+; Panel:pan|lcd_controller:lcd|rw          ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 10   ;                                        ;
++------------------------------------------+----------------------------------------+
 
 
-+------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                              ;
-+---------------------+---------------------------+----------------------------------------+
-; Register name       ; Reason for Removal        ; Registers Removed due to This Register ;
-+---------------------+---------------------------+----------------------------------------+
-; Panel:p1|lcd_bus[8] ; Stuck at GND              ; Panel:p1|lcd_controller:lcd|rw         ;
-;                     ; due to stuck port data_in ;                                        ;
-+---------------------+---------------------------+----------------------------------------+
++-------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                               ;
++----------------------+---------------------------+----------------------------------------+
+; Register name        ; Reason for Removal        ; Registers Removed due to This Register ;
++----------------------+---------------------------+----------------------------------------+
+; Panel:pan|TX_data[7] ; Stuck at GND              ; Panel:pan|UART_TX:uartTX|r_TX_Data[7]  ;
+;                      ; due to stuck port data_in ;                                        ;
+; Panel:pan|TX_data[6] ; Stuck at GND              ; Panel:pan|UART_TX:uartTX|r_TX_Data[6]  ;
+;                      ; due to stuck port data_in ;                                        ;
+; Panel:pan|TX_data[5] ; Stuck at GND              ; Panel:pan|UART_TX:uartTX|r_TX_Data[5]  ;
+;                      ; due to stuck port data_in ;                                        ;
+; Panel:pan|TX_data[4] ; Stuck at GND              ; Panel:pan|UART_TX:uartTX|r_TX_Data[4]  ;
+;                      ; due to stuck port data_in ;                                        ;
+; Panel:pan|lcd_bus[8] ; Stuck at GND              ; Panel:pan|lcd_controller:lcd|rw        ;
+;                      ; due to stuck port data_in ;                                        ;
++----------------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -271,12 +311,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 86    ;
-; Number of registers using Synchronous Clear  ; 9     ;
+; Total registers                              ; 167   ;
+; Number of registers using Synchronous Clear  ; 30    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 2     ;
+; Number of registers using Asynchronous Clear ; 11    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 25    ;
+; Number of registers using Clock Enable       ; 86    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -286,47 +326,63 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; Panel:p1|lcd_controller:lcd|busy       ; 2       ;
+; Panel:pan|lcd_controller:lcd|busy      ; 1       ;
 ; Total number of inverted registers = 1 ;         ;
 +----------------------------------------+---------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                              ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-; 7:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; Yes        ; |Panel_tester|Panel:p1|UART_RX:uart|r_Clk_Count[8]      ;
-; 14:1               ; 8 bits    ; 72 LEs        ; 56 LEs               ; 16 LEs                 ; Yes        ; |Panel_tester|Panel:p1|lcd_controller:lcd|lcd_data[2]   ;
-; 14:1               ; 31 bits   ; 279 LEs       ; 31 LEs               ; 248 LEs                ; Yes        ; |Panel_tester|Panel:p1|lcd_controller:lcd|clk_count[18] ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Panel_tester|Panel:p1|UART_RX:uart|r_Bit_Index         ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |panel_test|Panel:pan|lcd_controller:lcd|rs            ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |panel_test|Panel:pan|UART_TX:uartTX|r_Clk_Count[10]   ;
+; 7:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |panel_test|Panel:pan|UART_RX:uartRX|r_Clk_Count[5]    ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |panel_test|Panel:pan|lcd_bus[8]                       ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |panel_test|Panel:pan|lcd_bus[5]                       ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 56 LEs               ; 16 LEs                 ; Yes        ; |panel_test|Panel:pan|lcd_controller:lcd|lcd_data[1]   ;
+; 14:1               ; 31 bits   ; 279 LEs       ; 31 LEs               ; 248 LEs                ; Yes        ; |panel_test|Panel:pan|lcd_controller:lcd|clk_count[28] ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |panel_test|Panel:pan|UART_TX:uartTX|r_Bit_Index       ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |panel_test|Panel:pan|UART_RX:uartRX|r_Bit_Index       ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |panel_test|Panel:pan|Selector14                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
 
 
-+--------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Panel:p1|UART_RX:uart ;
-+----------------+-------+-------------------------------------------+
-; Parameter Name ; Value ; Type                                      ;
-+----------------+-------+-------------------------------------------+
-; g_clks_per_bit ; 434   ; Signed Integer                            ;
-+----------------+-------+-------------------------------------------+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Panel:pan|UART_RX:uartRX ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; g_clks_per_bit ; 5208  ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Panel:p1|lcd_controller:lcd ;
-+----------------+-------+-------------------------------------------------+
-; Parameter Name ; Value ; Type                                            ;
-+----------------+-------+-------------------------------------------------+
-; clk_freq       ; 50    ; Signed Integer                                  ;
-; display_lines  ; '1'   ; Enumerated                                      ;
-; character_font ; '0'   ; Enumerated                                      ;
-; display_on_off ; '1'   ; Enumerated                                      ;
-; cursor         ; '0'   ; Enumerated                                      ;
-; blink          ; '0'   ; Enumerated                                      ;
-; inc_dec        ; '1'   ; Enumerated                                      ;
-; shift          ; '0'   ; Enumerated                                      ;
-+----------------+-------+-------------------------------------------------+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Panel:pan|UART_TX:uartTX ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; g_clks_per_bit ; 5208  ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Panel:pan|lcd_controller:lcd ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; clk_freq       ; 50    ; Signed Integer                                   ;
+; display_lines  ; '1'   ; Enumerated                                       ;
+; character_font ; '0'   ; Enumerated                                       ;
+; display_on_off ; '1'   ; Enumerated                                       ;
+; cursor         ; '0'   ; Enumerated                                       ;
+; blink          ; '0'   ; Enumerated                                       ;
+; inc_dec        ; '1'   ; Enumerated                                       ;
+; shift          ; '0'   ; Enumerated                                       ;
++----------------+-------+--------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -345,12 +401,17 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon May 15 10:55:35 2023
+    Info: Processing started: Fri May 19 08:56:42 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ControlPanel10000 -c Panel
 Warning (292000): FLEXlm software error: Future license file format or misspelling in license file.  The file was issued for a later version of FLEXnet Licensing than this  program understands. Feature:       quartus License text:  ONE_TS_OK SIGN="1663 4B7E 24C2 0965 72A2 AD41 3EA4 999C 1CCF 4002 7004 4171 F4EF 834F A45F 0BD3 FE8C 4E78 AAEB 54D8 6544 D576 C23F FBE4 9E21 9E48 B404 3494 5104 00F9" License path:  C:\Program Files\StruSoft\FEM-Design 21 Educational\license.lic FLEXnet Licensing error:-90,313 For further information, refer to the FLEXnet Licensing End User Guide, available at "www.macrovision.com".
 Warning (292000): FLEXlm software error: Future license file format or misspelling in license file.  The file was issued for a later version of FLEXnet Licensing than this  program understands. Feature:       quartus_talkback License text:  ONE_TS_OK SIGN="1663 4B7E 24C2 0965 72A2 AD41 3EA4 999C 1CCF 4002 7004 4171 F4EF 834F A45F 0BD3 FE8C 4E78 AAEB 54D8 6544 D576 C23F FBE4 9E21 9E48 B404 3494 5104 00F9" License path:  C:\Program Files\StruSoft\FEM-Design 21 Educational\license.lic FLEXnet Licensing error:-90,313 For further information, refer to the FLEXnet Licensing End User Guide, available at "www.macrovision.com".
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 0 design units, including 0 entities, in source file uart_tx.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file panel_test.vhd
+    Info (12022): Found design unit 1: panel_test-behavior
+    Info (12023): Found entity 1: panel_test
+Info (12021): Found 2 design units, including 1 entities, in source file uart_tx.vhd
+    Info (12022): Found design unit 1: UART_TX-RTL
+    Info (12023): Found entity 1: UART_TX
 Info (12021): Found 2 design units, including 1 entities, in source file uart_rx.vhd
     Info (12022): Found design unit 1: UART_RX-rtl
     Info (12023): Found entity 1: UART_RX
@@ -360,34 +421,52 @@ Info (12021): Found 2 design units, including 1 entities, in source file lcd_con
 Info (12021): Found 2 design units, including 1 entities, in source file panel.vhd
     Info (12022): Found design unit 1: Panel-Panel_impl
     Info (12023): Found entity 1: Panel
-Info (12021): Found 2 design units, including 1 entities, in source file panel_tester.vhd
-    Info (12022): Found design unit 1: Panel_tester-rtl
-    Info (12023): Found entity 1: Panel_tester
-Info (12127): Elaborating entity "Panel_tester" for the top level hierarchy
-Info (12128): Elaborating entity "Panel" for hierarchy "Panel:p1"
-Warning (10492): VHDL Process Statement warning at Panel.vhd(101): signal "RX_data" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Panel.vhd(111): signal "RX_data" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Info (12128): Elaborating entity "UART_RX" for hierarchy "Panel:p1|UART_RX:uart"
-Info (12128): Elaborating entity "lcd_controller" for hierarchy "Panel:p1|lcd_controller:lcd"
+Info (12127): Elaborating entity "Panel_test" for the top level hierarchy
+Warning (10873): Using initial value X (don't care) for net "GPIO_1[1]" at Panel_test.vhd(18)
+Info (12128): Elaborating entity "Panel" for hierarchy "Panel:pan"
+Warning (10492): VHDL Process Statement warning at Panel.vhd(161): signal "RX_data" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Panel.vhd(171): signal "RX_data" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Panel.vhd(175): signal "change_detected" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Panel.vhd(185): signal "RX_data" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Panel.vhd(189): signal "TX_done" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "UART_RX" for hierarchy "Panel:pan|UART_RX:uartRX"
+Info (12128): Elaborating entity "UART_TX" for hierarchy "Panel:pan|UART_TX:uartTX"
+Info (12128): Elaborating entity "lcd_controller" for hierarchy "Panel:pan|lcd_controller:lcd"
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "lcd_data[0]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "lcd_data[1]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "lcd_data[2]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "lcd_data[3]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "lcd_data[4]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "lcd_data[5]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "lcd_data[6]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "lcd_data[7]" and its non-tri-state driver.
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "lcd_data[0]~synth"
+    Warning (13010): Node "lcd_data[1]~synth"
+    Warning (13010): Node "lcd_data[2]~synth"
+    Warning (13010): Node "lcd_data[3]~synth"
+    Warning (13010): Node "lcd_data[4]~synth"
+    Warning (13010): Node "lcd_data[5]~synth"
+    Warning (13010): Node "lcd_data[6]~synth"
+    Warning (13010): Node "lcd_data[7]~synth"
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LCD_RW" is stuck at GND
+    Warning (13410): Pin "lcd_rw" is stuck at GND
+    Warning (13410): Pin "GPIO_1[1]" is stuck at GND
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 6 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[1]"
-    Warning (15610): No output dependent on input pin "KEY[2]"
-    Warning (15610): No output dependent on input pin "SW[0]"
-    Warning (15610): No output dependent on input pin "SW[1]"
-    Warning (15610): No output dependent on input pin "SW[2]"
-    Warning (15610): No output dependent on input pin "SW[3]"
-Info (21057): Implemented 287 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 9 input pins
-    Info (21059): Implemented 13 output pins
-    Info (21061): Implemented 265 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 28 warnings
-    Info: Peak virtual memory: 4642 megabytes
-    Info: Processing ended: Mon May 15 10:55:37 2023
-    Info: Elapsed time: 00:00:02
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[3]"
+    Warning (15610): No output dependent on input pin "GPIO_0[1]"
+Info (21057): Implemented 455 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 11 input pins
+    Info (21059): Implemented 15 output pins
+    Info (21060): Implemented 8 bidirectional pins
+    Info (21061): Implemented 421 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 47 warnings
+    Info: Peak virtual memory: 4646 megabytes
+    Info: Processing ended: Fri May 19 08:56:45 2023
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:02
 
 
