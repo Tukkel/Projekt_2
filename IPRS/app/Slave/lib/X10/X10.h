@@ -2,7 +2,7 @@
 
 #include <avr/io.h>
 #include <stdlib.h>
-#define F_CPU 16000000
+//#define F_CPU 16000000
 #include <util/delay.h>
 
 /*
@@ -20,11 +20,13 @@
 class X10
 {
     public:
-        X10(volatile uint8_t clock_pin, volatile uint8_t X10_read, volatile uint8_t X10_write, bool* address, char unit = 's');
+        X10();
+        ~X10();
+        X10(volatile uint8_t clock_pin, volatile uint8_t X10_read, volatile uint8_t X10_write, bool* address, char unit);
         bool readHalfBit() const;
         bool* readData();
         void writeBit(uint8_t bit) const;
-        void writeData(bool* data, bool* address = 0) const;
+        void writeData(bool* data, bool* address) const;
     private:
         volatile uint8_t clock_pin_;
         volatile uint8_t X10_read_;

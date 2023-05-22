@@ -111,27 +111,6 @@ void PCHandler::printData()
     }
 }
 
-void PCHandler::changeSlaves() const
-{
-    bool validChoice = false;
-
-    while (!validChoice)
-    {
-        int Slavechoice;
-        std::cin >> Slavechoice;
-        if (Slavechoice > 0)
-        {
-            std::cout << "You chose to change the number of slaves to " << Slavechoice << std::endl;
-            validChoice = true;
-            break;
-        }
-        else
-        {
-            std::cout << "Invalid choice. Please choose again." << std::endl;
-        }
-    }
-}
-
 void PCHandler::changeSystem() const
 {
     std::cout << "Printing data..." << std::endl;
@@ -181,7 +160,31 @@ void PCHandler::changeSystem() const
 
 void PCHandler::clearScreen() const
 {
-    system("clear"); // Code to clear the screen
+    system("clear");                         // Code to clear the screen
+    std::cout << "IPRS SYSTEM" << std::endl; // "IPRS SYSTEM
+    std::cout << std::endl
+              << std::endl;
+}
+
+void PCHandler::changeSlaves() const
+{
+    bool validChoice = false;
+
+    while (!validChoice)
+    {
+        int Slavechoice;
+        std::cin >> Slavechoice;
+        if (Slavechoice > 0)
+        {
+            std::cout << "You chose to change the number of slaves to " << Slavechoice << std::endl;
+            validChoice = true;
+            break;
+        }
+        else
+        {
+            std::cout << "Invalid choice. Please choose again." << std::endl;
+        }
+    }
 }
 
 void printLog()

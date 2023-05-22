@@ -1,45 +1,27 @@
 #include "Log.h"
 
-Log::Log(uint8_t numberRooms, uint8_t numberPeople, double** roomHistory)
+Log::Log(uint8_t numberRooms, size_t numberPeople) : numberRooms_(numberRooms), numberPeople_(numberPeople)
 {
-    numberRooms_ = numberRooms;
-    numberPeople_ = numberPeople;
+    _delay_ms(100);
     rooms_[numberRooms_][numberPeople_] = {false};
     roomChances_[numberRooms_][numberPeople_] = {0};
-    roomHistory_[numberRooms_][numberPeople_] = {0};
-    roomConnections_[numberRooms_][numberPeople_] = {false};
-    roomNames_[numberRooms_][17];
-    peopleNames_[numberPeople_][17];
+    peopleHistory_[numberRooms_][numberPeople_] = {0};
+    roomConnections_[numberRooms_][numberRooms_] = {false};
+    roomNames_[numberRooms_][15];
+    peopleNames_[numberPeople_][16];
+    nextEntry_ = 0;
+    timeMin_ = 0;
 
-    size_t historyCols = sizeof(roomHistory[0]);
-    size_t historyRows = sizeof(roomHistory)/historyCols;
+    PORTB = 2;
 
-    size_t cols;
-    size_t rows;
-    
-    if(numberRooms_ < historyCols)
-    {
-        cols = numberRooms_;
-    }
-    else
-    {
-        cols = historyCols;
-    }
-    
-    if(numberPeople_ < historyRows)
-    {
-        rows = numberPeople_;
-    }
-    else
-    {
-        rows = historyRows;
-    }
+    logTime_ = (size_t*)malloc(10*sizeof(size_t));
+    log_ = (double *)malloc(numberRooms_*numberPeople_*10*sizeof(double));
 
-    for(size_t i = 0; i<cols; ++i)
+    for(size_t i = 0; i<numberRooms_; ++i)
     {
-        for(size_t j = 0; j<rows; ++j)
+        for(size_t j = 0; j<numberRooms_; ++j)
         {
-            roomHistory_[i][j] = roomHistory[i][j];
+            peopleHistory_[i][j] = 1/(double)numberRooms_;
         }
     }
 
@@ -62,7 +44,38 @@ Log::Log(uint8_t numberRooms, uint8_t numberPeople, double** roomHistory)
 
 void Log::setRoomConnection(uint8_t roomNumber, bool* connections)
 {
-    
+    if(sizeof(connections) < numberRooms_)
+    {
+        for(size_t i = 0; i<sizeof(connections) ; ++i)
+        {
+            roomConnections_[roomNumber][i] = connections[i];
+        }
+    }
+    else
+    {
+        for(size_t i = 0; i<numberRooms_ ; ++i)
+        {
+            roomConnections_[roomNumber][i] = connections[i];
+        }
+    }
+}
+
+void Log::setPersonHistory(size_t personNumber, double* personHistory)
+{
+    if(sizeof(personHistory) < numberRooms_)
+    {
+        for(size_t i = 0; i<sizeof(personHistory); ++i)
+        {
+            peopleHistory_[i][personNumber] = personHistory[i];
+        }
+    }
+    else
+    {
+        for(size_t i = 0; i<numberRooms_ ; ++i)
+        {
+            peopleHistory_[i][personNumber] = personHistory[i];
+        }
+    }
 }
 
 void Log::setRoomName(uint8_t roomNumber, char* roomName)
@@ -153,13 +166,83 @@ void Log::logActivity(uint8_t roomNumber)
             }
         }
     }
-    else if(sum < 0.05)
+    else if(sum < 1)
     {
-        
+        double adjacentSum = 0;
+        for(size_t i = 0; i<numberRooms_; ++i)
+        {
+            if(roomConnections_[roomNumber][i])
+            {
+                for(size_t j = 0; j<numberPeople_; ++j)
+                {
+                    adjacentSum += roomChances_[i][j];
+                }
+            }
+        }
+        for(size_t i = 0; i<numberRooms_; ++i)
+        {
+            if(roomConnections_[roomNumber][i])
+            {
+                for(size_t j = 0; j<numberPeople_; ++j)
+                {
+                    roomChances_[i][j] -= (roomChances_[i][j]/adjacentSum)*sum;
+                    roomChances_[roomNumber][j] += (roomChances_[i][j]/adjacentSum)*sum;
+                }
+            }
+        }
     }
 }
 
 void Log::logMovement(uint8_t roomNumber1, uint8_t roomNumber2)
 {
+    double room1Sum = 0;
+    for(size_t i = 0; i<numberPeople_; ++i)
+    {
+        room1Sum += roomChances_[roomNumber1][i];
+    }
+    for(size_t i = 0; i<numberPeople_; ++i)
+    {
+        roomChances_[roomNumber1][i] -= roomChances_[roomNumber1][i]/room1Sum;
+        roomChances_[roomNumber2][i] += roomChances_[roomNumber1][i]/room1Sum;
+    }
+}
 
+void Log::logID(uint8_t roomNumber, size_t personNumber)
+{
+    for(size_t i = 0; i<numberRooms_; ++i)
+    {
+        roomChances_[i][personNumber] = 0;
+    }
+    roomChances_[roomNumber][personNumber] = 1;
+}
+
+void Log::setTime(size_t timeMin)
+{
+    timeMin_ = timeMin;
+}
+
+size_t Log::offset(size_t logNumber, size_t roomNumber, size_t personNumber)
+{
+    return (logNumber*numberRooms_*numberPeople_) + (personNumber*numberRooms_) + roomNumber;
+}
+
+void Log::setLog()
+{
+    if(nextEntry_%10 == 0 && nextEntry_ != 0)
+    {
+        log_ = (double*)realloc(log_, numberRooms_*numberPeople_*(nextEntry_+10)*sizeof(double));
+        logTime_ = (size_t*)realloc(logTime_, (nextEntry_+10)*sizeof(size_t));
+    }
+
+    for(size_t i=0; i<numberRooms_; ++i)
+    {
+        for(size_t j=0; j<numberPeople_; ++j)
+        {
+            log_[offset(nextEntry_, i, j)] = roomChances_[i][j];
+        }
+    }
+
+    logTime_[nextEntry_] = timeMin_;
+
+    ++nextEntry_;
 }
