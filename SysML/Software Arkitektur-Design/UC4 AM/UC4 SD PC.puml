@@ -13,12 +13,12 @@ admin -> UI : Presses start
 activate UI
 admin <<-- UI : Vis log ind UI
 admin ->> UI : Indtaster loginoplysninger
-UI -> PC : validate(username, password)
+UI -> PC : validate(password)
 activate PC
-PC -> UART : sendLog()
+PC -> UART : sendData(logRequest)
 UART ->> UARTCon : Request log
 PC <<-- UARTCon : log
-PC -> PC : updatePCLog(log)
+PC -> PC : updateLog(log)
 UI <<-- PC : OK
 loop Så længe der ikke er logget ud
 admin <<- UI : Vis mulige handlinger
@@ -29,20 +29,20 @@ UI <<-- PC : Log text
 admin <<-- UI : Vis log
 else Rediger system
 admin -> UI : Vælger rediger system
-UI -> PC : showOptions()
+UI -> PC : showChangeOptions()
 UI <<-- PC : Muligheder
 admin <<-- UI : Vis muligheder
 admin -> UI : Redigerer systemet
-UI -> PC : changeSystem(newSystem)
-PC -> UART : updateSystem(newSystem)
+UI -> PC : changeSystem()
+PC -> UART : sendData(newSystem)
 UART ->> UARTCon : newSystem
 PC <<-- UARTCon : System changed
 UI <<-- PC : System changed
 admin <<-- UI : Vis at redigering blev fuldført
 else Initialization
 admin -> UI : Selects initialization
-UI -> PC : initialise()
-PC -> UART : masterInitialize()
+UI -> PC : initialiseSystem()
+PC -> UART : sendData(initialisedSystem)
 UART ->> UARTCon : Request initialization of IPRS
 PC <<-- UARTCon : Validation
 UI <<-- PC : Validation text

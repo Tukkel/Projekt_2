@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define F_CPU 16000000
+#include <util/delay.h>
+
 class Log
 {
     public:

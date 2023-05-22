@@ -63,7 +63,7 @@ void X10::readData()
         i = 0;
         pair = 0;
         ack = true;
-        while (true)    //Find start bit
+        while (true)    //Find start bit ved at tjekke om der er 2 1'ere og et 0 efter hinanden
         {
             data_[0] = data_[1];
             data_[1] = data_[2];
@@ -80,7 +80,6 @@ void X10::readData()
         i = 4;
         while (true)
         { // While reading
-
             data_[i] = readHalfBit(); // Reads the half bit
 
             if(i%2)             //If there is a pair of half bits convert to full bit
@@ -117,7 +116,6 @@ void X10::readData()
         {
             for(size_t i = 2; i<10; ++i)
             {
-                PORTB |= data_[i*2]<<(15-i);
                 if(address_[i-2] != data_[2*i])
                 {
                     ack = false;
@@ -326,14 +324,14 @@ uint8_t X10::getAddress() const
     uint8_t address = 0;
     for(size_t i = 2; i<10; ++i)
     {
-        address += data_[2*i]<<(i-2);
+        address += data_[(2*9) - (2*(i-2))]<<(i-2);
     }
     return address;
 }
 
-int X10::getValue() const
+uint16_t X10::getValue() const
 {
-    size_t value = 0;
+    uint16_t value = 0;
     size_t count = 0;
     for(size_t i = 10; i<50; ++i)
     {
@@ -343,10 +341,9 @@ int X10::getValue() const
         }
         ++count;
     }
-    --count;
     for(size_t i = 10; i<(10+count); ++i)
     {
-        value += data_[2*i]<<(count+9-i);
+        value += data_[(2*(10+count))-2*i]<<(count+9-i);
     }
     return value;
 }

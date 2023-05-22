@@ -1,0 +1,120 @@
+@startuml UC4 SD PC
+skinparam style strictuml
+
+mainframe **SD** UC4: Administrator login (PC)
+
+actor       Administrator      as admin
+participant "<<boundary>>\nPC Interface" as UI
+participant "<<controller>>\nUC4: Administrator login" as PC
+participant "<<domain>>\nUARTCommunication" as UART
+participant "<<boundary>>\nUART Connection" as UARTCon
+
+admin -> UI : Presses start
+activate UI
+admin <<-- UI : Show login UI
+admin ->> UI : Inputs password
+UI -> PC : validate(password)
+activate PC
+
+loop While user is logged in
+
+admin <<- UI : Show possible actions
+
+alt Print data
+admin -> UI : Admin picks print data
+UI -> PC : printData()
+PC -> UART : sendData(logRequest)
+UART ->> UARTCon : Request log
+PC <<-- UARTCon : log
+PC -> PC : updateLog(log)
+alt Print log
+admin -> UI : Admin picks print log
+UI -> PC : printLog()
+PC -> PC : formatLog()
+UI <<-- PC : Log text
+admin <<-- UI : Show log
+else Print Raw Data
+admin -> UI : Admin picks print raw data
+UI -> PC : printRawData()
+UI <<-- PC : Raw Data
+admin <<-- UI : Show raw data from master
+else Print System Info
+admin -> UI : Admin picks print system info
+UI -> PC : printSystemInfo()
+UI <<-- PC : System info
+admin <<-- UI : Shows system info
+end
+
+else Make Change To System
+admin -> UI : Pick make change to system
+UI -> PC : showChangeOptions()
+UI <<-- PC : Options
+admin <<-- UI : Show options
+alt Add a new slave
+admin -> UI : Admin picks add slave
+UI -> PC : addSlave()
+PC -> UART : sendData(slaveAdress)
+UART ->> UARTCon : slaveAdress
+
+else Select Room Connection
+admin -> UI : Admin picks Selects room connection
+UI -> PC : selectRoomConnection()
+PC -> UART : sendData(roomConnection)
+UART ->> UARTCon : roomConnection
+
+
+else Calibrate system
+admin -> UI : Selects calibrate system
+UI -> PC : calibrateSystem()
+PC -> UART : sendData(calibrateRequest)
+UART ->> UARTCon : Request calibration of IPRS
+PC <<-- UARTCon : System calibrated
+UI <<-- PC : System calibrated
+admin <<-- UI : Show calibration complete
+
+else Change save options
+admin -> UI : Selects change save options
+UI -> PC : selectSaveOnline()
+PC -> PC : setSaveOnline(saveOption)
+UI <<-- PC : Show current save option
+admin <<-- UI : Show current save option
+
+end
+
+else Initialise system
+admin -> UI : Selects initialization
+UI -> PC : initialiseSystem()
+PC -> UART : sendData(initialisedSystem)
+UART ->> UARTCon : Request initialization of IPRS
+PC <<-- UARTCon : Validation
+UI <<-- PC : Validation text
+admin <<-- UI : Vis validation
+
+else Change The Log
+admin -> UI : Selects change the log
+UI -> PC : changeLog()
+PC -> PC : updateLog(log)
+UI <<-- PC : Show log
+admin <<-- UI : Show log
+
+else Change password
+admin -> UI : Selects change password
+UI -> PC : changePassword()
+PC -> PC : updatePassword(password)
+
+else Log out
+admin -> UI : Selects log out
+UI -> PC : logOut()
+admin <<-- UI : Show login screen
+
+else Exit
+admin -> UI : Selects exit
+UI -> PC : exit()
+UI <<- PC : Exit
+admin <<- UI : Exit
+
+deactivate PC
+deactivate UI
+end
+end
+@enduml

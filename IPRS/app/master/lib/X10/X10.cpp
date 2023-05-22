@@ -102,8 +102,6 @@ void X10::readData()
             ++i;
         }
 
-        PORTB = 4;
-
         if(unit_ == 'm')
         {
             if(pair%2)
