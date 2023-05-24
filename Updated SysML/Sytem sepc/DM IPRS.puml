@@ -8,6 +8,7 @@ skinparam ArrowThickness 2.2
 skinparam Linetype poly
 skinparam ranksep 100
 skinparam nodesep 10
+skinparam ClassAttributeIconSize 0
 hide empty members
 
 
@@ -17,8 +18,7 @@ mainframe **DM** IPRS
 
 
 Class "**SensorSlave**" as SS{
-- Status
-- Log
+- Aktivitet
 }
 
 Class "**DørSensor**" as DS{
@@ -63,10 +63,14 @@ Class  "**Master**" as ME{
 - Rumindhold
 - Rumstatus
 - Midlertidig Log
+- antal rum
+- antal brugere
 }
 
 Class "**Computer**" as COM{
 - Log
+- antal rum
+- antal brugere
 }
 
 Class "**Informationspanel**" as INFO {
@@ -74,9 +78,6 @@ Class "**Informationspanel**" as INFO {
 }
 
 Class "**Administrator**" as ADMIN {
-- Navn
-- Id
-- Username
 - Password
 }
 
@@ -88,7 +89,7 @@ SS "1..*" -- "1" ME : < Statuts check
 
 ME "1" -- "1" COM : > Sender Log data
 ME "1" -- "1" COM : < Opdater med Systemændring
-ME "1" -- "1" INFO : > Sender Rumstatus
+ME "1" -- "1" INFO : > Sender Rumindhold
 ME "1" -- "1" INFO : < Efterspørger Rumindhold
 
 RS "1" -- "1" SS : > Sender Detektering

@@ -23,12 +23,7 @@ ENTITY Panel IS
     rw, rs, e, lcdon  : OUT  STD_LOGIC;                     --read/write, setup/data, enable and on for lcd
     lcd_data   : OUT  STD_LOGIC_VECTOR(7 DOWNTO 0)
 
-		-- OUTPUTS
-		roomsInUse : OUT STD_LOGIC_VECTOR(7 DOWNTO 0); -- LED for rooms
-		TX_serialout : OUT STD_LOGIC; --Transmitter output
-		RX_busy : OUT STD_LOGIC; --active high, uart busy, goes to LED
-		rw, rs, e, lcdon : OUT STD_LOGIC; --read/write, setup/data, enable and on for lcd
-		lcd_data : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+		
 
 	);
 END Panel;
