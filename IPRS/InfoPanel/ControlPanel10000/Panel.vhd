@@ -8,7 +8,6 @@ ENTITY Panel IS
 		shiftCounter : INTEGER := 12500000 -- 4 times a second
 	);
 
-<<<<<<< HEAD
   PORT(
     clk         : IN   STD_LOGIC;                     --system clock
     reset       : IN   STD_LOGIC;                     --active low reinitializes lcd, button
@@ -23,16 +22,6 @@ ENTITY Panel IS
     RX_busy    : OUT  STD_LOGIC;                     --active high, uart busy, goes to LED
     rw, rs, e, lcdon  : OUT  STD_LOGIC;                     --read/write, setup/data, enable and on for lcd
     lcd_data   : OUT  STD_LOGIC_VECTOR(7 DOWNTO 0)
-=======
-	PORT (
-		-- INPUTS
-		clk : IN STD_LOGIC; --system clock
-		reset : IN STD_LOGIC; --active low reinitializes lcd, button
-		RX_serialIN : IN STD_LOGIC; --data to UART from Arduino, GPIO
-		shift : IN STD_LOGIC; --shifts display, button
-		home : IN STD_LOGIC; --resets cursor to home, button
-		rooms : IN STD_LOGIC_VECTOR(3 DOWNTO 0); --room number, switches
->>>>>>> 1e89a555c2a15be3964b6fd9dcb1b96aa009a08d
 
 		-- OUTPUTS
 		roomsInUse : OUT STD_LOGIC_VECTOR(7 DOWNTO 0); -- LED for rooms
