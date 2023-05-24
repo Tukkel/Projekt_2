@@ -22,6 +22,7 @@ ISR(USART0_RX_vect)
     if(I.string[I.getNextChar()] == '\0')
     {
         I.setTermChar(I.getNextChar()+1);
+        //I.stringReady_ = true;
         I.setStringReady(true);
     }
 
@@ -34,6 +35,7 @@ ISR(USART1_RX_vect)
     if(uart == 0)
     {
         I.setRoomToSend(0);
+        //I.roomReady_ = true;
         I.setRoomReady(true);
     }
     else
@@ -43,6 +45,7 @@ ISR(USART1_RX_vect)
             if(uart & 1<<i)
             {
                 I.setRoomToSend(i+1);
+                //I.roomReady_ = true;
                 I.setRoomReady(true);
             }
         }

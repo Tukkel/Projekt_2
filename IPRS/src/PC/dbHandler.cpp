@@ -6,7 +6,15 @@
 // Constructor with default dbHost - folder name of the database
 dbHandler::dbHandler(std::string dbHost)
 {
-    dbHost_ = dbHost;
+    dbHost = dbHost;
+    if (findData("saveSettings.txt", false) == "true")
+    {
+        bool saveOnline = true;
+    }
+    else
+    {
+        bool saveOnline = false;
+    }
 }
 
 // Function to cipher/decipher data with XOR cipher
@@ -21,12 +29,11 @@ std::string dbHandler::xorCipher(std::string data, char key)
 }
 
 // Decrypt data from file, using key from key.txt, where fileAdress is the name of the file in UserDB folder
-std::string dbHandler::findData(std::string fileAdress)
+std::string dbHandler::findData(const std::string &fileAdress, bool decrypt)
 {
-    // Tries to open file, if it fails, throws an error
     std::string data;
     std::ifstream file;
-    file.open(dbHost_ + fileAdress);
+    file.open(dbHost + fileAdress);
     if (file.is_open())
     {
         std::string line;
@@ -41,46 +48,80 @@ std::string dbHandler::findData(std::string fileAdress)
         std::cout << "Unable to open file";
     }
 
-    char key;
-    // Load key from key file
-    std::ifstream keyFile;
-    keyFile.open(dbHost_ + "key.txt");
-    if (keyFile.is_open())
+    if (!decrypt)
     {
-        std::string line;
-        getline(keyFile, line);
-        key = line[0];
-        keyFile.close();
+        return data;
     }
-    else
-    {
-        throw std::runtime_error("Unable to open file");
-    }
-    // Returns the deciphered data
+
+    char key = loadKeyFromFile();
+
     return xorCipher(data, key);
 }
 
 // Encrypt data to file, using key from key.txt, where fileAdress is the name of the file in UserDB folder
-void dbHandler::saveData(std::string fileAdress, std::string data)
+void dbHandler::saveData(std::string fileAdress, std::string data, bool encrypt)
 {
+
+    if (!encrypt)
+    {
+        std::ofstream file1(dbHost + fileAdress);
+        if (file1.is_open())
+        {
+            file1 << data;
+            file1.close();
+        }
+        else
+        {
+            throw std::runtime_error("Unable to open file");
+        }
+
+        if (saveOnline)
+        {
+            std::ofstream file2(dbHostOnline + fileAdress);
+            if (file2.is_open())
+            {
+                file2 << data;
+                file2.close();
+            }
+            else
+            {
+                throw std::runtime_error("Unable to open file");
+            }
+        }
+        return;
+    }
+
     // Load key from key file
-    char key;
-    std::ifstream keyFile;
-    keyFile.open(dbHost_ + "key.txt");
+    char key = loadKeyFromFile();
+    // Saves the ciphered data to file
+
+    saveCipheredDataToFile(fileAdress, data, key);
+}
+
+char dbHandler::loadKeyFromFile()
+{
+    std::ifstream keyFile(dbHost + "key.txt");
     if (keyFile.is_open())
     {
         std::string line;
         getline(keyFile, line);
-        key = line[0];
         keyFile.close();
+        return line[0];
     }
     else
     {
         throw std::runtime_error("Unable to open file");
     }
-    // Saves the ciphered data to file
-    std::ofstream file;
-    file.open(dbHost_ + fileAdress);
+}
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdexcept>
+
+void dbHandler::saveCipheredDataToFile(const std::string &fileAdress, const std::string &data, char key)
+{
+    std::ofstream file(dbHost + fileAdress);
     if (file.is_open())
     {
         file << xorCipher(data, key);
@@ -90,4 +131,27 @@ void dbHandler::saveData(std::string fileAdress, std::string data)
     {
         throw std::runtime_error("Unable to open file");
     }
+}
+
+void dbHandler::setSaveOnline(bool save)
+{
+    saveOnline = save;
+    if (saveOnline)
+        saveData("saveSettings.txt", "true", false);
+
+    else
+        saveData("saveSettings.txt", "false", false);
+}
+
+bool dbHandler::getSaveOnline()
+{
+    return saveOnline;
+}
+
+bool dbHandler::getSaveData()
+{
+    if (findData("saveSettings.txt", false) == "true")
+        return true;
+    else
+        return false;
 }

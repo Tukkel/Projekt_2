@@ -16,7 +16,7 @@ int main()
 {
 	UARTPC uartPc(9600, 8);
 	UARTDE uartDe(9600, 8);
-	uint8_t address[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+	uint8_t address[8] = {0, 0, 0, 0, 0, 0, 0, 1};
 	uint8_t addresstwo[8] = {0, 0, 0, 0, 0, 0, 1, 0};
 	X10 x10(1, 2, 4, address, sizeof(address)/sizeof(address[0]), 'm');
 	uint8_t on[1] = {1};
@@ -79,39 +79,32 @@ int main()
 	while(true)
 	{
 		/*
+		recived = false;
 		recived = x10.writeData(on, sizeof(on)/sizeof(on[0]), addresstwo, sizeof(addresstwo)/sizeof(addresstwo[0]));
-		if(recived)
+		
+		if(recived == true)
 		{
 			x10.readData();
 			dataRead = x10.getValue();
 			PORTB = dataRead+1;
-			address[7] = 1;
 			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address, sizeof(address)/sizeof(address[0]));
 		}
-		recived = false;
-		dataRead = 0;
-		_delay_ms(1000);
-		recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address, sizeof(address)/sizeof(address[0]));
-		recived = false;
-		_delay_ms(1000);
 		*/
+		//recived = false;
 		
 
-		PORTB = 4;
-		_delay_ms(1000);
-
 		PORTB = I.roomReady();
-		_delay_ms(1000);
-
+		_delay_ms(100);
 		if(I.roomReady())
 		{
-			PORTB = 2;
 			if(I.getRoomToSend() == 0)
 			{
 				uartDe.SendString("~~ !");
 			}
 			else
 			{
+				uartDe.SendString("~~ roomName count Name1!");
+				/*
 				size_t i = 0;
 				size_t people = 0;
 				uint8_t room = I.getRoomToSend();
@@ -124,7 +117,6 @@ int main()
 				}
 				PORTB = 8;
 				uartDe.SendChar(' ');
-				
 				for(size_t j = 0; j<log.numberPeople_; ++j)
 				{
 					if(log.rooms_[room][j])
@@ -132,7 +124,6 @@ int main()
 						++people;
 					}
 				}
-				
 				uartDe.SendInteger(people);
 				uartDe.SendChar(' ');
 				i = 0;
@@ -143,19 +134,21 @@ int main()
 					{
 						while(log.peopleNames_[j][i] != '\0')
 						{
-							PORTB = log.peopleNames_[j][i];
 							uartDe.SendChar(log.peopleNames_[j][i]);
 							++i;
 						}
 					}
 				}
-				PORTB = 64;
+				PORTB = 32;
 				uartDe.SendChar('!');
+				*/
 			}
+			//I.roomReady_ = false;
 			I.setRoomReady(false);
 		}
 
 		PORTB = I.stringReady();
+		_delay_ms(100);
 		if(I.stringReady())
 		{
 			size_t i = 0;
@@ -199,6 +192,7 @@ int main()
 						uint32_t addressType = getAddressType(I.string);
 						log.setAddress(address, addressType);
 						PORTB = address;
+						_delay_ms(1000);
 					}
 					else if(I.string[i-1] == 'C')
 					{
@@ -208,6 +202,7 @@ int main()
 						getConnections(I.string, boolPtr);
 						log.setRoomConnection(room, connections);
 						PORTB = room;
+						_delay_ms(1000);
 					}
 					else if(I.string[i-1] == 'D')
 					{
@@ -218,7 +213,68 @@ int main()
 				++i;
 			}
 			I.stringRead();
+			//I.stringReady_ = false;
+			I.setRoomReady(false);
 		}
+		//I.stringReady_ = false;
 	}
 	
 }
+
+/*
+#include <avr/io.h>
+#include "X10.h"
+#include "UARTPC.h"
+
+int main()
+{
+	UARTPC uartPc(9600, 8);
+	uint8_t hvad[8] = {0, 0, 0, 0, 0, 0, 0, 1};
+	uint8_t addresstwo[8] = {0, 0, 0, 0, 0, 0, 1, 0};
+	X10 x10(1, 2, 4, hvad, sizeof(hvad)/sizeof(hvad[0]), 'm');
+	uint8_t data[1] = {1};
+	uint8_t off[1] = {0};
+	uint8_t dataRead = 0;
+	DDRB = 0xFF;
+	bool recived = false;
+	while(true)
+	{
+		while(dataRead == 0)
+		{
+			while(recived == false)
+			{
+				recived = x10.writeData(data, sizeof(data)/sizeof(data[0]), addresstwo, sizeof(addresstwo)/sizeof(addresstwo[0]));
+				PORTB = 1;
+			}
+			recived = false;
+			x10.readData();
+			dataRead = x10.getValue();
+			PORTB = dataRead+1;
+		}
+		while(recived == false)
+		{
+			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), hvad, sizeof(addresstwo)/sizeof(addresstwo[0]));
+			PORTB = 4;
+		}
+		recived = false;
+		dataRead = 0;
+		while(dataRead == 0)
+		{
+			while(recived == false)
+			{
+				recived = x10.writeData(data, sizeof(data)/sizeof(data[0]), addresstwo, sizeof(addresstwo)/sizeof(addresstwo[0]));
+				PORTB = 1;
+			}
+			recived = false;
+			x10.readData();
+			dataRead = x10.getValue();
+			PORTB = dataRead+1;
+		}
+		while(recived == false)
+		{
+			recived = x10.writeData(off, sizeof(off)/sizeof(off[0]), hvad, sizeof(addresstwo)/sizeof(addresstwo[0]));
+			PORTB = 4;
+		}
+	}
+}
+*/
