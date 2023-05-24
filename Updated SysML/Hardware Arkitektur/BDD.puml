@@ -1,0 +1,97 @@
+@startuml BDD IPRS
+skinparam defaultTextAlignment center
+
+mainframe **BDD** IPRS
+
+
+object IPRS <<Block>>  {
+**Ports**
+in userInput: Force
+in adminCommand: Force
+in afstand: Fysisk
+in bevægelse: Fysisk
+in IDinformation: Chip
+out userInformation: Light
+out adminInformation: Light
+out aktuatorCommand: Digital
+}
+
+object "<<Block>>\nCentral Styringsenhed" as master {
+**Ports**
+in slaveInformation: X10
+in boardCommand: UART
+\n
+out slaveCommand: X10
+out boardInformation: UART
+out masterLog: UART
+}
+
+object Informationspanel <<Block>> {
+**Ports**
+in boardInformation: UART
+in userInput: Force
+\n
+out boardCommand: UART
+out userInformation: Light
+}
+
+object Computer <<Block>> {
+**Ports**
+in masterLog: UART
+in adminCommand: Force
+\n
+out adminInformation: Light
+}
+' Måske mus/tastetur
+
+object Sensorslave <<Block>> {
+**Ports**
+in slaveCommand: X10
+in sensorInformation: Analog
+in sensorInformation: Digital
+in sensorInformation: UART
+\n
+out slaveInformation: X10
+}
+
+object Aktuatorslave <<Block>> {
+**Ports**
+in slaveCommand: X10
+\n
+out aktuatorCommand: Digital
+}
+
+object Dørsensor <<Block>>  {
+**Ports**
+in afstand: Fysisk
+\n
+out sensorInformation: Analog
+}
+
+object Rumsensor <<Block>>  {
+**Ports**
+in bevægelse: Fysisk
+\n
+out sensorInformation: Digital
+}
+
+object IDsensor <<Block>> {
+**Ports**
+in IDinformation: Chip
+\n
+out sensorInformation: UART
+}
+
+object Cpp <<Software>> {
+}
+
+master <-- Cpp  : "<<allocate>>" 
+IPRS *-- master
+IPRS *-- Informationspanel
+IPRS *-- Computer
+IPRS *-- "0..254" Aktuatorslave
+IPRS *-- "0..255" Sensorslave
+Sensorslave  *-- "0..1" Dørsensor 
+Sensorslave *-- "0..1" Rumsensor
+Sensorslave *-- "0..1" IDsensor
+@enduml

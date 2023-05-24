@@ -1,0 +1,16 @@
+@startuml UC1 SMD
+
+mainframe **SMD** UC1: Registreret rum skift
+
+hide empty description
+state IDLE
+state DETEKTERET
+
+[*] --> IDLE
+IDLE --> DETEKTERET : Detektering sendes
+DETEKTERET --> IDLE : sendActivity(log)
+
+IDLE : entry/setLowPowerUsage()
+
+DETEKTERET : entry/setNormalPowerUsage()
+@enduml

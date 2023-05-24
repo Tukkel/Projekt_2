@@ -1,0 +1,25 @@
+@startuml SMD UC2
+
+mainframe **SMD** UC2
+
+hide empty description
+
+[*] --> IDLE : initieret
+
+state IDLE : entry/setLowPowerUsage()
+state IDLE : exit/setNormalPowerUsage()  
+
+state SLUKKET : entry/lightOn()
+state TÆNDT  : entry/lightOff()
+
+
+IDLE --> TÆNDT : opdatretLog(tændt)
+TÆNDT --> IDLE : lysTændt
+
+IDLE --> SLUKKET : opdatretLog(slukket)
+SLUKKET --> IDLE : lysSlukket
+
+
+
+
+@enduml
