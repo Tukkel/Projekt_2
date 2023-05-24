@@ -1,7 +1,29 @@
 
-State Machine - |lcd_controller|state
+State Machine - |panel_test|Panel:pan|present_state
+Name present_state.send_state present_state.receive_state present_state.USER_state 
+present_state.USER_state 0 0 0 
+present_state.receive_state 0 1 1 
+present_state.send_state 1 0 1 
+
+State Machine - |panel_test|Panel:pan|lcd_controller:lcd|state
 Name state.send state.ready state.initialize state.power_up 
 state.power_up 0 0 0 0 
 state.initialize 0 0 1 1 
 state.ready 0 1 0 1 
 state.send 1 0 0 1 
+
+State Machine - |panel_test|Panel:pan|UART_TX:uartTX|r_SM_Main
+Name r_SM_Main.s_Cleanup r_SM_Main.s_TX_Stop_Bit r_SM_Main.s_TX_Data_Bits r_SM_Main.s_TX_Start_Bit r_SM_Main.s_Idle 
+r_SM_Main.s_Idle 0 0 0 0 0 
+r_SM_Main.s_TX_Start_Bit 0 0 0 1 1 
+r_SM_Main.s_TX_Data_Bits 0 0 1 0 1 
+r_SM_Main.s_TX_Stop_Bit 0 1 0 0 1 
+r_SM_Main.s_Cleanup 1 0 0 0 1 
+
+State Machine - |panel_test|Panel:pan|UART_RX:uartRX|r_SM_Main
+Name r_SM_Main.s_Cleanup r_SM_Main.s_RX_Stop_Bit r_SM_Main.s_RX_Data_Bits r_SM_Main.s_RX_Start_Bit r_SM_Main.s_Idle 
+r_SM_Main.s_Idle 0 0 0 0 0 
+r_SM_Main.s_RX_Start_Bit 0 0 0 1 1 
+r_SM_Main.s_RX_Data_Bits 0 0 1 0 1 
+r_SM_Main.s_RX_Stop_Bit 0 1 0 0 1 
+r_SM_Main.s_Cleanup 1 0 0 0 1 

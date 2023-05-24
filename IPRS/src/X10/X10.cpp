@@ -1,14 +1,14 @@
 #include "X10.h"
 
-X10::X10(volatile uint8_t clock_pin, volatile uint8_t X10_read, volatile uint8_t X10_write, bool* address, char unit = 's')
+X10::X10(volatile uint8_t clock_pin, volatile uint8_t X10_read, volatile uint8_t X10_write, uint8_t* address, size_t addressSize, char unit)
 {
     clock_pin_ = clock_pin;
     X10_read_ = X10_read;
     X10_write_ = X10_write;
 
-    DDRA &= ~clock_pin_;    //Set pin asignments
-    DDRA &= ~X10_read_;
-    DDRA |= X10_write_;
+    DDRL &= ~clock_pin_;    //Set pin asignments
+    DDRL &= ~X10_read_;
+    DDRL &= ~X10_write_;
 
     if (unit == 'm' || unit == 'M') //If master make address empty
     {
@@ -17,11 +17,11 @@ X10::X10(volatile uint8_t clock_pin, volatile uint8_t X10_read, volatile uint8_t
     else                            //If not master then make a slave
     {
         unit_ = 's';
-        if (sizeof(address) < 8)
+        if (addressSize < 8)
         {
-            for(size_t i=8-sizeof(address);i<8;i++)
+            for(size_t i=8-addressSize;i<8;i++)
             {
-                address_[i] = address[i+sizeof(address)-8];
+                address_[i] = address[i+addressSize-8];
             }
         }
         else
@@ -39,11 +39,11 @@ bool X10::readHalfBit() const
     bool bit = false;
     while (true) // While reading
     {
-        if (PINA & clock_pin_)
+        if (PINL & clock_pin_)
         {
-            while (PINA & clock_pin_)   //While clock pin is high set bit true if true is send on X10
+            while (PINL & clock_pin_)   //While clock pin is high set bit true if true is send on X10
             {
-                if (PINA & X10_read_)
+                if (PINL & X10_read_)
                 {
                     bit = true;
                 }
@@ -53,15 +53,17 @@ bool X10::readHalfBit() const
     }
 }
 
-bool* X10::readData()
+void X10::readData()
 {
     size_t i;
     size_t pair;
+    bool ack;
     while(true)
     {
         i = 0;
         pair = 0;
-        while (true)    //Find start bit
+        ack = true;
+        while (true)    //Find start bit ved at tjekke om der er 2 1'ere og et 0 efter hinanden
         {
             data_[0] = data_[1];
             data_[1] = data_[2];
@@ -78,7 +80,6 @@ bool* X10::readData()
         i = 4;
         while (true)
         { // While reading
-
             data_[i] = readHalfBit(); // Reads the half bit
 
             if(i%2)             //If there is a pair of half bits convert to full bit
@@ -100,19 +101,50 @@ bool* X10::readData()
             ++i;
         }
 
-        while(true) //Check for pairity
+        if(unit_ == 'm')
         {
-            if (PINA & clock_pin_)
+            if(pair%2)
             {
-                if(pair%2)  // If not even try to read again and don't send ack
+                ack = false;
+            }
+            else
+            {
+                ack = true;
+            }
+        }
+        else
+        {
+            for(size_t i = 2; i<10; ++i)
+            {
+                if(address_[i-2] != data_[2*i])
                 {
-                    writeBit(0);
-                    break;
+                    ack = false;
                 }
-                else        //Else convert result to an array with correct size and return it
+            }
+            if(pair%2)
+            {
+                ack = false;
+            }
+        }
+        if(unit_ == 'm' || ack)
+        {
+            while(true) //Check for pairity
+            {
+                if (PINL & clock_pin_)
                 {
-                    writeBit(1);
-                    return data_;
+                    DDRL |= X10_write_;
+                    if(ack)  // if sending ack
+                    {
+                        writeBit(1);
+                        DDRL &= ~X10_write_;
+                        return;
+                    }
+                    else        //Else don't send ack
+                    {
+                        writeBit(0);
+                        DDRL &= ~X10_write_;
+                        break;
+                    }
                 }
             }
         }
@@ -123,92 +155,92 @@ void X10::writeBit(uint8_t bit) const
 {
     while (true)
     {
-        if (PINA & clock_pin_)      //Wait for pulse on clock_pin
+        if (PINL & clock_pin_)      //Wait for pulse on clock_pin
         {
             if (bit == 1)            //If sending a 1 write 10 half bits
             {
-                PORTA |= X10_write_;
-                while(PINA & clock_pin_)
+                PORTL |= X10_write_;
+                while(PINL & clock_pin_)
                 {
                 }
-                PORTA &= ~X10_write_;
-                while((PINA & clock_pin_) == 0)
+                PORTL &= ~X10_write_;
+                while((PINL & clock_pin_) == 0)
                 {
                 }
-                while(PINA & clock_pin_)
+                while(PINL & clock_pin_)
                 {
                 }
                 return;
             }
             else if (bit == 2)            //If sending a 2 write 00 half bits
             {
-                PORTA &= ~X10_write_;
-                while(PINA & clock_pin_)
+                PORTL &= ~X10_write_;
+                while(PINL & clock_pin_)
                 {
                 }
-                while((PINA & clock_pin_) == 0)
+                while((PINL & clock_pin_) == 0)
                 {
                 }
-                while(PINA & clock_pin_)
+                while(PINL & clock_pin_)
                 {
                 }
                 return;
             }
             else if (bit == 3)            //If sending a 3 write 11 half bits
             {
-                PORTA |= X10_write_;
-                while(PINA & clock_pin_)
+                PORTL |= X10_write_;
+                while(PINL & clock_pin_)
                 {
                 }
-                PORTA &= ~X10_write_;
-                while((PINA & clock_pin_) == 0)
+                PORTL &= ~X10_write_;
+                while((PINL & clock_pin_) == 0)
                 {
                 }
-                PORTA |= X10_write_;
-                while(PINA & clock_pin_)
+                PORTL |= X10_write_;
+                while(PINL & clock_pin_)
                 {
                 }
-                PORTA &= ~X10_write_;
+                PORTL &= ~X10_write_;
                 return;
             }
             else                //Else send a 0 with 01 half bits
             {
-                PORTA &= ~X10_write_;
-                while(PINA & clock_pin_)
+                PORTL &= ~X10_write_;
+                while(PINL & clock_pin_)
                 {
                 }
-                while((PINA & clock_pin_) == 0)
+                while((PINL & clock_pin_) == 0)
                 {
                 }
-                PORTA |= X10_write_;
-                while(PINA & clock_pin_)
+                PORTL |= X10_write_;
+                while(PINL & clock_pin_)
                 {
                 }
-                PORTA &= ~X10_write_;
+                PORTL &= ~X10_write_;
                 return;
             }
         }
     }
 }
 
-void X10::writeData(bool* data, bool* address = 0) const
+bool X10::writeData(uint8_t* data, size_t dataSize, uint8_t* address, size_t addressSize) const
 {
     bool read[6] = {false};
-    bool send[8+sizeof(data)+1] = {false};
+    uint8_t send[8+dataSize+1] = {0};
     size_t pair = 0;
 
     if (unit_ == 'm')       //If it is master sending the inputted address is used but needs to be checked for correct size
     {
-        if(sizeof(address) < 8)
+        if(addressSize < 8)
         {
-            for(size_t i = 8-sizeof(address); i<8; i++)
+            for(size_t i = 8-addressSize; i<8; ++i)
             {
-                send[i] = address[i+sizeof(address)-8];
+                send[i] = address[i+addressSize-8];
             }
         }
         else
         {
-            for(size_t i = 0; i<8; i++)
+            for(size_t i = 0; i<8; ++i)
             {
                 send[i] = address[i];
             }
@@ -216,18 +248,18 @@ void X10::writeData(bool* data, bool* address = 0) const
     }
     else                    //If it is not a master sending it is a slave that needs to send its own address
     {
-        for(size_t i = 0; i<8; i++)
+        for(size_t i = 0; i<8; ++i)
         {
             send[i] = address_[i];
         }
     }
 
-    for(size_t i = 8; i<(8+sizeof(data)); i++)  //The data is inserted into the array to send
+    for(size_t i = 8; i<8+dataSize; ++i)  //The data is inserted into the array to send
     {
         send[i] = data[i-8];
     }
 
-    for(size_t i = 0; i<8+sizeof(data); i++)    //Pairity bit is set to 1 of there is an uneven number of 1's
+    for(size_t i = 0; i<8+dataSize; ++i)    //Pairity bit is set to 1 of there is an uneven number of 1's
     {
         if(send[i])
         {
@@ -236,7 +268,7 @@ void X10::writeData(bool* data, bool* address = 0) const
     }
     if(pair%2)
     {
-        send[8+sizeof(data)] = true;
+        send[8+dataSize] = 1;
     }
 
     size_t i = 0;
@@ -248,7 +280,6 @@ void X10::writeData(bool* data, bool* address = 0) const
         read[3] = read[4];
         read[4] = read[5];
         read[5] = readHalfBit();
-
         
         if(i > 2 && read[2] == false && read[3] == false && read[4] == false && read[5] == false)
         {
@@ -260,30 +291,60 @@ void X10::writeData(bool* data, bool* address = 0) const
             break;
         }
 
-        i++;
+        ++i;
     }
     
-    while(true)
-    {       //First send start bit
-        writeBit(3);
-        writeBit(1);
+    //First send start bit
+    DDRL |= X10_write_;
+    writeBit(3);
+    writeBit(1);
 
-        for(size_t j = 0; j < sizeof(send); j++)    //Address and data with pairity bit is send here
+    for(size_t j = 0; j < sizeof(send); j++)    //Address and data with pairity bit is send here
+    {
+        writeBit(send[j]);
+    }
+
+    writeBit(2);
+    writeBit(0);
+    DDRL &= ~X10_write_;
+
+    if(readHalfBit())       //Check for ack. If no ack is recived try again
+    {
+        if(readHalfBit() == 0)
         {
-            writeBit(send[j]);
-        }
-
-        writeBit(2);
-        writeBit(0);
-
-        if(readHalfBit())       //Check for ack. If no ack is recived try again
-        {
-            if(readHalfBit() == false)
-            {
-                break;
-            }
+            return true;
         }
     }
 
-    return;
+    return false;
+}
+
+uint8_t X10::getAddress() const
+{
+    uint8_t address = 0;
+    for(size_t i = 2; i<10; ++i)
+    {
+        address += data_[(2*9) - (2*(i-2))]<<(i-2);
+    }
+    return address;
+}
+
+uint16_t X10::getValue() const
+{
+    uint16_t value = 0;
+    size_t count = 0;
+    for(size_t i = 10; i<50; ++i)
+    {
+        if((data_[i*2] == false) && (data_[i*2+1] == false))
+        {
+            break;
+        }
+        ++count;
+    }
+    for(size_t i = 10; i<(10+count); ++i)
+    {
+        data_[(2*9) - (2*(i-2))]<<(i-2);
+        value += data_[(2*(10+count))-2*i]<<(count+9-i);
+    }
+    return value;
 }
