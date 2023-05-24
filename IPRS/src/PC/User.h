@@ -4,6 +4,7 @@
 
 #include <string>
 #include "dbHandler.h"
+#include <windows.h>
 
 class User
 {
@@ -14,7 +15,8 @@ private:
     dbHandler db;
 
 public:
-    User(std::string password = "admin");
+    User();
+    User(dbHandler dataBase, std::string password = "admin");
 
     // Function to login to the system, checks if the username and password are correct, Return if the login is true og not
     void login();
@@ -27,6 +29,14 @@ public:
 
     // Function to change the password of the user, username
     void changePassword();
+
+    // Function to clear the terminal
+    void clearScreen();
+
+    int getWindowWidth();
+    void setConsoleColor(WORD attributes);
+    void printHorizontalLine(int width, WORD attributes);
+    void printCenteredText(const std::string &text, int padding, WORD attributes);
 };
 
 #endif
