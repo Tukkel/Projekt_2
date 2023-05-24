@@ -24,11 +24,11 @@ ENTITY Panel IS
 		rw, rs, e, lcdon : OUT STD_LOGIC; --read/write, setup/data, enable and on for lcd
 		lcd_data : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
 
-	); --data signals for lcd
+	);
 END Panel;
 
 ARCHITECTURE Panel_impl OF Panel IS
-	TYPE state IS (USER_state, receive_state, send_state); --Send_state
+	TYPE state IS (USER_state, receive_state, send_state);
 	SIGNAL present_state, next_state : state;
 
 	-- lcd signals
@@ -37,7 +37,7 @@ ARCHITECTURE Panel_impl OF Panel IS
 	SIGNAL lcd_busy   : STD_LOGIC;
 
 	--rx signals
-	SIGNAL RX_ComeGetMe : STD_LOGIC; --Active high, come and get the byte plz
+	SIGNAL RX_ByteReady : STD_LOGIC; --Active high, come and get the byte plz
 	SIGNAL RX_data      : STD_LOGIC_VECTOR(7 DOWNTO 0); --data from uart RX
 
 	--tx signals
@@ -53,16 +53,17 @@ ARCHITECTURE Panel_impl OF Panel IS
 
 	SIGNAL mapleds : STD_LOGIC;
 
+	--Constants
 	CONSTANT startbyte : STD_LOGIC_VECTOR := "01111110"; --start byte for uart ascii ~
 	CONSTANT stopbyte  : STD_LOGIC_VECTOR := "00100001"; --stop byte for uart ascii !
 	CONSTANT ledstart  : STD_LOGIC_VECTOR := "00101111"; --LEDbyte start ascii /
 	CONSTANT ledstop   : STD_LOGIC_VECTOR := "01011100"; --LEDbyte start ascii \
 
 BEGIN
-
-	uartRX : ENTITY UART_RX PORT MAP(i_clk => clk, i_RX_Serial => RX_serialIN, o_RX_DV => RX_ComeGetMe, o_RX_Byte => RX_data);
+	-- Instantiate components
+	uartRX : ENTITY UART_RX PORT MAP(i_clk => clk, i_RX_Serial => RX_serialIN, o_RX_DV => RX_ByteReady, o_RX_Byte => RX_data);
 	uartTX : ENTITY UART_TX PORT MAP(i_clk => clk, i_TX_DV => TX_send, i_TX_Byte => TX_data, o_TX_Active => TX_active, o_TX_Serial => TX_serialout, o_TX_Done => TX_done);
-	lcd : ENTITY lcd_controller PORT MAP(clk => clk, reset_n => reset, lcd_enable => lcd_enable, lcd_bus => lcd_bus, busy => lcd_busy, rw => rw, rs => rs, e => e, lcd_data => lcd_data, lcdon => lcdon);
+	lcd    : ENTITY lcd_controller PORT MAP(clk => clk, reset_n => reset, lcd_enable => lcd_enable, lcd_bus => lcd_bus, busy => lcd_busy, rw => rw, rs => rs, e => e, lcd_data => lcd_data, lcdon => lcdon);
 
 state_reg : PROCESS (clk, reset)
 	BEGIN
@@ -73,7 +74,7 @@ state_reg : PROCESS (clk, reset)
 		END IF;
 	END PROCESS;
 
-outputs : PROCESS (clk, present_state, RX_ComeGetMe, TX_active, reset)
+outputs : PROCESS (clk, present_state, RX_ByteReady, TX_active, reset)
 	BEGIN
 		IF reset = '0' THEN
 			roomsInUse <= "00000000";
@@ -82,7 +83,7 @@ outputs : PROCESS (clk, present_state, RX_ComeGetMe, TX_active, reset)
 		CASE present_state IS
 			WHEN receive_state =>
 				RX_busy <= '1';
-				IF RX_ComeGetMe = '1' THEN -- if we have a byte to read
+				IF RX_ByteReady = '1' THEN -- if we have a byte to read
 					IF RX_data = ledstart AND mapleds = '0' THEN -- if the byte is / and we are not already mapping leds
 						mapleds <= '1';
 					ELSIF mapleds = '1' THEN -- if we are mapping leds. This could be done with a counter instead so more bytes could be read
@@ -105,7 +106,7 @@ outputs : PROCESS (clk, present_state, RX_ComeGetMe, TX_active, reset)
 				END IF;
 
 			WHEN USER_state =>
-				TX_data <= "0000" & rooms;
+				--TX_data <= "0000" & rooms;
 				RX_busy <= '0';
 				lcd_enable <= '0';
 				IF doShift = '1' AND shift = '0' THEN -- shift screen to the left
@@ -133,13 +134,13 @@ outputs : PROCESS (clk, present_state, RX_ComeGetMe, TX_active, reset)
 	END IF;
 END PROCESS;
 
-nxt_state : PROCESS (present_state, RX_ComeGetMe)
+nxt_state : PROCESS (present_state, RX_ByteReady)
 	BEGIN
 		next_state <= present_state;
 		CASE present_state IS
 
 			WHEN receive_state =>
-				IF RX_ComeGetMe = '1' THEN
+				IF RX_ByteReady = '1' THEN
 					IF RX_data = stopbyte THEN -- only way to get out of this state
 						next_state <= USER_state;
 					END IF;
@@ -148,7 +149,7 @@ nxt_state : PROCESS (present_state, RX_ComeGetMe)
 				END IF;
 
 			WHEN USER_state =>
-				IF RX_ComeGetMe = '1' THEN
+				IF RX_ByteReady = '1' THEN
 					IF RX_data = startbyte THEN -- if the byte is ~
 						next_state <= receive_state;
 					END IF;
@@ -161,7 +162,7 @@ nxt_state : PROCESS (present_state, RX_ComeGetMe)
 				END IF;
 
 			WHEN send_state =>
-				IF RX_ComeGetMe = '1' THEN
+				IF RX_ByteReady = '1' THEN
 					IF RX_data = startbyte THEN -- if the byte is ~
 						next_state <= receive_state;
 					END IF;
