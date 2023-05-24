@@ -1,0 +1,28 @@
+@startuml sekvensdiagram UC3
+skinparam style strictuml
+
+actor User AS U
+participant "<<boundary>>\nInformation Panel" as IP
+participant "<<control>>\nBruger informationpanel " as M
+
+
+
+M -> IP : updateRoomstate(log)
+U <-- IP : Vis information
+group Extention 1: Bruger Vælger Rum
+U -> IP : Vælger rum
+activate IP
+M <- IP : getRoomInfo(roomNr)
+M --> IP : roomInfo
+U <-- IP : Viser ruminformation
+deactivate IP
+
+
+U -> IP : Fravælger rum
+activate IP
+U <-- IP : Viser ruminformation
+deactivate IP
+
+end
+
+@enduml
