@@ -6,12 +6,11 @@
 // main
 int main(void){
     // slave adresse sættes
-    DDRB = 0xFF;
     uint8_t adress[8] = {0};
     adress[7] = 1; // slave nr 1
 
     slaveAktuator slave1(0, adress); // slaveAktuator oprettes
     while(1){ // uendelig loop som opdaterer loggen og dermed lyset
-        slave1.opdaterLog(); 
+        slave1.opdateretLog(); 
     }
 }

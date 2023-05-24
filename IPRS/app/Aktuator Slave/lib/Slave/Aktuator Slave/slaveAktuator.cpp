@@ -8,12 +8,11 @@ slaveAktuator::slaveAktuator(int outPin, uint8_t* addressArray, uint8_t logLysSt
     outPin_ = outPin;
 }
 
-void slaveAktuator::opdaterLog()
+void slaveAktuator::opdateretLog()
 {
     setNormalPowerUsage();
     DDRB |= (1<<outPin_) ;
     x10_.readData();
-    PORTB = 8;
     uint8_t address = x10_.getAddress();
     
     if (address != slaveNr_)
@@ -21,19 +20,16 @@ void slaveAktuator::opdaterLog()
         setLowPowerUsage();
         return;
     }
+    
     logLysStatus_ = x10_.getValue();
 
-    
-    
     if (logLysStatus_)
     {
-        //PORTB |= (1<<outPin_);
-        PORTB = logLysStatus_;
+        PORTB |= (1<<outPin_);
     }
     else
     {
-        //PORTB &= ~(1<<outPin_);
-        PORTB = logLysStatus_;
+        PORTB &= ~(1<<outPin_);
     }
     setLowPowerUsage();
 }

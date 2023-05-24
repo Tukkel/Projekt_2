@@ -17,7 +17,7 @@ private:
     int outPin_;
 public:
     slaveAktuator(int outPin, uint8_t * address, uint8_t logLysStatus = false);
-    void opdaterLog();
+    void opdateretLog();
 };
 
 

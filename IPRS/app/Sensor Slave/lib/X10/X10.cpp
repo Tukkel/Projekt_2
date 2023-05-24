@@ -343,7 +343,6 @@ uint16_t X10::getValue() const
     }
     for(size_t i = 10; i<(10+count); ++i)
     {
-        data_[(2*9) - (2*(i-2))]<<(i-2);
         value += data_[(2*(10+count))-2*i]<<(count+9-i);
     }
     return value;

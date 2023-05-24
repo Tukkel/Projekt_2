@@ -2,7 +2,7 @@
 
 Log::Log(uint8_t numberRooms, size_t numberPeople) : numberRooms_(numberRooms), numberPeople_(numberPeople)
 {
-    _delay_ms(10);
+    _delay_ms(100);
     rooms_[numberRooms_][numberPeople_] = {false};
     roomChances_[numberRooms_][numberPeople_] = {0};
     peopleHistory_[numberRooms_][numberPeople_] = {0};
@@ -11,6 +11,8 @@ Log::Log(uint8_t numberRooms, size_t numberPeople) : numberRooms_(numberRooms), 
     peopleNames_[numberPeople_][16];
     nextEntry_ = 0;
     timeMin_ = 0;
+
+    PORTB = 2;
 
     logTime_ = (size_t*)malloc(10*sizeof(size_t));
     log_ = (double *)malloc(numberRooms_*numberPeople_*10*sizeof(double));

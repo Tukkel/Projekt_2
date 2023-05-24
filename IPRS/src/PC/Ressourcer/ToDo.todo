@@ -1,59 +1,7 @@
 // Crtl+Enter for new task, Alt+D for complete, Alt+C for cancel//
 
 Generelt:
-    ☐ Undersøge mulighederne for at lave en GUI
-    ☐ Tilføje edit log som mulighed i UC og SWdesign
-        - Må vi gerne
-    ☐ Tilføje hvilken type UI det skal være som en kravspec
-        - Nævn det i processen at det er lavet forkert i forhold til udviklingsfasen
-    ☐ Hvor mange Klasser vi laver
     ☐ Skal vi kryptere data?  
         - Husk at skrive det i process rapport at det er lavet forkert i forhold til udviklingsfasens
 
-Funktioner:
-    ✔ Lave en startside - Andreas @done (5/5/2023, 12:54:54 PM)
-        - Lavet udkast
-    ✔ Lave en login funktion @done (4/27/2023, 8:48:56 AM)
-        Der er lavet et udkast
-    ✔ Lave en krypter funktion/klasse @done (5/3/2023, 11:53:55 AM)
-    ☐ Lave en printlog Funktion
-        - Mangler at vide hvordan log skal se ud
-    ☐ Lave en editLog funktion 
-    ☐ Lave en rediger system funktion - Kristoffer
-    ☐ Lave en kalibrer funktion
-    ✔ Lave en logud funktion @done (5/3/2023, 11:54:14 AM)
-    ✔ Lave en main fil - Andreas @done (5/5/2023, 12:55:36 PM)
-        - Lavet udkast til at starte med
-
-GUI/TUI:
-    ☐ Finde ud af om vi laver en GUI eller en TUI
-    ☐ Finde ud af hvilke libaries der skal bruges og hvordan
-
-Kryptering:
-    ☐ 
-
-Login:
-    ☐ Lav validering af brugernavn og password
-        Kun admin kan logge ind
-    ☐ Evt kryptere selve paswordet
-    ☐ Finde ud af i UI at skjule password delen
-
-PrintLog:
-    ☐ Print loggen i pæn format
-
-EditLog:
-    ☐ Finde ud af hvordan det intuativt er let at redigere loggen
-
-RedigerSystem:
-    ☐ Finde ud af hvordan Master og Slaver gemmer deres systemdata
-    ☐ ? Højst sandsynlig skal vi sende et objekt som hedder nytSystem
-    ☐ Lave en wizard setup med det nyeSystem 
-        - komposition
-    ☐ Lave en funktion som kun rediger det man ønsker at rediger  
-        - setfunktioner
-
-Kalibrer:
-    ☐ Finde ud af hvordan fanden vi gør det
-Logud:
-    ☐ Sender brugeren til login startside
 
