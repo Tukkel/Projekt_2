@@ -1,5 +1,5 @@
 Assembler report for Panel
-Fri May 19 08:56:54 2023
+Wed May 24 10:02:48 2023
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Fri May 19 08:56:54 2023 ;
+; Assembler Status      ; Successful - Wed May 24 10:02:48 2023 ;
 ; Revision Name         ; Panel                                 ;
 ; Top-level Entity Name ; panel_test                            ;
 ; Family                ; Cyclone II                            ;
@@ -94,8 +94,8 @@ applicable agreement for further details.
 ; Option         ; Setting                                                                                                              ;
 +----------------+----------------------------------------------------------------------------------------------------------------------+
 ; Device         ; EP2C35F672C6                                                                                                         ;
-; JTAG usercode  ; 0x0033D03E                                                                                                           ;
-; Checksum       ; 0x0033D03E                                                                                                           ;
+; JTAG usercode  ; 0x0033DFC3                                                                                                           ;
+; Checksum       ; 0x0033DFC3                                                                                                           ;
 +----------------+----------------------------------------------------------------------------------------------------------------------+
 
 
@@ -106,7 +106,7 @@ applicable agreement for further details.
 +--------------------+------------------------------------------------------------------------------------------------------------------+
 ; Device             ; EPCS16                                                                                                           ;
 ; JTAG usercode      ; 0x00000000                                                                                                       ;
-; Checksum           ; 0x1C73826C                                                                                                       ;
+; Checksum           ; 0x1C733CFE                                                                                                       ;
 ; Compression Ratio  ; 3                                                                                                                ;
 +--------------------+------------------------------------------------------------------------------------------------------------------+
 
@@ -117,7 +117,7 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri May 19 08:56:52 2023
+    Info: Processing started: Wed May 24 10:02:45 2023
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off ControlPanel10000 -c Panel
 Warning (292000): FLEXlm software error: Future license file format or misspelling in license file.  The file was issued for a later version of FLEXnet Licensing than this  program understands. Feature:       quartus License text:  ONE_TS_OK SIGN="1663 4B7E 24C2 0965 72A2 AD41 3EA4 999C 1CCF 4002 7004 4171 F4EF 834F A45F 0BD3 FE8C 4E78 AAEB 54D8 6544 D576 C23F FBE4 9E21 9E48 B404 3494 5104 00F9" License path:  C:\Program Files\StruSoft\FEM-Design 21 Educational\license.lic FLEXnet Licensing error:-90,313 For further information, refer to the FLEXnet Licensing End User Guide, available at "www.macrovision.com".
 Warning (292000): FLEXlm software error: Future license file format or misspelling in license file.  The file was issued for a later version of FLEXnet Licensing than this  program understands. Feature:       quartus_talkback License text:  ONE_TS_OK SIGN="1663 4B7E 24C2 0965 72A2 AD41 3EA4 999C 1CCF 4002 7004 4171 F4EF 834F A45F 0BD3 FE8C 4E78 AAEB 54D8 6544 D576 C23F FBE4 9E21 9E48 B404 3494 5104 00F9" License path:  C:\Program Files\StruSoft\FEM-Design 21 Educational\license.lic FLEXnet Licensing error:-90,313 For further information, refer to the FLEXnet Licensing End User Guide, available at "www.macrovision.com".
@@ -125,8 +125,8 @@ Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 16 warnings
     Info: Peak virtual memory: 4556 megabytes
-    Info: Processing ended: Fri May 19 08:56:54 2023
-    Info: Elapsed time: 00:00:02
+    Info: Processing ended: Wed May 24 10:02:48 2023
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:02
 
 
