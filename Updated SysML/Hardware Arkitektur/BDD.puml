@@ -1,5 +1,6 @@
 @startuml BDD IPRS
 skinparam defaultTextAlignment center
+hide empty members
 
 mainframe **BDD** IPRS
 
@@ -11,6 +12,7 @@ in adminCommand: Force
 in afstand: Fysisk
 in bevægelse: Fysisk
 in IDinformation: Chip
+\t
 out userInformation: Light
 out adminInformation: Light
 out aktuatorCommand: Digital
@@ -20,7 +22,8 @@ object "<<Block>>\nCentral Styringsenhed" as master {
 **Ports**
 in slaveInformation: X10
 in boardCommand: UART
-\n
+in computerCommand: UART
+\t
 out slaveCommand: X10
 out boardInformation: UART
 out masterLog: UART
@@ -30,7 +33,7 @@ object Informationspanel <<Block>> {
 **Ports**
 in boardInformation: UART
 in userInput: Force
-\n
+\t
 out boardCommand: UART
 out userInformation: Light
 }
@@ -39,7 +42,8 @@ object Computer <<Block>> {
 **Ports**
 in masterLog: UART
 in adminCommand: Force
-\n
+\t
+out computerCommand: UART
 out adminInformation: Light
 }
 ' Måske mus/tastetur
@@ -49,43 +53,68 @@ object Sensorslave <<Block>> {
 in slaveCommand: X10
 in sensorInformation: Analog
 in sensorInformation: Digital
-in sensorInformation: UART
-\n
+\t
 out slaveInformation: X10
 }
 
 object Aktuatorslave <<Block>> {
 **Ports**
 in slaveCommand: X10
-\n
+\t
 out aktuatorCommand: Digital
 }
 
 object Dørsensor <<Block>>  {
 **Ports**
 in afstand: Fysisk
-\n
+\t
 out sensorInformation: Analog
 }
 
 object Rumsensor <<Block>>  {
 **Ports**
-in bevægelse: Fysisk
-\n
-out sensorInformation: Digital
+in temperaturForskel: Temperatur
+\t
+out sensorInformation: Analog
 }
 
 object IDsensor <<Block>> {
 **Ports**
 in IDinformation: Chip
-\n
-out sensorInformation: UART
+\t
+out sensorInformation: Digital
 }
 
-object Cpp <<Software>> {
+object Master <<Software>> {
+    Cpp
 }
 
-master <-- Cpp  : "<<allocate>>" 
+object PC <<Software>> {
+    Cpp
+}
+
+object InfoPanel <<Software>> {
+    VHDL
+}
+
+object Sensor_Slave <<Software>> {
+    Cpp
+}
+
+object Aktuator_Slave <<Software>> {
+    Cpp
+}
+
+
+
+
+master <-- Master  : "<<allocate>>" 
+Computer <-- PC : "<<allocate>>"
+Informationspanel <-- InfoPanel : "<<allocate>>"
+Sensorslave <-- Sensor_Slave : "<<allocate>>"
+Aktuatorslave <-- Aktuator_Slave : "<<allocate>>"
+
+
 IPRS *-- master
 IPRS *-- Informationspanel
 IPRS *-- Computer
