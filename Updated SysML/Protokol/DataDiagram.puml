@@ -1,0 +1,123 @@
+@startuml DataDiagram
+
+scale 1 as 50 pixels
+
+
+concise "bits" as B
+binary "clk" as C
+
+
+@B
+0 is start_bits
+2 is address_bits
+10 is "data_bits (varaible)"
+14 is stop_bits
+16 is {hidden}
+
+@0
+C is high
+C -> B 
+
+@0.5
+C is low
+C -> B 
+
+@1
+C is high
+C -> B 
+
+@1.5
+C is low
+
+@2
+C is high
+
+@2.5
+C is low
+
+@3
+C is high
+
+@3.5
+C is low
+
+@4
+C is high
+
+@4.5
+C is low
+
+@5
+C is high
+
+@5.5
+C is low
+
+@6
+C is high
+
+@6.5
+C is low
+
+@7
+C is high
+
+@7.5
+C is low
+
+@8
+C is high
+
+@8.5
+C is low
+
+@9
+C is high
+
+@9.5
+C is low
+
+@10
+C is high
+
+@10.5
+C is low
+
+@11
+C is high
+
+@11.5
+C is low
+
+@12
+C is high
+
+@12.5
+C is low
+
+@13
+C is high
+
+@13.5
+C is low
+
+@14
+C is high
+
+@14.5
+C is low
+
+@15
+C is high
+
+@15.5
+C is low
+C -> B 
+
+@16
+C is high
+
+@16.5
+C is low
+
+@enduml

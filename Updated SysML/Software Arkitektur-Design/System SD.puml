@@ -1,0 +1,52 @@
+@startuml System SD
+skinparam style strictuml
+
+mainframe **SD** IPRS
+
+actor Bruger as bruger
+participant "Dørsensor" as dør
+participant "Rumsensor" as rum
+participant "IDsensor" as ID
+participant "Sensorslave" as SS
+participant "Aktuatorslave" as AkS
+participant "X10 netværk" as X10
+participant "Master" as master
+participant "Informationspanel" as panel
+
+activate master
+activate panel
+alt Registrering
+bruger ->> dør : Går gennem dør
+dør ->> SS : Detektering sendes
+activate SS
+else
+deactivate SS
+bruger ->> rum : Bevægelse i tomt rum
+rum ->> SS : Detektering sendes
+activate SS
+else
+deactivate SS
+bruger ->> ID : Registrering i ikke forventet rum
+ID ->> SS : Detektering sendes
+activate SS
+end
+SS -> SS : Sæt normalt energiforbrug
+SS -> X10 : Send aktivitet
+X10 -> master : Modtager aktivitet
+X10 <<-- master : Send ACK
+SS <<-- X10 : Modtager ACK
+SS -> SS : Sæt lav energiforbrug
+deactivate SS
+master -> master : Opdater log
+master ->> X10 : Send aktuatorslave status
+X10 ->> AkS : Modtager ny status
+activate AkS
+AkS -> AkS : Ændre status på modulærenhed
+deactivate AkS
+master ->> panel : Send ny rumstatus
+panel ->> bruger : Vis rumstatus
+bruger -> panel : Aktiver ruminformation
+panel -> master : Anmod om ruminformation
+master -->> panel : Send ruminformation
+bruger <<-- panel : Vis ruminformation
+@enduml

@@ -3,17 +3,26 @@
 #include "User.h"
 #include "PCHandler.h"
 
+#define portName "\\\\.\\COM3"
+
 int main()
 {
+    // Setting up objects and dependcies
+    dbHandler db;
+    User admin(db, "admin");
+    SerialPort arduino(portName);
 
-    PCHandler PC("admin");
-    PC.clearScreen();
-    std::cout << "Welcome to the IPRS system" << std::endl;
+    PCHandler PC(&admin, &arduino, &db);
+
+    admin.clearScreen();
+
+    // Start the program
     PC.showMenu();
 
     return 0;
 }
 
+// Can be used to turn off echo in console
 /*
 # include<windows.h>
 HANDLE console = GetStdHandle(STD_INPUT_HANDLE);

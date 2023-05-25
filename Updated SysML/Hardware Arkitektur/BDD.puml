@@ -1,0 +1,126 @@
+@startuml BDD IPRS
+skinparam defaultTextAlignment center
+hide empty members
+
+mainframe **BDD** IPRS
+
+
+object IPRS <<Block>>  {
+**Ports**
+in userInput: Force
+in adminCommand: Force
+in afstand: Fysisk
+in bevægelse: Fysisk
+in IDinformation: Chip
+\t
+out userInformation: Light
+out adminInformation: Light
+out aktuatorCommand: Digital
+}
+
+object "<<Block>>\nCentral Styringsenhed" as master {
+**Ports**
+in slaveInformation: X10
+in boardCommand: UART
+in computerCommand: UART
+\t
+out slaveCommand: X10
+out boardInformation: UART
+out masterLog: UART
+}
+
+object Informationspanel <<Block>> {
+**Ports**
+in boardInformation: UART
+in userInput: Force
+\t
+out boardCommand: UART
+out userInformation: Light
+}
+
+object Computer <<Block>> {
+**Ports**
+in masterLog: UART
+in adminCommand: Force
+\t
+out computerCommand: UART
+out adminInformation: Light
+}
+' Måske mus/tastetur
+
+object Sensorslave <<Block>> {
+**Ports**
+in slaveCommand: X10
+in sensorInformation: Analog
+in sensorInformation: Digital
+\t
+out slaveInformation: X10
+}
+
+object Aktuatorslave <<Block>> {
+**Ports**
+in slaveCommand: X10
+\t
+out aktuatorCommand: Digital
+}
+
+object Dørsensor <<Block>>  {
+**Ports**
+in afstand: Fysisk
+\t
+out sensorInformation: Analog
+}
+
+object Rumsensor <<Block>>  {
+**Ports**
+in temperaturForskel: Temperatur
+\t
+out sensorInformation: Analog
+}
+
+object IDsensor <<Block>> {
+**Ports**
+in IDinformation: Chip
+\t
+out sensorInformation: Digital
+}
+
+object Master <<Software>> {
+    Cpp
+}
+
+object PC <<Software>> {
+    Cpp
+}
+
+object InfoPanel <<Software>> {
+    VHDL
+}
+
+object Sensor_Slave <<Software>> {
+    Cpp
+}
+
+object Aktuator_Slave <<Software>> {
+    Cpp
+}
+
+
+
+
+master <-- Master  : "<<allocate>>" 
+Computer <-- PC : "<<allocate>>"
+Informationspanel <-- InfoPanel : "<<allocate>>"
+Sensorslave <-- Sensor_Slave : "<<allocate>>"
+Aktuatorslave <-- Aktuator_Slave : "<<allocate>>"
+
+
+IPRS *-- master
+IPRS *-- Informationspanel
+IPRS *-- Computer
+IPRS *-- "0..254" Aktuatorslave
+IPRS *-- "0..255" Sensorslave
+Sensorslave  *-- "0..1" Dørsensor 
+Sensorslave *-- "0..1" Rumsensor
+Sensorslave *-- "0..1" IDsensor
+@enduml

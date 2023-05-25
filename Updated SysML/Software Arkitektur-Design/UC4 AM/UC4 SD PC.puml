@@ -1,0 +1,57 @@
+@startuml UC4 SD PC
+skinparam style strictuml
+
+mainframe **SD** UC4: Administrator login (PC)
+
+actor       Administrator      as admin
+participant "<<boundary>>\nPC Interface" as UI
+participant "<<controller>>\nUC4: Administrator login" as PC
+participant "<<domain>>\nUARTCommunication" as UART
+participant "<<boundary>>\nUART Connection" as UARTCon
+
+admin -> UI : Presses start
+activate UI
+admin <<-- UI : Vis log ind UI
+admin ->> UI : Indtaster loginoplysninger
+UI -> PC : validate(username, password)
+activate PC
+PC -> UART : sendLog()
+UART ->> UARTCon : Request log
+PC <<-- UARTCon : log
+PC -> PC : updatePCLog(log)
+UI <<-- PC : OK
+loop Så længe der ikke er logget ud
+admin <<- UI : Vis mulige handlinger
+alt Print data
+admin -> UI : Vælger print data
+UI -> PC : printLog()
+UI <<-- PC : Log text
+admin <<-- UI : Vis log
+else Rediger system
+admin -> UI : Vælger rediger system
+UI -> PC : showOptions()
+UI <<-- PC : Muligheder
+admin <<-- UI : Vis muligheder
+admin -> UI : Redigerer systemet
+UI -> PC : changeSystem(newSystem)
+PC -> UART : updateSystem(newSystem)
+UART ->> UARTCon : newSystem
+PC <<-- UARTCon : System changed
+UI <<-- PC : System changed
+admin <<-- UI : Vis at redigering blev fuldført
+else Initialization
+admin -> UI : Selects initialization
+UI -> PC : initialise()
+PC -> UART : masterInitialize()
+UART ->> UARTCon : Request initialization of IPRS
+PC <<-- UARTCon : Validation
+UI <<-- PC : Validation text
+admin <<-- UI : Vis validation
+else Log out
+admin -> UI : Selects log out
+admin <<-- UI : Show it is logging out
+deactivate PC
+deactivate UI
+end
+end
+@enduml

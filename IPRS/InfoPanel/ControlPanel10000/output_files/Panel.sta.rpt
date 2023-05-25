@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for Panel
-Fri May 19 08:56:56 2023
+Wed May 24 10:02:50 2023
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -106,7 +106,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +------------+-----------------+------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
 +------------+-----------------+------------+------+
-; 122.82 MHz ; 122.82 MHz      ; CLOCK_50   ;      ;
+; 119.67 MHz ; 119.67 MHz      ; CLOCK_50   ;      ;
 +------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -116,7 +116,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------+--------+---------------+
 ; Clock    ; Slack  ; End Point TNS ;
 +----------+--------+---------------+
-; CLOCK_50 ; -7.142 ; -617.509      ;
+; CLOCK_50 ; -7.356 ; -624.383      ;
 +----------+--------+---------------+
 
 
@@ -146,7 +146,7 @@ No paths to report.
 +----------+--------+--------------------+
 ; Clock    ; Slack  ; End Point TNS      ;
 +----------+--------+--------------------+
-; CLOCK_50 ; -1.380 ; -168.380           ;
+; CLOCK_50 ; -1.380 ; -169.380           ;
 +----------+--------+--------------------+
 
 
@@ -155,106 +155,106 @@ No paths to report.
 +--------+-------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node                                 ; To Node                                       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+-------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
-; -7.142 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 8.176      ;
-; -7.142 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 8.176      ;
-; -7.142 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 8.176      ;
-; -7.142 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 8.176      ;
-; -7.079 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.117      ;
-; -7.078 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[29]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.116      ;
-; -7.077 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.115      ;
-; -7.076 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[18]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.114      ;
-; -7.074 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[28]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.112      ;
-; -7.073 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.111      ;
-; -7.073 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.111      ;
-; -7.069 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[27]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.107      ;
-; -7.069 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.107      ;
-; -7.069 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.107      ;
-; -7.068 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.106      ;
-; -7.067 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.105      ;
-; -7.017 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[11]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 8.054      ;
-; -7.017 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 8.050      ;
-; -7.016 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[7]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 8.053      ;
-; -7.016 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[30]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 8.054      ;
-; -7.014 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[9]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 8.051      ;
-; -7.012 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[8]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 8.049      ;
-; -7.012 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[5]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 8.049      ;
-; -7.011 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[6]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 8.048      ;
-; -7.011 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[12]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 8.048      ;
-; -6.988 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 8.022      ;
-; -6.988 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 8.022      ;
-; -6.988 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 8.022      ;
-; -6.988 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 8.022      ;
-; -6.972 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[4]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 8.009      ;
-; -6.893 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[13]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.929      ;
-; -6.891 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[21]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.927      ;
-; -6.891 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[0]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.927      ;
-; -6.843 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.877      ;
-; -6.843 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.877      ;
-; -6.843 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.877      ;
-; -6.843 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.877      ;
-; -6.790 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|state.initialize ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.824      ;
-; -6.780 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.818      ;
-; -6.779 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[29]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.817      ;
-; -6.778 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.816      ;
-; -6.777 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[18]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.815      ;
-; -6.775 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.809      ;
-; -6.775 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.809      ;
-; -6.775 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.809      ;
-; -6.775 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.809      ;
-; -6.775 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[28]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.813      ;
-; -6.774 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.812      ;
-; -6.774 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.812      ;
-; -6.770 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[27]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.808      ;
-; -6.770 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.808      ;
-; -6.770 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.808      ;
-; -6.769 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.807      ;
-; -6.768 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.806      ;
-; -6.718 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[11]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.755      ;
-; -6.718 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 7.751      ;
-; -6.717 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[7]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.754      ;
-; -6.717 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[30]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.755      ;
-; -6.715 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[9]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.752      ;
-; -6.713 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[8]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.750      ;
-; -6.713 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[5]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.750      ;
-; -6.712 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.750      ;
-; -6.712 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[6]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.749      ;
-; -6.712 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[12]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.749      ;
-; -6.711 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[29]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.749      ;
-; -6.710 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.748      ;
-; -6.709 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.743      ;
-; -6.709 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.743      ;
-; -6.709 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.743      ;
-; -6.709 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.743      ;
-; -6.709 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[18]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.747      ;
-; -6.707 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[28]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.745      ;
-; -6.706 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.744      ;
-; -6.706 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.744      ;
-; -6.702 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[27]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.740      ;
-; -6.702 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.740      ;
-; -6.702 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.740      ;
-; -6.701 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.739      ;
-; -6.700 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.738      ;
-; -6.689 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.723      ;
-; -6.689 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.723      ;
-; -6.689 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.723      ;
-; -6.689 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 7.723      ;
-; -6.673 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[4]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.710      ;
-; -6.650 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[11]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.687      ;
-; -6.650 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 7.683      ;
-; -6.649 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[7]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.686      ;
-; -6.649 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[30]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.687      ;
-; -6.647 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[9]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.684      ;
-; -6.646 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|clk_count[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.684      ;
-; -6.645 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|clk_count[29]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.683      ;
-; -6.645 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[8]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.682      ;
-; -6.645 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[5]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.682      ;
-; -6.644 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|clk_count[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.682      ;
-; -6.644 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[6]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.681      ;
-; -6.644 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[12]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.681      ;
-; -6.643 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 7.676      ;
-; -6.643 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 7.676      ;
-; -6.643 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 7.676      ;
-; -6.643 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 7.676      ;
+; -7.356 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 8.392      ;
+; -7.356 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 8.392      ;
+; -7.341 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 8.378      ;
+; -7.341 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 8.378      ;
+; -7.264 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 8.300      ;
+; -7.264 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 8.300      ;
+; -7.249 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 8.286      ;
+; -7.249 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 8.286      ;
+; -7.161 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 8.195      ;
+; -7.069 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 8.103      ;
+; -7.062 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 8.095      ;
+; -7.061 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 8.094      ;
+; -6.970 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 8.003      ;
+; -6.969 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 8.002      ;
+; -6.929 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 7.971      ;
+; -6.929 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 7.971      ;
+; -6.914 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.007      ; 7.957      ;
+; -6.914 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.007      ; 7.957      ;
+; -6.883 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 7.916      ;
+; -6.883 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 7.916      ;
+; -6.860 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 7.902      ;
+; -6.860 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 7.902      ;
+; -6.845 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.007      ; 7.888      ;
+; -6.845 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.007      ; 7.888      ;
+; -6.793 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 7.835      ;
+; -6.793 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 7.835      ;
+; -6.791 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 7.824      ;
+; -6.791 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 7.824      ;
+; -6.778 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.007      ; 7.821      ;
+; -6.778 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.007      ; 7.821      ;
+; -6.738 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|state.initialize ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 7.771      ;
+; -6.734 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.004      ; 7.774      ;
+; -6.725 ; Panel:pan|lcd_controller:lcd|clk_count[5] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 7.767      ;
+; -6.725 ; Panel:pan|lcd_controller:lcd|clk_count[5] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 7.767      ;
+; -6.710 ; Panel:pan|lcd_controller:lcd|clk_count[5] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.007      ; 7.753      ;
+; -6.710 ; Panel:pan|lcd_controller:lcd|clk_count[5] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.007      ; 7.753      ;
+; -6.689 ; Panel:pan|lcd_controller:lcd|clk_count[6] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 7.731      ;
+; -6.689 ; Panel:pan|lcd_controller:lcd|clk_count[6] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 7.731      ;
+; -6.674 ; Panel:pan|lcd_controller:lcd|clk_count[6] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.007      ; 7.717      ;
+; -6.674 ; Panel:pan|lcd_controller:lcd|clk_count[6] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.007      ; 7.717      ;
+; -6.665 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.004      ; 7.705      ;
+; -6.656 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|busy             ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.693      ;
+; -6.650 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[30]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.687      ;
+; -6.646 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|state.initialize ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 7.679      ;
+; -6.635 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.003      ; 7.674      ;
+; -6.634 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.003      ; 7.673      ;
+; -6.628 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[28]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.666      ;
+; -6.627 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[13]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.665      ;
+; -6.626 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.664      ;
+; -6.623 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[29]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.661      ;
+; -6.619 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[12]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.657      ;
+; -6.618 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[14]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.656      ;
+; -6.616 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[15]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.654      ;
+; -6.598 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.004      ; 7.638      ;
+; -6.585 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[21]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.621      ;
+; -6.584 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.620      ;
+; -6.584 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.620      ;
+; -6.584 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.620      ;
+; -6.582 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.618      ;
+; -6.580 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.616      ;
+; -6.579 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.615      ;
+; -6.577 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[27]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.613      ;
+; -6.576 ; Panel:pan|lcd_controller:lcd|clk_count[7] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 7.618      ;
+; -6.576 ; Panel:pan|lcd_controller:lcd|clk_count[7] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 7.618      ;
+; -6.574 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[19]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.610      ;
+; -6.573 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[0]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.609      ;
+; -6.571 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[1]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.607      ;
+; -6.566 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[11]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.006     ; 7.596      ;
+; -6.566 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.003      ; 7.605      ;
+; -6.565 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.003      ; 7.604      ;
+; -6.564 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[2]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.006     ; 7.594      ;
+; -6.564 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|busy             ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.601      ;
+; -6.561 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[3]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.006     ; 7.591      ;
+; -6.561 ; Panel:pan|lcd_controller:lcd|clk_count[7] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.007      ; 7.604      ;
+; -6.561 ; Panel:pan|lcd_controller:lcd|clk_count[7] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.007      ; 7.604      ;
+; -6.560 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[5]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.006     ; 7.590      ;
+; -6.558 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[30]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 7.595      ;
+; -6.536 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[28]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.574      ;
+; -6.535 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[13]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.573      ;
+; -6.534 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.572      ;
+; -6.531 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[29]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.569      ;
+; -6.530 ; Panel:pan|lcd_controller:lcd|clk_count[5] ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.004      ; 7.570      ;
+; -6.527 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[12]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.565      ;
+; -6.526 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[14]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.564      ;
+; -6.524 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[15]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 7.562      ;
+; -6.499 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.003      ; 7.538      ;
+; -6.498 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.003      ; 7.537      ;
+; -6.494 ; Panel:pan|lcd_controller:lcd|clk_count[6] ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.004      ; 7.534      ;
+; -6.493 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[21]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.529      ;
+; -6.492 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.528      ;
+; -6.492 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.528      ;
+; -6.492 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.528      ;
+; -6.490 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.526      ;
+; -6.488 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.524      ;
+; -6.487 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.523      ;
+; -6.485 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[27]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.521      ;
+; -6.482 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[19]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.518      ;
+; -6.481 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[0]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.517      ;
+; -6.479 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[1]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 7.515      ;
+; -6.474 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[11]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.006     ; 7.504      ;
 +--------+-------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -263,31 +263,27 @@ No paths to report.
 +-------+---------------------------------------------------+---------------------------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node                                         ; To Node                                           ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+---------------------------------------------------+---------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; 0.391 ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; Panel:pan|lcd_controller:lcd|state.initialize     ; Panel:pan|lcd_controller:lcd|state.initialize     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_RX:uartRX|r_Bit_Index[1]           ; Panel:pan|UART_RX:uartRX|r_Bit_Index[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_RX:uartRX|r_Bit_Index[2]           ; Panel:pan|UART_RX:uartRX|r_Bit_Index[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Stop_Bit  ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Stop_Bit  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_Idle         ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_Idle         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Start_Bit ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Start_Bit ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[2]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[2]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[4]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[4]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[5]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[5]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[7]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[7]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[6]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[6]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[1]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[1]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[3]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[3]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; Panel:pan|lcd_controller:lcd|state.initialize     ; Panel:pan|lcd_controller:lcd|state.initialize     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[4]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[4]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[5]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[5]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_RX:uartRX|r_RX_DV                  ; Panel:pan|UART_RX:uartRX|r_RX_DV                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|present_state.receive_state             ; Panel:pan|present_state.receive_state             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|mapleds                                 ; Panel:pan|mapleds                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|present_state.send_state                ; Panel:pan|present_state.send_state                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; Panel:pan|TX_send                                 ; Panel:pan|TX_send                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Data_Bits ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Data_Bits ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_TX:uartTX|r_Bit_Index[0]           ; Panel:pan|UART_TX:uartTX|r_Bit_Index[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_TX:uartTX|r_Bit_Index[1]           ; Panel:pan|UART_TX:uartTX|r_Bit_Index[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_TX:uartTX|r_Bit_Index[2]           ; Panel:pan|UART_TX:uartTX|r_Bit_Index[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
@@ -299,70 +295,74 @@ No paths to report.
 ; 0.391 ; Panel:pan|RX_busy                                 ; Panel:pan|RX_busy                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|lcd_controller:lcd|rs                   ; Panel:pan|lcd_controller:lcd|rs                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; Panel:pan|UART_TX:uartTX|o_TX_Serial              ; Panel:pan|UART_TX:uartTX|o_TX_Serial              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.527 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[7]             ; Panel:pan|lcd_bus[7]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.793      ;
-; 0.527 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.793      ;
-; 0.531 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[12]          ; Panel:pan|UART_TX:uartTX|r_Clk_Count[12]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.797      ;
-; 0.532 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Data_Bits ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.798      ;
-; 0.539 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[2]             ; Panel:pan|lcd_bus[2]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.805      ;
-; 0.550 ; Panel:pan|lcd_controller:lcd|state.power_up       ; Panel:pan|lcd_controller:lcd|lcdon                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.816      ;
-; 0.556 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[6]             ; Panel:pan|lcd_bus[6]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.822      ;
-; 0.566 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.832      ;
-; 0.568 ; Panel:pan|present_state.receive_state             ; Panel:pan|RX_busy                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.834      ;
-; 0.656 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Cleanup      ; Panel:pan|UART_TX:uartTX|r_TX_Done                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.922      ;
-; 0.666 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; Panel:pan|lcd_bus[0]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.932      ;
-; 0.667 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; Panel:pan|lcd_bus[9]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.933      ;
-; 0.688 ; Panel:pan|TX_data[1]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[1]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.954      ;
-; 0.695 ; Panel:pan|TX_data[2]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[2]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.961      ;
-; 0.720 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[1]             ; Panel:pan|roomsInUse[1]                           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.001      ; 0.987      ;
-; 0.727 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; Panel:pan|roomsInUse[0]                           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.001      ; 0.994      ;
-; 0.736 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[2]             ; Panel:pan|roomsInUse[2]                           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.001      ; 1.003      ;
-; 0.746 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; Panel:pan|UART_TX:uartTX|r_Bit_Index[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.001      ; 1.013      ;
-; 0.798 ; Panel:pan|\shiftProcess:counter[7]                ; Panel:pan|\shiftProcess:counter[7]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.064      ;
-; 0.799 ; Panel:pan|\shiftProcess:counter[0]                ; Panel:pan|\shiftProcess:counter[0]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.065      ;
-; 0.799 ; Panel:pan|\shiftProcess:counter[3]                ; Panel:pan|\shiftProcess:counter[3]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.065      ;
-; 0.799 ; Panel:pan|\shiftProcess:counter[14]               ; Panel:pan|\shiftProcess:counter[14]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.065      ;
-; 0.799 ; Panel:pan|\shiftProcess:counter[16]               ; Panel:pan|\shiftProcess:counter[16]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.065      ;
-; 0.802 ; Panel:pan|\shiftProcess:counter[9]                ; Panel:pan|\shiftProcess:counter[9]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.068      ;
-; 0.803 ; Panel:pan|TX_data[3]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[3]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.069      ;
-; 0.804 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[0]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.070      ;
-; 0.805 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[6]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[6]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.071      ;
-; 0.805 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[8]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[8]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.071      ;
-; 0.806 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[1]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.072      ;
-; 0.806 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[4]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[4]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.072      ;
-; 0.806 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[11]          ; Panel:pan|UART_TX:uartTX|r_Clk_Count[11]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.072      ;
-; 0.806 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[10]          ; Panel:pan|UART_TX:uartTX|r_Clk_Count[10]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.072      ;
-; 0.810 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[9]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[9]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.076      ;
-; 0.810 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[11]          ; Panel:pan|UART_RX:uartRX|r_Clk_Count[11]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.076      ;
-; 0.812 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[1]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.078      ;
-; 0.814 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[1]             ; Panel:pan|lcd_bus[1]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.080      ;
-; 0.816 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[2]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.082      ;
-; 0.816 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[3]             ; Panel:pan|lcd_bus[3]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.082      ;
-; 0.817 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Cleanup      ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.083      ;
-; 0.818 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[7]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[7]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.084      ;
-; 0.819 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|o_TX_Serial              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.085      ;
-; 0.821 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[4]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[4]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.087      ;
-; 0.821 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Cleanup      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.087      ;
-; 0.821 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.087      ;
-; 0.826 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|r_TX_Done                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.092      ;
-; 0.828 ; Panel:pan|\shiftProcess:counter[1]                ; Panel:pan|\shiftProcess:counter[1]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.094      ;
-; 0.828 ; Panel:pan|\shiftProcess:counter[2]                ; Panel:pan|\shiftProcess:counter[2]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.094      ;
-; 0.828 ; Panel:pan|\shiftProcess:counter[22]               ; Panel:pan|\shiftProcess:counter[22]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.094      ;
-; 0.828 ; Panel:pan|\shiftProcess:counter[24]               ; Panel:pan|\shiftProcess:counter[24]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.094      ;
-; 0.830 ; Panel:pan|\shiftProcess:counter[4]                ; Panel:pan|\shiftProcess:counter[4]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.096      ;
-; 0.832 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_Idle         ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Start_Bit ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.098      ;
-; 0.834 ; Panel:pan|UART_RX:uartRX|r_RX_Data_R              ; Panel:pan|UART_RX:uartRX|r_RX_Data                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.100      ;
-; 0.834 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[4]             ; Panel:pan|lcd_bus[4]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.100      ;
-; 0.838 ; Panel:pan|TX_data[0]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[0]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.104      ;
-; 0.841 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[8]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[8]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.107      ;
-; 0.841 ; Panel:pan|lcd_controller:lcd|clk_count[31]        ; Panel:pan|lcd_controller:lcd|state.send           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.107      ;
-; 0.842 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[10]          ; Panel:pan|UART_RX:uartRX|r_Clk_Count[10]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.108      ;
-; 0.842 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[0]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.108      ;
-; 0.843 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[2]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.109      ;
-; 0.844 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[5]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[5]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.110      ;
-; 0.845 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[7]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[7]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.111      ;
-; 0.846 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[12]          ; Panel:pan|UART_RX:uartRX|r_Clk_Count[12]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.112      ;
-; 0.846 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[3]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[3]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.112      ;
-; 0.846 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[9]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[9]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.112      ;
+; 0.514 ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; Panel:pan|TX_send                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.780      ;
+; 0.517 ; Panel:pan|TX_data[2]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[2]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.783      ;
+; 0.518 ; Panel:pan|TX_data[1]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[1]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.784      ;
+; 0.527 ; Panel:pan|UART_RX:uartRX|r_RX_Data                ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Start_Bit ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.793      ;
+; 0.530 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[12]          ; Panel:pan|UART_RX:uartRX|r_Clk_Count[12]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.796      ;
+; 0.544 ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; Panel:pan|UART_RX:uartRX|r_Bit_Index[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.810      ;
+; 0.544 ; Panel:pan|present_state.receive_state             ; Panel:pan|RX_busy                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.810      ;
+; 0.561 ; Panel:pan|lcd_controller:lcd|state.power_up       ; Panel:pan|lcd_controller:lcd|lcdon                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.827      ;
+; 0.656 ; Panel:pan|TX_data[3]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[3]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.922      ;
+; 0.658 ; Panel:pan|TX_data[0]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[0]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.924      ;
+; 0.667 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[6]             ; Panel:pan|lcd_bus[6]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.933      ;
+; 0.673 ; Panel:pan|UART_RX:uartRX|r_RX_Data_R              ; Panel:pan|UART_RX:uartRX|r_RX_Data                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.939      ;
+; 0.680 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Start_Bit ; Panel:pan|UART_RX:uartRX|r_RX_DV                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.946      ;
+; 0.683 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Stop_Bit  ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_Cleanup      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.949      ;
+; 0.696 ; Panel:pan|\shiftProcess:counter[25]               ; Panel:pan|\shiftProcess:counter[25]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.962      ;
+; 0.697 ; Panel:pan|lcd_controller:lcd|state.ready          ; Panel:pan|lcd_controller:lcd|lcd_data[4]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.963      ;
+; 0.700 ; Panel:pan|lcd_controller:lcd|state.ready          ; Panel:pan|lcd_controller:lcd|lcd_data[5]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.966      ;
+; 0.704 ; Panel:pan|lcd_controller:lcd|state.ready          ; Panel:pan|lcd_controller:lcd|lcd_data[6]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.970      ;
+; 0.706 ; Panel:pan|lcd_controller:lcd|state.ready          ; Panel:pan|lcd_controller:lcd|lcd_data[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.972      ;
+; 0.709 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.975      ;
+; 0.710 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|r_TX_Done                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.976      ;
+; 0.730 ; Panel:pan|UART_RX:uartRX|r_RX_Data                ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_Idle         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.996      ;
+; 0.738 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[2]             ; Panel:pan|lcd_bus[2]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 1.003      ;
+; 0.748 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Cleanup      ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.014      ;
+; 0.754 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; Panel:pan|roomsInUse[0]                           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.001      ; 1.021      ;
+; 0.761 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[12]          ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Cleanup      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.027      ;
+; 0.772 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Data_Bits ; Panel:pan|UART_TX:uartTX|r_Bit_Index[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.038      ;
+; 0.796 ; Panel:pan|previous_vector[3]                      ; Panel:pan|change_detected                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.062      ;
+; 0.797 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[0]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.063      ;
+; 0.798 ; Panel:pan|\shiftProcess:counter[14]               ; Panel:pan|\shiftProcess:counter[14]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.064      ;
+; 0.799 ; Panel:pan|\shiftProcess:counter[22]               ; Panel:pan|\shiftProcess:counter[22]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.065      ;
+; 0.799 ; Panel:pan|\shiftProcess:counter[24]               ; Panel:pan|\shiftProcess:counter[24]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.065      ;
+; 0.806 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Data_Bits ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.072      ;
+; 0.806 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Cleanup      ; Panel:pan|UART_TX:uartTX|o_TX_Serial              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.072      ;
+; 0.807 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[7]             ; Panel:pan|lcd_bus[7]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.073      ;
+; 0.808 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[1]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.074      ;
+; 0.808 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.074      ;
+; 0.809 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[8]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[8]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.075      ;
+; 0.809 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[9]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[9]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.075      ;
+; 0.810 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[10]          ; Panel:pan|UART_RX:uartRX|r_Clk_Count[10]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.076      ;
+; 0.811 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[0]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.077      ;
+; 0.812 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Cleanup      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.078      ;
+; 0.813 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[2]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.079      ;
+; 0.813 ; Panel:pan|lcd_controller:lcd|state.initialize     ; Panel:pan|lcd_controller:lcd|state.ready          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.079      ;
+; 0.813 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[5]             ; Panel:pan|lcd_bus[5]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.079      ;
+; 0.814 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[4]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[4]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.080      ;
+; 0.814 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[7]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[7]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.080      ;
+; 0.814 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[11]          ; Panel:pan|UART_TX:uartTX|r_Clk_Count[11]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.080      ;
+; 0.818 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[3]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[3]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.084      ;
+; 0.818 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[6]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[6]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.084      ;
+; 0.821 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[1]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.087      ;
+; 0.831 ; Panel:pan|\shiftProcess:counter[2]                ; Panel:pan|\shiftProcess:counter[2]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.097      ;
+; 0.831 ; Panel:pan|\shiftProcess:counter[3]                ; Panel:pan|\shiftProcess:counter[3]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.097      ;
+; 0.831 ; Panel:pan|\shiftProcess:counter[16]               ; Panel:pan|\shiftProcess:counter[16]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.097      ;
+; 0.832 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[7]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[7]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.098      ;
+; 0.832 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; Panel:pan|lcd_bus[0]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.098      ;
+; 0.835 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[11]          ; Panel:pan|UART_RX:uartRX|r_Clk_Count[11]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.101      ;
+; 0.836 ; Panel:pan|lcd_controller:lcd|clk_count[31]        ; Panel:pan|lcd_controller:lcd|state.send           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.102      ;
+; 0.838 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[8]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[8]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.104      ;
+; 0.838 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Stop_Bit  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.104      ;
+; 0.841 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.107      ;
+; 0.842 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[12]          ; Panel:pan|UART_TX:uartTX|r_Clk_Count[12]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.108      ;
+; 0.842 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[10]          ; Panel:pan|UART_TX:uartTX|r_Clk_Count[10]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.108      ;
+; 0.845 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[3]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[3]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.111      ;
+; 0.845 ; Panel:pan|TX_send                                 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.111      ;
+; 0.846 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[5]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[5]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.112      ;
+; 0.847 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[6]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[6]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.113      ;
+; 0.847 ; Panel:pan|TX_send                                 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.113      ;
 +-------+---------------------------------------------------+---------------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -474,23 +474,23 @@ No paths to report.
 +--------+--------------+----------------+------------------+----------+------------+---------------------------------------------------+
 
 
-+------------------------------------------------------------------------+
-; Setup Times                                                            ;
-+------------+------------+-------+-------+------------+-----------------+
-; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
-+------------+------------+-------+-------+------------+-----------------+
-; GPIO_0[*]  ; CLOCK_50   ; 4.344 ; 4.344 ; Rise       ; CLOCK_50        ;
-;  GPIO_0[0] ; CLOCK_50   ; 4.344 ; 4.344 ; Rise       ; CLOCK_50        ;
-; KEY[*]     ; CLOCK_50   ; 5.831 ; 5.831 ; Rise       ; CLOCK_50        ;
-;  KEY[0]    ; CLOCK_50   ; 5.525 ; 5.525 ; Rise       ; CLOCK_50        ;
-;  KEY[1]    ; CLOCK_50   ; 5.552 ; 5.552 ; Rise       ; CLOCK_50        ;
-;  KEY[2]    ; CLOCK_50   ; 5.831 ; 5.831 ; Rise       ; CLOCK_50        ;
-; SW[*]      ; CLOCK_50   ; 1.284 ; 1.284 ; Rise       ; CLOCK_50        ;
-;  SW[1]     ; CLOCK_50   ; 0.379 ; 0.379 ; Rise       ; CLOCK_50        ;
-;  SW[2]     ; CLOCK_50   ; 0.698 ; 0.698 ; Rise       ; CLOCK_50        ;
-;  SW[3]     ; CLOCK_50   ; 1.284 ; 1.284 ; Rise       ; CLOCK_50        ;
-;  SW[4]     ; CLOCK_50   ; 1.185 ; 1.185 ; Rise       ; CLOCK_50        ;
-+------------+------------+-------+-------+------------+-----------------+
++--------------------------------------------------------------------------+
+; Setup Times                                                              ;
++------------+------------+--------+--------+------------+-----------------+
+; Data Port  ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------+------------+--------+--------+------------+-----------------+
+; GPIO_0[*]  ; CLOCK_50   ; 4.237  ; 4.237  ; Rise       ; CLOCK_50        ;
+;  GPIO_0[0] ; CLOCK_50   ; 4.237  ; 4.237  ; Rise       ; CLOCK_50        ;
+; KEY[*]     ; CLOCK_50   ; 5.971  ; 5.971  ; Rise       ; CLOCK_50        ;
+;  KEY[0]    ; CLOCK_50   ; 5.971  ; 5.971  ; Rise       ; CLOCK_50        ;
+;  KEY[1]    ; CLOCK_50   ; 5.219  ; 5.219  ; Rise       ; CLOCK_50        ;
+;  KEY[2]    ; CLOCK_50   ; 5.683  ; 5.683  ; Rise       ; CLOCK_50        ;
+; SW[*]      ; CLOCK_50   ; 1.219  ; 1.219  ; Rise       ; CLOCK_50        ;
+;  SW[0]     ; CLOCK_50   ; -0.077 ; -0.077 ; Rise       ; CLOCK_50        ;
+;  SW[1]     ; CLOCK_50   ; 0.200  ; 0.200  ; Rise       ; CLOCK_50        ;
+;  SW[2]     ; CLOCK_50   ; -0.218 ; -0.218 ; Rise       ; CLOCK_50        ;
+;  SW[3]     ; CLOCK_50   ; 1.219  ; 1.219  ; Rise       ; CLOCK_50        ;
++------------+------------+--------+--------+------------+-----------------+
 
 
 +--------------------------------------------------------------------------+
@@ -498,17 +498,17 @@ No paths to report.
 +------------+------------+--------+--------+------------+-----------------+
 ; Data Port  ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +------------+------------+--------+--------+------------+-----------------+
-; GPIO_0[*]  ; CLOCK_50   ; -4.114 ; -4.114 ; Rise       ; CLOCK_50        ;
-;  GPIO_0[0] ; CLOCK_50   ; -4.114 ; -4.114 ; Rise       ; CLOCK_50        ;
-; KEY[*]     ; CLOCK_50   ; -3.548 ; -3.548 ; Rise       ; CLOCK_50        ;
-;  KEY[0]    ; CLOCK_50   ; -3.748 ; -3.748 ; Rise       ; CLOCK_50        ;
-;  KEY[1]    ; CLOCK_50   ; -3.548 ; -3.548 ; Rise       ; CLOCK_50        ;
-;  KEY[2]    ; CLOCK_50   ; -5.041 ; -5.041 ; Rise       ; CLOCK_50        ;
-; SW[*]      ; CLOCK_50   ; 0.733  ; 0.733  ; Rise       ; CLOCK_50        ;
-;  SW[1]     ; CLOCK_50   ; 0.733  ; 0.733  ; Rise       ; CLOCK_50        ;
-;  SW[2]     ; CLOCK_50   ; 0.584  ; 0.584  ; Rise       ; CLOCK_50        ;
-;  SW[3]     ; CLOCK_50   ; -0.344 ; -0.344 ; Rise       ; CLOCK_50        ;
-;  SW[4]     ; CLOCK_50   ; -0.250 ; -0.250 ; Rise       ; CLOCK_50        ;
+; GPIO_0[*]  ; CLOCK_50   ; -4.007 ; -4.007 ; Rise       ; CLOCK_50        ;
+;  GPIO_0[0] ; CLOCK_50   ; -4.007 ; -4.007 ; Rise       ; CLOCK_50        ;
+; KEY[*]     ; CLOCK_50   ; -2.966 ; -2.966 ; Rise       ; CLOCK_50        ;
+;  KEY[0]    ; CLOCK_50   ; -3.962 ; -3.962 ; Rise       ; CLOCK_50        ;
+;  KEY[1]    ; CLOCK_50   ; -2.966 ; -2.966 ; Rise       ; CLOCK_50        ;
+;  KEY[2]    ; CLOCK_50   ; -5.282 ; -5.282 ; Rise       ; CLOCK_50        ;
+; SW[*]      ; CLOCK_50   ; 0.855  ; 0.855  ; Rise       ; CLOCK_50        ;
+;  SW[0]     ; CLOCK_50   ; 0.849  ; 0.849  ; Rise       ; CLOCK_50        ;
+;  SW[1]     ; CLOCK_50   ; 0.847  ; 0.847  ; Rise       ; CLOCK_50        ;
+;  SW[2]     ; CLOCK_50   ; 0.855  ; 0.855  ; Rise       ; CLOCK_50        ;
+;  SW[3]     ; CLOCK_50   ; -0.299 ; -0.299 ; Rise       ; CLOCK_50        ;
 +------------+------------+--------+--------+------------+-----------------+
 
 
@@ -517,31 +517,31 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
-; GPIO_1[*]    ; CLOCK_50   ; 7.295 ; 7.295 ; Rise       ; CLOCK_50        ;
-;  GPIO_1[0]   ; CLOCK_50   ; 7.295 ; 7.295 ; Rise       ; CLOCK_50        ;
-; LEDG[*]      ; CLOCK_50   ; 8.377 ; 8.377 ; Rise       ; CLOCK_50        ;
-;  LEDG[0]     ; CLOCK_50   ; 8.377 ; 8.377 ; Rise       ; CLOCK_50        ;
-; LEDR[*]      ; CLOCK_50   ; 8.682 ; 8.682 ; Rise       ; CLOCK_50        ;
-;  LEDR[1]     ; CLOCK_50   ; 7.726 ; 7.726 ; Rise       ; CLOCK_50        ;
-;  LEDR[2]     ; CLOCK_50   ; 8.360 ; 8.360 ; Rise       ; CLOCK_50        ;
-;  LEDR[3]     ; CLOCK_50   ; 8.679 ; 8.679 ; Rise       ; CLOCK_50        ;
-;  LEDR[4]     ; CLOCK_50   ; 8.682 ; 8.682 ; Rise       ; CLOCK_50        ;
-;  LEDR[5]     ; CLOCK_50   ; 8.135 ; 8.135 ; Rise       ; CLOCK_50        ;
-;  LEDR[6]     ; CLOCK_50   ; 8.603 ; 8.603 ; Rise       ; CLOCK_50        ;
-;  LEDR[7]     ; CLOCK_50   ; 8.592 ; 8.592 ; Rise       ; CLOCK_50        ;
-;  LEDR[8]     ; CLOCK_50   ; 8.335 ; 8.335 ; Rise       ; CLOCK_50        ;
-; lcd_data[*]  ; CLOCK_50   ; 8.577 ; 8.577 ; Rise       ; CLOCK_50        ;
-;  lcd_data[0] ; CLOCK_50   ; 8.321 ; 8.321 ; Rise       ; CLOCK_50        ;
-;  lcd_data[1] ; CLOCK_50   ; 8.236 ; 8.236 ; Rise       ; CLOCK_50        ;
-;  lcd_data[2] ; CLOCK_50   ; 8.207 ; 8.207 ; Rise       ; CLOCK_50        ;
-;  lcd_data[3] ; CLOCK_50   ; 8.526 ; 8.526 ; Rise       ; CLOCK_50        ;
-;  lcd_data[4] ; CLOCK_50   ; 8.032 ; 8.032 ; Rise       ; CLOCK_50        ;
-;  lcd_data[5] ; CLOCK_50   ; 7.349 ; 7.349 ; Rise       ; CLOCK_50        ;
-;  lcd_data[6] ; CLOCK_50   ; 8.536 ; 8.536 ; Rise       ; CLOCK_50        ;
-;  lcd_data[7] ; CLOCK_50   ; 8.577 ; 8.577 ; Rise       ; CLOCK_50        ;
-; lcd_en       ; CLOCK_50   ; 8.021 ; 8.021 ; Rise       ; CLOCK_50        ;
-; lcd_on       ; CLOCK_50   ; 8.253 ; 8.253 ; Rise       ; CLOCK_50        ;
-; lcd_rs       ; CLOCK_50   ; 8.863 ; 8.863 ; Rise       ; CLOCK_50        ;
+; GPIO_1[*]    ; CLOCK_50   ; 6.550 ; 6.550 ; Rise       ; CLOCK_50        ;
+;  GPIO_1[0]   ; CLOCK_50   ; 6.550 ; 6.550 ; Rise       ; CLOCK_50        ;
+; LEDG[*]      ; CLOCK_50   ; 7.959 ; 7.959 ; Rise       ; CLOCK_50        ;
+;  LEDG[0]     ; CLOCK_50   ; 7.959 ; 7.959 ; Rise       ; CLOCK_50        ;
+; LEDR[*]      ; CLOCK_50   ; 9.155 ; 9.155 ; Rise       ; CLOCK_50        ;
+;  LEDR[1]     ; CLOCK_50   ; 8.574 ; 8.574 ; Rise       ; CLOCK_50        ;
+;  LEDR[2]     ; CLOCK_50   ; 8.380 ; 8.380 ; Rise       ; CLOCK_50        ;
+;  LEDR[3]     ; CLOCK_50   ; 7.682 ; 7.682 ; Rise       ; CLOCK_50        ;
+;  LEDR[4]     ; CLOCK_50   ; 8.352 ; 8.352 ; Rise       ; CLOCK_50        ;
+;  LEDR[5]     ; CLOCK_50   ; 8.380 ; 8.380 ; Rise       ; CLOCK_50        ;
+;  LEDR[6]     ; CLOCK_50   ; 8.337 ; 8.337 ; Rise       ; CLOCK_50        ;
+;  LEDR[7]     ; CLOCK_50   ; 8.173 ; 8.173 ; Rise       ; CLOCK_50        ;
+;  LEDR[8]     ; CLOCK_50   ; 9.155 ; 9.155 ; Rise       ; CLOCK_50        ;
+; lcd_data[*]  ; CLOCK_50   ; 9.342 ; 9.342 ; Rise       ; CLOCK_50        ;
+;  lcd_data[0] ; CLOCK_50   ; 8.187 ; 8.187 ; Rise       ; CLOCK_50        ;
+;  lcd_data[1] ; CLOCK_50   ; 7.988 ; 7.988 ; Rise       ; CLOCK_50        ;
+;  lcd_data[2] ; CLOCK_50   ; 9.342 ; 9.342 ; Rise       ; CLOCK_50        ;
+;  lcd_data[3] ; CLOCK_50   ; 9.200 ; 9.200 ; Rise       ; CLOCK_50        ;
+;  lcd_data[4] ; CLOCK_50   ; 8.969 ; 8.969 ; Rise       ; CLOCK_50        ;
+;  lcd_data[5] ; CLOCK_50   ; 8.004 ; 8.004 ; Rise       ; CLOCK_50        ;
+;  lcd_data[6] ; CLOCK_50   ; 8.517 ; 8.517 ; Rise       ; CLOCK_50        ;
+;  lcd_data[7] ; CLOCK_50   ; 8.738 ; 8.738 ; Rise       ; CLOCK_50        ;
+; lcd_en       ; CLOCK_50   ; 8.722 ; 8.722 ; Rise       ; CLOCK_50        ;
+; lcd_on       ; CLOCK_50   ; 8.292 ; 8.292 ; Rise       ; CLOCK_50        ;
+; lcd_rs       ; CLOCK_50   ; 9.161 ; 9.161 ; Rise       ; CLOCK_50        ;
 +--------------+------------+-------+-------+------------+-----------------+
 
 
@@ -550,31 +550,31 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
-; GPIO_1[*]    ; CLOCK_50   ; 7.295 ; 7.295 ; Rise       ; CLOCK_50        ;
-;  GPIO_1[0]   ; CLOCK_50   ; 7.295 ; 7.295 ; Rise       ; CLOCK_50        ;
-; LEDG[*]      ; CLOCK_50   ; 8.377 ; 8.377 ; Rise       ; CLOCK_50        ;
-;  LEDG[0]     ; CLOCK_50   ; 8.377 ; 8.377 ; Rise       ; CLOCK_50        ;
-; LEDR[*]      ; CLOCK_50   ; 7.726 ; 7.726 ; Rise       ; CLOCK_50        ;
-;  LEDR[1]     ; CLOCK_50   ; 7.726 ; 7.726 ; Rise       ; CLOCK_50        ;
-;  LEDR[2]     ; CLOCK_50   ; 8.360 ; 8.360 ; Rise       ; CLOCK_50        ;
-;  LEDR[3]     ; CLOCK_50   ; 8.679 ; 8.679 ; Rise       ; CLOCK_50        ;
-;  LEDR[4]     ; CLOCK_50   ; 8.682 ; 8.682 ; Rise       ; CLOCK_50        ;
-;  LEDR[5]     ; CLOCK_50   ; 8.135 ; 8.135 ; Rise       ; CLOCK_50        ;
-;  LEDR[6]     ; CLOCK_50   ; 8.603 ; 8.603 ; Rise       ; CLOCK_50        ;
-;  LEDR[7]     ; CLOCK_50   ; 8.592 ; 8.592 ; Rise       ; CLOCK_50        ;
-;  LEDR[8]     ; CLOCK_50   ; 8.335 ; 8.335 ; Rise       ; CLOCK_50        ;
-; lcd_data[*]  ; CLOCK_50   ; 7.349 ; 7.349 ; Rise       ; CLOCK_50        ;
-;  lcd_data[0] ; CLOCK_50   ; 8.321 ; 8.321 ; Rise       ; CLOCK_50        ;
-;  lcd_data[1] ; CLOCK_50   ; 8.236 ; 8.236 ; Rise       ; CLOCK_50        ;
-;  lcd_data[2] ; CLOCK_50   ; 8.207 ; 8.207 ; Rise       ; CLOCK_50        ;
-;  lcd_data[3] ; CLOCK_50   ; 8.526 ; 8.526 ; Rise       ; CLOCK_50        ;
-;  lcd_data[4] ; CLOCK_50   ; 8.032 ; 8.032 ; Rise       ; CLOCK_50        ;
-;  lcd_data[5] ; CLOCK_50   ; 7.349 ; 7.349 ; Rise       ; CLOCK_50        ;
-;  lcd_data[6] ; CLOCK_50   ; 8.536 ; 8.536 ; Rise       ; CLOCK_50        ;
-;  lcd_data[7] ; CLOCK_50   ; 8.577 ; 8.577 ; Rise       ; CLOCK_50        ;
-; lcd_en       ; CLOCK_50   ; 8.021 ; 8.021 ; Rise       ; CLOCK_50        ;
-; lcd_on       ; CLOCK_50   ; 8.253 ; 8.253 ; Rise       ; CLOCK_50        ;
-; lcd_rs       ; CLOCK_50   ; 8.863 ; 8.863 ; Rise       ; CLOCK_50        ;
+; GPIO_1[*]    ; CLOCK_50   ; 6.550 ; 6.550 ; Rise       ; CLOCK_50        ;
+;  GPIO_1[0]   ; CLOCK_50   ; 6.550 ; 6.550 ; Rise       ; CLOCK_50        ;
+; LEDG[*]      ; CLOCK_50   ; 7.959 ; 7.959 ; Rise       ; CLOCK_50        ;
+;  LEDG[0]     ; CLOCK_50   ; 7.959 ; 7.959 ; Rise       ; CLOCK_50        ;
+; LEDR[*]      ; CLOCK_50   ; 7.682 ; 7.682 ; Rise       ; CLOCK_50        ;
+;  LEDR[1]     ; CLOCK_50   ; 8.574 ; 8.574 ; Rise       ; CLOCK_50        ;
+;  LEDR[2]     ; CLOCK_50   ; 8.380 ; 8.380 ; Rise       ; CLOCK_50        ;
+;  LEDR[3]     ; CLOCK_50   ; 7.682 ; 7.682 ; Rise       ; CLOCK_50        ;
+;  LEDR[4]     ; CLOCK_50   ; 8.352 ; 8.352 ; Rise       ; CLOCK_50        ;
+;  LEDR[5]     ; CLOCK_50   ; 8.380 ; 8.380 ; Rise       ; CLOCK_50        ;
+;  LEDR[6]     ; CLOCK_50   ; 8.337 ; 8.337 ; Rise       ; CLOCK_50        ;
+;  LEDR[7]     ; CLOCK_50   ; 8.173 ; 8.173 ; Rise       ; CLOCK_50        ;
+;  LEDR[8]     ; CLOCK_50   ; 9.155 ; 9.155 ; Rise       ; CLOCK_50        ;
+; lcd_data[*]  ; CLOCK_50   ; 7.988 ; 7.988 ; Rise       ; CLOCK_50        ;
+;  lcd_data[0] ; CLOCK_50   ; 8.187 ; 8.187 ; Rise       ; CLOCK_50        ;
+;  lcd_data[1] ; CLOCK_50   ; 7.988 ; 7.988 ; Rise       ; CLOCK_50        ;
+;  lcd_data[2] ; CLOCK_50   ; 9.342 ; 9.342 ; Rise       ; CLOCK_50        ;
+;  lcd_data[3] ; CLOCK_50   ; 9.200 ; 9.200 ; Rise       ; CLOCK_50        ;
+;  lcd_data[4] ; CLOCK_50   ; 8.969 ; 8.969 ; Rise       ; CLOCK_50        ;
+;  lcd_data[5] ; CLOCK_50   ; 8.004 ; 8.004 ; Rise       ; CLOCK_50        ;
+;  lcd_data[6] ; CLOCK_50   ; 8.517 ; 8.517 ; Rise       ; CLOCK_50        ;
+;  lcd_data[7] ; CLOCK_50   ; 8.738 ; 8.738 ; Rise       ; CLOCK_50        ;
+; lcd_en       ; CLOCK_50   ; 8.722 ; 8.722 ; Rise       ; CLOCK_50        ;
+; lcd_on       ; CLOCK_50   ; 8.292 ; 8.292 ; Rise       ; CLOCK_50        ;
+; lcd_rs       ; CLOCK_50   ; 9.161 ; 9.161 ; Rise       ; CLOCK_50        ;
 +--------------+------------+-------+-------+------------+-----------------+
 
 
@@ -583,7 +583,7 @@ No paths to report.
 +----------+--------+---------------+
 ; Clock    ; Slack  ; End Point TNS ;
 +----------+--------+---------------+
-; CLOCK_50 ; -2.805 ; -201.937      ;
+; CLOCK_50 ; -2.882 ; -201.701      ;
 +----------+--------+---------------+
 
 
@@ -613,116 +613,116 @@ No paths to report.
 +----------+--------+--------------------+
 ; Clock    ; Slack  ; End Point TNS      ;
 +----------+--------+--------------------+
-; CLOCK_50 ; -1.380 ; -168.380           ;
+; CLOCK_50 ; -1.380 ; -169.380           ;
 +----------+--------+--------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fast Model Setup: 'CLOCK_50'                                                                                                                                             ;
-+--------+-------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node                                 ; To Node                                       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+-------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
-; -2.805 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.835      ;
-; -2.805 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.835      ;
-; -2.805 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.835      ;
-; -2.805 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.835      ;
-; -2.729 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.759      ;
-; -2.729 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.759      ;
-; -2.729 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.759      ;
-; -2.729 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.759      ;
-; -2.696 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.730      ;
-; -2.696 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[29]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.730      ;
-; -2.695 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.729      ;
-; -2.694 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.728      ;
-; -2.694 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[18]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.728      ;
-; -2.692 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[27]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.726      ;
-; -2.692 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.726      ;
-; -2.692 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[28]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.726      ;
-; -2.690 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.724      ;
-; -2.690 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.724      ;
-; -2.688 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.722      ;
-; -2.686 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.720      ;
-; -2.669 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[11]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.702      ;
-; -2.667 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[7]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.700      ;
-; -2.667 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[9]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.700      ;
-; -2.667 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.697      ;
-; -2.667 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.697      ;
-; -2.667 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.697      ;
-; -2.667 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.697      ;
-; -2.666 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[8]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.699      ;
-; -2.664 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[12]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.697      ;
-; -2.663 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[5]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.696      ;
-; -2.663 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[6]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.696      ;
-; -2.660 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.689      ;
-; -2.658 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[30]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.692      ;
-; -2.640 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[4]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.673      ;
-; -2.634 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.664      ;
-; -2.634 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.664      ;
-; -2.634 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.664      ;
-; -2.634 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.664      ;
-; -2.603 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.633      ;
-; -2.603 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.633      ;
-; -2.603 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.633      ;
-; -2.603 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.633      ;
-; -2.601 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[13]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.633      ;
-; -2.598 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[21]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.630      ;
-; -2.598 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|clk_count[0]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.630      ;
-; -2.591 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.621      ;
-; -2.591 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.621      ;
-; -2.591 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.621      ;
-; -2.591 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.621      ;
-; -2.570 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.599      ;
-; -2.570 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.599      ;
-; -2.570 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.599      ;
-; -2.570 ; Panel:pan|lcd_controller:lcd|clk_count[4] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.599      ;
-; -2.558 ; Panel:pan|lcd_controller:lcd|clk_count[0] ; Panel:pan|lcd_controller:lcd|state.initialize ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.588      ;
-; -2.558 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.588      ;
-; -2.558 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.588      ;
-; -2.558 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.588      ;
-; -2.558 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.588      ;
-; -2.558 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.592      ;
-; -2.558 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[29]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.592      ;
-; -2.557 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.591      ;
-; -2.556 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.590      ;
-; -2.556 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[18]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.590      ;
-; -2.554 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[27]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.588      ;
-; -2.554 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.588      ;
-; -2.554 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[28]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.588      ;
-; -2.552 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.586      ;
-; -2.552 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.586      ;
-; -2.550 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.584      ;
-; -2.548 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.582      ;
-; -2.545 ; Panel:pan|lcd_controller:lcd|clk_count[5] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.574      ;
-; -2.545 ; Panel:pan|lcd_controller:lcd|clk_count[5] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.574      ;
-; -2.545 ; Panel:pan|lcd_controller:lcd|clk_count[5] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.574      ;
-; -2.545 ; Panel:pan|lcd_controller:lcd|clk_count[5] ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.574      ;
-; -2.531 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[11]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.564      ;
-; -2.529 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[7]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.562      ;
-; -2.529 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[9]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.562      ;
-; -2.528 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[8]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.561      ;
-; -2.527 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.557      ;
-; -2.527 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.557      ;
-; -2.527 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.557      ;
-; -2.527 ; Panel:pan|lcd_controller:lcd|clk_count[3] ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.557      ;
-; -2.526 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[12]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.559      ;
-; -2.525 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.559      ;
-; -2.525 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[29]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.559      ;
-; -2.525 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[5]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.558      ;
-; -2.525 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[6]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.558      ;
-; -2.524 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.558      ;
-; -2.523 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.557      ;
-; -2.523 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[18]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.557      ;
-; -2.522 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.551      ;
-; -2.521 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[27]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.555      ;
-; -2.521 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.555      ;
-; -2.521 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[28]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.555      ;
-; -2.520 ; Panel:pan|lcd_controller:lcd|clk_count[1] ; Panel:pan|lcd_controller:lcd|clk_count[30]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.554      ;
-; -2.519 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.553      ;
-; -2.519 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.553      ;
-; -2.517 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.551      ;
-; -2.515 ; Panel:pan|lcd_controller:lcd|clk_count[2] ; Panel:pan|lcd_controller:lcd|clk_count[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.549      ;
-; -2.505 ; Panel:pan|lcd_controller:lcd|clk_count[6] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.534      ;
-+--------+-------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'CLOCK_50'                                                                                                                                              ;
++--------+--------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                  ; To Node                                       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+--------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -2.882 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.914      ;
+; -2.882 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.914      ;
+; -2.876 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.909      ;
+; -2.876 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.909      ;
+; -2.831 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.863      ;
+; -2.831 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.863      ;
+; -2.825 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.858      ;
+; -2.825 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.858      ;
+; -2.756 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.786      ;
+; -2.705 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.735      ;
+; -2.693 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.722      ;
+; -2.692 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.721      ;
+; -2.685 ; Panel:pan|lcd_controller:lcd|clk_count[2]  ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.722      ;
+; -2.685 ; Panel:pan|lcd_controller:lcd|clk_count[2]  ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.722      ;
+; -2.679 ; Panel:pan|lcd_controller:lcd|clk_count[2]  ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.717      ;
+; -2.679 ; Panel:pan|lcd_controller:lcd|clk_count[2]  ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.717      ;
+; -2.674 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.703      ;
+; -2.674 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.703      ;
+; -2.650 ; Panel:pan|lcd_controller:lcd|clk_count[3]  ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.687      ;
+; -2.650 ; Panel:pan|lcd_controller:lcd|clk_count[3]  ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.687      ;
+; -2.644 ; Panel:pan|lcd_controller:lcd|clk_count[3]  ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.682      ;
+; -2.644 ; Panel:pan|lcd_controller:lcd|clk_count[3]  ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.682      ;
+; -2.642 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.671      ;
+; -2.641 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.670      ;
+; -2.623 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.652      ;
+; -2.623 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.652      ;
+; -2.617 ; Panel:pan|lcd_controller:lcd|clk_count[4]  ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.654      ;
+; -2.617 ; Panel:pan|lcd_controller:lcd|clk_count[4]  ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.654      ;
+; -2.611 ; Panel:pan|lcd_controller:lcd|clk_count[4]  ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.649      ;
+; -2.611 ; Panel:pan|lcd_controller:lcd|clk_count[4]  ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.649      ;
+; -2.582 ; Panel:pan|lcd_controller:lcd|clk_count[5]  ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.619      ;
+; -2.582 ; Panel:pan|lcd_controller:lcd|clk_count[5]  ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.619      ;
+; -2.576 ; Panel:pan|lcd_controller:lcd|clk_count[5]  ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.614      ;
+; -2.576 ; Panel:pan|lcd_controller:lcd|clk_count[5]  ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.614      ;
+; -2.560 ; Panel:pan|lcd_controller:lcd|clk_count[6]  ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.597      ;
+; -2.560 ; Panel:pan|lcd_controller:lcd|clk_count[6]  ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.597      ;
+; -2.559 ; Panel:pan|lcd_controller:lcd|clk_count[2]  ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.003      ; 3.594      ;
+; -2.554 ; Panel:pan|lcd_controller:lcd|clk_count[6]  ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.592      ;
+; -2.554 ; Panel:pan|lcd_controller:lcd|clk_count[6]  ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.592      ;
+; -2.524 ; Panel:pan|lcd_controller:lcd|clk_count[3]  ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.003      ; 3.559      ;
+; -2.523 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|state.initialize ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.552      ;
+; -2.500 ; Panel:pan|lcd_controller:lcd|clk_count[7]  ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.537      ;
+; -2.500 ; Panel:pan|lcd_controller:lcd|clk_count[7]  ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.537      ;
+; -2.496 ; Panel:pan|lcd_controller:lcd|clk_count[2]  ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.530      ;
+; -2.495 ; Panel:pan|lcd_controller:lcd|clk_count[2]  ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.529      ;
+; -2.494 ; Panel:pan|lcd_controller:lcd|clk_count[7]  ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.532      ;
+; -2.494 ; Panel:pan|lcd_controller:lcd|clk_count[7]  ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.532      ;
+; -2.491 ; Panel:pan|lcd_controller:lcd|clk_count[4]  ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.003      ; 3.526      ;
+; -2.485 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|busy             ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.518      ;
+; -2.477 ; Panel:pan|lcd_controller:lcd|clk_count[2]  ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.511      ;
+; -2.477 ; Panel:pan|lcd_controller:lcd|clk_count[2]  ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.511      ;
+; -2.472 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|state.initialize ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.003     ; 3.501      ;
+; -2.463 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[28]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.497      ;
+; -2.462 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[13]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.496      ;
+; -2.462 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.496      ;
+; -2.461 ; Panel:pan|lcd_controller:lcd|clk_count[3]  ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.495      ;
+; -2.460 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[30]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.493      ;
+; -2.460 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[29]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.494      ;
+; -2.460 ; Panel:pan|lcd_controller:lcd|clk_count[3]  ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.494      ;
+; -2.456 ; Panel:pan|lcd_controller:lcd|clk_count[5]  ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.003      ; 3.491      ;
+; -2.455 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[12]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.489      ;
+; -2.454 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[14]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.488      ;
+; -2.453 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[15]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.487      ;
+; -2.448 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[21]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.480      ;
+; -2.447 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.479      ;
+; -2.447 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.479      ;
+; -2.446 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.478      ;
+; -2.444 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.476      ;
+; -2.444 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.476      ;
+; -2.442 ; Panel:pan|lcd_controller:lcd|clk_count[3]  ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.476      ;
+; -2.442 ; Panel:pan|lcd_controller:lcd|clk_count[3]  ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.476      ;
+; -2.441 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[27]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.473      ;
+; -2.441 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.473      ;
+; -2.439 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[19]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.471      ;
+; -2.434 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[0]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.466      ;
+; -2.434 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[1]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 3.466      ;
+; -2.434 ; Panel:pan|lcd_controller:lcd|clk_count[6]  ; Panel:pan|lcd_controller:lcd|e                ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.003      ; 3.469      ;
+; -2.434 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|busy             ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.467      ;
+; -2.430 ; Panel:pan|lcd_controller:lcd|clk_count[8]  ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.467      ;
+; -2.430 ; Panel:pan|lcd_controller:lcd|clk_count[8]  ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.005      ; 3.467      ;
+; -2.428 ; Panel:pan|lcd_controller:lcd|clk_count[4]  ; Panel:pan|lcd_controller:lcd|lcd_data[5]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.462      ;
+; -2.427 ; Panel:pan|lcd_controller:lcd|clk_count[4]  ; Panel:pan|lcd_controller:lcd|lcd_data[4]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.461      ;
+; -2.426 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[11]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.005     ; 3.453      ;
+; -2.425 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[2]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.005     ; 3.452      ;
+; -2.424 ; Panel:pan|lcd_controller:lcd|clk_count[8]  ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.462      ;
+; -2.424 ; Panel:pan|lcd_controller:lcd|clk_count[8]  ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.006      ; 3.462      ;
+; -2.420 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[3]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.005     ; 3.447      ;
+; -2.419 ; Panel:pan|lcd_controller:lcd|clk_count[0]  ; Panel:pan|lcd_controller:lcd|clk_count[5]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.005     ; 3.446      ;
+; -2.418 ; Panel:pan|lcd_controller:lcd|clk_count[12] ; Panel:pan|lcd_controller:lcd|lcd_data[2]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.448      ;
+; -2.418 ; Panel:pan|lcd_controller:lcd|clk_count[12] ; Panel:pan|lcd_controller:lcd|lcd_data[3]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 3.448      ;
+; -2.412 ; Panel:pan|lcd_controller:lcd|clk_count[12] ; Panel:pan|lcd_controller:lcd|lcd_data[0]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 3.443      ;
+; -2.412 ; Panel:pan|lcd_controller:lcd|clk_count[12] ; Panel:pan|lcd_controller:lcd|lcd_data[1]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 3.443      ;
+; -2.412 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|clk_count[28]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.446      ;
+; -2.411 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|clk_count[13]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.445      ;
+; -2.411 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|clk_count[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.445      ;
+; -2.409 ; Panel:pan|lcd_controller:lcd|clk_count[4]  ; Panel:pan|lcd_controller:lcd|lcd_data[6]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.443      ;
+; -2.409 ; Panel:pan|lcd_controller:lcd|clk_count[4]  ; Panel:pan|lcd_controller:lcd|lcd_data[7]      ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.443      ;
+; -2.409 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|clk_count[30]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 3.442      ;
+; -2.409 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|clk_count[29]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.443      ;
+; -2.404 ; Panel:pan|lcd_controller:lcd|clk_count[1]  ; Panel:pan|lcd_controller:lcd|clk_count[12]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 3.438      ;
++--------+--------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -730,31 +730,27 @@ No paths to report.
 +-------+---------------------------------------------------+---------------------------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node                                         ; To Node                                           ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+---------------------------------------------------+---------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; 0.215 ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; Panel:pan|lcd_controller:lcd|state.initialize     ; Panel:pan|lcd_controller:lcd|state.initialize     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_RX:uartRX|r_Bit_Index[1]           ; Panel:pan|UART_RX:uartRX|r_Bit_Index[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_RX:uartRX|r_Bit_Index[2]           ; Panel:pan|UART_RX:uartRX|r_Bit_Index[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Stop_Bit  ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Stop_Bit  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_Idle         ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_Idle         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Start_Bit ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Start_Bit ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[2]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[2]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[4]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[4]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[5]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[5]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[7]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[7]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[6]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[6]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[1]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[1]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[3]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[3]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; Panel:pan|lcd_controller:lcd|state.initialize     ; Panel:pan|lcd_controller:lcd|state.initialize     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[4]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[4]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[5]             ; Panel:pan|UART_RX:uartRX|r_RX_Byte[5]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_RX:uartRX|r_RX_DV                  ; Panel:pan|UART_RX:uartRX|r_RX_DV                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|present_state.receive_state             ; Panel:pan|present_state.receive_state             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|mapleds                                 ; Panel:pan|mapleds                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|present_state.send_state                ; Panel:pan|present_state.send_state                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; Panel:pan|TX_send                                 ; Panel:pan|TX_send                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Data_Bits ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Data_Bits ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_TX:uartTX|r_Bit_Index[0]           ; Panel:pan|UART_TX:uartTX|r_Bit_Index[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_TX:uartTX|r_Bit_Index[1]           ; Panel:pan|UART_TX:uartTX|r_Bit_Index[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_TX:uartTX|r_Bit_Index[2]           ; Panel:pan|UART_TX:uartTX|r_Bit_Index[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
@@ -766,70 +762,74 @@ No paths to report.
 ; 0.215 ; Panel:pan|RX_busy                                 ; Panel:pan|RX_busy                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|lcd_controller:lcd|rs                   ; Panel:pan|lcd_controller:lcd|rs                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; Panel:pan|UART_TX:uartTX|o_TX_Serial              ; Panel:pan|UART_TX:uartTX|o_TX_Serial              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.242 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[7]             ; Panel:pan|lcd_bus[7]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.394      ;
-; 0.243 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[12]          ; Panel:pan|UART_TX:uartTX|r_Clk_Count[12]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.395      ;
-; 0.244 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.396      ;
-; 0.247 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Data_Bits ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.399      ;
-; 0.248 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[2]             ; Panel:pan|lcd_bus[2]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.400      ;
-; 0.260 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[6]             ; Panel:pan|lcd_bus[6]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.412      ;
-; 0.264 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.416      ;
-; 0.266 ; Panel:pan|present_state.receive_state             ; Panel:pan|RX_busy                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.418      ;
-; 0.274 ; Panel:pan|lcd_controller:lcd|state.power_up       ; Panel:pan|lcd_controller:lcd|lcdon                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.426      ;
-; 0.298 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; Panel:pan|lcd_bus[9]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.450      ;
-; 0.300 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; Panel:pan|lcd_bus[0]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.452      ;
-; 0.308 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Cleanup      ; Panel:pan|UART_TX:uartTX|r_TX_Done                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.460      ;
-; 0.317 ; Panel:pan|TX_data[2]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[2]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.469      ;
-; 0.325 ; Panel:pan|TX_data[1]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[1]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.477      ;
-; 0.329 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[1]             ; Panel:pan|roomsInUse[1]                           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.001      ; 0.482      ;
-; 0.332 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; Panel:pan|roomsInUse[0]                           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.001      ; 0.485      ;
-; 0.338 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[2]             ; Panel:pan|roomsInUse[2]                           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.001      ; 0.491      ;
-; 0.344 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; Panel:pan|UART_TX:uartTX|r_Bit_Index[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.001      ; 0.497      ;
-; 0.358 ; Panel:pan|\shiftProcess:counter[0]                ; Panel:pan|\shiftProcess:counter[0]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.510      ;
-; 0.358 ; Panel:pan|\shiftProcess:counter[7]                ; Panel:pan|\shiftProcess:counter[7]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.510      ;
-; 0.358 ; Panel:pan|\shiftProcess:counter[14]               ; Panel:pan|\shiftProcess:counter[14]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.510      ;
-; 0.359 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[0]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.511      ;
-; 0.359 ; Panel:pan|\shiftProcess:counter[3]                ; Panel:pan|\shiftProcess:counter[3]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.511      ;
-; 0.359 ; Panel:pan|\shiftProcess:counter[16]               ; Panel:pan|\shiftProcess:counter[16]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.511      ;
-; 0.360 ; Panel:pan|\shiftProcess:counter[9]                ; Panel:pan|\shiftProcess:counter[9]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.512      ;
-; 0.361 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[6]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[6]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.513      ;
-; 0.361 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[11]          ; Panel:pan|UART_TX:uartTX|r_Clk_Count[11]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.513      ;
-; 0.361 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[10]          ; Panel:pan|UART_TX:uartTX|r_Clk_Count[10]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.513      ;
-; 0.362 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[9]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[9]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.514      ;
-; 0.362 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[8]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[8]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.514      ;
-; 0.363 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[1]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
-; 0.363 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[11]          ; Panel:pan|UART_RX:uartRX|r_Clk_Count[11]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
-; 0.364 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[1]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.516      ;
-; 0.364 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[4]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[4]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.516      ;
-; 0.367 ; Panel:pan|\shiftProcess:counter[1]                ; Panel:pan|\shiftProcess:counter[1]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.519      ;
-; 0.367 ; Panel:pan|\shiftProcess:counter[2]                ; Panel:pan|\shiftProcess:counter[2]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.519      ;
-; 0.367 ; Panel:pan|\shiftProcess:counter[22]               ; Panel:pan|\shiftProcess:counter[22]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.519      ;
-; 0.367 ; Panel:pan|\shiftProcess:counter[24]               ; Panel:pan|\shiftProcess:counter[24]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.519      ;
+; 0.238 ; Panel:pan|TX_data[2]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[2]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.390      ;
+; 0.238 ; Panel:pan|TX_data[1]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[1]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.390      ;
+; 0.241 ; Panel:pan|UART_RX:uartRX|r_RX_Data                ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Start_Bit ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.393      ;
+; 0.242 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[12]          ; Panel:pan|UART_RX:uartRX|r_Clk_Count[12]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.394      ;
+; 0.252 ; Panel:pan|UART_RX:uartRX|r_Bit_Index[0]           ; Panel:pan|UART_RX:uartRX|r_Bit_Index[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.404      ;
+; 0.253 ; Panel:pan|present_state.receive_state             ; Panel:pan|RX_busy                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.405      ;
+; 0.256 ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; Panel:pan|TX_send                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.408      ;
+; 0.281 ; Panel:pan|lcd_controller:lcd|state.power_up       ; Panel:pan|lcd_controller:lcd|lcdon                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.433      ;
+; 0.315 ; Panel:pan|lcd_controller:lcd|state.ready          ; Panel:pan|lcd_controller:lcd|lcd_data[4]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.467      ;
+; 0.317 ; Panel:pan|\shiftProcess:counter[25]               ; Panel:pan|\shiftProcess:counter[25]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.469      ;
+; 0.319 ; Panel:pan|lcd_controller:lcd|state.ready          ; Panel:pan|lcd_controller:lcd|lcd_data[5]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.471      ;
+; 0.319 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Start_Bit ; Panel:pan|UART_RX:uartRX|r_RX_DV                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.471      ;
+; 0.322 ; Panel:pan|TX_data[3]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[3]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.474      ;
+; 0.323 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[6]             ; Panel:pan|lcd_bus[6]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.475      ;
+; 0.324 ; Panel:pan|TX_data[0]                              ; Panel:pan|UART_TX:uartTX|r_TX_Data[0]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.476      ;
+; 0.334 ; Panel:pan|UART_RX:uartRX|r_RX_Data_R              ; Panel:pan|UART_RX:uartRX|r_RX_Data                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.486      ;
+; 0.336 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Stop_Bit  ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_Cleanup      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.488      ;
+; 0.337 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.489      ;
+; 0.338 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|r_TX_Done                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.490      ;
+; 0.343 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[2]             ; Panel:pan|lcd_bus[2]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 0.494      ;
+; 0.343 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Cleanup      ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Idle         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.495      ;
+; 0.345 ; Panel:pan|lcd_controller:lcd|state.ready          ; Panel:pan|lcd_controller:lcd|lcd_data[6]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.497      ;
+; 0.346 ; Panel:pan|lcd_controller:lcd|state.ready          ; Panel:pan|lcd_controller:lcd|lcd_data[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.498      ;
+; 0.347 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; Panel:pan|roomsInUse[0]                           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.001      ; 0.500      ;
+; 0.347 ; Panel:pan|UART_RX:uartRX|r_RX_Data                ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_Idle         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 0.498      ;
+; 0.354 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[12]          ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Cleanup      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.506      ;
+; 0.357 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[0]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.509      ;
+; 0.357 ; Panel:pan|\shiftProcess:counter[14]               ; Panel:pan|\shiftProcess:counter[14]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.509      ;
+; 0.358 ; Panel:pan|\shiftProcess:counter[22]               ; Panel:pan|\shiftProcess:counter[22]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.510      ;
+; 0.358 ; Panel:pan|\shiftProcess:counter[24]               ; Panel:pan|\shiftProcess:counter[24]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.510      ;
+; 0.361 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Data_Bits ; Panel:pan|UART_TX:uartTX|r_Bit_Index[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.513      ;
+; 0.361 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Cleanup      ; Panel:pan|UART_TX:uartTX|o_TX_Serial              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.513      ;
+; 0.362 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[8]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[8]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.514      ;
+; 0.363 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[0]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
+; 0.363 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[10]          ; Panel:pan|UART_RX:uartRX|r_Clk_Count[10]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
+; 0.363 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[1]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
+; 0.364 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[9]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[9]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.516      ;
+; 0.365 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[11]          ; Panel:pan|UART_TX:uartTX|r_Clk_Count[11]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.517      ;
+; 0.366 ; Panel:pan|lcd_controller:lcd|state.initialize     ; Panel:pan|lcd_controller:lcd|state.ready          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.518      ;
+; 0.366 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.518      ;
+; 0.367 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[2]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.519      ;
+; 0.368 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[6]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[6]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.520      ;
 ; 0.368 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[7]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[7]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.520      ;
-; 0.368 ; Panel:pan|\shiftProcess:counter[4]                ; Panel:pan|\shiftProcess:counter[4]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.520      ;
-; 0.369 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[2]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.521      ;
-; 0.369 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[4]             ; Panel:pan|lcd_bus[4]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.521      ;
-; 0.369 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|o_TX_Serial              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.521      ;
-; 0.370 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[4]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[4]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.522      ;
-; 0.370 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[3]             ; Panel:pan|lcd_bus[3]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.522      ;
-; 0.372 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[1]             ; Panel:pan|lcd_bus[1]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.524      ;
-; 0.372 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.524      ;
-; 0.373 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[8]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[8]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.525      ;
-; 0.374 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[10]          ; Panel:pan|UART_RX:uartRX|r_Clk_Count[10]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.526      ;
-; 0.376 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[0]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[0]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
-; 0.376 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[2]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
-; 0.376 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[3]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[3]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
-; 0.376 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[5]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[5]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
-; 0.376 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_Cleanup      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
-; 0.376 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Stop_Bit  ; Panel:pan|UART_TX:uartTX|r_TX_Done                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
-; 0.377 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[12]          ; Panel:pan|UART_RX:uartRX|r_Clk_Count[12]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.529      ;
-; 0.378 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[7]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[7]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.530      ;
-; 0.378 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[9]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[9]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.530      ;
-; 0.379 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[3]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[3]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.531      ;
-; 0.379 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[6]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[6]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.531      ;
-; 0.380 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[5]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[5]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.532      ;
-; 0.381 ; Panel:pan|lcd_controller:lcd|state.initialize     ; Panel:pan|lcd_controller:lcd|busy                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.533      ;
-; 0.381 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_Idle         ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Start_Bit ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.533      ;
-; 0.381 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Data_Bits ; Panel:pan|UART_TX:uartTX|o_TX_Active              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.533      ;
+; 0.368 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[4]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[4]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.520      ;
+; 0.368 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[7]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[7]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.520      ;
+; 0.368 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[0]             ; Panel:pan|lcd_bus[0]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.520      ;
+; 0.368 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[7]             ; Panel:pan|lcd_bus[7]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.520      ;
+; 0.369 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[11]          ; Panel:pan|UART_RX:uartRX|r_Clk_Count[11]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; Panel:pan|\shiftProcess:counter[16]               ; Panel:pan|\shiftProcess:counter[16]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Data_Bits ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.521      ;
+; 0.370 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[1]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[1]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.522      ;
+; 0.370 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[3]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[3]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.522      ;
+; 0.370 ; Panel:pan|\shiftProcess:counter[2]                ; Panel:pan|\shiftProcess:counter[2]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.522      ;
+; 0.370 ; Panel:pan|\shiftProcess:counter[3]                ; Panel:pan|\shiftProcess:counter[3]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.522      ;
+; 0.373 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[8]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[8]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.525      ;
+; 0.373 ; Panel:pan|UART_RX:uartRX|r_RX_Byte[5]             ; Panel:pan|lcd_bus[5]                              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.525      ;
+; 0.374 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[12]          ; Panel:pan|UART_TX:uartTX|r_Clk_Count[12]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.526      ;
+; 0.374 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[10]          ; Panel:pan|UART_TX:uartTX|r_Clk_Count[10]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.526      ;
+; 0.377 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[3]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[3]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.529      ;
+; 0.378 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[5]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[5]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.530      ;
+; 0.378 ; Panel:pan|UART_TX:uartTX|r_Clk_Count[6]           ; Panel:pan|UART_TX:uartTX|r_Clk_Count[6]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.530      ;
+; 0.379 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[5]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[5]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.531      ;
+; 0.380 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[2]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[2]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.532      ;
+; 0.380 ; Panel:pan|UART_RX:uartRX|r_Clk_Count[4]           ; Panel:pan|UART_RX:uartRX|r_Clk_Count[4]           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.532      ;
+; 0.380 ; Panel:pan|TX_send                                 ; Panel:pan|UART_TX:uartTX|r_SM_Main.s_TX_Start_Bit ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.532      ;
+; 0.382 ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Data_Bits ; Panel:pan|UART_RX:uartRX|r_SM_Main.s_RX_Stop_Bit  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.534      ;
+; 0.382 ; Panel:pan|lcd_controller:lcd|clk_count[31]        ; Panel:pan|lcd_controller:lcd|state.send           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.534      ;
+; 0.382 ; Panel:pan|present_state.send_state                ; Panel:pan|RX_busy                                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.534      ;
 +-------+---------------------------------------------------+---------------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -946,17 +946,17 @@ No paths to report.
 +------------+------------+--------+--------+------------+-----------------+
 ; Data Port  ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +------------+------------+--------+--------+------------+-----------------+
-; GPIO_0[*]  ; CLOCK_50   ; 2.369  ; 2.369  ; Rise       ; CLOCK_50        ;
-;  GPIO_0[0] ; CLOCK_50   ; 2.369  ; 2.369  ; Rise       ; CLOCK_50        ;
-; KEY[*]     ; CLOCK_50   ; 3.005  ; 3.005  ; Rise       ; CLOCK_50        ;
-;  KEY[0]    ; CLOCK_50   ; 2.945  ; 2.945  ; Rise       ; CLOCK_50        ;
-;  KEY[1]    ; CLOCK_50   ; 2.888  ; 2.888  ; Rise       ; CLOCK_50        ;
-;  KEY[2]    ; CLOCK_50   ; 3.005  ; 3.005  ; Rise       ; CLOCK_50        ;
-; SW[*]      ; CLOCK_50   ; 0.350  ; 0.350  ; Rise       ; CLOCK_50        ;
-;  SW[1]     ; CLOCK_50   ; -0.181 ; -0.181 ; Rise       ; CLOCK_50        ;
-;  SW[2]     ; CLOCK_50   ; -0.039 ; -0.039 ; Rise       ; CLOCK_50        ;
-;  SW[3]     ; CLOCK_50   ; 0.350  ; 0.350  ; Rise       ; CLOCK_50        ;
-;  SW[4]     ; CLOCK_50   ; 0.280  ; 0.280  ; Rise       ; CLOCK_50        ;
+; GPIO_0[*]  ; CLOCK_50   ; 2.287  ; 2.287  ; Rise       ; CLOCK_50        ;
+;  GPIO_0[0] ; CLOCK_50   ; 2.287  ; 2.287  ; Rise       ; CLOCK_50        ;
+; KEY[*]     ; CLOCK_50   ; 3.123  ; 3.123  ; Rise       ; CLOCK_50        ;
+;  KEY[0]    ; CLOCK_50   ; 3.123  ; 3.123  ; Rise       ; CLOCK_50        ;
+;  KEY[1]    ; CLOCK_50   ; 2.718  ; 2.718  ; Rise       ; CLOCK_50        ;
+;  KEY[2]    ; CLOCK_50   ; 2.934  ; 2.934  ; Rise       ; CLOCK_50        ;
+; SW[*]      ; CLOCK_50   ; 0.354  ; 0.354  ; Rise       ; CLOCK_50        ;
+;  SW[0]     ; CLOCK_50   ; -0.404 ; -0.404 ; Rise       ; CLOCK_50        ;
+;  SW[1]     ; CLOCK_50   ; -0.274 ; -0.274 ; Rise       ; CLOCK_50        ;
+;  SW[2]     ; CLOCK_50   ; -0.426 ; -0.426 ; Rise       ; CLOCK_50        ;
+;  SW[3]     ; CLOCK_50   ; 0.354  ; 0.354  ; Rise       ; CLOCK_50        ;
 +------------+------------+--------+--------+------------+-----------------+
 
 
@@ -965,17 +965,17 @@ No paths to report.
 +------------+------------+--------+--------+------------+-----------------+
 ; Data Port  ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +------------+------------+--------+--------+------------+-----------------+
-; GPIO_0[*]  ; CLOCK_50   ; -2.249 ; -2.249 ; Rise       ; CLOCK_50        ;
-;  GPIO_0[0] ; CLOCK_50   ; -2.249 ; -2.249 ; Rise       ; CLOCK_50        ;
-; KEY[*]     ; CLOCK_50   ; -1.918 ; -1.918 ; Rise       ; CLOCK_50        ;
-;  KEY[0]    ; CLOCK_50   ; -2.055 ; -2.055 ; Rise       ; CLOCK_50        ;
-;  KEY[1]    ; CLOCK_50   ; -1.918 ; -1.918 ; Rise       ; CLOCK_50        ;
-;  KEY[2]    ; CLOCK_50   ; -2.548 ; -2.548 ; Rise       ; CLOCK_50        ;
-; SW[*]      ; CLOCK_50   ; 0.672  ; 0.672  ; Rise       ; CLOCK_50        ;
-;  SW[1]     ; CLOCK_50   ; 0.672  ; 0.672  ; Rise       ; CLOCK_50        ;
-;  SW[2]     ; CLOCK_50   ; 0.577  ; 0.577  ; Rise       ; CLOCK_50        ;
-;  SW[3]     ; CLOCK_50   ; 0.078  ; 0.078  ; Rise       ; CLOCK_50        ;
-;  SW[4]     ; CLOCK_50   ; 0.137  ; 0.137  ; Rise       ; CLOCK_50        ;
+; GPIO_0[*]  ; CLOCK_50   ; -2.167 ; -2.167 ; Rise       ; CLOCK_50        ;
+;  GPIO_0[0] ; CLOCK_50   ; -2.167 ; -2.167 ; Rise       ; CLOCK_50        ;
+; KEY[*]     ; CLOCK_50   ; -1.619 ; -1.619 ; Rise       ; CLOCK_50        ;
+;  KEY[0]    ; CLOCK_50   ; -2.165 ; -2.165 ; Rise       ; CLOCK_50        ;
+;  KEY[1]    ; CLOCK_50   ; -1.619 ; -1.619 ; Rise       ; CLOCK_50        ;
+;  KEY[2]    ; CLOCK_50   ; -2.663 ; -2.663 ; Rise       ; CLOCK_50        ;
+; SW[*]      ; CLOCK_50   ; 0.746  ; 0.746  ; Rise       ; CLOCK_50        ;
+;  SW[0]     ; CLOCK_50   ; 0.746  ; 0.746  ; Rise       ; CLOCK_50        ;
+;  SW[1]     ; CLOCK_50   ; 0.744  ; 0.744  ; Rise       ; CLOCK_50        ;
+;  SW[2]     ; CLOCK_50   ; 0.737  ; 0.737  ; Rise       ; CLOCK_50        ;
+;  SW[3]     ; CLOCK_50   ; 0.090  ; 0.090  ; Rise       ; CLOCK_50        ;
 +------------+------------+--------+--------+------------+-----------------+
 
 
@@ -984,31 +984,31 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
-; GPIO_1[*]    ; CLOCK_50   ; 4.069 ; 4.069 ; Rise       ; CLOCK_50        ;
-;  GPIO_1[0]   ; CLOCK_50   ; 4.069 ; 4.069 ; Rise       ; CLOCK_50        ;
-; LEDG[*]      ; CLOCK_50   ; 4.620 ; 4.620 ; Rise       ; CLOCK_50        ;
-;  LEDG[0]     ; CLOCK_50   ; 4.620 ; 4.620 ; Rise       ; CLOCK_50        ;
-; LEDR[*]      ; CLOCK_50   ; 4.776 ; 4.776 ; Rise       ; CLOCK_50        ;
-;  LEDR[1]     ; CLOCK_50   ; 4.371 ; 4.371 ; Rise       ; CLOCK_50        ;
-;  LEDR[2]     ; CLOCK_50   ; 4.690 ; 4.690 ; Rise       ; CLOCK_50        ;
-;  LEDR[3]     ; CLOCK_50   ; 4.768 ; 4.768 ; Rise       ; CLOCK_50        ;
-;  LEDR[4]     ; CLOCK_50   ; 4.776 ; 4.776 ; Rise       ; CLOCK_50        ;
-;  LEDR[5]     ; CLOCK_50   ; 4.529 ; 4.529 ; Rise       ; CLOCK_50        ;
-;  LEDR[6]     ; CLOCK_50   ; 4.716 ; 4.716 ; Rise       ; CLOCK_50        ;
-;  LEDR[7]     ; CLOCK_50   ; 4.711 ; 4.711 ; Rise       ; CLOCK_50        ;
-;  LEDR[8]     ; CLOCK_50   ; 4.578 ; 4.578 ; Rise       ; CLOCK_50        ;
-; lcd_data[*]  ; CLOCK_50   ; 4.636 ; 4.636 ; Rise       ; CLOCK_50        ;
-;  lcd_data[0] ; CLOCK_50   ; 4.517 ; 4.517 ; Rise       ; CLOCK_50        ;
-;  lcd_data[1] ; CLOCK_50   ; 4.466 ; 4.466 ; Rise       ; CLOCK_50        ;
-;  lcd_data[2] ; CLOCK_50   ; 4.577 ; 4.577 ; Rise       ; CLOCK_50        ;
-;  lcd_data[3] ; CLOCK_50   ; 4.602 ; 4.602 ; Rise       ; CLOCK_50        ;
-;  lcd_data[4] ; CLOCK_50   ; 4.398 ; 4.398 ; Rise       ; CLOCK_50        ;
-;  lcd_data[5] ; CLOCK_50   ; 4.109 ; 4.109 ; Rise       ; CLOCK_50        ;
-;  lcd_data[6] ; CLOCK_50   ; 4.606 ; 4.606 ; Rise       ; CLOCK_50        ;
-;  lcd_data[7] ; CLOCK_50   ; 4.636 ; 4.636 ; Rise       ; CLOCK_50        ;
-; lcd_en       ; CLOCK_50   ; 4.366 ; 4.366 ; Rise       ; CLOCK_50        ;
-; lcd_on       ; CLOCK_50   ; 4.487 ; 4.487 ; Rise       ; CLOCK_50        ;
-; lcd_rs       ; CLOCK_50   ; 4.937 ; 4.937 ; Rise       ; CLOCK_50        ;
+; GPIO_1[*]    ; CLOCK_50   ; 3.688 ; 3.688 ; Rise       ; CLOCK_50        ;
+;  GPIO_1[0]   ; CLOCK_50   ; 3.688 ; 3.688 ; Rise       ; CLOCK_50        ;
+; LEDG[*]      ; CLOCK_50   ; 4.418 ; 4.418 ; Rise       ; CLOCK_50        ;
+;  LEDG[0]     ; CLOCK_50   ; 4.418 ; 4.418 ; Rise       ; CLOCK_50        ;
+; LEDR[*]      ; CLOCK_50   ; 4.961 ; 4.961 ; Rise       ; CLOCK_50        ;
+;  LEDR[1]     ; CLOCK_50   ; 4.699 ; 4.699 ; Rise       ; CLOCK_50        ;
+;  LEDR[2]     ; CLOCK_50   ; 4.606 ; 4.606 ; Rise       ; CLOCK_50        ;
+;  LEDR[3]     ; CLOCK_50   ; 4.318 ; 4.318 ; Rise       ; CLOCK_50        ;
+;  LEDR[4]     ; CLOCK_50   ; 4.595 ; 4.595 ; Rise       ; CLOCK_50        ;
+;  LEDR[5]     ; CLOCK_50   ; 4.613 ; 4.613 ; Rise       ; CLOCK_50        ;
+;  LEDR[6]     ; CLOCK_50   ; 4.582 ; 4.582 ; Rise       ; CLOCK_50        ;
+;  LEDR[7]     ; CLOCK_50   ; 4.532 ; 4.532 ; Rise       ; CLOCK_50        ;
+;  LEDR[8]     ; CLOCK_50   ; 4.961 ; 4.961 ; Rise       ; CLOCK_50        ;
+; lcd_data[*]  ; CLOCK_50   ; 5.116 ; 5.116 ; Rise       ; CLOCK_50        ;
+;  lcd_data[0] ; CLOCK_50   ; 4.493 ; 4.493 ; Rise       ; CLOCK_50        ;
+;  lcd_data[1] ; CLOCK_50   ; 4.410 ; 4.410 ; Rise       ; CLOCK_50        ;
+;  lcd_data[2] ; CLOCK_50   ; 5.116 ; 5.116 ; Rise       ; CLOCK_50        ;
+;  lcd_data[3] ; CLOCK_50   ; 4.944 ; 4.944 ; Rise       ; CLOCK_50        ;
+;  lcd_data[4] ; CLOCK_50   ; 4.876 ; 4.876 ; Rise       ; CLOCK_50        ;
+;  lcd_data[5] ; CLOCK_50   ; 4.416 ; 4.416 ; Rise       ; CLOCK_50        ;
+;  lcd_data[6] ; CLOCK_50   ; 4.687 ; 4.687 ; Rise       ; CLOCK_50        ;
+;  lcd_data[7] ; CLOCK_50   ; 4.718 ; 4.718 ; Rise       ; CLOCK_50        ;
+; lcd_en       ; CLOCK_50   ; 4.830 ; 4.830 ; Rise       ; CLOCK_50        ;
+; lcd_on       ; CLOCK_50   ; 4.528 ; 4.528 ; Rise       ; CLOCK_50        ;
+; lcd_rs       ; CLOCK_50   ; 4.926 ; 4.926 ; Rise       ; CLOCK_50        ;
 +--------------+------------+-------+-------+------------+-----------------+
 
 
@@ -1017,31 +1017,31 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
-; GPIO_1[*]    ; CLOCK_50   ; 4.069 ; 4.069 ; Rise       ; CLOCK_50        ;
-;  GPIO_1[0]   ; CLOCK_50   ; 4.069 ; 4.069 ; Rise       ; CLOCK_50        ;
-; LEDG[*]      ; CLOCK_50   ; 4.620 ; 4.620 ; Rise       ; CLOCK_50        ;
-;  LEDG[0]     ; CLOCK_50   ; 4.620 ; 4.620 ; Rise       ; CLOCK_50        ;
-; LEDR[*]      ; CLOCK_50   ; 4.371 ; 4.371 ; Rise       ; CLOCK_50        ;
-;  LEDR[1]     ; CLOCK_50   ; 4.371 ; 4.371 ; Rise       ; CLOCK_50        ;
-;  LEDR[2]     ; CLOCK_50   ; 4.690 ; 4.690 ; Rise       ; CLOCK_50        ;
-;  LEDR[3]     ; CLOCK_50   ; 4.768 ; 4.768 ; Rise       ; CLOCK_50        ;
-;  LEDR[4]     ; CLOCK_50   ; 4.776 ; 4.776 ; Rise       ; CLOCK_50        ;
-;  LEDR[5]     ; CLOCK_50   ; 4.529 ; 4.529 ; Rise       ; CLOCK_50        ;
-;  LEDR[6]     ; CLOCK_50   ; 4.716 ; 4.716 ; Rise       ; CLOCK_50        ;
-;  LEDR[7]     ; CLOCK_50   ; 4.711 ; 4.711 ; Rise       ; CLOCK_50        ;
-;  LEDR[8]     ; CLOCK_50   ; 4.578 ; 4.578 ; Rise       ; CLOCK_50        ;
-; lcd_data[*]  ; CLOCK_50   ; 4.109 ; 4.109 ; Rise       ; CLOCK_50        ;
-;  lcd_data[0] ; CLOCK_50   ; 4.517 ; 4.517 ; Rise       ; CLOCK_50        ;
-;  lcd_data[1] ; CLOCK_50   ; 4.466 ; 4.466 ; Rise       ; CLOCK_50        ;
-;  lcd_data[2] ; CLOCK_50   ; 4.577 ; 4.577 ; Rise       ; CLOCK_50        ;
-;  lcd_data[3] ; CLOCK_50   ; 4.602 ; 4.602 ; Rise       ; CLOCK_50        ;
-;  lcd_data[4] ; CLOCK_50   ; 4.398 ; 4.398 ; Rise       ; CLOCK_50        ;
-;  lcd_data[5] ; CLOCK_50   ; 4.109 ; 4.109 ; Rise       ; CLOCK_50        ;
-;  lcd_data[6] ; CLOCK_50   ; 4.606 ; 4.606 ; Rise       ; CLOCK_50        ;
-;  lcd_data[7] ; CLOCK_50   ; 4.636 ; 4.636 ; Rise       ; CLOCK_50        ;
-; lcd_en       ; CLOCK_50   ; 4.366 ; 4.366 ; Rise       ; CLOCK_50        ;
-; lcd_on       ; CLOCK_50   ; 4.487 ; 4.487 ; Rise       ; CLOCK_50        ;
-; lcd_rs       ; CLOCK_50   ; 4.937 ; 4.937 ; Rise       ; CLOCK_50        ;
+; GPIO_1[*]    ; CLOCK_50   ; 3.688 ; 3.688 ; Rise       ; CLOCK_50        ;
+;  GPIO_1[0]   ; CLOCK_50   ; 3.688 ; 3.688 ; Rise       ; CLOCK_50        ;
+; LEDG[*]      ; CLOCK_50   ; 4.418 ; 4.418 ; Rise       ; CLOCK_50        ;
+;  LEDG[0]     ; CLOCK_50   ; 4.418 ; 4.418 ; Rise       ; CLOCK_50        ;
+; LEDR[*]      ; CLOCK_50   ; 4.318 ; 4.318 ; Rise       ; CLOCK_50        ;
+;  LEDR[1]     ; CLOCK_50   ; 4.699 ; 4.699 ; Rise       ; CLOCK_50        ;
+;  LEDR[2]     ; CLOCK_50   ; 4.606 ; 4.606 ; Rise       ; CLOCK_50        ;
+;  LEDR[3]     ; CLOCK_50   ; 4.318 ; 4.318 ; Rise       ; CLOCK_50        ;
+;  LEDR[4]     ; CLOCK_50   ; 4.595 ; 4.595 ; Rise       ; CLOCK_50        ;
+;  LEDR[5]     ; CLOCK_50   ; 4.613 ; 4.613 ; Rise       ; CLOCK_50        ;
+;  LEDR[6]     ; CLOCK_50   ; 4.582 ; 4.582 ; Rise       ; CLOCK_50        ;
+;  LEDR[7]     ; CLOCK_50   ; 4.532 ; 4.532 ; Rise       ; CLOCK_50        ;
+;  LEDR[8]     ; CLOCK_50   ; 4.961 ; 4.961 ; Rise       ; CLOCK_50        ;
+; lcd_data[*]  ; CLOCK_50   ; 4.410 ; 4.410 ; Rise       ; CLOCK_50        ;
+;  lcd_data[0] ; CLOCK_50   ; 4.493 ; 4.493 ; Rise       ; CLOCK_50        ;
+;  lcd_data[1] ; CLOCK_50   ; 4.410 ; 4.410 ; Rise       ; CLOCK_50        ;
+;  lcd_data[2] ; CLOCK_50   ; 5.116 ; 5.116 ; Rise       ; CLOCK_50        ;
+;  lcd_data[3] ; CLOCK_50   ; 4.944 ; 4.944 ; Rise       ; CLOCK_50        ;
+;  lcd_data[4] ; CLOCK_50   ; 4.876 ; 4.876 ; Rise       ; CLOCK_50        ;
+;  lcd_data[5] ; CLOCK_50   ; 4.416 ; 4.416 ; Rise       ; CLOCK_50        ;
+;  lcd_data[6] ; CLOCK_50   ; 4.687 ; 4.687 ; Rise       ; CLOCK_50        ;
+;  lcd_data[7] ; CLOCK_50   ; 4.718 ; 4.718 ; Rise       ; CLOCK_50        ;
+; lcd_en       ; CLOCK_50   ; 4.830 ; 4.830 ; Rise       ; CLOCK_50        ;
+; lcd_on       ; CLOCK_50   ; 4.528 ; 4.528 ; Rise       ; CLOCK_50        ;
+; lcd_rs       ; CLOCK_50   ; 4.926 ; 4.926 ; Rise       ; CLOCK_50        ;
 +--------------+------------+-------+-------+------------+-----------------+
 
 
@@ -1050,30 +1050,30 @@ No paths to report.
 +------------------+----------+-------+----------+---------+---------------------+
 ; Clock            ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +------------------+----------+-------+----------+---------+---------------------+
-; Worst-case Slack ; -7.142   ; 0.215 ; N/A      ; N/A     ; -1.380              ;
-;  CLOCK_50        ; -7.142   ; 0.215 ; N/A      ; N/A     ; -1.380              ;
-; Design-wide TNS  ; -617.509 ; 0.0   ; 0.0      ; 0.0     ; -168.38             ;
-;  CLOCK_50        ; -617.509 ; 0.000 ; N/A      ; N/A     ; -168.380            ;
+; Worst-case Slack ; -7.356   ; 0.215 ; N/A      ; N/A     ; -1.380              ;
+;  CLOCK_50        ; -7.356   ; 0.215 ; N/A      ; N/A     ; -1.380              ;
+; Design-wide TNS  ; -624.383 ; 0.0   ; 0.0      ; 0.0     ; -169.38             ;
+;  CLOCK_50        ; -624.383 ; 0.000 ; N/A      ; N/A     ; -169.380            ;
 +------------------+----------+-------+----------+---------+---------------------+
 
 
-+------------------------------------------------------------------------+
-; Setup Times                                                            ;
-+------------+------------+-------+-------+------------+-----------------+
-; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
-+------------+------------+-------+-------+------------+-----------------+
-; GPIO_0[*]  ; CLOCK_50   ; 4.344 ; 4.344 ; Rise       ; CLOCK_50        ;
-;  GPIO_0[0] ; CLOCK_50   ; 4.344 ; 4.344 ; Rise       ; CLOCK_50        ;
-; KEY[*]     ; CLOCK_50   ; 5.831 ; 5.831 ; Rise       ; CLOCK_50        ;
-;  KEY[0]    ; CLOCK_50   ; 5.525 ; 5.525 ; Rise       ; CLOCK_50        ;
-;  KEY[1]    ; CLOCK_50   ; 5.552 ; 5.552 ; Rise       ; CLOCK_50        ;
-;  KEY[2]    ; CLOCK_50   ; 5.831 ; 5.831 ; Rise       ; CLOCK_50        ;
-; SW[*]      ; CLOCK_50   ; 1.284 ; 1.284 ; Rise       ; CLOCK_50        ;
-;  SW[1]     ; CLOCK_50   ; 0.379 ; 0.379 ; Rise       ; CLOCK_50        ;
-;  SW[2]     ; CLOCK_50   ; 0.698 ; 0.698 ; Rise       ; CLOCK_50        ;
-;  SW[3]     ; CLOCK_50   ; 1.284 ; 1.284 ; Rise       ; CLOCK_50        ;
-;  SW[4]     ; CLOCK_50   ; 1.185 ; 1.185 ; Rise       ; CLOCK_50        ;
-+------------+------------+-------+-------+------------+-----------------+
++--------------------------------------------------------------------------+
+; Setup Times                                                              ;
++------------+------------+--------+--------+------------+-----------------+
+; Data Port  ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------+------------+--------+--------+------------+-----------------+
+; GPIO_0[*]  ; CLOCK_50   ; 4.237  ; 4.237  ; Rise       ; CLOCK_50        ;
+;  GPIO_0[0] ; CLOCK_50   ; 4.237  ; 4.237  ; Rise       ; CLOCK_50        ;
+; KEY[*]     ; CLOCK_50   ; 5.971  ; 5.971  ; Rise       ; CLOCK_50        ;
+;  KEY[0]    ; CLOCK_50   ; 5.971  ; 5.971  ; Rise       ; CLOCK_50        ;
+;  KEY[1]    ; CLOCK_50   ; 5.219  ; 5.219  ; Rise       ; CLOCK_50        ;
+;  KEY[2]    ; CLOCK_50   ; 5.683  ; 5.683  ; Rise       ; CLOCK_50        ;
+; SW[*]      ; CLOCK_50   ; 1.219  ; 1.219  ; Rise       ; CLOCK_50        ;
+;  SW[0]     ; CLOCK_50   ; -0.077 ; -0.077 ; Rise       ; CLOCK_50        ;
+;  SW[1]     ; CLOCK_50   ; 0.200  ; 0.200  ; Rise       ; CLOCK_50        ;
+;  SW[2]     ; CLOCK_50   ; -0.218 ; -0.218 ; Rise       ; CLOCK_50        ;
+;  SW[3]     ; CLOCK_50   ; 1.219  ; 1.219  ; Rise       ; CLOCK_50        ;
++------------+------------+--------+--------+------------+-----------------+
 
 
 +--------------------------------------------------------------------------+
@@ -1081,17 +1081,17 @@ No paths to report.
 +------------+------------+--------+--------+------------+-----------------+
 ; Data Port  ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +------------+------------+--------+--------+------------+-----------------+
-; GPIO_0[*]  ; CLOCK_50   ; -2.249 ; -2.249 ; Rise       ; CLOCK_50        ;
-;  GPIO_0[0] ; CLOCK_50   ; -2.249 ; -2.249 ; Rise       ; CLOCK_50        ;
-; KEY[*]     ; CLOCK_50   ; -1.918 ; -1.918 ; Rise       ; CLOCK_50        ;
-;  KEY[0]    ; CLOCK_50   ; -2.055 ; -2.055 ; Rise       ; CLOCK_50        ;
-;  KEY[1]    ; CLOCK_50   ; -1.918 ; -1.918 ; Rise       ; CLOCK_50        ;
-;  KEY[2]    ; CLOCK_50   ; -2.548 ; -2.548 ; Rise       ; CLOCK_50        ;
-; SW[*]      ; CLOCK_50   ; 0.733  ; 0.733  ; Rise       ; CLOCK_50        ;
-;  SW[1]     ; CLOCK_50   ; 0.733  ; 0.733  ; Rise       ; CLOCK_50        ;
-;  SW[2]     ; CLOCK_50   ; 0.584  ; 0.584  ; Rise       ; CLOCK_50        ;
-;  SW[3]     ; CLOCK_50   ; 0.078  ; 0.078  ; Rise       ; CLOCK_50        ;
-;  SW[4]     ; CLOCK_50   ; 0.137  ; 0.137  ; Rise       ; CLOCK_50        ;
+; GPIO_0[*]  ; CLOCK_50   ; -2.167 ; -2.167 ; Rise       ; CLOCK_50        ;
+;  GPIO_0[0] ; CLOCK_50   ; -2.167 ; -2.167 ; Rise       ; CLOCK_50        ;
+; KEY[*]     ; CLOCK_50   ; -1.619 ; -1.619 ; Rise       ; CLOCK_50        ;
+;  KEY[0]    ; CLOCK_50   ; -2.165 ; -2.165 ; Rise       ; CLOCK_50        ;
+;  KEY[1]    ; CLOCK_50   ; -1.619 ; -1.619 ; Rise       ; CLOCK_50        ;
+;  KEY[2]    ; CLOCK_50   ; -2.663 ; -2.663 ; Rise       ; CLOCK_50        ;
+; SW[*]      ; CLOCK_50   ; 0.855  ; 0.855  ; Rise       ; CLOCK_50        ;
+;  SW[0]     ; CLOCK_50   ; 0.849  ; 0.849  ; Rise       ; CLOCK_50        ;
+;  SW[1]     ; CLOCK_50   ; 0.847  ; 0.847  ; Rise       ; CLOCK_50        ;
+;  SW[2]     ; CLOCK_50   ; 0.855  ; 0.855  ; Rise       ; CLOCK_50        ;
+;  SW[3]     ; CLOCK_50   ; 0.090  ; 0.090  ; Rise       ; CLOCK_50        ;
 +------------+------------+--------+--------+------------+-----------------+
 
 
@@ -1100,31 +1100,31 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
-; GPIO_1[*]    ; CLOCK_50   ; 7.295 ; 7.295 ; Rise       ; CLOCK_50        ;
-;  GPIO_1[0]   ; CLOCK_50   ; 7.295 ; 7.295 ; Rise       ; CLOCK_50        ;
-; LEDG[*]      ; CLOCK_50   ; 8.377 ; 8.377 ; Rise       ; CLOCK_50        ;
-;  LEDG[0]     ; CLOCK_50   ; 8.377 ; 8.377 ; Rise       ; CLOCK_50        ;
-; LEDR[*]      ; CLOCK_50   ; 8.682 ; 8.682 ; Rise       ; CLOCK_50        ;
-;  LEDR[1]     ; CLOCK_50   ; 7.726 ; 7.726 ; Rise       ; CLOCK_50        ;
-;  LEDR[2]     ; CLOCK_50   ; 8.360 ; 8.360 ; Rise       ; CLOCK_50        ;
-;  LEDR[3]     ; CLOCK_50   ; 8.679 ; 8.679 ; Rise       ; CLOCK_50        ;
-;  LEDR[4]     ; CLOCK_50   ; 8.682 ; 8.682 ; Rise       ; CLOCK_50        ;
-;  LEDR[5]     ; CLOCK_50   ; 8.135 ; 8.135 ; Rise       ; CLOCK_50        ;
-;  LEDR[6]     ; CLOCK_50   ; 8.603 ; 8.603 ; Rise       ; CLOCK_50        ;
-;  LEDR[7]     ; CLOCK_50   ; 8.592 ; 8.592 ; Rise       ; CLOCK_50        ;
-;  LEDR[8]     ; CLOCK_50   ; 8.335 ; 8.335 ; Rise       ; CLOCK_50        ;
-; lcd_data[*]  ; CLOCK_50   ; 8.577 ; 8.577 ; Rise       ; CLOCK_50        ;
-;  lcd_data[0] ; CLOCK_50   ; 8.321 ; 8.321 ; Rise       ; CLOCK_50        ;
-;  lcd_data[1] ; CLOCK_50   ; 8.236 ; 8.236 ; Rise       ; CLOCK_50        ;
-;  lcd_data[2] ; CLOCK_50   ; 8.207 ; 8.207 ; Rise       ; CLOCK_50        ;
-;  lcd_data[3] ; CLOCK_50   ; 8.526 ; 8.526 ; Rise       ; CLOCK_50        ;
-;  lcd_data[4] ; CLOCK_50   ; 8.032 ; 8.032 ; Rise       ; CLOCK_50        ;
-;  lcd_data[5] ; CLOCK_50   ; 7.349 ; 7.349 ; Rise       ; CLOCK_50        ;
-;  lcd_data[6] ; CLOCK_50   ; 8.536 ; 8.536 ; Rise       ; CLOCK_50        ;
-;  lcd_data[7] ; CLOCK_50   ; 8.577 ; 8.577 ; Rise       ; CLOCK_50        ;
-; lcd_en       ; CLOCK_50   ; 8.021 ; 8.021 ; Rise       ; CLOCK_50        ;
-; lcd_on       ; CLOCK_50   ; 8.253 ; 8.253 ; Rise       ; CLOCK_50        ;
-; lcd_rs       ; CLOCK_50   ; 8.863 ; 8.863 ; Rise       ; CLOCK_50        ;
+; GPIO_1[*]    ; CLOCK_50   ; 6.550 ; 6.550 ; Rise       ; CLOCK_50        ;
+;  GPIO_1[0]   ; CLOCK_50   ; 6.550 ; 6.550 ; Rise       ; CLOCK_50        ;
+; LEDG[*]      ; CLOCK_50   ; 7.959 ; 7.959 ; Rise       ; CLOCK_50        ;
+;  LEDG[0]     ; CLOCK_50   ; 7.959 ; 7.959 ; Rise       ; CLOCK_50        ;
+; LEDR[*]      ; CLOCK_50   ; 9.155 ; 9.155 ; Rise       ; CLOCK_50        ;
+;  LEDR[1]     ; CLOCK_50   ; 8.574 ; 8.574 ; Rise       ; CLOCK_50        ;
+;  LEDR[2]     ; CLOCK_50   ; 8.380 ; 8.380 ; Rise       ; CLOCK_50        ;
+;  LEDR[3]     ; CLOCK_50   ; 7.682 ; 7.682 ; Rise       ; CLOCK_50        ;
+;  LEDR[4]     ; CLOCK_50   ; 8.352 ; 8.352 ; Rise       ; CLOCK_50        ;
+;  LEDR[5]     ; CLOCK_50   ; 8.380 ; 8.380 ; Rise       ; CLOCK_50        ;
+;  LEDR[6]     ; CLOCK_50   ; 8.337 ; 8.337 ; Rise       ; CLOCK_50        ;
+;  LEDR[7]     ; CLOCK_50   ; 8.173 ; 8.173 ; Rise       ; CLOCK_50        ;
+;  LEDR[8]     ; CLOCK_50   ; 9.155 ; 9.155 ; Rise       ; CLOCK_50        ;
+; lcd_data[*]  ; CLOCK_50   ; 9.342 ; 9.342 ; Rise       ; CLOCK_50        ;
+;  lcd_data[0] ; CLOCK_50   ; 8.187 ; 8.187 ; Rise       ; CLOCK_50        ;
+;  lcd_data[1] ; CLOCK_50   ; 7.988 ; 7.988 ; Rise       ; CLOCK_50        ;
+;  lcd_data[2] ; CLOCK_50   ; 9.342 ; 9.342 ; Rise       ; CLOCK_50        ;
+;  lcd_data[3] ; CLOCK_50   ; 9.200 ; 9.200 ; Rise       ; CLOCK_50        ;
+;  lcd_data[4] ; CLOCK_50   ; 8.969 ; 8.969 ; Rise       ; CLOCK_50        ;
+;  lcd_data[5] ; CLOCK_50   ; 8.004 ; 8.004 ; Rise       ; CLOCK_50        ;
+;  lcd_data[6] ; CLOCK_50   ; 8.517 ; 8.517 ; Rise       ; CLOCK_50        ;
+;  lcd_data[7] ; CLOCK_50   ; 8.738 ; 8.738 ; Rise       ; CLOCK_50        ;
+; lcd_en       ; CLOCK_50   ; 8.722 ; 8.722 ; Rise       ; CLOCK_50        ;
+; lcd_on       ; CLOCK_50   ; 8.292 ; 8.292 ; Rise       ; CLOCK_50        ;
+; lcd_rs       ; CLOCK_50   ; 9.161 ; 9.161 ; Rise       ; CLOCK_50        ;
 +--------------+------------+-------+-------+------------+-----------------+
 
 
@@ -1133,31 +1133,31 @@ No paths to report.
 +--------------+------------+-------+-------+------------+-----------------+
 ; Data Port    ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +--------------+------------+-------+-------+------------+-----------------+
-; GPIO_1[*]    ; CLOCK_50   ; 4.069 ; 4.069 ; Rise       ; CLOCK_50        ;
-;  GPIO_1[0]   ; CLOCK_50   ; 4.069 ; 4.069 ; Rise       ; CLOCK_50        ;
-; LEDG[*]      ; CLOCK_50   ; 4.620 ; 4.620 ; Rise       ; CLOCK_50        ;
-;  LEDG[0]     ; CLOCK_50   ; 4.620 ; 4.620 ; Rise       ; CLOCK_50        ;
-; LEDR[*]      ; CLOCK_50   ; 4.371 ; 4.371 ; Rise       ; CLOCK_50        ;
-;  LEDR[1]     ; CLOCK_50   ; 4.371 ; 4.371 ; Rise       ; CLOCK_50        ;
-;  LEDR[2]     ; CLOCK_50   ; 4.690 ; 4.690 ; Rise       ; CLOCK_50        ;
-;  LEDR[3]     ; CLOCK_50   ; 4.768 ; 4.768 ; Rise       ; CLOCK_50        ;
-;  LEDR[4]     ; CLOCK_50   ; 4.776 ; 4.776 ; Rise       ; CLOCK_50        ;
-;  LEDR[5]     ; CLOCK_50   ; 4.529 ; 4.529 ; Rise       ; CLOCK_50        ;
-;  LEDR[6]     ; CLOCK_50   ; 4.716 ; 4.716 ; Rise       ; CLOCK_50        ;
-;  LEDR[7]     ; CLOCK_50   ; 4.711 ; 4.711 ; Rise       ; CLOCK_50        ;
-;  LEDR[8]     ; CLOCK_50   ; 4.578 ; 4.578 ; Rise       ; CLOCK_50        ;
-; lcd_data[*]  ; CLOCK_50   ; 4.109 ; 4.109 ; Rise       ; CLOCK_50        ;
-;  lcd_data[0] ; CLOCK_50   ; 4.517 ; 4.517 ; Rise       ; CLOCK_50        ;
-;  lcd_data[1] ; CLOCK_50   ; 4.466 ; 4.466 ; Rise       ; CLOCK_50        ;
-;  lcd_data[2] ; CLOCK_50   ; 4.577 ; 4.577 ; Rise       ; CLOCK_50        ;
-;  lcd_data[3] ; CLOCK_50   ; 4.602 ; 4.602 ; Rise       ; CLOCK_50        ;
-;  lcd_data[4] ; CLOCK_50   ; 4.398 ; 4.398 ; Rise       ; CLOCK_50        ;
-;  lcd_data[5] ; CLOCK_50   ; 4.109 ; 4.109 ; Rise       ; CLOCK_50        ;
-;  lcd_data[6] ; CLOCK_50   ; 4.606 ; 4.606 ; Rise       ; CLOCK_50        ;
-;  lcd_data[7] ; CLOCK_50   ; 4.636 ; 4.636 ; Rise       ; CLOCK_50        ;
-; lcd_en       ; CLOCK_50   ; 4.366 ; 4.366 ; Rise       ; CLOCK_50        ;
-; lcd_on       ; CLOCK_50   ; 4.487 ; 4.487 ; Rise       ; CLOCK_50        ;
-; lcd_rs       ; CLOCK_50   ; 4.937 ; 4.937 ; Rise       ; CLOCK_50        ;
+; GPIO_1[*]    ; CLOCK_50   ; 3.688 ; 3.688 ; Rise       ; CLOCK_50        ;
+;  GPIO_1[0]   ; CLOCK_50   ; 3.688 ; 3.688 ; Rise       ; CLOCK_50        ;
+; LEDG[*]      ; CLOCK_50   ; 4.418 ; 4.418 ; Rise       ; CLOCK_50        ;
+;  LEDG[0]     ; CLOCK_50   ; 4.418 ; 4.418 ; Rise       ; CLOCK_50        ;
+; LEDR[*]      ; CLOCK_50   ; 4.318 ; 4.318 ; Rise       ; CLOCK_50        ;
+;  LEDR[1]     ; CLOCK_50   ; 4.699 ; 4.699 ; Rise       ; CLOCK_50        ;
+;  LEDR[2]     ; CLOCK_50   ; 4.606 ; 4.606 ; Rise       ; CLOCK_50        ;
+;  LEDR[3]     ; CLOCK_50   ; 4.318 ; 4.318 ; Rise       ; CLOCK_50        ;
+;  LEDR[4]     ; CLOCK_50   ; 4.595 ; 4.595 ; Rise       ; CLOCK_50        ;
+;  LEDR[5]     ; CLOCK_50   ; 4.613 ; 4.613 ; Rise       ; CLOCK_50        ;
+;  LEDR[6]     ; CLOCK_50   ; 4.582 ; 4.582 ; Rise       ; CLOCK_50        ;
+;  LEDR[7]     ; CLOCK_50   ; 4.532 ; 4.532 ; Rise       ; CLOCK_50        ;
+;  LEDR[8]     ; CLOCK_50   ; 4.961 ; 4.961 ; Rise       ; CLOCK_50        ;
+; lcd_data[*]  ; CLOCK_50   ; 4.410 ; 4.410 ; Rise       ; CLOCK_50        ;
+;  lcd_data[0] ; CLOCK_50   ; 4.493 ; 4.493 ; Rise       ; CLOCK_50        ;
+;  lcd_data[1] ; CLOCK_50   ; 4.410 ; 4.410 ; Rise       ; CLOCK_50        ;
+;  lcd_data[2] ; CLOCK_50   ; 5.116 ; 5.116 ; Rise       ; CLOCK_50        ;
+;  lcd_data[3] ; CLOCK_50   ; 4.944 ; 4.944 ; Rise       ; CLOCK_50        ;
+;  lcd_data[4] ; CLOCK_50   ; 4.876 ; 4.876 ; Rise       ; CLOCK_50        ;
+;  lcd_data[5] ; CLOCK_50   ; 4.416 ; 4.416 ; Rise       ; CLOCK_50        ;
+;  lcd_data[6] ; CLOCK_50   ; 4.687 ; 4.687 ; Rise       ; CLOCK_50        ;
+;  lcd_data[7] ; CLOCK_50   ; 4.718 ; 4.718 ; Rise       ; CLOCK_50        ;
+; lcd_en       ; CLOCK_50   ; 4.830 ; 4.830 ; Rise       ; CLOCK_50        ;
+; lcd_on       ; CLOCK_50   ; 4.528 ; 4.528 ; Rise       ; CLOCK_50        ;
+; lcd_rs       ; CLOCK_50   ; 4.926 ; 4.926 ; Rise       ; CLOCK_50        ;
 +--------------+------------+-------+-------+------------+-----------------+
 
 
@@ -1166,7 +1166,7 @@ No paths to report.
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; CLOCK_50   ; CLOCK_50 ; 80484    ; 0        ; 0        ; 0        ;
+; CLOCK_50   ; CLOCK_50 ; 80847    ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1176,7 +1176,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; CLOCK_50   ; CLOCK_50 ; 80484    ; 0        ; 0        ; 0        ;
+; CLOCK_50   ; CLOCK_50 ; 80847    ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1201,7 +1201,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 8     ; 8    ;
-; Unconstrained Input Port Paths  ; 92    ; 92   ;
+; Unconstrained Input Port Paths  ; 93    ; 93   ;
 ; Unconstrained Output Ports      ; 21    ; 21   ;
 ; Unconstrained Output Port Paths ; 21    ; 21   ;
 +---------------------------------+-------+------+
@@ -1213,7 +1213,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri May 19 08:56:55 2023
+    Info: Processing started: Wed May 24 10:02:48 2023
 Info: Command: quartus_sta ControlPanel10000 -c Panel
 Info: qsta_default_script.tcl version: #1
 Warning (292000): FLEXlm software error: Future license file format or misspelling in license file.  The file was issued for a later version of FLEXnet Licensing than this  program understands. Feature:       quartus License text:  ONE_TS_OK SIGN="1663 4B7E 24C2 0965 72A2 AD41 3EA4 999C 1CCF 4002 7004 4171 F4EF 834F A45F 0BD3 FE8C 4E78 AAEB 54D8 6544 D576 C23F FBE4 9E21 9E48 B404 3494 5104 00F9" License path:  C:\Program Files\StruSoft\FEM-Design 21 Educational\license.lic FLEXnet Licensing error:-90,313 For further information, refer to the FLEXnet Licensing End User Guide, available at "www.macrovision.com".
@@ -1228,10 +1228,10 @@ Info (332105): Deriving Clocks
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow Model
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -7.142
+Info (332146): Worst-case setup slack is -7.356
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):    -7.142      -617.509 CLOCK_50 
+    Info (332119):    -7.356      -624.383 CLOCK_50 
 Info (332146): Worst-case hold slack is 0.391
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
@@ -1241,14 +1241,14 @@ Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -1.380
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):    -1.380      -168.380 CLOCK_50 
+    Info (332119):    -1.380      -169.380 CLOCK_50 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info: Analyzing Fast Model
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -2.805
+Info (332146): Worst-case setup slack is -2.882
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):    -2.805      -201.937 CLOCK_50 
+    Info (332119):    -2.882      -201.701 CLOCK_50 
 Info (332146): Worst-case hold slack is 0.215
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
@@ -1258,14 +1258,14 @@ Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -1.380
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):    -1.380      -168.380 CLOCK_50 
+    Info (332119):    -1.380      -169.380 CLOCK_50 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 20 warnings
     Info: Peak virtual memory: 4556 megabytes
-    Info: Processing ended: Fri May 19 08:56:56 2023
-    Info: Elapsed time: 00:00:01
+    Info: Processing ended: Wed May 24 10:02:50 2023
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 

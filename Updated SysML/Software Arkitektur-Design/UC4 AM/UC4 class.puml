@@ -1,0 +1,48 @@
+@startuml UC4 class
+' Default param deffinition
+skinparam style strictuml
+skinparam DefaultFontSize 16
+skinparam ArrowFontSize 16
+skinparam ArrowThickness 2.2
+skinparam Linetype poly
+skinparam ranksep 100
+skinparam nodesep 100
+hide empty members
+
+
+mainframe **Class** UC4: Administrator login
+
+' Class definition
+
+Class "**<<boundary>>**\n**PC interface**" as UI{
+- username
+- password
+- input
+}
+
+
+Class "**<<domain>>**\n**Master**" as master{
++ sendLog()
++ updateSystem(newSystem)
++ materInitialise()
+- log
+- system
+}
+
+Class "**<<controller>>**\n**UC4: Administrator login**" as PC{
++ updatePCLog(log)
++ validate(username, password)
++ printLog()
++ showOptions()
++ changeSystem(newSystem)
++ initialise()
+- log
+- system
+- validLogin
+}
+
+' Conection definition
+PC <--> UI
+PC <--> master
+
+@enduml

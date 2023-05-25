@@ -1,0 +1,17 @@
+@startuml SD UC2
+skinparam style strictuml
+
+mainframe **SD** UC2
+
+participant "<<boundary>>\nLys" as L
+participant "<<Controller>>\nAdministrer lys" as AL
+participant "<<boundary>>Masteren" as M
+
+M -> AL : opdatretLog(logLysStatus)
+activate AL
+AL -> AL : setHighPowerUsage()
+AL -> L : sætStatus(lysStatus)
+AL -> AL : setLowPowerUsage()
+
+deactivate AL
+@enduml

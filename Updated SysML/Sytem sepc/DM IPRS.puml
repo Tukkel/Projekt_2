@@ -1,0 +1,112 @@
+@startuml DM IPRS
+' Default param deffinition
+skinparam style strictuml
+skinparam DefaultFontSize 16
+skinparam DefaultFontName times new roman
+skinparam ArrowFontSize 16
+skinparam ArrowThickness 2.2
+skinparam Linetype poly
+skinparam ranksep 100
+skinparam nodesep 10
+skinparam ClassAttributeIconSize 0
+hide empty members
+
+
+mainframe **DM** IPRS
+
+' Class definition
+
+
+Class "**SensorSlave**" as SS{
+- Aktivitet
+}
+
+Class "**DørSensor**" as DS{
+- Detektering
+}
+
+Class "**RumSensor**" as RS{
+- Detektering
+}
+
+Class "**IdSensor**" as IS{
+- Detektering
+}
+
+Class "**AktuatorSlave**" as AS{
+- Status
+}
+
+Class "**Varme**" as V{
+- Tændt/Slukket
+- Temperatur
+}
+
+Class "**Lyd**" as LD{
+- Tændt/Slukket
+- Volumen
+}
+
+Class "**Lys**" as LS{
+- Tændt/Slukket
+- Intensitet
+}
+
+Class "**Bruger**" as BR{
+- Navn
+- Id
+- Position
+}
+
+
+Class  "**Master**" as ME{
+- Rumindhold
+- Rumstatus
+- Midlertidig Log
+- antal rum
+- antal brugere
+}
+
+Class "**Computer**" as COM{
+- Log
+- antal rum
+- antal brugere
+}
+
+Class "**Informationspanel**" as INFO {
+- Rumindhold
+}
+
+Class "**Administrator**" as ADMIN {
+- Password
+}
+
+' Conection definition
+BR -- INFO : > Checker rumindhold
+
+SS "1..*" -- "1" ME : > Aktivitet log
+SS "1..*" -- "1" ME : < Statuts check
+
+ME "1" -- "1" COM : > Sender Log data
+ME "1" -- "1" COM : < Opdater med Systemændring
+ME "1" -- "1" INFO : > Sender Rumindhold
+ME "1" -- "1" INFO : < Efterspørger Rumindhold
+
+RS "1" -- "1" SS : > Sender Detektering
+DS "1" -- "1" SS : > Sender Detektering
+IS "1" -- "1" SS : > Sender Detektering
+
+BR -- IS : > Aktiver
+BR -- DS : > Aktiver
+BR -- RS : > Aktiver
+
+ADMIN -- COM  : > Adminstrer System
+COM -- ADMIN : > Læser Log
+
+ME "1" -- "1..*" AS : > Sætter Status
+ME "1" -- "1..*" AS : < Sender Status
+
+AS "1" -- "1" LS : > Ændrer Intensitet 
+AS "1" -- "1" LD : > Ændrer Volumen
+AS "1" -- "1" V : > Ændrer Temperatur
+@enduml

@@ -1,0 +1,17 @@
+@startuml SMD UC2
+
+mainframe **SMD** UC3
+
+hide empty description
+
+[*] --> Show_Information
+
+state Show_Information 
+state Show_Roominformation 
+
+
+Show_Information --> Show_Roominformation : selectRoom
+Show_Roominformation --> Show_Information : deselectRoom
+
+
+@enduml

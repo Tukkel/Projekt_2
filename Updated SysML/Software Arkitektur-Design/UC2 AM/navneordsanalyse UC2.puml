@@ -1,0 +1,71 @@
+@startuml navneordsanalyse
+skinparam style strictuml
+hide empty members
+
+mainframe **Navneordsanalyse** UC2
+
+class "<<Controller>>\nAdministrer lys" {
+
+}
+
+class "lys" {
+
+}
+
+class "brugere" {
+
+}
+
+class "UC1" {
+
+}
+
+class "Use Case 1" {
+
+}
+
+class "Use Case 5" {
+
+}
+
+class "lyssystem" {
+
+}
+
+class "UC5" {
+
+}
+
+class "rum" {
+
+}
+
+class "bruger" {
+
+}
+
+class "Masteren" {
+
+}
+
+class "log" {
+
+}
+
+class "tomme rum" {
+
+}
+
+class "ikke-tomme rum" {
+
+}
+
+class "tændt lys" {
+
+}
+
+class "sluk lys" {
+
+}
+
+@enduml
