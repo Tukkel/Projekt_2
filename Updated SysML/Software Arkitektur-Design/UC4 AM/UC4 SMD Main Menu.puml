@@ -1,0 +1,60 @@
+@startuml UC4 SMD
+
+mainframe **SMD** UC4: Administrator login
+
+hide empty description
+state "Log ind" as login
+state "Validering" as val
+state "Muligheder" as mul
+state "Print Data Menu" as data
+state "Rediger system Menu" as rediger
+state "Initialisering" as init
+state "Change The Log" as change
+state "Change Password" as password
+state "SMD UC4 Print Data Menu" as data2
+state "SMD UC4 Rediger system Menu" as rediger2
+
+note "Alle stater har muligheden for at returnere til staten 'Muligheder' " as n1
+
+[*] -> login : Trykker start/PC starter
+login -> val : Indtast password
+val --> mul : OK
+val --> login : Fejl
+
+mul --> data : Vælger Print Log
+
+
+mul --> rediger : Vælger rediger system
+
+
+mul --> init : Vælger Initialise System
+
+mul --> change : Vælger Change The Log
+
+mul --> password : Vælger Change Password
+
+mul --> login : Vælger log ud
+
+mul -> [*] : Vælger exit
+
+data ---> data2 : Går til SMD UC4 - Print Data Menu
+
+rediger ---> rediger2 : Går til SMD UC4 - Rediger System Menu
+
+login : entry/Vis log ind UI
+
+val : entry/validate(password)
+
+mul : entry/Vis mulige handlinger
+mul : entry/showMenu()
+
+data : entry/updatePCLog(log)
+data : entry/printData()
+
+init : entry/initialiseSystem()
+change : entry/changeLog(Log)
+password : entry/changePassword(password)
+
+rediger : entry/showChangeOptions
+
+@enduml
