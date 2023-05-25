@@ -7,6 +7,7 @@ skinparam ArrowThickness 2.2
 skinparam Linetype poly
 skinparam ranksep 100
 skinparam nodesep 100
+skinparam classAttributeIconSize 0 
 hide empty members
 
 
@@ -15,7 +16,6 @@ mainframe **Class** UC4: Administrator login
 ' Class definition
 
 Class "**<<boundary>>**\n**PC interface**" as UI{
-- username
 - password
 - input
 }
@@ -27,18 +27,29 @@ Class "**<<domain>>**\n**Master**" as master{
 + materInitialise()
 - log
 - system
+- logRequest
 }
 
 Class "**<<controller>>**\n**UC4: Administrator login**" as PC{
-+ updatePCLog(log)
-+ validate(username, password)
-+ printLog()
-+ showOptions()
-+ changeSystem(newSystem)
-+ initialise()
++ validate(password)
++ updateLog(log)
++ sendData(data)
++ printLog(log)
++ printData()
++ printRawData()
++ printSystemInfo()
++ showChangeOptions()
++ addSlave()
++ selectRoomConnection()
++ calibrateSystem()
++ selectSaveOnline()
++ initialiseSystem()
++ changeLog()
++ changePassword()
++ logOut()
++ exit()
 - log
-- system
-- validLogin
+- data
 }
 
 ' Conection definition

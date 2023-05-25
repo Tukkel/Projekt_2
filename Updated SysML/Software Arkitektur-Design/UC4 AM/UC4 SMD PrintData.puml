@@ -1,0 +1,39 @@
+@startuml UC4 SMD
+
+mainframe **SMD** UC4: Administrator login - Print Data Menu
+
+hide empty description
+
+state "Print Data Menu" as data
+state "Print Formated Log" as formated
+state "Print Raw Data" as raw
+state "Print System Info" as info
+
+note "Alle stater returner til 'Print Data Menu' " as n1
+
+[*] --> data : Vælger Print Data
+note on link
+    Kommer fra "muligheder" i hovedmenu
+end note
+
+
+data --> formated : Vælger formateret log
+
+
+data --> raw : Vælger raw data
+
+
+data --> info : Vælger system info
+
+
+data -> [*] : Går tilbage til hovedmenu
+
+data : entry/updatePCLog(log)
+
+formated : entry/printLog(log)
+
+raw : entry/printRawData()
+
+info : entry/printSystemInfo()
+
+@enduml

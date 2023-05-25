@@ -1,0 +1,48 @@
+
+@startuml UC4 SMD
+
+mainframe **SMD** UC4: Administrator login - Rediger System Menu
+
+hide empty description
+
+state "Rediger System Menu" as rediger
+state "Add Slave" as addSlave
+state "Select Room Connection" as selectRoom
+state "Calibrate system" as cal
+state "Select Save Options" as showOptions
+
+
+note "Alle stater returner til 'Rediger System Menu' " as n1
+
+[*] --> rediger : Vælger Rediger System
+note on link
+    Kommer fra "muligheder" i hovedmenu
+end note
+
+rediger --> addSlave : Vælger Add Slave
+
+
+rediger --> selectRoom : Vælger Select Room Connection
+
+
+
+rediger --> cal : Vælger Calibrate System
+
+
+rediger --> showOptions : Vælger Select Save Options
+
+
+rediger -> [*] : Går tilbage til hovedmenu
+
+rediger : entry/showChangeOptions
+
+addSlave : entry/addSlave()
+
+selectRoom : entry/selectRoomConnections()
+
+cal : entry/calibrateSystem()
+
+showOptions : entry/selectSaveOnline()
+
+
+@enduml
