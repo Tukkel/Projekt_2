@@ -18,12 +18,17 @@ int main()
 	UARTDE uartDe(9600, 8);
 	uint8_t address[8] = {0, 0, 0, 0, 0, 0, 0, 1};
 	uint8_t addresstwo[8] = {0, 0, 0, 0, 0, 0, 1, 0};
+	uint8_t address3[8] = {0, 0, 0, 0, 0, 0, 1, 1};
 	X10 x10(1, 2, 4, address, sizeof(address)/sizeof(address[0]), 'm');
 	uint8_t on[1] = {1};
 	uint8_t off[1] = {0};
 	uint8_t dataRead = 0;
+
 	DDRB = 0xFF;
 	bool recived = true;
+	bool full = false;
+	
+	char DEstring[40];
 
 	uint8_t rooms;
 	size_t users;
@@ -78,20 +83,49 @@ int main()
 
 	while(true)
 	{
-		/*
+		PORTB = 6;
+
 		recived = false;
 		recived = x10.writeData(on, sizeof(on)/sizeof(on[0]), addresstwo, sizeof(addresstwo)/sizeof(addresstwo[0]));
 		
+		PORTB = 8;
+
+		if(recived == true)
+		{
+			x10.readData();
+			dataRead = x10.getValue();
+			PORTB = dataRead+1;
+			if(full)
+			{
+				recived = x10.writeData(off, sizeof(off)/sizeof(off[0]), address, sizeof(address)/sizeof(address[0]));
+				full = false;
+			}
+			else
+			{
+				recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address, sizeof(address)/sizeof(address[0]));
+				full = true;
+			}
+		}
+
+		/*
+		PORTB = 3;
+		_delay_ms(1000);
+		
+		recived = false;
+		recived = x10.writeData(on, sizeof(on)/sizeof(on[0]), address3, sizeof(addresstwo)/sizeof(addresstwo[0]));
+		
+		PORTB = 4;
+		_delay_ms(1000);
+
 		if(recived == true)
 		{
 			x10.readData();
 			dataRead = x10.getValue();
 			PORTB = dataRead+1;
 			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address, sizeof(address)/sizeof(address[0]));
+			full = true;
 		}
 		*/
-		//recived = false;
-		
 
 		PORTB = I.roomReady();
 		_delay_ms(100);

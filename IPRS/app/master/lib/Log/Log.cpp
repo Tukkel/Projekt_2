@@ -14,8 +14,8 @@ Log::Log(uint8_t numberRooms, size_t numberPeople) : numberRooms_(numberRooms), 
 
     PORTB = 2;
 
-    logTime_ = (size_t*)malloc(10*sizeof(size_t));
-    log_ = (double *)malloc(numberRooms_*numberPeople_*10*sizeof(double));
+    logTime_[100] = {0};
+    log_[numberRooms_*numberPeople_*100] = {0};
 
     for(size_t i = 0; i<numberRooms_; ++i)
     {
@@ -40,6 +40,8 @@ Log::Log(uint8_t numberRooms, size_t numberPeople) : numberRooms_(numberRooms), 
         peopleNames_[i][2] = 'N';
         peopleNames_[i][4] = '\0';
     }
+
+    
 }
 
 void Log::setRoomConnection(uint8_t roomNumber, bool* connections)
@@ -228,10 +230,9 @@ size_t Log::offset(size_t logNumber, size_t roomNumber, size_t personNumber)
 
 void Log::setLog()
 {
-    if(nextEntry_%10 == 0 && nextEntry_ != 0)
+    if(nextEntry_ == 100)
     {
-        log_ = (double*)realloc(log_, numberRooms_*numberPeople_*(nextEntry_+10)*sizeof(double));
-        logTime_ = (size_t*)realloc(logTime_, (nextEntry_+10)*sizeof(size_t));
+        nextEntry_ = 0;
     }
 
     for(size_t i=0; i<numberRooms_; ++i)
