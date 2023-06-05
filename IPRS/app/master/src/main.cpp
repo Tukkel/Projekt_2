@@ -27,8 +27,6 @@ int main()
 	DDRB = 0xFF;
 	bool recived = true;
 	bool full = false;
-	
-	char DEstring[40];
 
 	uint8_t rooms;
 	size_t users;
