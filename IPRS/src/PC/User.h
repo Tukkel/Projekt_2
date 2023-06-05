@@ -18,16 +18,18 @@ public:
     User();
     User(dbHandler dataBase, std::string password = "admin");
 
-    // Function to login to the system, checks if the username and password are correct, Return if the login is true og not
+    // Function to login to the system, checks if the password are correct
     void login();
 
     // Function to logout of the system
     void logout();
 
+    void validate(std::string password);
+
     // Function to check if the user is logged in
     bool isLoggedIn();
 
-    // Function to change the password of the user, username
+    // Function to change the password of the user,
     void changePassword();
 
     // Function to clear the terminal
