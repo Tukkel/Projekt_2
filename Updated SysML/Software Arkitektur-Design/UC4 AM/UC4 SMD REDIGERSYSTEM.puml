@@ -12,25 +12,29 @@ state "Calibrate system" as cal
 state "Select Save Options" as showOptions
 
 
-note "Alle stater returner til 'Rediger System Menu' " as n1
+note "Choice repræsenterer de forskellige muligheder i menuen \n 1. For Tilføj Slave \n 2. For Vælg Rumforbindelser \n 3. For Kalibrer System \n 4. For Vælg Gemme Indstilinger" as n1
 
-[*] --> rediger : Vælger Rediger System
+[*] ---> rediger : Vælger Rediger System
+
 note on link
-    Kommer fra "muligheder" i hovedmenu
+    Staten "Rediger System"
+    Kommer fra "Muligheder" i hovedmenu
 end note
 
-rediger --> addSlave : Vælger Add Slave
+n1 --> rediger : Choice
+
+rediger --> addSlave : Choice 1
+addSlave --> rediger : Returner
+
+rediger --> selectRoom : Choice 2
+selectRoom --> rediger : Returner
 
 
-rediger --> selectRoom : Vælger Select Room Connection
+rediger --> cal : Choice 3
+cal --> rediger : Returner
 
-
-
-rediger --> cal : Vælger Calibrate System
-
-
-rediger --> showOptions : Vælger Select Save Options
-
+rediger --> showOptions : Choice 4
+showOptions --> rediger : Returner
 
 rediger -> [*] : Går tilbage til hovedmenu
 
