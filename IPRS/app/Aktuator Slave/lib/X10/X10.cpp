@@ -89,7 +89,6 @@ void X10::readData()
                     ++pair;     //If it is a 1 increment pair
                 }
             }
-
             if (i > 6) // If the data contains stop bits then break
             {
                 if (data_[i-3] == false && data_[i-2] == false && data_[i-1] == false && data_[i] == true)
@@ -97,7 +96,6 @@ void X10::readData()
                     break;
                 }
             }
-
             ++i;
         }
 
@@ -126,9 +124,9 @@ void X10::readData()
                 ack = false;
             }
         }
-        if(unit_ == 'm' || ack)
+        if(unit_ == 'm' || ack) // if master or slave and ack is true then send ack
         {
-            while(true) //Check for pairity
+            while(true) 
             {
                 if (PINL & clock_pin_)
                 {
@@ -340,11 +338,11 @@ uint16_t X10::getValue() const
             break;
         }
         ++count;
-    }
+    } 
+    count--;
     for(size_t i = 10; i<(10+count); ++i)
     {
-        data_[(2*9) - (2*(i-2))]<<(i-2);
-        value += data_[(2*(10+count))-2*i]<<(count+9-i);
+        value += data_[(2*i)]<<(count+9-i);
     }
     return value;
 }

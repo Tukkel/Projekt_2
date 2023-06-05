@@ -77,14 +77,14 @@ bool SlaveSensor::getActivity() const
 
 void SlaveSensor::updateIds(){
     DDRA = 0x00;
-    int input = 255 - PINA;
+    int input = ~(PINA);
     int temp = 0;
     for (uint8_t i = 0; i < sizeof(ids_)/sizeof(ids_[0]); i++)
     {
         temp = 1<<i;
-        if (temp == input){
+        if (temp & input){
             ids_[i] = 1;
-            break;
+            activity_ = true;
         }
     }
 }
@@ -96,6 +96,7 @@ void SlaveSensor::sendIds(){
     {
         ids_[i] = 0;
     }
+    activity_ = false;
     setLowPowerUsage();
 }
 

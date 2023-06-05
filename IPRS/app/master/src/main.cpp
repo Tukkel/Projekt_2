@@ -18,12 +18,17 @@ int main()
 	UARTDE uartDe(9600, 8);
 	uint8_t address[8] = {0, 0, 0, 0, 0, 0, 0, 1};
 	uint8_t addresstwo[8] = {0, 0, 0, 0, 0, 0, 1, 0};
+	uint8_t address3[8] = {0, 0, 0, 0, 0, 0, 1, 1};
 	X10 x10(1, 2, 4, address, sizeof(address)/sizeof(address[0]), 'm');
 	uint8_t on[1] = {1};
 	uint8_t off[1] = {0};
 	uint8_t dataRead = 0;
+
 	DDRB = 0xFF;
 	bool recived = true;
+	bool full = false;
+	
+	char DEstring[40];
 
 	uint8_t rooms;
 	size_t users;
@@ -78,20 +83,49 @@ int main()
 
 	while(true)
 	{
-		/*
+		PORTB = 6;
+
 		recived = false;
 		recived = x10.writeData(on, sizeof(on)/sizeof(on[0]), addresstwo, sizeof(addresstwo)/sizeof(addresstwo[0]));
 		
+		PORTB = 8;
+
+		if(recived == true)
+		{
+			x10.readData();
+			dataRead = x10.getValue();
+			PORTB = dataRead+1;
+			if(full)
+			{
+				recived = x10.writeData(off, sizeof(off)/sizeof(off[0]), address, sizeof(address)/sizeof(address[0]));
+				full = false;
+			}
+			else
+			{
+				recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address, sizeof(address)/sizeof(address[0]));
+				full = true;
+			}
+		}
+
+		/*
+		PORTB = 3;
+		_delay_ms(1000);
+		
+		recived = false;
+		recived = x10.writeData(on, sizeof(on)/sizeof(on[0]), address3, sizeof(addresstwo)/sizeof(addresstwo[0]));
+		
+		PORTB = 4;
+		_delay_ms(1000);
+
 		if(recived == true)
 		{
 			x10.readData();
 			dataRead = x10.getValue();
 			PORTB = dataRead+1;
 			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address, sizeof(address)/sizeof(address[0]));
+			full = true;
 		}
 		*/
-		//recived = false;
-		
 
 		PORTB = I.roomReady();
 		_delay_ms(100);
@@ -103,20 +137,29 @@ int main()
 			}
 			else
 			{
-				uartDe.SendString("~~ roomName count Name1!");
-				/*
-				size_t i = 0;
-				size_t people = 0;
-				uint8_t room = I.getRoomToSend();
-				uartDe.SendString("~~ ");
-				PORTB = 4;
-				while(log.roomNames_[room][i] != '\0')
+				//uartDe.SendString("test");
+				
+				size_t room = I.getRoomToSend();
+				size_t start = 3;
+				DEstring[0] = '~';
+				DEstring[1] = '~';
+				DEstring[2] = ' ';
+
+				for(size_t i=start; i<40; ++i)
 				{
-					uartDe.SendChar(log.roomNames_[room][i]);
-					++i;
+					if(log.roomNames_[room][i-start] != '\0')
+					{
+						DEstring[i] = log.roomNames_[room][i-start];
+					}
+					else
+					{
+						DEstring[i] = ' ';
+						start = i+1;
+						break;
+					}
 				}
-				PORTB = 8;
-				uartDe.SendChar(' ');
+
+				size_t people = 0;
 				for(size_t j = 0; j<log.numberPeople_; ++j)
 				{
 					if(log.rooms_[room][j])
@@ -124,24 +167,48 @@ int main()
 						++people;
 					}
 				}
-				uartDe.SendInteger(people);
-				uartDe.SendChar(' ');
-				i = 0;
-				PORTB = 16;	
+				if(people>9)
+				{
+					DEstring[start] = (people/10) + 48;
+					DEstring[start+1] = (people%10) + 48;
+					DEstring[start+2] = ' ';
+					start += 3;
+				}
+				else
+				{
+					DEstring[start] = people + 48;
+					DEstring[start] = ' ';
+					start += 2;
+				}
+
+				bool nameFinished = false;
 				for(size_t j = 0; j<log.numberPeople_; ++j)
 				{
 					if(log.rooms_[room][j])
 					{
-						while(log.peopleNames_[j][i] != '\0')
+						for(size_t i=start; i<40; ++i)
 						{
-							uartDe.SendChar(log.peopleNames_[j][i]);
-							++i;
+							if(log.peopleNames_[j][i-start] != '\0')
+							{
+								DEstring[i] = log.peopleNames_[j][i-start];
+							}
+							else
+							{
+								start = i;
+								nameFinished = true;
+								break;
+							}
 						}
 					}
+					if(nameFinished)
+					{
+						break;
+					}
 				}
-				PORTB = 32;
-				uartDe.SendChar('!');
-				*/
+				DEstring[start] = '!';
+				DEstring[start+1] = '\0';
+				uartDe.SendString(DEstring);
+				
 			}
 			//I.roomReady_ = false;
 			I.setRoomReady(false);
