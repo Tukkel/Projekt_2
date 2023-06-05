@@ -77,9 +77,16 @@ int main()
 	uartDe.SendChar('!');
 
 	Log log(rooms, users);
+
+	_delay_ms(500);
 	
+	
+	log.setTime(I.getTime());
+	_delay_ms(200);
 	log.logID(1, 0);
-	log.logID(0, 1);
+	_delay_ms(200);
+	log.logID(0, 2);
+	
 
 	while(true)
 	{
@@ -99,23 +106,27 @@ int main()
 			{
 				recived = x10.writeData(off, sizeof(off)/sizeof(off[0]), address, sizeof(address)/sizeof(address[0]));
 				full = false;
+				uartDe.SendString("~/");
+				uartDe.SendChar(0b00000000);
+				uartDe.SendChar('!');
 			}
 			else
 			{
 				recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address, sizeof(address)/sizeof(address[0]));
 				full = true;
+				uartDe.SendString("~/");
+				uartDe.SendChar(0b00000001);
+				uartDe.SendChar('!');
 			}
 		}
 
 		/*
 		PORTB = 3;
-		_delay_ms(1000);
 		
 		recived = false;
 		recived = x10.writeData(on, sizeof(on)/sizeof(on[0]), address3, sizeof(addresstwo)/sizeof(addresstwo[0]));
 		
 		PORTB = 4;
-		_delay_ms(1000);
 
 		if(recived == true)
 		{
@@ -136,10 +147,27 @@ int main()
 				uartDe.SendString("~~ !");
 			}
 			else
-			{
-				//uartDe.SendString("test");
-				
+			{	
 				size_t room = I.getRoomToSend();
+
+				if(room == 1)
+				{
+					if(full)
+					{
+						uartDe.SendString("~~ Rum 1: 1 person1!");
+					}
+					else
+					{
+						uartDe.SendString("~~ Rum 1: 0!");
+					}
+				}
+				else
+				{
+					uartDe.SendString("~~ Rum ");
+					uartDe.SendInteger(room);
+					uartDe.SendString(": 0!");
+				}
+				/*
 				size_t start = 3;
 				DEstring[0] = '~';
 				DEstring[1] = '~';
@@ -208,7 +236,7 @@ int main()
 				DEstring[start] = '!';
 				DEstring[start+1] = '\0';
 				uartDe.SendString(DEstring);
-				
+				*/
 			}
 			I.setRoomReady(false);
 		}
@@ -224,13 +252,11 @@ int main()
 				{
 					if(I.string[i-1] == 'A')
 					{
-						uint16_t intToSend = 0;
 						for(size_t k = 0; k<users; ++k)
 						{
 							for(size_t l = 0; l<rooms; ++l)
 							{
-								intToSend = log.log_[log.offset(log.nextEntry_-1,l,k)]/0.001;
-								uartPc.SendInteger(intToSend);
+								uartPc.SendInteger((int)(log.roomChances_[l][k]*1000));
 								uartPc.SendChar(' ');
 							}
 							uartPc.SendChar('\n');
@@ -242,7 +268,7 @@ int main()
 							{
 								for(size_t l = 0; l<rooms; ++l)
 								{
-									intToSend = log.log_[log.offset(j,l,k)]/0.001;
+									intToSend = log.log_[log.offset(j,l,k)]*1000;
 									uartPc.SendInteger(intToSend);
 									uartPc.SendChar(' ');
 								}
@@ -262,7 +288,7 @@ int main()
 					}
 					else if(I.string[i-1] == 'C')
 					{
-						bool connections[rooms] = {false};
+						bool connections[log.numberRooms_] = {false};
 						bool* boolPtr = &connections[0];
 						uint8_t room = getRoom(I.string);
 						getConnections(I.string, boolPtr);
@@ -272,8 +298,7 @@ int main()
 					}
 					else if(I.string[i-1] == 'D')
 					{
-						char string[] = "Callibrated\n";
-						uartPc.SendString(string);
+						uartPc.SendString("Callibrated\n");
 					}
 				}
 				++i;

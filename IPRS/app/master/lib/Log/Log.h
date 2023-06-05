@@ -21,6 +21,7 @@ class Log
         void logID(uint8_t roomNumber, size_t personNumber);
         void setTime(size_t timeMin);
         size_t offset(size_t logNumber, size_t roomNumber, size_t personNumber);
+        void setLog();
         const uint8_t numberRooms_;
         const size_t numberPeople_;
         bool** rooms_;
@@ -30,9 +31,8 @@ class Log
         size_t* logTime_;
         size_t nextEntry_;
         uint32_t addresses_[256] = {300};
-    private:
-        void setLog();
         double** roomChances_;
+    private:
         double** peopleHistory_;
         bool** roomConnections_;
         size_t timeMin_;
