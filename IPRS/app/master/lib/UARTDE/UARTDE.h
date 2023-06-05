@@ -17,17 +17,7 @@ class UARTDE
 };
 
 /****************
- * "~~ " Begynder
- * "~/8bit\!" Rummed folk
+ * "~/8bit!" Rummed folk
  * Efter rum efterspørgelse "~~ Rumnavn som chars mellemrum antal som char mellemrum første navn som char !"
  * "~~ !" clear
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
  * ************************/

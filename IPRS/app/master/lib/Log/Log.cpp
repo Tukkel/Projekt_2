@@ -193,6 +193,7 @@ void Log::logActivity(uint8_t roomNumber)
             }
         }
     }
+    //setLog();
 }
 
 void Log::logMovement(uint8_t roomNumber1, uint8_t roomNumber2)
@@ -207,15 +208,17 @@ void Log::logMovement(uint8_t roomNumber1, uint8_t roomNumber2)
         roomChances_[roomNumber1][i] -= roomChances_[roomNumber1][i]/room1Sum;
         roomChances_[roomNumber2][i] += roomChances_[roomNumber1][i]/room1Sum;
     }
+    //setLog();
 }
 
 void Log::logID(uint8_t roomNumber, size_t personNumber)
 {
     for(size_t i = 0; i<numberRooms_; ++i)
     {
-        roomChances_[i][personNumber] = 0;
+        roomChances_[i][personNumber] = 0.0;
     }
-    roomChances_[roomNumber][personNumber] = 1;
+    roomChances_[roomNumber][personNumber] = 1.0;
+    //setLog();
 }
 
 void Log::setTime(size_t timeMin)
@@ -230,7 +233,7 @@ size_t Log::offset(size_t logNumber, size_t roomNumber, size_t personNumber)
 
 void Log::setLog()
 {
-    if(nextEntry_ == 100)
+    if(nextEntry_ >= 100)
     {
         nextEntry_ = 0;
     }

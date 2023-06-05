@@ -1,0 +1,82 @@
+@startuml Master classes
+' Default param deffinition
+skinparam style strictuml
+skinparam DefaultFontSize 16
+skinparam DefaultFontName times new roman
+skinparam ArrowFontSize 16
+skinparam ArrowThickness 2.2
+skinparam Linetype poly
+skinparam ranksep 100
+skinparam nodesep 100
+hide empty members
+
+
+mainframe **CD** masterClasses
+
+' Class definition
+Class "**<<controller>>**\n**Master**" as m{
+}
+
+Class "**<<boundary>>**\n**UARTDE**" as ip{
++ SendString(char* Streng) : void
+}
+
+Class "**<<boundary>>**\n**UARTPC**" as pc{
++ SendString(char* Streng) : void
+}
+
+Class "**<<boundary>>**\n**X10Communication**" as X10{
++ readData() : bool
++ wirteData(uint8_t* data, size_t dataSize, uint8_t* address, size_t addressSize) : bool
++ getAddress() : uint8_t
++ getValue() : int
+- clock_pin_ : uint8_t
+- X10_read_ : uint8_t
+- X10_write_ : uint8_t
+- address_[8] : uint8_t
+- unit_ : char
+- data_[100] : uint8_t
+}
+
+Class "**<<boundary>>**\n**Interrupts**" as in{
++ getTime() : size_t
++ getRoomToSend() : uint8_t
++ string[256] : char
+- timeMin_ : size_t
+- stringReady_ : bool
+- roomReady_ : bool
+- roomToSend_ : uint8_t
+}
+
+Class "**<<domain>>**\n**Log**" as log{
++ setRoomConnection(uint8_t roomNumber, bool* connections) : void
++ setRoomName(uint8_t roomNumber, char* roomName) : void
++ setPersonName(size_t personNumber, char* personName) : void
++ setAddress(uint8_t address, uint32_t addressType) : void
++ setPersonHistory(size_t personNumber, double* personHistory) : void
++ logActivity(uint8_t roomNumber) : void
++ logMovement(uint8_t roomNumber1, uint8_t roomNumber2) : void
++ logID(uint8_t roomNumber, size_t personNumber) : void
++ setTime(size_t timeMin) : void
+
+- roomChances_ : double**
+- peopleHistory_ : double**
+- roomConnections_ : bool**
+- timeMin_ : size_t
++ numberRooms_ : uint8_t
++ numberPeople_ : size_t
++ rooms_ : bool**
++ roomNames_ : char**
++ peopleNames_ : char**
++ addresses_[256] : uint32_t
++ log_ : double**
++ logTime_ : size_t*
+}
+
+' Conection definition
+m <--> X10
+m --> pc
+m --> ip
+m --> log
+m <--> in
+@enduml
