@@ -9,22 +9,20 @@ state "Print Formated Log" as formated
 state "Print Raw Data" as raw
 state "Print System Info" as info
 
-note "Alle stater returner til 'Print Data Menu' " as n1
-
 [*] --> data : Vælger Print Data
 note on link
-    Kommer fra "muligheder" i hovedmenu
+    Kommer fra "Muligheder" i hovedmenu
 end note
 
 
-data --> formated : Vælger formateret log
-
+data -> formated : Vælger formateret log
+formated --> data : Returner
 
 data --> raw : Vælger raw data
-
+raw --> data : Returner
 
 data --> info : Vælger system info
-
+info --> data : Returner
 
 data -> [*] : Går tilbage til hovedmenu
 

@@ -2,6 +2,7 @@
 skinparam style strictuml
 skinparam classAttributeIconSize 0
 hide empty members
+skinparam classAttributeIconSize 0 
 
 mainframe **CD** UC2
 

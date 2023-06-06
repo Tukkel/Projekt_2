@@ -4,7 +4,7 @@
 #define XTAL 16000000
 
 /*************************************************************************
-UART 0 initialization:
+UART 1 initialization:
     Asynchronous mode.
     Baud rate = 9600.
     Data bits = 8.
