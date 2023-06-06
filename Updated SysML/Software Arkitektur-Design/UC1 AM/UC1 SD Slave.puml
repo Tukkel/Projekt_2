@@ -8,14 +8,14 @@ participant "<<boundary>>\nDør sensor" as dør
 participant "<<boundary>>\nRum sensor" as rum
 participant "<<boundary>>\nID sensor" as ID
 participant "<<control>>\nUC1: Registreret rumskift (Slave)" as slave
-participant "<<domain>>\nX10Communication" as X10
-participant "<<boundary>>\nX10 Network" as X10Net
+participant "<<boundary>>\nX10" as X10
+
 
 alt Registrering
 bruger ->> dør : Går gennem dør
 dør ->> slave : Detektering sendes
 activate slave
-else
+else 
 deactivate slave
 bruger ->> rum : Bevægelse i tomt rum
 rum ->> slave : Detektering sendes
@@ -29,8 +29,6 @@ end
 slave -> slave : setNormalPowerUsage()
 slave -> X10 : sendActivity(slaveNr, activity)
 activate X10
-X10 -> X10Net : Activity
-X10 <<-- X10Net : No conflict
 slave <<-- X10 : Done
 deactivate X10
 slave -> slave : setLowPowerUsage()
