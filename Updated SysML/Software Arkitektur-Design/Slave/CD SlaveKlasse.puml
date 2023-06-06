@@ -30,7 +30,7 @@ class SlaveSensor {
     + getActivity() const : bool 
     + updateIds() : void
     + sendIds() : void
-    + getIds() const : 
+    + getIds() const : void
     + calibrate() : void
     + getSensorValue() const : unsigned int
     + dataRequested() : bool
