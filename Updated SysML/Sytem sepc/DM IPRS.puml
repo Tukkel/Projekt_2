@@ -6,8 +6,8 @@ skinparam DefaultFontName times new roman
 skinparam ArrowFontSize 16
 skinparam ArrowThickness 2.2
 skinparam Linetype poly
-skinparam ranksep 100
-skinparam nodesep 10
+skinparam ranksep 50
+skinparam nodesep 50
 skinparam ClassAttributeIconSize 0
 hide empty members
 
@@ -89,8 +89,8 @@ SS "1..*" -- "1" ME : < Statuts check
 
 ME "1" -- "1" COM : > Sender Log data
 ME "1" -- "1" COM : < Opdater med Systemændring
-ME "1" -- "1" INFO : > Sender Rumindhold
-ME "1" -- "1" INFO : < Efterspørger Rumindhold
+ME "1" - "1" INFO : > Sender Rumindhold
+ME "1" - "1" INFO : < Efterspørger Rumindhold
 
 RS "1" -- "1" SS : > Sender Detektering
 DS "1" -- "1" SS : > Sender Detektering
@@ -103,7 +103,7 @@ BR -- RS : > Aktiver
 ADMIN -- COM  : > Adminstrer System
 COM -- ADMIN : > Læser Log
 
-ME "1" -- "1..*" AS : > Sætter Status
+ME "1" --left-- "1..*" AS : > Sætter Status
 ME "1" -- "1..*" AS : < Sender Status
 
 AS "1" -- "1" LS : > Ændrer Intensitet 
