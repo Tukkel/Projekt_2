@@ -21,7 +21,7 @@ Class "**<<boundary>>**\n**PC interface**" as UI{
 }
 
 
-Class "**<<domain>>**\n**Master**" as master{
+Class "**<<domain>>**\n**UARTCommunication**" as master{
 + sendLog()
 + updateSystem(newSystem)
 + materInitialise()

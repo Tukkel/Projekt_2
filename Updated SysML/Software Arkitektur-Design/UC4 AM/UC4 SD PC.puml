@@ -23,7 +23,8 @@ admin <<- UI : Show possible actions
 alt Print data
 admin -> UI : Admin picks print data
 UI -> PC : printData()
-PC -> UART : sendData(logRequest)
+PC -> PC : sendData(logRequest)
+PC -> UART : logRequest
 UART ->> UARTCon : request log
 PC <<-- UARTCon : Log
 PC -> PC : updateLog(Log)
@@ -54,7 +55,8 @@ admin <<-- UI : Show options
 alt Add a new slave
 admin -> UI : Admin picks add slave
 UI -> PC : addSlave()
-PC -> UART : sendData(slaveAdress)
+PC -> PC : sendData(addSlave)
+PC -> UART : addSlave
 UART ->> UARTCon : slaveAdress
 
 else Select Room Connection
@@ -67,7 +69,8 @@ UART ->> UARTCon : roomConnection
 else Calibrate system
 admin -> UI : Selects calibrate system
 UI -> PC : calibrateSystem()
-PC -> UART : sendData(calibrateRequest)
+PC -> PC : sendData(calibrateRequest)
+PC -> UART : calibrateRequest
 UART ->> UARTCon : Request calibration of IPRS
 PC <<-- UARTCon : System calibrated
 UI <<-- PC : System calibrated
@@ -85,7 +88,8 @@ end
 else Initialise system
 admin -> UI : Selects initialization
 UI -> PC : initialiseSystem()
-PC -> UART : sendData(initialisedSystem)
+PC -> PC : sendData(initialisedSystem)
+PC -> UART : initialisedSystem
 UART ->> UARTCon : Request initialization of IPRS
 PC <<-- UARTCon : Validation
 UI <<-- PC : Validation text
