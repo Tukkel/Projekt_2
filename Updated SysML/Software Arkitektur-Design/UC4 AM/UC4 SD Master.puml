@@ -3,27 +3,35 @@ skinparam style strictuml
 
 mainframe **SD** UC4: Administrator login (Master)
 
-participant "<<boundary>>\nUART Connection" as UARTCon
-participant "<<domain>>\nUARTCommunication" as UART
+participant "UART Connection" as UARTCon
+participant "<<boundary>>\nUARTPC" as UARTPC
+participant "<<boundary>>\nInterrupts" as in
 participant "<<controller>>\nUC4: Administrator login (Master)" as master
+participant "<<domain>>\nLog" as log
 
 activate master
-UARTCon ->> master : Request log
-UART <<- master : sendLog(log)
-UARTCon <<-- UART : log
-master -> master : deleteLog()
+activate in
+UARTCon ->> in : Request log
+in <- master : stringReady()
+in -->> master : true
+UARTPC <<- master : SendString(log)
+activate UARTPC
+UARTCon <<- UARTPC : log
+deactivate UARTPC
 loop Så længe der ikke er logget ud
 alt Print data
 else Rediger system
-UARTCon ->> master : newSystem
-master -> master : changeSystem(newSystem)
-UART <<- master : systemChanged()
-UARTCon <<-- UART : System changed
+UARTCon ->> in : newSystem
+in <- master : stringReady()
+in -->> master : true
+master ->> log : log(rooms, users)
 else Initialisering
-UARTCon ->> master : Request initialization of IPRS
+UARTCon ->> in : Request initialization of IPRS
+in <- master : stringReady()
+in -->> master : true
 master -> master : initialize() (UC 5)
-UART <<- master : sendValidation(Validation)
-UARTCon <<-- UART : Validation
+UARTPC <<- master : SendString(Callibrated)
+UARTCon <<-- UARTPC : Callibrated
 else Log out
 end
 end
