@@ -11,16 +11,16 @@ participant "<<control>>\nUC1: Registreret rumskift (Slave)" as slave
 participant "<<boundary>>\nX10" as X10
 
 
-alt Registrering
+alt registrering i døren
 bruger ->> dør : Går gennem dør
 dør ->> slave : Detektering sendes
 activate slave
-else 
+else registrering i tomt rum
 deactivate slave
 bruger ->> rum : Bevægelse i tomt rum
 rum ->> slave : Detektering sendes
 activate slave
-else
+else registrere i forventet tomt rum
 deactivate slave
 bruger ->> ID : Registrering i ikke forventet rum
 ID ->> slave : Detektering sendes
