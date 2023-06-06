@@ -14,27 +14,36 @@ extern Interrupts I;
 
 int main()
 {
+	//Construct klasser til UART-kommunikation
 	UARTPC uartPc(9600, 8);
 	UARTDE uartDe(9600, 8);
+
+	//Hard-coded adresser til test
 	uint8_t address[8] = {0, 0, 0, 0, 0, 0, 0, 1};
 	uint8_t addresstwo[8] = {0, 0, 0, 0, 0, 0, 1, 0};
 	uint8_t address3[8] = {0, 0, 0, 0, 0, 0, 1, 1};
+
+	//Construct klassen til X10-kommunikation
 	X10 x10(1, 2, 4, address, sizeof(address)/sizeof(address[0]), 'm');
+
+	//Opsætning af variable
 	uint8_t on[1] = {1};
 	uint8_t off[1] = {0};
 	uint8_t dataRead = 0;
-
-	DDRB = 0xFF;
 	bool recived = true;
 	bool full = false;
+	uint8_t rooms = 10;
+	size_t users = 10;
 
-	uint8_t rooms;
-	size_t users;
+	//Port B bruges til debugging da den er forbundet til LEDerne på shieldet
+	DDRB = 0xFF;
 
+	//Sluk leder på informationspanel
 	uartDe.SendString("~/");
 	uartDe.SendChar(0b00000000);
 	uartDe.SendChar('!');
 
+	//Loop der venter på at masteren bliver initialiseret fra PC, loggen skal vide hvor stor den skal være.
 	while(recived)
 	{
 		PORTB = I.stringReady();
@@ -47,6 +56,7 @@ int main()
 				{
 					if(I.string[i-1] == 'E')
 					{
+						//Der bruges funktioner fra Functions.cpp til at læse daten
 						rooms = getRooms(I.string);
 						users = getUsers(I.string);
 						I.stringRead();
@@ -60,20 +70,24 @@ int main()
 				}
 				++i;
 			}
+			//Fjern hvad der er blevet læst
 			I.stringRead();
 		}
 	}
 
+	//Størelsen af loggen vises med LEDerne for at bekræfte at den har modtaget korrekt
 	PORTB = rooms;
 	_delay_ms(1000);
 
 	PORTB = users;
 	_delay_ms(1000);
 
+	//Test af at der kan sendes andet end sluk
 	uartDe.SendString("~/");
 	uartDe.SendChar(0b10011001);
 	uartDe.SendChar('!');
 
+	//Construct loggen med størrelsen som bliver kommunikeret fra PC
 	Log log(rooms, users);
 
 	_delay_ms(500);
@@ -85,9 +99,10 @@ int main()
 	_delay_ms(200);
 	log.logID(0, 2);
 	
-
+	//Main loop
 	while(true)
 	{
+		//Efterspørg data fra sensor
 		PORTB = 6;
 
 		recived = false;
@@ -95,8 +110,10 @@ int main()
 		
 		PORTB = 8;
 
+		//Hvis der kommer ack
 		if(recived == true)
 		{
+			//Læs hvad 
 			x10.readData();
 			dataRead = x10.getValue();
 			PORTB = dataRead+1;
