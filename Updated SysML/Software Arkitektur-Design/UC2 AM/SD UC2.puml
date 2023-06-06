@@ -5,7 +5,7 @@ mainframe **SD** UC2
 
 participant "<<boundary>>\nLys" as L
 participant "<<Controller>>\nAdministrer lys" as AL
-participant "<<boundary>>Masteren" as M
+participant "<<boundary>>\nMaster" as M
 
 M ->> AL : updateLog()
 activate AL
