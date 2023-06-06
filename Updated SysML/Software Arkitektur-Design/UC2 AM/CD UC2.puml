@@ -1,20 +1,22 @@
 @startuml CD
 skinparam style strictuml
+skinparam classAttributeIconSize 0
 hide empty members
 
 mainframe **CD** UC2
 
 class "<<Controller>>\nAdministrer lys" as AL {
-    <&minus> logLysStatus
-    <&plus> opdatretLog(logLysStatus)
+    - logLightStatus_ : uint8_t
+    - outPin_ : int
+    + updateLog() : void
 }
 
 class "<<boundary>>\nLys" as L {
-    <&minus> erTændt : bool
-    <&plus> sætStatus(lysStatus)
+    - on_ : bool
+    + setStatus(LightStatus)
 }
 
-class "<<domain>>Masteren" as M{
+class "<<domain>>\nMaster" as M{
     <&minus> log : Log
 }
 

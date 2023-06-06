@@ -1,0 +1,47 @@
+@startuml CD slaveKlasse
+skinparam classAttributeIconSize 0
+skinparam style strictuml
+
+mainframe **CD** slaveClasses
+
+class Slave {
+    + Slave(uint8_t address, uint8_t addressSize = 8)
+    + setNormalPowerUsage() : void
+    + setLowPowerUsage() : void
+    --
+    # data_[100] : uint8_t
+    # address_[8] : uint8_t 
+    # slaveNr_ : uint8_t 
+    # x10_ : X10
+}
+
+class SlaveAktuator{
+    + SlaveAktuator(int outPin, uint8_t *addressArray, uint8_t LogLightStatus)
+    + updateLog() : void
+    --
+    - logLightStatus_ : uint8_t
+    - outPin_ : int
+}
+
+class SlaveSensor {
+    + SlaveSensor(int inPin, uint8_t *address, sensorType sType)
+    + updateActivity() : void    
+    + sendActivity() : void
+    + getActivity() const : bool 
+    + updateIds() : void
+    + sendIds() : void
+    + getIds() const : 
+    + calibrate() : void
+    + getSensorValue() const : unsigned int
+    + dataRequested() : bool
+    --
+    - inPin_ : uint16_t
+    - sType_ : sensorType
+    - threshold_ : uint16_t
+    - activity_ : uint8_t
+    - ids_[8] = {0} : uint8_t
+}
+
+Slave <|-- SlaveAktuator
+Slave <|-- SlaveSensor
+@enduml

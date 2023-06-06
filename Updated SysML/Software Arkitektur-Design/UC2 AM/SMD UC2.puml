@@ -13,11 +13,11 @@ state SLUKKET : entry/lightOn()
 state TÆNDT  : entry/lightOff()
 
 
-IDLE --> TÆNDT : opdatretLog(tændt)
-TÆNDT --> IDLE : lysTændt
+IDLE --> TÆNDT : updateLog() / tændt
+TÆNDT --> IDLE : Lys Tændt
 
-IDLE --> SLUKKET : opdatretLog(slukket)
-SLUKKET --> IDLE : lysSlukket
+IDLE --> SLUKKET : updateLog() / slukket
+SLUKKET --> IDLE : Lys Slukket
 
 
 
