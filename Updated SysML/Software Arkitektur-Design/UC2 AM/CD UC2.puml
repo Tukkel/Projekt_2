@@ -1,6 +1,7 @@
 @startuml CD
 skinparam style strictuml
 hide empty members
+skinparam classAttributeIconSize 0 
 
 mainframe **CD** UC2
 
