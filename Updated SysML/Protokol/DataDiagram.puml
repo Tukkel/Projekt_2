@@ -1,6 +1,6 @@
 @startuml DataDiagram
 
-scale 1 as 50 pixels
+scale 1 as 55 pixels
 
 
 concise "bits" as B
@@ -11,8 +11,9 @@ binary "clk" as C
 0 is start_bits
 2 is address_bits
 10 is "data_bits (varaible)"
-14 is stop_bits
-16 is {hidden}
+14 is parity
+15 is stop_bits
+17 is {hidden}
 
 @0
 C is high
@@ -112,12 +113,15 @@ C is high
 
 @15.5
 C is low
-C -> B 
 
 @16
 C is high
 
 @16.5
 C is low
+C -> B
+
+@17
+C is hidden
 
 @enduml
