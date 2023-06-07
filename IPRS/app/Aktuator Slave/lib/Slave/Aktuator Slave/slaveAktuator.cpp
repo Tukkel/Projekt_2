@@ -2,25 +2,25 @@
 #include <util/delay.h>
 #include <math.h>
 
-slaveAktuator::slaveAktuator(int outPin, uint8_t* addressArray, uint8_t logLysStatus): Slave(addressArray)
+SlaveAktuator::SlaveAktuator(int outPin, uint8_t *addressArray, uint8_t LogLightStatus) : Slave(addressArray)
 {
 
-    logLysStatus_ = logLysStatus;
+    LogLightStatus_ = LogLightStatus;
     outPin_ = outPin;
-    if (logLysStatus_ == 1)
+    if (LogLightStatus_ == 1)
     {
-        PORTB |= (1<<outPin_);
+        PORTB |= (1 << outPin_);
     }
     else
     {
-        PORTB &= ~(1<<outPin_);
+        PORTB &= ~(1 << outPin_);
     }
 }
 
-void slaveAktuator::opdateretLog()
+void SlaveAktuator::updateLog()
 {
     setNormalPowerUsage();
-    DDRB |= (1<<outPin_) ;
+    DDRB |= (1 << outPin_);
     x10_.readData();
     uint8_t address = x10_.getAddress();
 
@@ -30,15 +30,15 @@ void slaveAktuator::opdateretLog()
         return;
     }
 
-    logLysStatus_ = x10_.getValue();    
-    
-    if (logLysStatus_ == 1)
+    LogLightStatus_ = x10_.getValue();
+
+    if (LogLightStatus_ == 1)
     {
-        PORTB |= (1<<outPin_);
+        PORTB |= (1 << outPin_);
     }
     else
     {
-        PORTB &= ~(1<<outPin_);
+        PORTB &= ~(1 << outPin_);
     }
     setLowPowerUsage();
 }
