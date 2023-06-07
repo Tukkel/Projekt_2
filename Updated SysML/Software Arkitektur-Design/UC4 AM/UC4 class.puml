@@ -20,14 +20,19 @@ Class "**<<boundary>>**\n**PC interface**" as UI{
 - input
 }
 
-
-Class "**<<domain>>**\n**Master**" as master{
-+ sendLog()
-+ updateSystem(newSystem)
-+ materInitialise()
+Class "**<<boundary>>**\n**UART Connection**" as UC{
 - log
-- system
+- System Calibrated
+- Validation 
+}
+
+
+Class "**<<domain>>**\n**UARTCommunication**" as master{
 - logRequest
+- addSlave
+- roomConnection
+- calibrateRequest
+- initialiseSystem
 }
 
 Class "**<<controller>>**\n**UC4: Administrator login**" as PC{
@@ -48,12 +53,20 @@ Class "**<<controller>>**\n**UC4: Administrator login**" as PC{
 + changePassword()
 + logOut()
 + exit()
-- log
+- Log
 - data
+- addSlave
+- roomConnection
+- calibrateRequest
+- initialiseSystem
+- logRequest
+- saveOption
+- password
 }
 
 ' Conection definition
 PC <--> UI
 PC <--> master
+master <--> UC
 
 @enduml

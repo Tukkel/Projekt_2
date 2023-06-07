@@ -14,24 +14,36 @@ extern Interrupts I;
 
 int main()
 {
+	//Construct klasser til UART-kommunikation
 	UARTPC uartPc(9600, 8);
 	UARTDE uartDe(9600, 8);
+
+	//Hard-coded adresser til test
 	uint8_t address[8] = {0, 0, 0, 0, 0, 0, 0, 1};
 	uint8_t addresstwo[8] = {0, 0, 0, 0, 0, 0, 1, 0};
+	uint8_t address3[8] = {0, 0, 0, 0, 0, 0, 1, 1};
+
+	//Construct klassen til X10-kommunikation
 	X10 x10(1, 2, 4, address, sizeof(address)/sizeof(address[0]), 'm');
+
+	//Opsætning af variable
 	uint8_t on[1] = {1};
 	uint8_t off[1] = {0};
 	uint8_t dataRead = 0;
-	DDRB = 0xFF;
 	bool recived = true;
+	bool full = false;
+	uint8_t rooms = 10;
+	size_t users = 10;
 
-	uint8_t rooms;
-	size_t users;
+	//Port B bruges til debugging da den er forbundet til LEDerne på shieldet
+	DDRB = 0xFF;
 
+	//Sluk leder på informationspanel
 	uartDe.SendString("~/");
 	uartDe.SendChar(0b00000000);
 	uartDe.SendChar('!');
 
+	//Loop der venter på at masteren bliver initialiseret fra PC, loggen skal vide hvor stor den skal være.
 	while(recived)
 	{
 		PORTB = I.stringReady();
@@ -44,6 +56,7 @@ int main()
 				{
 					if(I.string[i-1] == 'E')
 					{
+						//Der bruges funktioner fra Functions.cpp til at læse daten
 						rooms = getRooms(I.string);
 						users = getUsers(I.string);
 						I.stringRead();
@@ -57,41 +70,88 @@ int main()
 				}
 				++i;
 			}
+			//Fjern hvad der er blevet læst
 			I.stringRead();
 		}
 	}
 
+	//Størelsen af loggen vises med LEDerne for at bekræfte at den har modtaget korrekt
 	PORTB = rooms;
 	_delay_ms(1000);
 
 	PORTB = users;
 	_delay_ms(1000);
 
+	//Test af at der kan sendes andet end sluk
 	uartDe.SendString("~/");
 	uartDe.SendChar(0b10011001);
 	uartDe.SendChar('!');
 
+	//Construct loggen med størrelsen som bliver kommunikeret fra PC
 	Log log(rooms, users);
-	
-	log.logID(1, 0);
-	log.logID(0, 1);
 
+	_delay_ms(500);
+	
+	
+	log.setTime(I.getTime());
+	_delay_ms(200);
+	log.logID(1, 0);
+	_delay_ms(200);
+	log.logID(0, 2);
+	
+	//Main loop
 	while(true)
 	{
-		/*
+		//Efterspørg data fra sensor
+		PORTB = 6;
+
 		recived = false;
 		recived = x10.writeData(on, sizeof(on)/sizeof(on[0]), addresstwo, sizeof(addresstwo)/sizeof(addresstwo[0]));
 		
+		PORTB = 8;
+
+		//Hvis der kommer ack
+		if(recived == true)
+		{
+			//Læs hvad 
+			x10.readData();
+			dataRead = x10.getValue();
+			PORTB = dataRead+1;
+			if(full)
+			{
+				recived = x10.writeData(off, sizeof(off)/sizeof(off[0]), address, sizeof(address)/sizeof(address[0]));
+				full = false;
+				uartDe.SendString("~/");
+				uartDe.SendChar(0b00000000);
+				uartDe.SendChar('!');
+			}
+			else
+			{
+				recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address, sizeof(address)/sizeof(address[0]));
+				full = true;
+				uartDe.SendString("~/");
+				uartDe.SendChar(0b00000001);
+				uartDe.SendChar('!');
+			}
+		}
+
+		/*
+		PORTB = 3;
+		
+		recived = false;
+		recived = x10.writeData(on, sizeof(on)/sizeof(on[0]), address3, sizeof(addresstwo)/sizeof(addresstwo[0]));
+		
+		PORTB = 4;
+
 		if(recived == true)
 		{
 			x10.readData();
 			dataRead = x10.getValue();
 			PORTB = dataRead+1;
 			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), address, sizeof(address)/sizeof(address[0]));
+			full = true;
 		}
 		*/
-		//recived = false;
-		
 
 		PORTB = I.roomReady();
 		_delay_ms(100);
@@ -102,21 +162,47 @@ int main()
 				uartDe.SendString("~~ !");
 			}
 			else
-			{
-				uartDe.SendString("~~ roomName count Name1!");
-				/*
-				size_t i = 0;
-				size_t people = 0;
-				uint8_t room = I.getRoomToSend();
-				uartDe.SendString("~~ ");
-				PORTB = 4;
-				while(log.roomNames_[room][i] != '\0')
+			{	
+				size_t room = I.getRoomToSend();
+
+				if(room == 1)
 				{
-					uartDe.SendChar(log.roomNames_[room][i]);
-					++i;
+					if(full)
+					{
+						uartDe.SendString("~~ Rum 1: 1 person1!");
+					}
+					else
+					{
+						uartDe.SendString("~~ Rum 1: 0!");
+					}
 				}
-				PORTB = 8;
-				uartDe.SendChar(' ');
+				else
+				{
+					uartDe.SendString("~~ Rum ");
+					uartDe.SendInteger(room);
+					uartDe.SendString(": 0!");
+				}
+				/*
+				size_t start = 3;
+				DEstring[0] = '~';
+				DEstring[1] = '~';
+				DEstring[2] = ' ';
+
+				for(size_t i=start; i<40; ++i)
+				{
+					if(log.roomNames_[room][i-start] != '\0')
+					{
+						DEstring[i] = log.roomNames_[room][i-start];
+					}
+					else
+					{
+						DEstring[i] = ' ';
+						start = i+1;
+						break;
+					}
+				}
+
+				size_t people = 0;
 				for(size_t j = 0; j<log.numberPeople_; ++j)
 				{
 					if(log.rooms_[room][j])
@@ -124,26 +210,49 @@ int main()
 						++people;
 					}
 				}
-				uartDe.SendInteger(people);
-				uartDe.SendChar(' ');
-				i = 0;
-				PORTB = 16;	
+				if(people>9)
+				{
+					DEstring[start] = (people/10) + 48;
+					DEstring[start+1] = (people%10) + 48;
+					DEstring[start+2] = ' ';
+					start += 3;
+				}
+				else
+				{
+					DEstring[start] = people + 48;
+					DEstring[start] = ' ';
+					start += 2;
+				}
+
+				bool nameFinished = false;
 				for(size_t j = 0; j<log.numberPeople_; ++j)
 				{
 					if(log.rooms_[room][j])
 					{
-						while(log.peopleNames_[j][i] != '\0')
+						for(size_t i=start; i<40; ++i)
 						{
-							uartDe.SendChar(log.peopleNames_[j][i]);
-							++i;
+							if(log.peopleNames_[j][i-start] != '\0')
+							{
+								DEstring[i] = log.peopleNames_[j][i-start];
+							}
+							else
+							{
+								start = i;
+								nameFinished = true;
+								break;
+							}
 						}
 					}
+					if(nameFinished)
+					{
+						break;
+					}
 				}
-				PORTB = 32;
-				uartDe.SendChar('!');
+				DEstring[start] = '!';
+				DEstring[start+1] = '\0';
+				uartDe.SendString(DEstring);
 				*/
 			}
-			//I.roomReady_ = false;
 			I.setRoomReady(false);
 		}
 
@@ -158,13 +267,11 @@ int main()
 				{
 					if(I.string[i-1] == 'A')
 					{
-						uint16_t intToSend = 0;
 						for(size_t k = 0; k<users; ++k)
 						{
 							for(size_t l = 0; l<rooms; ++l)
 							{
-								intToSend = log.log_[log.offset(log.nextEntry_-1,l,k)]/0.001;
-								uartPc.SendInteger(intToSend);
+								uartPc.SendInteger((int)(log.roomChances_[l][k]*1000));
 								uartPc.SendChar(' ');
 							}
 							uartPc.SendChar('\n');
@@ -176,7 +283,7 @@ int main()
 							{
 								for(size_t l = 0; l<rooms; ++l)
 								{
-									intToSend = log.log_[log.offset(j,l,k)]/0.001;
+									intToSend = log.log_[log.offset(j,l,k)]*1000;
 									uartPc.SendInteger(intToSend);
 									uartPc.SendChar(' ');
 								}
@@ -196,7 +303,7 @@ int main()
 					}
 					else if(I.string[i-1] == 'C')
 					{
-						bool connections[rooms] = {false};
+						bool connections[log.numberRooms_] = {false};
 						bool* boolPtr = &connections[0];
 						uint8_t room = getRoom(I.string);
 						getConnections(I.string, boolPtr);
@@ -206,75 +313,12 @@ int main()
 					}
 					else if(I.string[i-1] == 'D')
 					{
-						char string[] = "Callibrated\n";
-						uartPc.SendString(string);
+						uartPc.SendString("Callibrated\n");
 					}
 				}
 				++i;
 			}
 			I.stringRead();
-			//I.stringReady_ = false;
-			I.setRoomReady(false);
-		}
-		//I.stringReady_ = false;
-	}
-	
-}
-
-/*
-#include <avr/io.h>
-#include "X10.h"
-#include "UARTPC.h"
-
-int main()
-{
-	UARTPC uartPc(9600, 8);
-	uint8_t hvad[8] = {0, 0, 0, 0, 0, 0, 0, 1};
-	uint8_t addresstwo[8] = {0, 0, 0, 0, 0, 0, 1, 0};
-	X10 x10(1, 2, 4, hvad, sizeof(hvad)/sizeof(hvad[0]), 'm');
-	uint8_t data[1] = {1};
-	uint8_t off[1] = {0};
-	uint8_t dataRead = 0;
-	DDRB = 0xFF;
-	bool recived = false;
-	while(true)
-	{
-		while(dataRead == 0)
-		{
-			while(recived == false)
-			{
-				recived = x10.writeData(data, sizeof(data)/sizeof(data[0]), addresstwo, sizeof(addresstwo)/sizeof(addresstwo[0]));
-				PORTB = 1;
-			}
-			recived = false;
-			x10.readData();
-			dataRead = x10.getValue();
-			PORTB = dataRead+1;
-		}
-		while(recived == false)
-		{
-			recived = x10.writeData(&dataRead, sizeof(&dataRead)/sizeof(&dataRead), hvad, sizeof(addresstwo)/sizeof(addresstwo[0]));
-			PORTB = 4;
-		}
-		recived = false;
-		dataRead = 0;
-		while(dataRead == 0)
-		{
-			while(recived == false)
-			{
-				recived = x10.writeData(data, sizeof(data)/sizeof(data[0]), addresstwo, sizeof(addresstwo)/sizeof(addresstwo[0]));
-				PORTB = 1;
-			}
-			recived = false;
-			x10.readData();
-			dataRead = x10.getValue();
-			PORTB = dataRead+1;
-		}
-		while(recived == false)
-		{
-			recived = x10.writeData(off, sizeof(off)/sizeof(off[0]), hvad, sizeof(addresstwo)/sizeof(addresstwo[0]));
-			PORTB = 4;
 		}
 	}
 }
-*/

@@ -5,12 +5,12 @@ mainframe **SD** UC2
 
 participant "<<boundary>>\nLys" as L
 participant "<<Controller>>\nAdministrer lys" as AL
-participant "<<boundary>>Masteren" as M
+participant "<<boundary>>\nMaster" as M
 
-M -> AL : opdatretLog(logLysStatus)
+M ->> AL : updateLog()
 activate AL
 AL -> AL : setHighPowerUsage()
-AL -> L : sætStatus(lysStatus)
+AL ->> L : setStatus(logLightStatus)
 AL -> AL : setLowPowerUsage()
 
 deactivate AL

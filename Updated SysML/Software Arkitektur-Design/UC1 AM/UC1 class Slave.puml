@@ -9,7 +9,7 @@ skinparam Linetype poly
 skinparam ranksep 100
 skinparam nodesep 100
 hide empty members
-
+skinparam classAttributeIconSize 0 
 
 mainframe **Class** UC1: Registrer rumskifte (Slave)
 
@@ -31,7 +31,7 @@ Class "**<<controller>>**\n**UC1: Registrer rumskifte (Slave)**" as SS{
 - slaveNr
 }
 
-Class "**<<domain>>**\n**X10Communication**" as X10{
+Class "**<<boundary>>**\n**X10**" as X10{
 + sendActivity(slaveNr, activity)
 - activity
 - slaveNr

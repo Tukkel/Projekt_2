@@ -27,6 +27,7 @@ uint8_t getAddress(char* string)
         }
         ++i;
     }
+    return address;
 }
 
 uint32_t getAddressType(char* string)
@@ -73,6 +74,7 @@ uint8_t getRoom(char* string)
         }
         ++i;
     }
+    return room-1;
 }
 
 void getConnections(char* string, bool* connections)
@@ -137,6 +139,7 @@ uint8_t getRooms(char* string)
         }
         ++i;
     }
+    return rooms;
 }
 
 size_t getUsers(char* string)
