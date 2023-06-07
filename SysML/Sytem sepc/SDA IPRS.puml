@@ -9,6 +9,7 @@ skinparam Linetype poly
 skinparam ranksep 100
 skinparam nodesep 200
 hide empty members
+skinparam classAttributeIconSize 0
 
 mainframe **SDA** IPRS
 
