@@ -1,6 +1,6 @@
-@startuml SMD UC2
+@startuml STM UC2
 
-mainframe **SMD** UC2
+mainframe **STM** UC2
 
 hide empty description
 

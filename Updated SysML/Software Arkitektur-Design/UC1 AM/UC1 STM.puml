@@ -1,6 +1,6 @@
-@startuml UC1 SMD
+@startuml UC1 STM
 
-mainframe **SMD** UC1: Registreret rum skift
+mainframe **STM** UC1: Registreret rum skift
 
 hide empty description
 state IDLE

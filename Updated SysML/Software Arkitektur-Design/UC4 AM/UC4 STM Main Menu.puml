@@ -1,4 +1,4 @@
-@startuml UC4 SMD
+@startuml UC4 STM
 
 mainframe **STM** UC4: Administrator login
 

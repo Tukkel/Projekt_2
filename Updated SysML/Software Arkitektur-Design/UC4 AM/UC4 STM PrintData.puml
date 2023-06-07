@@ -1,6 +1,6 @@
-@startuml UC4 SMD
+@startuml UC4 STM
 
-mainframe **SMD** UC4: Administrator login - Print Data Menu
+mainframe **STM** UC4: Administrator login - Print Data Menu
 
 hide empty description
 

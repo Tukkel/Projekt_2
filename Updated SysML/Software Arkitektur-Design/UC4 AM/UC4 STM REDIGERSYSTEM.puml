@@ -1,7 +1,7 @@
 
-@startuml UC4 SMD
+@startuml UC4 STM
 
-mainframe **SMD** UC4: Administrator login - Rediger System Menu
+mainframe **STM** UC4: Administrator login - Rediger System Menu
 
 hide empty description
 

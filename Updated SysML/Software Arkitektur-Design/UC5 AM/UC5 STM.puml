@@ -1,5 +1,5 @@
-@startuml UC5
-mainframe **SMD** UC5: Initialisering
+@startuml UC5 STM
+mainframe **STM** UC5: Initialisering
 
 hide empty description
 state "Master initialise" as master
