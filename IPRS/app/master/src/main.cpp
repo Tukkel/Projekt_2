@@ -28,7 +28,7 @@ int main()
 	bool recived = true;
 	bool full = false;
 	
-	char DEstring[40];// = "~~ Rum 1: 0 personer!\0";
+	char DEstring[40] = "~~ Rum 1: 0 personer!\0";
 
 	uint8_t rooms = 4;
 	size_t users = 4;
@@ -143,11 +143,11 @@ int main()
 			}
 			else
 			{	
-				size_t room = I.getRoomToSend();
+				size_t room = I.getRoomToSend() - 1;
 
 				DEstring[7] = room+48;
 
-				if(full)
+				if(full && room == 1)
 				{
 					DEstring[10] = '1';
 				}
